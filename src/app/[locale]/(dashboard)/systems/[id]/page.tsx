@@ -5,7 +5,9 @@ import { useTranslations } from 'next-intl';
 import { trpc } from '@/lib/trpc/client';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, AlertCircle, Edit, Trash2 } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { ArrowLeft, AlertCircle, Edit, Trash2, RefreshCw, ExternalLink } from 'lucide-react';
 import { RiskLevel } from '@prisma/client';
 import { format } from 'date-fns';
 
@@ -45,6 +47,14 @@ export default function SystemDetailPage() {
   const deleteMutation = trpc.system.delete.useMutation({
     onSuccess: () => {
       router.push(`/${locale}/systems`);
+    },
+  });
+
+  // Reclassify mutation
+  const reclassifyMutation = trpc.classification.reclassify.useMutation({
+    onSuccess: () => {
+      // Refetch system data
+      window.location.reload();
     },
   });
 
@@ -121,10 +131,173 @@ export default function SystemDetailPage() {
         </div>
       </div>
 
+      {/* Classification Result Section */}
+      {system.riskLevel && (
+        <Card className="p-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold">{t('classificationResult')}</h2>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => reclassifyMutation.mutate({ systemId })}
+              disabled={reclassifyMutation.isPending}
+            >
+              <RefreshCw className={`me-2 h-4 w-4 ${reclassifyMutation.isPending ? 'animate-spin' : ''}`} />
+              {t('reclassify')}
+            </Button>
+          </div>
+
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {/* Risk Level Card */}
+            <div>
+              <div className="text-sm font-medium text-muted-foreground">
+                {t('riskLevel')}
+              </div>
+              <div className="mt-2">
+                <Badge
+                  variant={getRiskBadgeVariant(system.riskLevel)}
+                  className="text-base px-4 py-2"
+                >
+                  {tClass(system.riskLevel.toLowerCase())}
+                </Badge>
+              </div>
+            </div>
+
+            {/* Confidence Score */}
+            {system.confidenceScore !== null && system.confidenceScore !== undefined && (
+              <div>
+                <div className="text-sm font-medium text-muted-foreground">
+                  {t('confidenceScore')}
+                </div>
+                <div className="mt-2 text-2xl font-bold">
+                  {Math.round(system.confidenceScore * 100)}%
+                </div>
+                <Progress value={system.confidenceScore * 100} className="mt-2 h-2" />
+              </div>
+            )}
+
+            {/* Annex III Category */}
+            {system.annexIIICategory && (
+              <div>
+                <div className="text-sm font-medium text-muted-foreground">
+                  {t('annexCategory')}
+                </div>
+                <div className="mt-1 font-medium">{system.annexIIICategory}</div>
+                {system.annexIIISubcategory && (
+                  <div className="mt-1 text-sm text-muted-foreground">
+                    {system.annexIIISubcategory}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Provider/Deployer */}
+            {system.providerOrDeployer && (
+              <div>
+                <div className="text-sm font-medium text-muted-foreground">
+                  {t('role')}
+                </div>
+                <div className="mt-1">
+                  <Badge variant="outline">{system.providerOrDeployer}</Badge>
+                </div>
+              </div>
+            )}
+
+            {/* Compliance Score */}
+            {system.complianceScore !== null && (
+              <div>
+                <div className="text-sm font-medium text-muted-foreground">
+                  {t('complianceScore')}
+                </div>
+                <div className="mt-2 flex items-center gap-3">
+                  <div className="text-2xl font-bold">
+                    {system.complianceScore}%
+                  </div>
+                  <Progress value={system.complianceScore} className="h-2 flex-1" />
+                </div>
+              </div>
+            )}
+
+            {/* Classification Date */}
+            {system.classifiedAt && (
+              <div>
+                <div className="text-sm font-medium text-muted-foreground">
+                  {t('classifiedAt')}
+                </div>
+                <div className="mt-1">
+                  {format(new Date(system.classifiedAt), 'PPp')}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Exception Applied */}
+          {system.exceptionApplies && system.exceptionReason && (
+            <div className="mt-4 rounded-md border border-yellow-200 bg-yellow-50 p-4">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-sm font-medium text-yellow-800">
+                    {t('exceptionApplied')}
+                  </div>
+                  <div className="mt-1 text-sm text-yellow-700">
+                    {system.exceptionReason}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Classification Reasoning */}
+          {system.classificationReasoning && (
+            <div className="mt-4">
+              <div className="text-sm font-medium text-muted-foreground">
+                {t('reasoning')}
+              </div>
+              <div className="mt-2 rounded-md bg-muted p-4 text-sm">
+                {system.classificationReasoning}
+              </div>
+            </div>
+          )}
+
+          {/* Link to Gaps */}
+          {system.gaps.length > 0 && (
+            <div className="mt-4">
+              <Button
+                variant="default"
+                onClick={() => router.push(`/${locale}/systems/${systemId}/gaps`)}
+              >
+                {t('viewComplianceGaps')} ({system.gaps.length})
+                <ExternalLink className="ms-2 h-4 w-4" />
+              </Button>
+            </div>
+          )}
+        </Card>
+      )}
+
+      {/* Not classified state */}
+      {!system.riskLevel && (
+        <Card className="p-8 text-center">
+          <AlertCircle className="mx-auto h-12 w-12 text-muted-foreground" />
+          <div className="mt-4 text-lg font-medium">{t('notClassifiedYet')}</div>
+          <div className="mt-2 text-sm text-muted-foreground">
+            {t('notClassifiedDescription')}
+          </div>
+          <Button
+            className="mt-4"
+            onClick={() => reclassifyMutation.mutate({ systemId })}
+            disabled={reclassifyMutation.isPending}
+          >
+            <RefreshCw className={`me-2 h-4 w-4 ${reclassifyMutation.isPending ? 'animate-spin' : ''}`} />
+            {t('classifyNow')}
+          </Button>
+        </Card>
+      )}
+
       {/* Main info grid */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Basic information */}
-        <div className="rounded-lg border p-6">
+        <Card className="p-6">
           <h2 className="text-lg font-semibold">{t('basicInformation')}</h2>
           <dl className="mt-4 space-y-3">
             <div>
@@ -164,147 +337,48 @@ export default function SystemDetailPage() {
               </dd>
             </div>
           </dl>
-        </div>
+        </Card>
 
-        {/* Risk classification */}
-        <div className="rounded-lg border p-6">
-          <h2 className="text-lg font-semibold">{t('riskClassification')}</h2>
-          <div className="mt-4 space-y-4">
-            {system.riskLevel ? (
-              <>
-                <div>
-                  <div className="text-sm font-medium text-muted-foreground">
-                    {t('riskLevel')}
-                  </div>
-                  <div className="mt-2">
-                    <Badge variant={getRiskBadgeVariant(system.riskLevel)}>
-                      {tClass(system.riskLevel.toLowerCase())}
-                    </Badge>
-                  </div>
-                </div>
-
-                {system.annexIIICategory && (
-                  <div>
-                    <div className="text-sm font-medium text-muted-foreground">
-                      {t('annexCategory')}
-                    </div>
-                    <div className="mt-1">{system.annexIIICategory}</div>
-                  </div>
-                )}
-
-                {system.complianceScore !== null && (
-                  <div>
-                    <div className="text-sm font-medium text-muted-foreground">
-                      {t('complianceScore')}
-                    </div>
-                    <div className="mt-1 text-2xl font-bold">
-                      {system.complianceScore}%
-                    </div>
-                  </div>
-                )}
-
-                {system.classifiedAt && (
-                  <div>
-                    <div className="text-sm font-medium text-muted-foreground">
-                      {t('classifiedAt')}
-                    </div>
-                    <div className="mt-1 text-sm">
-                      {format(new Date(system.classifiedAt), 'PPp')}
-                    </div>
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="rounded-md bg-muted p-4 text-center">
-                <p className="text-sm text-muted-foreground">
-                  {t('notClassifiedYet')}
-                </p>
-                <Button className="mt-3" size="sm">
-                  {t('classifyNow')}
-                </Button>
-              </div>
-            )}
-          </div>
-        </div>
+        {/* Characteristics */}
+        <Card className="p-6">
+          <h2 className="text-lg font-semibold">{t('characteristics')}</h2>
+          <dl className="mt-4 space-y-3">
+            <div>
+              <dt className="text-sm font-medium text-muted-foreground">
+                {t('makesDecisions')}
+              </dt>
+              <dd className="mt-1">
+                <Badge variant={system.makesDecisions ? 'default' : 'outline'}>
+                  {system.makesDecisions ? t('yes') : t('no')}
+                </Badge>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-medium text-muted-foreground">
+                {t('processesPersonalData')}
+              </dt>
+              <dd className="mt-1">
+                <Badge
+                  variant={system.processesPersonalData ? 'default' : 'outline'}
+                >
+                  {system.processesPersonalData ? t('yes') : t('no')}
+                </Badge>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-medium text-muted-foreground">
+                {t('profilesUsers')}
+              </dt>
+              <dd className="mt-1">
+                <Badge variant={system.profilesUsers ? 'default' : 'outline'}>
+                  {system.profilesUsers ? t('yes') : t('no')}
+                </Badge>
+              </dd>
+            </div>
+          </dl>
+        </Card>
       </div>
 
-      {/* Characteristics */}
-      <div className="rounded-lg border p-6">
-        <h2 className="text-lg font-semibold">{t('characteristics')}</h2>
-        <dl className="mt-4 grid gap-4 sm:grid-cols-3">
-          <div>
-            <dt className="text-sm font-medium text-muted-foreground">
-              {t('makesDecisions')}
-            </dt>
-            <dd className="mt-1">
-              <Badge variant={system.makesDecisions ? 'default' : 'outline'}>
-                {system.makesDecisions ? t('yes') : t('no')}
-              </Badge>
-            </dd>
-          </div>
-          <div>
-            <dt className="text-sm font-medium text-muted-foreground">
-              {t('processesPersonalData')}
-            </dt>
-            <dd className="mt-1">
-              <Badge
-                variant={system.processesPersonalData ? 'default' : 'outline'}
-              >
-                {system.processesPersonalData ? t('yes') : t('no')}
-              </Badge>
-            </dd>
-          </div>
-          <div>
-            <dt className="text-sm font-medium text-muted-foreground">
-              {t('profilesUsers')}
-            </dt>
-            <dd className="mt-1">
-              <Badge variant={system.profilesUsers ? 'default' : 'outline'}>
-                {system.profilesUsers ? t('yes') : t('no')}
-              </Badge>
-            </dd>
-          </div>
-        </dl>
-      </div>
-
-      {/* Compliance gaps */}
-      {system.gaps.length > 0 && (
-        <div className="rounded-lg border p-6">
-          <h2 className="text-lg font-semibold">
-            {t('complianceGaps')} ({system.gaps.length})
-          </h2>
-          <div className="mt-4 space-y-3">
-            {system.gaps.slice(0, 5).map((gap) => (
-              <div
-                key={gap.id}
-                className="flex items-start justify-between rounded-md border p-3"
-              >
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium">{gap.article}</span>
-                    <Badge
-                      variant={
-                        gap.priority === 'CRITICAL' ? 'destructive' : 'outline'
-                      }
-                    >
-                      {gap.priority}
-                    </Badge>
-                  </div>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {gap.requirement}
-                  </p>
-                </div>
-                <Badge variant="outline">{gap.status}</Badge>
-              </div>
-            ))}
-            {system.gaps.length > 5 && (
-              <Button variant="outline" size="sm" className="w-full">
-                {t('viewAllGaps')} ({system.gaps.length})
-              </Button>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
