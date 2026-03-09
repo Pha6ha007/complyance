@@ -63,8 +63,7 @@ interface AnnexIVProps {
   };
 }
 
-const styles = StyleSheet.create({
-  ...commonStyles,
+const localStyles = StyleSheet.create({
   tocSection: {
     marginBottom: 20,
   },
@@ -140,6 +139,8 @@ const styles = StyleSheet.create({
     color: '#111827',
   },
 });
+
+const styles = { ...commonStyles, ...localStyles };
 
 export const AnnexIVDocument: React.FC<AnnexIVProps> = ({
   system,

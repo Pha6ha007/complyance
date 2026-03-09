@@ -143,7 +143,7 @@ export async function generateDocument(
   const { type, systemId, organizationId, locale, translations } = options;
 
   // Fetch system data with related data
-  const system = await prisma.aiSystem.findFirst({
+  const system = await prisma.aISystem.findFirst({
     where: {
       id: systemId,
       organizationId,
@@ -167,13 +167,17 @@ export async function generateDocument(
   switch (type) {
     case DocType.CLASSIFICATION_REPORT:
       title = `${translations.classificationReport.title} - ${system.name}`;
-      pdfBuffer = await generateClassificationReport(system, locale, translations);
+      pdfBuffer = await generateClassificationReport(
+        system as AISystem & { organization: { name: string }; gaps?: ComplianceGap[] },
+        locale,
+        translations
+      );
       break;
 
     case DocType.ROADMAP:
       title = `${translations.roadmap.title} - ${system.name}`;
       pdfBuffer = await generateRoadmap(
-        system as AISystem & { gaps: ComplianceGap[] },
+        system as AISystem & { organization: { name: string }; gaps: ComplianceGap[] },
         locale,
         translations
       );
@@ -181,7 +185,11 @@ export async function generateDocument(
 
     case DocType.ANNEX_IV:
       title = `${translations.annexIV.title} - ${system.name}`;
-      pdfBuffer = await generateAnnexIV(system, locale, translations);
+      pdfBuffer = await generateAnnexIV(
+        system as AISystem & { organization: { name: string } },
+        locale,
+        translations
+      );
       break;
 
     default:

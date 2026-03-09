@@ -5,15 +5,15 @@ import { CheckoutButton } from '@/components/billing/checkout-button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import { auth } from '@/../auth';
 import { prisma } from '@/server/db/client';
 import { PLAN_LIMITS, getEffectiveSystemLimit } from '@/server/services/billing/paddle';
 import { AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 export default async function BillingPage() {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user?.email) {
     redirect('/login');
   }

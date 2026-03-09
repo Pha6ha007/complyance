@@ -48,7 +48,7 @@ try {
       ],
 
       // Filter out sensitive data
-      beforeSend(event, hint) {
+      beforeSend(event: any, hint: any) {
         // Remove sensitive query params
         if (event.request?.url) {
           try {

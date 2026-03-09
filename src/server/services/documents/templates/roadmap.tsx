@@ -51,8 +51,7 @@ interface RoadmapProps {
   };
 }
 
-const styles = StyleSheet.create({
-  ...commonStyles,
+const localStyles = StyleSheet.create({
   deadlineBox: {
     backgroundColor: '#FEF3C7',
     padding: 12,
@@ -148,6 +147,8 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
 });
+
+const styles = { ...commonStyles, ...localStyles };
 
 /**
  * Group gaps by phase based on priority and due date

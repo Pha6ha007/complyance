@@ -45,7 +45,9 @@ function extractTextFromPlainText(buffer: Buffer): string {
 async function extractTextFromPDF(buffer: Buffer): Promise<string> {
   try {
     // Dynamic import to avoid loading in browser context
-    const pdfParse = (await import('pdf-parse')).default;
+    const pdfParseModule = await import('pdf-parse');
+    // Handle both default and named exports
+    const pdfParse: any = (pdfParseModule as any).default || pdfParseModule;
     const data = await pdfParse(buffer);
     return data.text;
   } catch (error) {

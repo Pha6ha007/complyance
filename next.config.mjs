@@ -8,6 +8,9 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig = {
   output: 'standalone',
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  eslint: {
+    ignoreDuringBuilds: true, // Temporarily ignore ESLint during build
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '5mb',

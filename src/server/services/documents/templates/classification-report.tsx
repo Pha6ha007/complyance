@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
     color: '#111827',
   },
   riskBadge: {
-    display: 'inline-block',
     padding: '5 12',
     borderRadius: 4,
     fontSize: 12,

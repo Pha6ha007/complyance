@@ -4,6 +4,7 @@ import superjson from 'superjson';
 import { ZodError } from 'zod';
 import { auth } from '@/../auth';
 import { prisma } from './db/client';
+import type { Session } from 'next-auth';
 
 // Sentry (conditional import)
 let Sentry: any = null;
@@ -20,7 +21,7 @@ try {
  */
 
 interface CreateContextOptions {
-  session: Awaited<ReturnType<typeof auth>> | null;
+  session: Session | null;
 }
 
 /**
@@ -34,13 +35,16 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
   };
 };
 
+export type Context = ReturnType<typeof createInnerTRPCContext>;
+
 /**
  * This is the actual context you will use in your router. It will be used to process every request
  * that goes through your tRPC endpoint.
  */
-export const createTRPCContext = async (opts: { req: NextRequest }) => {
+export const createTRPCContext = async (opts: { req: NextRequest }): Promise<Context> => {
   // Get the session from NextAuth
-  const session = await auth();
+  // Call auth() as a function, not as middleware
+  const session = (await auth()) as Session | null;
 
   return createInnerTRPCContext({
     session,
@@ -52,7 +56,7 @@ export const createTRPCContext = async (opts: { req: NextRequest }) => {
  *
  * This is where the tRPC API is initialized, connecting the context and transformer.
  */
-const t = initTRPC.context<typeof createTRPCContext>().create({
+const t = initTRPC.context<Context>().create({
   transformer: superjson,
   errorFormatter({ shape, error }) {
     // Capture error in Sentry if it's a server error
@@ -65,7 +69,7 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
         contexts: {
           trpc: {
             code: error.code,
-            path: shape.path,
+            path: (shape as any).path,
           },
         },
       });

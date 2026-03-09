@@ -112,7 +112,6 @@ export const commonStyles = StyleSheet.create({
     color: '#111827',
   },
   badge: {
-    display: 'inline-block',
     padding: '3 8',
     borderRadius: 3,
     fontSize: 8,

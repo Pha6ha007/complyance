@@ -356,7 +356,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
                       }
                     >
                       {feature.name}
-                      {feature.detail && (
+                      {'detail' in feature && feature.detail && (
                         <span className="block text-xs text-muted-foreground">
                           {feature.detail}
                         </span>

@@ -50,7 +50,7 @@ export const documentRouter = router({
       }
 
       // Check if system exists and belongs to organization
-      const system = await ctx.prisma.aiSystem.findFirst({
+      const system = await ctx.prisma.aISystem.findFirst({
         where: {
           id: input.systemId,
           organizationId: ctx.organization.id,
@@ -195,7 +195,7 @@ export const documentRouter = router({
     )
     .query(async ({ ctx, input }) => {
       // Verify system belongs to organization
-      const system = await ctx.prisma.aiSystem.findFirst({
+      const system = await ctx.prisma.aISystem.findFirst({
         where: {
           id: input.systemId,
           organizationId: ctx.organization.id,
@@ -324,7 +324,7 @@ export const documentRouter = router({
       }
 
       // Verify system belongs to organization
-      const system = await ctx.prisma.aiSystem.findFirst({
+      const system = await ctx.prisma.aISystem.findFirst({
         where: {
           id: input.systemId,
           organizationId: ctx.organization.id,
@@ -369,7 +369,7 @@ export const documentRouter = router({
     )
     .query(async ({ ctx, input }) => {
       // Verify system belongs to organization
-      const system = await ctx.prisma.aiSystem.findFirst({
+      const system = await ctx.prisma.aISystem.findFirst({
         where: {
           id: input.systemId,
           organizationId: ctx.organization.id,

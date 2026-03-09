@@ -56,7 +56,7 @@ export const systemRouter = router({
         }),
       };
 
-      const systems = await ctx.prisma.aiSystem.findMany({
+      const systems = await ctx.prisma.aISystem.findMany({
         where,
         take: limit + 1,
         ...(cursor && {
@@ -99,7 +99,7 @@ export const systemRouter = router({
   getById: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(async ({ ctx, input }) => {
-      const system = await ctx.prisma.aiSystem.findFirst({
+      const system = await ctx.prisma.aISystem.findFirst({
         where: {
           id: input.id,
           organizationId: ctx.organization.id,
@@ -142,7 +142,7 @@ export const systemRouter = router({
     .input(createSystemSchema)
     .mutation(async ({ ctx, input }) => {
       // Check plan limits
-      const systemCount = await ctx.prisma.aiSystem.count({
+      const systemCount = await ctx.prisma.aISystem.count({
         where: { organizationId: ctx.organization.id },
       });
 
@@ -159,7 +159,7 @@ export const systemRouter = router({
       }
 
       // Create the system
-      const system = await ctx.prisma.aiSystem.create({
+      const system = await ctx.prisma.aISystem.create({
         data: {
           ...input,
           organizationId: ctx.organization.id,
@@ -191,7 +191,7 @@ export const systemRouter = router({
       const { id, ...data } = input;
 
       // Verify ownership
-      const existing = await ctx.prisma.aiSystem.findFirst({
+      const existing = await ctx.prisma.aISystem.findFirst({
         where: {
           id,
           organizationId: ctx.organization.id,
@@ -206,7 +206,7 @@ export const systemRouter = router({
       }
 
       // Update the system
-      const system = await ctx.prisma.aiSystem.update({
+      const system = await ctx.prisma.aISystem.update({
         where: { id },
         data,
       });
@@ -234,7 +234,7 @@ export const systemRouter = router({
     .input(z.object({ id: z.string() }))
     .mutation(async ({ ctx, input }) => {
       // Verify ownership
-      const existing = await ctx.prisma.aiSystem.findFirst({
+      const existing = await ctx.prisma.aISystem.findFirst({
         where: {
           id: input.id,
           organizationId: ctx.organization.id,
@@ -249,7 +249,7 @@ export const systemRouter = router({
       }
 
       // Delete the system (cascade will handle related records)
-      await ctx.prisma.aiSystem.delete({
+      await ctx.prisma.aISystem.delete({
         where: { id: input.id },
       });
 
@@ -260,7 +260,7 @@ export const systemRouter = router({
    * Get system count for current organization
    */
   getCount: protectedProcedure.query(async ({ ctx }) => {
-    const count = await ctx.prisma.aiSystem.count({
+    const count = await ctx.prisma.aISystem.count({
       where: { organizationId: ctx.organization.id },
     });
 
@@ -280,7 +280,7 @@ export const systemRouter = router({
    * Get dashboard stats
    */
   getStats: protectedProcedure.query(async ({ ctx }) => {
-    const systems = await ctx.prisma.aiSystem.findMany({
+    const systems = await ctx.prisma.aISystem.findMany({
       where: { organizationId: ctx.organization.id },
       select: {
         riskLevel: true,
