@@ -992,6 +992,69 @@ Link to AI systems → Update system compliance score →
 Generate Vendor Assessment Report
 ```
 
+### 5. Document-Assisted Classification
+
+```
+User clicks "Add AI System" → Option: "Fill manually" OR "Upload documents" →
+User uploads 1-5 files → Files stored in S3/R2 (encrypted at rest) →
+Claude API extracts AI-relevant information from documents →
+Platform pre-fills wizard steps 1-4 with extracted data →
+User reviews, corrects if needed, confirms →
+Classification runs as normal (rules → LLM → validation)
+```
+
+**Why this matters:** Users can upload product documentation (technical docs, README, API docs, privacy policy, terms of service, model cards, architecture docs) and the platform automatically extracts AI-relevant information to pre-fill the classification wizard. This reduces human error and catches risks the founder might not recognize.
+
+**Supported file types:**
+- PDF (.pdf) — privacy policies, legal docs, compliance reports
+- Word (.docx) — technical documentation
+- Markdown (.md) — README, API docs, architecture docs
+- Plain text (.txt) — any text documentation
+- Max file size: 10MB per file, up to 5 files per classification
+
+**Document Analysis with Claude API:**
+
+The system analyzes uploaded documents to extract:
+1. System name and description
+2. AI type (ML_MODEL, LLM, RULE_BASED, HYBRID)
+3. Domain (HR, FINANCE, HEALTHCARE, etc.)
+4. Whether system makes decisions affecting people
+5. Whether personal data is processed
+6. Whether users are profiled
+7. End user types (B2C, B2B, EMPLOYEES, GOVERNMENT)
+8. Target markets (EU, US, UAE)
+9. Hidden compliance risks (profiling, automated decisions, biometrics)
+10. Exact quotes from documents as evidence
+
+**Critical risk detection:**
+- "personalized experience" or "recommendations" = likely profiling
+- "automated scoring" or "ranking" = likely automated decisions
+- "user behavior" or "analytics" = likely personal data processing
+- "screening" or "filtering candidates" = employment AI (high-risk)
+- Any mention of biometrics, facial recognition, emotion detection
+
+**Security & Data Handling:**
+- Files encrypted at rest (AES-256) and in transit (TLS)
+- Stored in EU region (eu-central-1) for GDPR alignment
+- Server-side encryption, presigned URLs (expire in 15 min for upload, 1 hour for download)
+- Never publicly accessible
+- Retained as long as subscription is active
+- 30-day grace period after cancellation before deletion
+- SHA-256 integrity hashes for authenticity
+- Full GDPR rights: export and delete at any time
+
+**Plan limits:**
+
+| Feature | Free | Starter | Professional | Scale |
+|---------|------|---------|-------------|-------|
+| Document Upload | No | 2 files/system | 5 files/system | 5 files/system |
+| AI Document Analysis | No | Yes | Yes | Yes |
+
+**Legal Disclaimer (shown before upload):**
+"Your documents are encrypted and stored securely. They are used only to analyze your AI system for compliance purposes. Documents are never shared with third parties. You can delete them at any time. See our Privacy Policy for details."
+
+**Important:** Complyance is a tool that helps organize and analyze compliance information, NOT a legal advisor or certified auditor. All outputs include disclaimer that classifications should be verified by qualified legal professionals.
+
 ---
 
 ## Known AI Vendors Database (pre-seeded)

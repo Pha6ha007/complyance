@@ -145,6 +145,7 @@ model AISystem {
   evidence                Evidence[]
   incidents               Incident[]
   vendorLinks             SystemVendorLink[]
+  uploadedDocuments       SystemDocument[] // Product documentation for analysis
 
   createdAt               DateTime @default(now())
   updatedAt               DateTime @updatedAt
@@ -261,6 +262,34 @@ model Evidence {
 
   @@index([organizationId])
   @@index([systemId])
+}
+
+// Product documentation uploaded for AI-powered analysis
+model SystemDocument {
+  id             String         @id @default(cuid())
+  fileName       String
+  fileType       String         // pdf, docx, md, txt
+  fileSize       Int            // Bytes
+  fileUrl        String         // S3/R2 URL (encrypted)
+  integrityHash  String?        // SHA-256 hash for authenticity
+
+  // Analysis results
+  analysisStatus AnalysisStatus @default(PENDING)
+  analysisResult Json?          // DocumentAnalysisResult as JSON
+  detectedRisks  Json?          // DetectedRisk[] as JSON
+  analyzedAt     DateTime?
+
+  // Relations
+  systemId       String
+  system         AISystem       @relation(fields: [systemId], references: [id], onDelete: Cascade)
+
+  organizationId String
+
+  createdAt      DateTime       @default(now())
+
+  @@index([systemId])
+  @@index([organizationId])
+  @@index([analysisStatus])
 }
 
 // ============================================
@@ -450,4 +479,11 @@ enum ReferralRewardStatus {
   GRANTED
   EXPIRED
   REVOKED
+}
+
+enum AnalysisStatus {
+  PENDING
+  ANALYZING
+  COMPLETED
+  FAILED
 }

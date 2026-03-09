@@ -18,6 +18,7 @@ export const PLAN_LIMITS = {
     regulatoryAlerts: false,
     incidentRegister: false,
     gdprModule: false,
+    documentUpload: { enabled: false, maxFiles: 0 },
   },
   [Plan.STARTER]: {
     systems: 5,
@@ -32,6 +33,7 @@ export const PLAN_LIMITS = {
     regulatoryAlerts: 'EMAIL_WEEKLY',
     incidentRegister: false,
     gdprModule: false,
+    documentUpload: { enabled: true, maxFiles: 2 },
   },
   [Plan.PROFESSIONAL]: {
     systems: 20,
@@ -46,6 +48,7 @@ export const PLAN_LIMITS = {
     regulatoryAlerts: 'REAL_TIME',
     incidentRegister: false,
     gdprModule: false,
+    documentUpload: { enabled: true, maxFiles: 5 },
   },
   [Plan.SCALE]: {
     systems: 50,
@@ -60,6 +63,7 @@ export const PLAN_LIMITS = {
     regulatoryAlerts: 'REAL_TIME',
     incidentRegister: true,
     gdprModule: true,
+    documentUpload: { enabled: true, maxFiles: 5 },
   },
   [Plan.ENTERPRISE]: {
     systems: 999, // Unlimited
@@ -74,6 +78,7 @@ export const PLAN_LIMITS = {
     regulatoryAlerts: 'REAL_TIME',
     incidentRegister: true,
     gdprModule: true,
+    documentUpload: { enabled: true, maxFiles: 5 },
   },
 } as const;
 
