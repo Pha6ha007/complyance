@@ -234,11 +234,6 @@ export default async function HomePage({ params }: HomePageProps) {
             {t('cta')}
           </Link>
         </main>
-
-        <footer className="absolute bottom-4 text-sm text-slate-500">
-          Phase 1: Foundation — Next.js 14 + TypeScript + Prisma + next-intl +
-          NextAuth.js
-        </footer>
       </div>
     </>
   );
