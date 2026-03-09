@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Footer from '@/components/shared/footer';
 
 interface MarketingLayoutProps {
   children: ReactNode;
@@ -9,7 +10,7 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
     <div className="min-h-screen">
       {/* Marketing header can be added here in the future */}
       <main>{children}</main>
-      {/* Marketing footer can be added here in the future */}
+      <Footer />
     </div>
   );
 }

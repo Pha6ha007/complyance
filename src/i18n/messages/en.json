@@ -398,5 +398,415 @@
         "description": "Jump to sections"
       }
     }
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that fits your compliance needs. All plans include core risk classification and gap analysis.",
+    "popular": "Most Popular",
+    "perMonth": "month",
+    "plans": {
+      "free": {
+        "description": "Perfect for exploring AI compliance requirements",
+        "cta": "Get Started Free"
+      },
+      "starter": {
+        "description": "For small teams getting started with EU AI Act compliance",
+        "cta": "Start Free Trial"
+      },
+      "professional": {
+        "description": "For growing teams managing multiple AI systems",
+        "cta": "Start Free Trial"
+      },
+      "scale": {
+        "description": "For organizations with complex compliance needs",
+        "cta": "Start Free Trial"
+      }
+    },
+    "features": {
+      "systems": "{count, plural, =1 {1 AI System} other {{count} AI Systems}}",
+      "regulations": "{count, plural, =1 {1 Regulation (EU only)} other {{count} Regulations}}",
+      "classification": "Risk Classification",
+      "gapAnalysis": "Gap Analysis",
+      "badge": "Compliance Badge ({level})",
+      "vendors": "{count, plural, =0 {Vendor Risk Assessments} =1 {{count} Vendor Assessment} other {{count} Vendor Assessments}}",
+      "documents": "Document Generation",
+      "evidence": "Evidence Vault",
+      "alerts": "Regulatory Alerts",
+      "alertsWeekly": "Weekly digest",
+      "alertsRealtime": "Real-time notifications",
+      "biasTesting": "{count, plural, =0 {Bias Testing} other {{count} bias tests/month}}",
+      "biasTestingUnlimited": "Unlimited",
+      "teamMembers": "{count, plural, =1 {{count} Team Member} other {{count} Team Members}}",
+      "incidents": "Incident Register",
+      "gdprModule": "GDPR-AI Module",
+      "cicdAPI": "CI/CD Integration API",
+      "allRegulations": "All regulations",
+      "vendorsUnlimited": "Unlimited"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "description": "Custom solutions for large organizations with dedicated support, white-label options, and tailored compliance workflows.",
+      "cta": "Contact Sales"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": {
+        "question": "What's included in the free plan?",
+        "answer": "The Free plan lets you classify 1 AI system, see compliance gaps, and get an 'AI Act Aware' badge. It's perfect for exploring the EU AI Act requirements with no commitment."
+      },
+      "q2": {
+        "question": "Can I change plans later?",
+        "answer": "Yes! You can upgrade or downgrade your plan at any time. When upgrading, you'll get immediate access to new features. When downgrading, changes take effect at the end of your billing cycle."
+      },
+      "q3": {
+        "question": "What regulations do you cover?",
+        "answer": "We currently support EU AI Act, Colorado AI Act (SB 24-205), NYC Local Law 144, NIST AI RMF, ISO 42001, and UAE AI Ethics principles. Professional and Scale plans include all regulations."
+      },
+      "q4": {
+        "question": "Is my data secure?",
+        "answer": "Yes. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). We're SOC 2 Type II compliant and GDPR-ready. Your compliance data never leaves our secure EU infrastructure."
+      },
+      "q5": {
+        "question": "Do you offer refunds?",
+        "answer": "Yes! We offer a 14-day money-back guarantee for all paid plans. If you're not satisfied, contact us within 14 days of your first payment for a full refund. See our Refund Policy for details."
+      },
+      "q6": {
+        "question": "What payment methods do you accept?",
+        "answer": "We accept all major credit cards (Visa, Mastercard, American Express) and support multiple currencies. Payments are processed securely through Paddle, our Merchant of Record."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question? We're here to help.",
+    "info": {
+      "title": "Get in Touch",
+      "support": {
+        "title": "General Support",
+        "desc": "Questions about your account, billing, or platform features"
+      },
+      "privacy": {
+        "title": "Privacy & Data",
+        "desc": "Data protection, GDPR requests, or privacy concerns"
+      },
+      "partnership": {
+        "title": "Partnerships",
+        "desc": "Law firms, consultancies, and reseller opportunities"
+      },
+      "hours": {
+        "title": "Response Time",
+        "desc": "We typically respond within 24 hours on business days (Monday-Friday, 9 AM - 6 PM CET)"
+      }
+    },
+    "form": {
+      "title": "Send us a message",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "subjects": {
+        "general": "General Inquiry",
+        "support": "Technical Support",
+        "partnership": "Partnership Opportunity",
+        "press": "Press & Media",
+        "other": "Other"
+      },
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you! We'll get back to you within 24 hours."
+    }
+  },
+  "about": {
+    "title": "About Complyance",
+    "subtitle": "Making AI compliance accessible for every SaaS company",
+    "mission": {
+      "title": "Our Mission",
+      "p1": "The EU AI Act is the world's first comprehensive AI regulation, and it affects thousands of SaaS companies selling into Europe. But compliance tools built for Fortune 500 companies are out of reach for most SMBs.",
+      "p2": "We built Complyance to democratize AI compliance. No legal team required. No enterprise budget needed. Just clear guidance and practical tools to help you ship compliant AI products."
+    },
+    "problem": {
+      "title": "The Problem We're Solving",
+      "p1": "Most AI compliance platforms are designed for large enterprises with dedicated legal teams and budgets starting at $50,000/year. They require consultants to implement, months to onboard, and constant legal support to maintain.",
+      "p2": "Meanwhile, thousands of SaaS founders are building with AI — chatbots, recommendation engines, CV screening tools, fraud detection systems — without realizing they're subject to high-risk AI regulations.",
+      "p3": "The EU AI Act deadline is August 2, 2026. Missing it means fines up to €35M or 7% of global revenue. But hiring a compliance consultant costs $15,000+ per system. For most SMBs, that's not an option."
+    },
+    "solution": {
+      "title": "Our Solution",
+      "subtitle": "Self-serve AI compliance management for teams that can't afford enterprise platforms",
+      "automated": {
+        "title": "Automated Risk Classification",
+        "desc": "Our AI engine analyzes your system against EU AI Act Annex III categories and tells you if you're high-risk in minutes, not months."
+      },
+      "actionable": {
+        "title": "Actionable Compliance Roadmaps",
+        "desc": "Get a step-by-step plan with deadlines, priorities, and plain-English explanations of what you need to do."
+      },
+      "affordable": {
+        "title": "Affordable for SMBs",
+        "desc": "Starting at $99/month. No consultants required. No hidden fees. Cancel anytime."
+      }
+    },
+    "what": {
+      "title": "What We Do",
+      "classify": {
+        "title": "Risk Classification",
+        "desc": "Determine if your AI system is high-risk, limited-risk, or minimal-risk under the EU AI Act, Colorado AI Act, and other regulations."
+      },
+      "gaps": {
+        "title": "Gap Analysis",
+        "desc": "Identify exactly which compliance requirements you're missing and what you need to do to meet them."
+      },
+      "documents": {
+        "title": "Document Generation",
+        "desc": "Generate compliance reports, technical documentation (Annex IV), and roadmaps with one click."
+      },
+      "vendors": {
+        "title": "Vendor Risk Assessment",
+        "desc": "Assess AI vendors (OpenAI, Anthropic, etc.) for compliance risks and data processing practices."
+      },
+      "updates": {
+        "title": "Regulatory Intelligence",
+        "desc": "Stay up to date with new guidelines, enforcement actions, and regulatory changes that affect your AI systems."
+      }
+    },
+    "disclaimer": {
+      "title": "Important Disclaimer",
+      "desc": "Complyance is a compliance management tool, not a law firm. Our platform helps organize and track compliance work, but it does not constitute legal advice. For regulatory filings or certification, consult with qualified legal professionals."
+    },
+    "cta": {
+      "title": "Ready to get compliant?",
+      "subtitle": "Start with our free plan and classify your first AI system in 5 minutes. No credit card required.",
+      "start": "Get Started Free",
+      "pricing": "View Pricing"
+    }
+  },
+  "partners": {
+    "title": "Partner with Complyance",
+    "subtitle": "Join our network of law firms, consultancies, and compliance experts helping clients navigate AI regulations",
+    "benefits": {
+      "title": "Partner Benefits",
+      "revenue": {
+        "title": "Revenue Share",
+        "desc": "Earn 20% recurring commission on all referred customers for 12 months"
+      },
+      "whiteLabel": {
+        "title": "White-Label Options",
+        "desc": "Offer Complyance under your brand with custom domain and branding (Enterprise tier)"
+      },
+      "support": {
+        "title": "Dedicated Support",
+        "desc": "Priority support channel and dedicated account manager for your clients"
+      },
+      "training": {
+        "title": "Training & Resources",
+        "desc": "Access to partner training, co-marketing materials, and sales enablement resources"
+      }
+    },
+    "ideal": {
+      "title": "Ideal Partner Profiles",
+      "lawFirms": {
+        "title": "Law Firms",
+        "desc": "Tech law practices advising SaaS clients on data privacy, AI compliance, and regulatory matters"
+      },
+      "consultancies": {
+        "title": "Compliance Consultancies",
+        "desc": "Firms providing GDPR, ISO 27001, SOC 2, or AI compliance advisory services"
+      },
+      "auditors": {
+        "title": "Auditors & Assessors",
+        "desc": "Organizations conducting compliance audits, certifications, or third-party assessments"
+      }
+    },
+    "form": {
+      "title": "Apply to Become a Partner",
+      "subtitle": "Tell us about your firm and how you'd like to collaborate",
+      "companyName": "Company Name",
+      "website": "Website",
+      "contactName": "Your Name",
+      "email": "Email",
+      "type": "Partner Type",
+      "types": {
+        "lawFirm": "Law Firm",
+        "consultancy": "Compliance Consultancy",
+        "auditor": "Auditor / Assessor",
+        "other": "Other"
+      },
+      "message": "Tell us about your firm",
+      "messagePlaceholder": "What services do you offer? How many clients do you serve? Why do you want to partner with Complyance?",
+      "submit": "Submit Application",
+      "sending": "Sending...",
+      "success": "Thank you! We'll review your application and get back to you within 3 business days."
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "introduction": "Complyance respects your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you use our AI compliance management platform.",
+      "dataCollection": {
+        "title": "Data We Collect",
+        "account": "Account information (name, email, organization)",
+        "usage": "Usage data (AI systems classified, documents generated)",
+        "technical": "Technical data (IP address, browser type, device information)",
+        "documents": "Documents you upload for AI analysis (encrypted at rest)"
+      },
+      "usage": {
+        "title": "How We Use Your Data",
+        "service": "To provide and improve our compliance management services",
+        "ai": "To classify AI systems and generate compliance reports using Claude API",
+        "billing": "To process payments via Paddle (our Merchant of Record)",
+        "communication": "To send service updates, regulatory alerts, and compliance notifications"
+      },
+      "thirdParties": {
+        "title": "Third-Party Services",
+        "anthropic": "Anthropic (Claude API) - AI classification and document analysis",
+        "paddle": "Paddle - Payment processing and subscription management",
+        "aws": "AWS S3 - Encrypted document storage (EU region)",
+        "resend": "Resend - Transactional email delivery",
+        "desc": "We never sell your data. Third parties process data only as necessary to provide services."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "essential": "Essential cookies for authentication and session management",
+        "analytics": "Analytics cookies to improve platform performance (optional)",
+        "desc": "You can control cookie preferences in your browser settings."
+      },
+      "retention": {
+        "title": "Data Retention",
+        "active": "Account data retained while subscription is active",
+        "grace": "30-day grace period after cancellation before deletion",
+        "legal": "Some data retained longer for legal compliance (e.g., billing records)"
+      },
+      "gdprRights": {
+        "title": "Your GDPR Rights",
+        "access": "Right to access your personal data",
+        "rectification": "Right to correct inaccurate data",
+        "erasure": "Right to delete your data ('right to be forgotten')",
+        "portability": "Right to export your data in machine-readable format",
+        "objection": "Right to object to processing",
+        "desc": "To exercise these rights, contact privacy@complyance.io"
+      },
+      "security": {
+        "title": "Security",
+        "encryption": "All data encrypted at rest (AES-256) and in transit (TLS 1.3)",
+        "infrastructure": "EU-based infrastructure for GDPR compliance",
+        "access": "Role-based access controls and audit logs",
+        "desc": "We follow industry best practices to protect your data."
+      }
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "desc": "By accessing or using Complyance, you agree to be bound by these Terms of Service. If you do not agree, you may not use the platform."
+      },
+      "serviceDescription": {
+        "title": "Service Description",
+        "desc": "Complyance is a self-serve SaaS platform for AI compliance management. We provide risk classification, gap analysis, document generation, and regulatory intelligence tools to help organizations comply with AI regulations including the EU AI Act."
+      },
+      "disclaimer": {
+        "title": "Legal Disclaimer",
+        "notAdvice": "Complyance is a compliance management tool, not a law firm or legal advisor.",
+        "informational": "All classifications, reports, and recommendations are informational only and do not constitute legal advice.",
+        "professional": "For regulatory filings, certifications, or legal opinions, consult with qualified legal professionals.",
+        "liability": "We are not liable for compliance failures, regulatory fines, or legal consequences resulting from use of our platform."
+      },
+      "accounts": {
+        "title": "User Accounts",
+        "responsibility": "You are responsible for maintaining the confidentiality of your account credentials",
+        "accurate": "You must provide accurate and complete information",
+        "notify": "Notify us immediately of any unauthorized access",
+        "prohibited": "You may not share accounts or transfer access without permission"
+      },
+      "billing": {
+        "title": "Billing & Payments",
+        "paddle": "Payments processed by Paddle (Merchant of Record)",
+        "subscription": "Subscriptions renew automatically unless cancelled",
+        "prices": "Prices are in USD and subject to change with 30 days notice",
+        "taxes": "Paddle handles all tax calculations and compliance"
+      },
+      "prohibitedUse": {
+        "title": "Prohibited Use",
+        "illegal": "Violate any applicable laws or regulations",
+        "misrepresent": "Misrepresent your AI systems or compliance status",
+        "reverse": "Reverse engineer, decompile, or modify the platform",
+        "abuse": "Abuse, harass, or harm other users or our systems",
+        "resell": "Resell or redistribute our services without authorization"
+      },
+      "ip": {
+        "title": "Intellectual Property",
+        "ownership": "Complyance owns all rights to the platform, software, and content",
+        "yourData": "You retain ownership of your data (AI systems, documents, evidence)",
+        "license": "We grant you a limited license to use the platform according to your plan",
+        "feedback": "Feedback you provide may be used to improve the platform"
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "asIs": "Platform provided 'as is' without warranties",
+        "noLiability": "We are not liable for indirect, incidental, or consequential damages",
+        "cap": "Total liability capped at amount paid in last 12 months",
+        "force": "Not liable for events beyond our reasonable control"
+      }
+    },
+    "refund": {
+      "title": "Refund Policy",
+      "policy": {
+        "title": "14-Day Money-Back Guarantee",
+        "desc": "We offer a 14-day money-back guarantee for all paid plans. If you're not satisfied with Complyance, request a full refund within 14 days of your first payment."
+      },
+      "eligibility": {
+        "title": "Refund Eligibility",
+        "firstPayment": "Applies to your first payment only (not renewals)",
+        "within14": "Request must be made within 14 days of payment",
+        "notAbused": "Refund privilege not previously used on another account",
+        "goodFaith": "Account was used in good faith (no abuse or violations)"
+      },
+      "process": {
+        "title": "How to Request a Refund",
+        "contact": "Email support@complyance.io with 'Refund Request' in subject line",
+        "include": "Include your account email and reason (optional but appreciated)",
+        "processing": "Refunds processed within 5-7 business days",
+        "method": "Refund issued to original payment method via Paddle"
+      },
+      "proRata": {
+        "title": "Pro-Rata Refunds (Downgrades)",
+        "desc": "If you downgrade mid-cycle, unused time is not refunded but credited to your next billing period. For example, downgrading from Professional to Starter applies the difference to your next invoice."
+      },
+      "euRights": {
+        "title": "EU Consumer Rights",
+        "withdrawal": "EU consumers have a 14-day right of withdrawal under EU Directive 2011/83/EU",
+        "digital": "By starting your subscription, you acknowledge that digital services begin immediately and waive the right of withdrawal after service usage",
+        "unused": "If you cancel before using the service, you're entitled to a full refund"
+      }
+    }
+  },
+  "billing": {
+    "currentPlan": "Current Plan",
+    "usage": "Usage",
+    "upgrade": "Upgrade Plan",
+    "cancel": "Cancel Subscription",
+    "manageBilling": "Manage Billing",
+    "portalLink": "View invoices and update payment methods in the billing portal"
+  },
+  "footer": {
+    "product": {
+      "title": "Product",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "freeClassifier": "Free Classifier"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "partners": "Partners",
+      "contact": "Contact"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "refund": "Refund Policy"
+    },
+    "copyright": "© 2026 Complyance. All rights reserved.",
+    "disclaimer": "Not legal advice. Classifications are informational only."
   }
 }
