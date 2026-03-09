@@ -24,6 +24,7 @@
     "reports": "Reports",
     "intelligence": "Regulatory Updates",
     "settings": "Settings",
+    "badge": "Compliance Badge",
     "team": "Team",
     "referrals": "Referrals"
   },
@@ -904,6 +905,55 @@
     "manageBilling": "Manage Billing",
     "portalLink": "View invoices and update payment methods in the billing portal"
   },
+  "settings": {
+    "billing": {
+      "title": "Billing & Subscription",
+      "description": "Manage your subscription and billing information",
+      "currentPlan": "Current Plan",
+      "planDescription": "Your current subscription plan",
+      "free": "Free",
+      "paid": "Paid",
+      "freeDescription": "You are on the free plan with limited features",
+      "paidDescription": "You are on the {plan} plan",
+      "upgrade": "Upgrade",
+      "changePlan": "Change Plan",
+      "manageBilling": "Manage Billing",
+      "usage": {
+        "title": "Usage",
+        "description": "Your current plan usage",
+        "systems": "AI Systems",
+        "vendors": "Vendors",
+        "teamMembers": "Team Members",
+        "unlimited": "Unlimited",
+        "bonus": "bonus",
+        "systemsLimitReached": "You've reached your AI systems limit. Upgrade to add more.",
+        "vendorsLimitReached": "You've reached your vendors limit. Upgrade to add more."
+      },
+      "features": {
+        "title": "Plan Features",
+        "description": "Features included in your current plan",
+        "regulations": "Regulations",
+        "documents": "Document Generation",
+        "evidenceVault": "Evidence Vault",
+        "biasTesting": "Bias Testing",
+        "cicdAPI": "CI/CD API",
+        "alerts": "Regulatory Alerts",
+        "enabled": "Enabled",
+        "disabled": "Not included",
+        "unlimited": "Unlimited",
+        "month": "month",
+        "realtime": "Real-time",
+        "weekly": "Weekly digest",
+        "allRegulations": "All regulations",
+        "regulationCount": "regulations"
+      },
+      "upgrade": {
+        "title": "Upgrade Your Plan",
+        "description": "Get access to more features and higher limits",
+        "cta": "View Pricing"
+      }
+    }
+  },
   "footer": {
     "product": {
       "title": "Product",
@@ -925,5 +975,63 @@
     },
     "copyright": "© 2026 Complyance. All rights reserved.",
     "disclaimer": "Not legal advice. Classifications are informational only."
+  },
+  "badge": {
+    "title": "Compliance Badge",
+    "description": "Display your AI compliance status on your website",
+    "loading": "Loading badge information...",
+    "errorLoading": "Failed to load badge information",
+    "currentLevel": "Current Badge Level",
+    "currentLevelDescription": "Your badge level is determined by your plan and compliance progress",
+    "lastVerified": "Last verified",
+    "preview": "Badge Preview",
+    "badgeDisabled": "Your compliance badge is currently disabled. Enable it to display on your website.",
+    "noBadgeYet": "You don't have a badge yet. Classify at least one AI system to earn the AI Act Aware badge.",
+    "earnNextLevel": "Earn Next Level",
+    "earnNextLevelDescription": "Complete these requirements to upgrade your badge",
+    "embedCode": "Embed Code",
+    "embedCodeDescription": "Copy the code below to add your compliance badge to your website",
+    "copyHTML": "Copy HTML",
+    "copyMarkdown": "Copy Markdown",
+    "copy": "Copy",
+    "verificationLink": "Verification Link",
+    "verificationLinkDescription": "Anyone can verify your compliance badge by visiting this link",
+    "viewVerificationPage": "View Verification Page",
+    "levels": {
+      "title": "Badge Levels",
+      "description": "There are three badge levels based on your compliance progress",
+      "aware": {
+        "title": "AI Act Aware",
+        "description": "You have classified at least one AI system and understand your EU AI Act obligations. Available on Free plan."
+      },
+      "ready": {
+        "title": "AI Act Ready",
+        "description": "You are actively working on compliance with gaps in progress. Requires Starter plan or above with compliance work underway."
+      },
+      "compliant": {
+        "title": "AI Act Compliant",
+        "description": "You have achieved 80% or higher compliance score. Requires Professional plan or above."
+      }
+    },
+    "verification": {
+      "title": "Compliance Verification",
+      "subtitle": "This page verifies the compliance badge for an organization",
+      "metaDescription": "Verify the AI compliance status of {orgName}",
+      "notFound": "Organization Not Found",
+      "organization": "Organization",
+      "badgeLevel": "Badge Level",
+      "lastVerified": "Last Verified",
+      "whatThisMeans": "What This Means",
+      "verifiedBy": "Verified by Complyance",
+      "learnMore": "Learn more about Complyance",
+      "badgeInactiveTitle": "Badge Inactive",
+      "badgeInactiveDescription": "This compliance badge is no longer active. The organization may have cancelled their subscription or disabled their badge.",
+      "levelDescription": {
+        "none": "This organization does not currently have an active compliance badge.",
+        "aware": "This organization has classified their AI systems and is aware of their EU AI Act compliance obligations.",
+        "ready": "This organization is actively working on EU AI Act compliance with compliance gaps in progress.",
+        "compliant": "This organization has achieved a high level of EU AI Act compliance with a score of 80% or higher."
+      }
+    }
   }
 }

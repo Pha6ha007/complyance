@@ -3,6 +3,7 @@ import { systemRouter } from './system';
 import { classificationRouter } from './classification';
 import { documentRouter } from './document';
 import { vendorRouter } from './vendor';
+import { badgeRouter } from './badge';
 
 /**
  * This is the primary router for your server.
@@ -14,6 +15,7 @@ export const appRouter = router({
   classification: classificationRouter,
   document: documentRouter,
   vendor: vendorRouter,
+  badge: badgeRouter,
   // TODO: Add other routers as they are created:
   // evidence: evidenceRouter,
   // incident: incidentRouter,

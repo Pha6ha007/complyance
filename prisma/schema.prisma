@@ -23,6 +23,12 @@ model Organization {
   locale               String   @default("en")
   markets              String[] // ["EU", "US", "UAE"]
   bonusSystems         Int      @default(0) // Extra systems from referrals
+
+  // Compliance Badge
+  badgeLevel           BadgeLevel @default(NONE)
+  badgeEnabled         Boolean    @default(true)
+  badgeLastVerifiedAt  DateTime?
+
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 
@@ -486,4 +492,11 @@ enum AnalysisStatus {
   ANALYZING
   COMPLETED
   FAILED
+}
+
+enum BadgeLevel {
+  NONE
+  AWARE       // Free plan, has 1+ classified system
+  READY       // Starter plan, compliance score > 0, has gaps in progress
+  COMPLIANT   // Professional+, compliance score >= 80%
 }

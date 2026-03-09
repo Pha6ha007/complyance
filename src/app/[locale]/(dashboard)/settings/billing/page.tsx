@@ -42,6 +42,7 @@ export default async function BillingPage() {
   const effectiveSystemLimit = getEffectiveSystemLimit(currentPlan, organization.bonusSystems);
 
   const t = useTranslations('settings.billing');
+  const tCommon = useTranslations('common');
 
   return (
     <div className="space-y-6">
