@@ -5,6 +5,14 @@ import { ZodError } from 'zod';
 import { auth } from '@/../auth';
 import { prisma } from './db/client';
 
+// Sentry (conditional import)
+let Sentry: any = null;
+try {
+  Sentry = require('@sentry/nextjs');
+} catch (e) {
+  // Sentry not installed
+}
+
 /**
  * 1. CONTEXT
  *
@@ -47,6 +55,22 @@ export const createTRPCContext = async (opts: { req: NextRequest }) => {
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
   errorFormatter({ shape, error }) {
+    // Capture error in Sentry if it's a server error
+    if (
+      Sentry &&
+      error.code === 'INTERNAL_SERVER_ERROR' &&
+      error.cause instanceof Error
+    ) {
+      Sentry.captureException(error.cause, {
+        contexts: {
+          trpc: {
+            code: error.code,
+            path: shape.path,
+          },
+        },
+      });
+    }
+
     return {
       ...shape,
       data: {

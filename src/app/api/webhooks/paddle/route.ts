@@ -3,6 +3,20 @@ import { verifyPaddleWebhook, getPlanFromPaddlePrice } from '@/server/services/b
 import { prisma } from '@/server/db/client';
 import { Plan } from '@prisma/client';
 
+/**
+ * Helper to determine if plan change is an upgrade
+ */
+function isPlanUpgrade(fromPlan: Plan, toPlan: Plan): boolean {
+  const planOrder: Record<Plan, number> = {
+    [Plan.FREE]: 0,
+    [Plan.STARTER]: 1,
+    [Plan.PROFESSIONAL]: 2,
+    [Plan.SCALE]: 3,
+    [Plan.ENTERPRISE]: 4,
+  };
+  return planOrder[toPlan] > planOrder[fromPlan];
+}
+
 // Disable body parsing to get raw body for signature verification
 export const runtime = 'nodejs';
 
@@ -106,6 +120,8 @@ async function handleSubscriptionCreated(event: PaddleWebhookEvent) {
     return;
   }
 
+  const previousPlan = organization.plan;
+
   // Update organization plan
   await prisma.organization.update({
     where: { id: organization.id },
@@ -116,6 +132,14 @@ async function handleSubscriptionCreated(event: PaddleWebhookEvent) {
   });
 
   console.log(`Organization ${organization.id} upgraded to ${plan}`);
+
+  // Track plan upgrade
+  console.log('📊 Analytics: plan_upgraded', {
+    organization_id: organization.id,
+    from_plan: previousPlan,
+    to_plan: plan,
+    subscription_id: data.id,
+  });
 
   // Grant referral rewards if applicable
   const users = await prisma.user.findMany({
@@ -153,6 +177,8 @@ async function handleSubscriptionUpdated(event: PaddleWebhookEvent) {
     return;
   }
 
+  const previousPlan = organization.plan;
+
   await prisma.organization.update({
     where: { id: organization.id },
     data: {
@@ -162,6 +188,17 @@ async function handleSubscriptionUpdated(event: PaddleWebhookEvent) {
   });
 
   console.log(`Organization ${organization.id} plan updated to ${plan}`);
+
+  // Track plan change (upgrade or downgrade)
+  if (previousPlan !== plan) {
+    const eventName = isPlanUpgrade(previousPlan, plan) ? 'plan_upgraded' : 'plan_downgraded';
+    console.log(`📊 Analytics: ${eventName}`, {
+      organization_id: organization.id,
+      from_plan: previousPlan,
+      to_plan: plan,
+      subscription_id: data.id,
+    });
+  }
 }
 
 async function handleSubscriptionCanceled(event: PaddleWebhookEvent) {
@@ -176,6 +213,8 @@ async function handleSubscriptionCanceled(event: PaddleWebhookEvent) {
     return;
   }
 
+  const previousPlan = organization.plan;
+
   // Downgrade to FREE plan
   await prisma.organization.update({
     where: { id: organization.id },
@@ -186,6 +225,13 @@ async function handleSubscriptionCanceled(event: PaddleWebhookEvent) {
   });
 
   console.log(`Organization ${organization.id} downgraded to FREE (subscription canceled)`);
+
+  // Track subscription cancellation
+  console.log('📊 Analytics: subscription_cancelled', {
+    organization_id: organization.id,
+    plan: previousPlan,
+    subscription_id: data.id,
+  });
 }
 
 async function handleSubscriptionPastDue(event: PaddleWebhookEvent) {

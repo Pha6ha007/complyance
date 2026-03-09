@@ -166,6 +166,16 @@ export const systemRouter = router({
         },
       });
 
+      // Track system creation
+      console.log('📊 Analytics: system_created', {
+        system_id: system.id,
+        system_name: system.name,
+        ai_type: system.aiType,
+        domain: system.domain,
+        user_id: ctx.user.id,
+        organization_id: ctx.organization.id,
+      });
+
       // TODO: Queue classification job here
       // await queueClassificationJob(system.id);
 

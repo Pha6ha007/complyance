@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { isRtlLocale } from '@/i18n/config';
 import { Toaster } from '@/components/ui/toaster';
+import { PHProvider } from '@/components/shared/posthog-provider';
 import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -28,10 +29,12 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir}>
       <body className={inter.className}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-          <Toaster />
-        </NextIntlClientProvider>
+        <PHProvider>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
+        </PHProvider>
       </body>
     </html>
   );
