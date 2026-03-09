@@ -1,5 +1,6 @@
 import { router } from '../trpc';
 import { systemRouter } from './system';
+import { classificationRouter } from './classification';
 
 /**
  * This is the primary router for your server.
@@ -8,6 +9,7 @@ import { systemRouter } from './system';
  */
 export const appRouter = router({
   system: systemRouter,
+  classification: classificationRouter,
   // TODO: Add other routers as they are created:
   // vendor: vendorRouter,
   // document: documentRouter,
