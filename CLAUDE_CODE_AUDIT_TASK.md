@@ -1,4 +1,15 @@
-# Claude Code: Полный аудит и исправление багов — Complyance
+# Полный аудит Complyance
+
+**PREFERRED METHOD:** Use the `complyance-audit` skill:
+```
+Read .claude/skills/complyance-audit/SKILL.md and execute all 7 phases.
+For each phase, read the corresponding reference file from .claude/skills/complyance-audit/references/.
+Fix bugs immediately. Commit after each phase.
+```
+
+**ALTERNATIVE:** Follow the detailed 14-step audit below.
+
+---
 
 ## Контекст проекта
 
