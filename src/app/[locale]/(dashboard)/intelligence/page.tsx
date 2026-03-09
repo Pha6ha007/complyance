@@ -124,10 +124,10 @@ export default function IntelligencePage() {
   const { data, isLoading, error, refetch } = trpc.intelligence.list.useQuery({
     limit: 20,
     personalized: activeTab === 'personalized',
-    ...(regulationFilter !== 'ALL' && {
-      regulation: regulationFilter as typeof REGULATION_OPTIONS[number]['value'],
+    ...(regulationFilter !== 'ALL' && regulationFilter && {
+      regulation: regulationFilter as any,
     }),
-    ...(changeTypeFilter !== 'ALL' && {
+    ...(changeTypeFilter !== 'ALL' && changeTypeFilter && {
       changeType: changeTypeFilter as ChangeType,
     }),
   });

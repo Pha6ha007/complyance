@@ -63,7 +63,9 @@
     "noCriticalGapsDescription": "All critical compliance requirements are being addressed",
     "noSystems": "No AI Systems Yet",
     "noSystemsDescription": "Get started by adding your first AI system to track compliance",
-    "addFirstSystem": "Add Your First System"
+    "addFirstSystem": "Add Your First System",
+    "latestUpdates": "Latest Regulatory Updates",
+    "viewAll": "View All"
   },
   "classification": {
     "unacceptable": "Unacceptable Risk",
@@ -368,6 +370,27 @@
     "dueDate": "Due date",
     "noGaps": "All Requirements Met",
     "noGapsDescription": "This system meets all compliance requirements for the selected filters"
+  },
+  "intelligence": {
+    "title": "Regulatory Updates",
+    "description": "Stay informed about AI regulation changes affecting your compliance",
+    "loadingDescription": "Loading regulatory updates...",
+    "refresh": "Refresh",
+    "markAllRead": "Mark All as Read",
+    "markRead": "Mark as Read",
+    "viewSource": "View Source",
+    "unread": "Unread",
+    "personalizedTab": "For Your Markets",
+    "allTab": "All Regulations",
+    "filterByRegulation": "Regulation",
+    "filterByType": "Type",
+    "allRegulations": "All Regulations",
+    "allTypes": "All Types",
+    "impact": "Impact",
+    "upgradeToPlan": "Upgrade to view full content",
+    "upgradeLink": "View Plans",
+    "noUpdates": "No Updates Available",
+    "noUpdatesDescription": "Check back later for new regulatory updates"
   },
   "marketing": {
     "tagline": "AI Compliance Management for SMBs",
@@ -696,6 +719,40 @@
       "subtitle": "Start with our free plan and classify your first AI system in 5 minutes. No credit card required.",
       "start": "Get Started Free",
       "pricing": "View Pricing"
+    }
+  },
+  "admin": {
+    "updates": {
+      "title": "Manage Regulatory Updates",
+      "description": "Create and manage regulatory updates that appear in the intelligence feed",
+      "createNew": "Create Update",
+      "cancel": "Cancel",
+      "deleteConfirm": "Are you sure you want to delete this regulatory update? This action cannot be undone.",
+      "noUpdates": "No regulatory updates yet",
+      "accessDenied": "Access Denied",
+      "adminOnly": "This page is only accessible to administrators",
+      "form": {
+        "title": "Title",
+        "summary": "Summary",
+        "source": "Source URL",
+        "regulation": "Regulation",
+        "changeType": "Change Type",
+        "impact": "Impact (optional)",
+        "affectedArticles": "Affected Articles (optional)",
+        "publishedAt": "Published Date",
+        "selectRegulation": "Select regulation",
+        "selectType": "Select type",
+        "articlesHint": "Comma-separated, e.g. Article 9, Article 11",
+        "create": "Create Update",
+        "update": "Update"
+      },
+      "table": {
+        "title": "Title",
+        "regulation": "Regulation",
+        "type": "Type",
+        "publishedAt": "Published",
+        "actions": "Actions"
+      }
     }
   },
   "partners": {
