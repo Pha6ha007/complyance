@@ -370,5 +370,33 @@
       "monitoring": "Monitoring Plan",
       "placeholder": "PLACEHOLDER"
     }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog | Complyance - AI Compliance Insights",
+      "description": "Expert insights on AI compliance, EU AI Act, and regulatory updates for SaaS companies"
+    },
+    "title": "Compliance Blog",
+    "subtitle": "Expert insights on AI compliance, EU AI Act, and regulatory updates",
+    "allPosts": "All Posts",
+    "noPosts": "No blog posts available yet. Check back soon!",
+    "readMore": "Read more",
+    "backToBlog": "Back to Blog",
+    "relatedArticles": "Related Articles",
+    "sidebar": {
+      "classifier": {
+        "title": "Free AI Risk Classifier",
+        "description": "Check if your AI system is high-risk under the EU AI Act - takes 2 minutes",
+        "cta": "Try Now (Free)"
+      },
+      "about": {
+        "title": "About This Blog",
+        "description": "Stay up to date with the latest AI compliance news, regulatory updates, and practical guidance for SaaS companies."
+      },
+      "toc": {
+        "title": "In This Article",
+        "description": "Jump to sections"
+      }
+    }
   }
 }

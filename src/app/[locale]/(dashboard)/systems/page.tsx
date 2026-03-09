@@ -121,7 +121,7 @@ export default function SystemsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {systems.map((system) => (
+              {systems.map((system: any) => (
                 <TableRow key={system.id}>
                   <TableCell>
                     <Link

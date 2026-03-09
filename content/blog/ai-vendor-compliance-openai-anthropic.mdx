@@ -1,0 +1,86 @@
+---
+title: "AI Vendor Compliance: What You Need to Know About OpenAI, Anthropic, and AWS"
+description: "If you use third-party AI APIs like OpenAI or Anthropic, you're still responsible for EU AI Act compliance. Here's how to assess your AI vendors."
+date: "2026-02-25"
+author: "Complyance Team"
+tags: ["Vendor Risk", "OpenAI", "Anthropic", "Third-Party AI", "Compliance"]
+locale: "en"
+---
+
+Many SaaS companies believe that because they use OpenAI's API or Anthropic's Claude, they're not responsible for AI compliance—after all, they're not building the AI themselves. This is a dangerous misconception. Under the EU AI Act, if you **deploy** an AI system (even one built by a third party), you have compliance obligations. This guide explains your responsibilities and how to conduct vendor due diligence.
+
+## Provider vs. Deployer: Who's Responsible?
+
+The EU AI Act distinguishes between:
+
+- **Provider**: The entity that develops and places an AI system on the market (e.g., OpenAI, Anthropic, Google)
+- **Deployer**: The entity that uses the AI system under its authority (e.g., your SaaS company)
+
+**Key point:** If you integrate OpenAI's API into your recruitment tool to screen candidates, **you are the deployer**—and you're responsible for ensuring the AI system complies with EU AI Act requirements for your specific use case.
+
+## What Deployers Must Do
+
+Deployers have distinct obligations under the EU AI Act, including:
+
+1. **Use the AI system according to instructions** provided by the provider
+2. **Monitor the AI system's operation** in your specific context
+3. **Implement human oversight measures** (Article 14)
+4. **Conduct a conformity assessment** if you modify the AI system significantly
+5. **Report serious incidents** to regulatory authorities (Article 73)
+
+## Vendor Due Diligence: Questions to Ask Your AI Provider
+
+When evaluating AI vendors, ask:
+
+### 1. Data Training & Privacy
+- Is our data used to train your models?
+- Where is our data processed (EU, US, other)?
+- Do you have a Data Processing Agreement (DPA)?
+
+### 2. EU AI Act Compliance
+- Do you provide model cards or technical documentation?
+- Have you conducted a conformity assessment for high-risk use cases?
+- Do you support EU AI Act compliance for deployers?
+
+### 3. Risk Management
+- What is your approach to bias testing and fairness?
+- Do you have incident reporting procedures?
+- Can we audit your model's performance?
+
+## How Major AI Vendors Stack Up
+
+### OpenAI
+- **Data Training**: No training on API data (as of 2025 policy)
+- **Location**: US-based, data processed globally
+- **DPA**: Available for enterprise customers
+- **Model Cards**: Limited public documentation
+- **EU AI Act Support**: Still developing compliance tools
+
+### Anthropic
+- **Data Training**: No training on API data by default
+- **Location**: US-based
+- **DPA**: Available
+- **Model Cards**: Strong model documentation
+- **EU AI Act Support**: Constitutional AI approach aligns with transparency requirements
+
+### AWS Bedrock / Google Vertex AI
+- **Data Training**: Configurable—can opt out
+- **Location**: EU regions available
+- **DPA**: Comprehensive enterprise agreements
+- **Model Cards**: Depends on underlying model provider
+- **EU AI Act Support**: Enterprise-grade compliance support
+
+## The Bottom Line: You're Still Responsible
+
+Even if your AI vendor is fully compliant, **you must ensure the AI system is appropriate for your specific use case**. A model that's fine for content generation may not be suitable for high-risk employment decisions without additional safeguards.
+
+## How Complyance Helps with Vendor Risk
+
+Our **Vendor Risk Assessment** module:
+- Evaluates your AI vendors against EU AI Act requirements
+- Generates vendor questionnaires
+- Tracks vendor compliance status
+- Links vendors to your AI systems
+- Flags high-risk vendor relationships
+
+*[Start your free trial](/register) to assess your AI vendor risk in minutes.*

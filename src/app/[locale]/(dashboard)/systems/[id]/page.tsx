@@ -317,7 +317,7 @@ export default function SystemDetailPage() {
                 {t('markets')}
               </dt>
               <dd className="mt-1 flex gap-2">
-                {system.markets.map((market) => (
+                {system.markets.map((market: string) => (
                   <Badge key={market} variant="outline">
                     {market}
                   </Badge>
@@ -329,7 +329,7 @@ export default function SystemDetailPage() {
                 {t('endUsers')}
               </dt>
               <dd className="mt-1 flex gap-2">
-                {system.endUsers.map((user) => (
+                {system.endUsers.map((user: string) => (
                   <Badge key={user} variant="outline">
                     {user}
                   </Badge>

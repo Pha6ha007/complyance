@@ -210,20 +210,20 @@ export default function DashboardPage() {
           </div>
           <div className="mt-4 space-y-3">
             {systems.systems
-              .filter((s) => s.gaps.length > 0)
+              .filter((s: any) => s.gaps.length > 0)
               .slice(0, 5)
-              .flatMap((system) =>
+              .flatMap((system: any) =>
                 system.gaps
-                  .filter((gap) => gap.priority === 'CRITICAL' && gap.status !== 'COMPLETED')
+                  .filter((gap: any) => gap.priority === 'CRITICAL' && gap.status !== 'COMPLETED')
                   .slice(0, 1)
-                  .map((gap) => ({
+                  .map((gap: any) => ({
                     gap,
                     systemId: system.id,
                     systemName: system.name,
                   }))
               )
               .slice(0, 5)
-              .map(({ gap, systemId, systemName }) => (
+              .map(({ gap, systemId, systemName }: any) => (
                 <Card key={gap.id} className="p-4">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
@@ -252,7 +252,7 @@ export default function DashboardPage() {
                   </div>
                 </Card>
               ))}
-            {systems.systems.filter((s) => s.gaps.length > 0).length === 0 && (
+            {systems.systems.filter((s: any) => s.gaps.length > 0).length === 0 && (
               <Card className="p-8 text-center">
                 <CheckCircle2 className="mx-auto h-12 w-12 text-green-600" />
                 <div className="mt-4 text-lg font-medium">{t('noCriticalGaps')}</div>

@@ -2,7 +2,7 @@
 
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import LocaleSwitcher from '@/components/shared/locale-switcher';
+import { LocaleSwitcher } from '@/components/shared/locale-switcher';
 
 interface HeaderProps {
   onMenuClick: () => void;
