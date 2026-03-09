@@ -331,17 +331,32 @@ model Incident {
 // ============================================
 
 model RegulatoryUpdate {
-  id          String   @id @default(cuid())
-  title       String
-  summary     String   @db.Text
-  source      String   // URL
-  regulation  String   // "EU_AI_ACT", "COLORADO", "NIST_RMF", etc.
-  impact      String?  @db.Text
-  publishedAt DateTime
-  createdAt   DateTime @default(now())
+  id               String     @id @default(cuid())
+  title            String
+  summary          String     @db.Text
+  source           String     // URL
+  regulation       String     // "EU_AI_ACT", "COLORADO", "NIST_RMF", etc.
+  changeType       ChangeType @default(GUIDELINE)
+  impact           String?    @db.Text
+  affectedArticles String[]   // ["Article 6", "Annex III"]
+  publishedAt      DateTime
+  createdAt        DateTime   @default(now())
 
   @@index([regulation])
+  @@index([changeType])
   @@index([publishedAt])
+}
+
+// Track which users have read which updates
+model RegulatoryUpdateRead {
+  id        String   @id @default(cuid())
+  userId    String
+  updateId  String
+  readAt    DateTime @default(now())
+
+  @@unique([userId, updateId])
+  @@index([userId])
+  @@index([updateId])
 }
 
 // ============================================
@@ -499,4 +514,12 @@ enum BadgeLevel {
   AWARE       // Free plan, has 1+ classified system
   READY       // Starter plan, compliance score > 0, has gaps in progress
   COMPLIANT   // Professional+, compliance score >= 80%
+}
+
+enum ChangeType {
+  GUIDELINE       // Official guidance document
+  AMENDMENT       // Change to existing regulation
+  ENFORCEMENT     // Enforcement action or penalty
+  INTERPRETATION  // Court decision or regulatory interpretation
+  NEW_LAW         // New legislation enacted
 }

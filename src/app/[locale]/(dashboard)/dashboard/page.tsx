@@ -7,7 +7,7 @@ import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { AlertCircle, CheckCircle2, TrendingUp, Shield, Clock, ArrowRight } from 'lucide-react';
+import { AlertCircle, CheckCircle2, TrendingUp, Shield, Clock, ArrowRight, Bell } from 'lucide-react';
 import { RiskLevel } from '@prisma/client';
 
 function getComplianceScoreColor(score: number | null) {
@@ -69,6 +69,9 @@ export default function DashboardPage() {
 
   // Fetch critical gaps (top 5)
   const { data: systems } = trpc.system.list.useQuery({ limit: 50 });
+
+  // Fetch latest regulatory updates
+  const { data: latestUpdates } = trpc.intelligence.getLatest.useQuery({ limit: 3 });
 
   const daysUntilDeadline = getDaysUntilDeadline();
 
@@ -261,6 +264,49 @@ export default function DashboardPage() {
                 </div>
               </Card>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Latest Regulatory Updates */}
+      {latestUpdates && latestUpdates.length > 0 && (
+        <div>
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold">{t('latestUpdates')}</h2>
+            <Button variant="ghost" size="sm" asChild>
+              <a href={`/${locale}/intelligence`}>
+                {t('viewAll')}
+                <ArrowRight className="ms-2 h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+          <div className="mt-4 space-y-3">
+            {latestUpdates.map((update) => (
+              <Card key={update.id} className={`p-4 ${!update.isRead ? 'border-primary/50 bg-primary/5' : ''}`}>
+                <div className="flex items-start gap-3">
+                  {!update.isRead && (
+                    <div className="mt-1.5 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Badge variant="outline" className="text-xs">
+                        {update.regulation.replace('_', ' ')}
+                      </Badge>
+                    </div>
+                    <a
+                      href={`/${locale}/intelligence`}
+                      className="font-medium hover:underline line-clamp-1"
+                    >
+                      {update.title}
+                    </a>
+                    <div className="mt-1 text-xs text-muted-foreground">
+                      {new Date(update.publishedAt).toLocaleDateString()}
+                    </div>
+                  </div>
+                  <Bell className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       )}

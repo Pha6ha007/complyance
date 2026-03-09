@@ -5,6 +5,7 @@ import { documentRouter } from './document';
 import { vendorRouter } from './vendor';
 import { badgeRouter } from './badge';
 import { evidenceRouter } from './evidence';
+import { intelligenceRouter } from './intelligence';
 
 /**
  * This is the primary router for your server.
@@ -18,9 +19,9 @@ export const appRouter = router({
   vendor: vendorRouter,
   badge: badgeRouter,
   evidence: evidenceRouter,
+  intelligence: intelligenceRouter,
   // TODO: Add other routers as they are created:
   // incident: incidentRouter,
-  // intelligence: intelligenceRouter,
   // team: teamRouter,
   // billing: billingRouter,
   // referral: referralRouter,

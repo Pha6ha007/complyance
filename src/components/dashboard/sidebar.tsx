@@ -17,6 +17,7 @@ import {
   X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { trpc } from '@/lib/trpc/client';
 
 interface SidebarProps {
   locale: string;
@@ -77,6 +78,13 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
   const pathname = usePathname();
   const t = useTranslations('nav');
 
+  // Fetch unread count for intelligence badge
+  const { data: unreadData } = trpc.intelligence.getUnreadCount.useQuery(
+    { personalized: true },
+    { refetchInterval: 60000 } // Refetch every minute
+  );
+  const unreadCount = unreadData?.unread ?? 0;
+
   // Remove locale prefix from pathname for comparison
   const currentPath = pathname.replace(`/${locale}`, '');
 
@@ -126,6 +134,7 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
           {navigationItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentPath === item.href || currentPath.startsWith(`${item.href}/`);
+            const showBadge = item.name === 'intelligence' && unreadCount > 0;
 
             return (
               <div key={item.name}>
@@ -142,7 +151,12 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
                   onClick={onClose}
                 >
                   <Icon className="h-5 w-5 shrink-0" />
-                  <span>{t(item.name)}</span>
+                  <span className="flex-1">{t(item.name)}</span>
+                  {showBadge && (
+                    <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-primary px-1.5 text-xs font-medium text-primary-foreground">
+                      {unreadCount > 99 ? '99+' : unreadCount}
+                    </span>
+                  )}
                 </Link>
               </div>
             );

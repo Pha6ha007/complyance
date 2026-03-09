@@ -1,0 +1,72 @@
+[
+  {
+    "title": "EU AI Office announces inspection framework for high-risk systems",
+    "summary": "The European AI Office has released detailed guidance on how inspections of high-risk AI systems will be conducted. The framework outlines documentation requirements, technical assessments, and compliance verification procedures that organizations must prepare for. Key focus areas include conformity assessments, post-market monitoring evidence, and human oversight mechanisms.",
+    "source": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+    "regulation": "EU_AI_ACT",
+    "changeType": "GUIDELINE",
+    "impact": "Organizations deploying high-risk AI systems should review their documentation and compliance evidence to ensure readiness for potential inspections. Focus on Articles 9-15 requirements.",
+    "affectedArticles": ["Article 9", "Article 11", "Article 72"],
+    "publishedAt": "2026-03-05T10:00:00Z"
+  },
+  {
+    "title": "European Commission publishes guidelines on Article 6 classification",
+    "summary": "The European Commission has issued comprehensive guidelines clarifying how AI systems should be classified under Article 6 of the EU AI Act. The guidelines provide detailed criteria for determining when an AI system falls under Annex III high-risk categories, including specific examples and edge cases. Notable clarifications include treatment of AI-assisted tools vs. AI decision-making systems.",
+    "source": "https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence",
+    "regulation": "EU_AI_ACT",
+    "changeType": "GUIDELINE",
+    "impact": "Review your AI system classifications against the new criteria. Some systems previously classified as limited-risk may now be considered high-risk based on the expanded interpretation of 'safety component' definition.",
+    "affectedArticles": ["Article 6", "Annex III"],
+    "publishedAt": "2026-02-15T09:00:00Z"
+  },
+  {
+    "title": "AI Act: Codes of Practice for GPAI models published",
+    "summary": "The AI Office has published the first set of Codes of Practice for General-Purpose AI (GPAI) models as mandated by Article 56 of the AI Act. These codes provide practical guidance on how GPAI providers can demonstrate compliance with transparency obligations, copyright compliance, and systemic risk management. The codes were developed in consultation with AI providers, civil society, and technical experts.",
+    "source": "https://digital-strategy.ec.europa.eu/en/policies/ai-act-codes-practice",
+    "regulation": "EU_AI_ACT",
+    "changeType": "GUIDELINE",
+    "impact": "If you use or deploy GPAI models (like GPT-4, Claude, etc.), review the codes to understand your obligations as a deployer. Key focus on transparency requirements and downstream documentation needs.",
+    "affectedArticles": ["Article 53", "Article 55", "Article 56"],
+    "publishedAt": "2026-01-20T14:00:00Z"
+  },
+  {
+    "title": "NYC LL144 enforcement update — first penalties issued",
+    "summary": "The New York City Department of Consumer and Worker Protection (DCWP) has issued its first penalties under Local Law 144, the automated employment decision tool (AEDT) law. Three companies received fines ranging from $50,000 to $200,000 for failing to conduct required bias audits and provide proper candidate notice. The DCWP emphasized that compliance requires both technical audits and clear disclosure to job candidates.",
+    "source": "https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page",
+    "regulation": "NYC_LL144",
+    "changeType": "ENFORCEMENT",
+    "impact": "Companies using automated tools in NYC hiring must ensure: (1) annual bias audit by independent auditor, (2) published audit results, (3) 10 business days notice to candidates. Review your compliance immediately if operating in NYC.",
+    "affectedArticles": [],
+    "publishedAt": "2026-03-01T16:00:00Z"
+  },
+  {
+    "title": "Colorado AI Act implementation rules finalized",
+    "summary": "The Colorado Attorney General's office has finalized implementation rules for the Colorado AI Act (SB 24-205), which takes effect February 1, 2026. The rules clarify the definition of 'consequential decisions,' specify required disclosures to consumers, and outline the impact assessment process. Notable provisions include safe harbor for companies following recognized AI governance frameworks.",
+    "source": "https://coag.gov/artificial-intelligence/",
+    "regulation": "COLORADO",
+    "changeType": "NEW_LAW",
+    "impact": "Companies making consequential decisions about Colorado residents using AI must: conduct impact assessments, provide consumer disclosures, and maintain governance documentation. Impact assessments must be updated annually.",
+    "affectedArticles": [],
+    "publishedAt": "2025-12-10T12:00:00Z"
+  },
+  {
+    "title": "NIST AI RMF companion document released",
+    "summary": "NIST has released a companion document to the AI Risk Management Framework (AI RMF 1.0), providing detailed implementation guidance and use case examples. The document includes sector-specific considerations for healthcare, finance, and employment AI applications. New resources include risk assessment templates, governance checklists, and metrics for measuring AI trustworthiness.",
+    "source": "https://www.nist.gov/itl/ai-risk-management-framework",
+    "regulation": "NIST_RMF",
+    "changeType": "GUIDELINE",
+    "impact": "Use the new templates and checklists to strengthen your AI governance documentation. The companion guidance aligns well with EU AI Act requirements and can serve as evidence of responsible AI practices.",
+    "affectedArticles": [],
+    "publishedAt": "2026-01-08T11:00:00Z"
+  },
+  {
+    "title": "EU AI Act prohibition deadline passes — first investigations launched",
+    "summary": "As of February 2, 2026, the EU AI Act prohibitions on unacceptable risk AI systems are now in full effect. The AI Office has confirmed it has launched preliminary investigations into several companies for potential violations related to social scoring practices and manipulative AI systems. Organizations must ensure they have discontinued any AI applications that fall under Article 5 prohibitions.",
+    "source": "https://artificialintelligenceact.eu/article/5/",
+    "regulation": "EU_AI_ACT",
+    "changeType": "ENFORCEMENT",
+    "impact": "Immediately review all AI systems against Article 5 prohibitions. Systems involving subliminal manipulation, exploitation of vulnerabilities, social scoring, or real-time remote biometric identification (with limited exceptions) are now prohibited.",
+    "affectedArticles": ["Article 5"],
+    "publishedAt": "2026-02-05T08:00:00Z"
+  }
+]
