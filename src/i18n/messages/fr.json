@@ -24,6 +24,7 @@
     "reports": "Rapports",
     "intelligence": "Veille réglementaire",
     "settings": "Paramètres",
+    "badge": "Badge de conformité",
     "team": "Équipe",
     "referrals": "Parrainage"
   },
@@ -62,13 +63,132 @@
     "noCriticalGapsDescription": "Toutes les exigences critiques de conformité sont traitées",
     "noSystems": "Aucun système d'IA",
     "noSystemsDescription": "Commencez par ajouter votre premier système d'IA pour suivre la conformité",
-    "addFirstSystem": "Ajouter votre premier système"
+    "addFirstSystem": "Ajouter votre premier système",
+    "latestUpdates": "Dernières mises à jour réglementaires",
+    "viewAll": "Voir tout"
   },
   "classification": {
     "unacceptable": "Risque inacceptable",
     "high": "Risque élevé",
     "limited": "Risque limité",
     "minimal": "Risque minimal"
+  },
+  "vendors": {
+    "title": "Évaluation des risques fournisseurs",
+    "description": "Évaluez et gérez les risques de conformité des fournisseurs d'IA",
+    "loadingDescription": "Chargement de vos fournisseurs...",
+    "addVendor": "Ajouter un fournisseur",
+    "addVendorSubtitle": "Choisissez comment ajouter un nouveau fournisseur",
+    "addFirstVendor": "Ajouter votre premier fournisseur",
+    "noVendors": "Aucun fournisseur",
+    "noVendorsDescription": "Commencez par ajouter les fournisseurs d'IA avec lesquels vous travaillez pour évaluer leurs risques de conformité",
+    "vendorsUsed": "fournisseurs utilisés",
+    "filterByRisk": "Filtrer par risque",
+    "allRiskLevels": "Tous les niveaux de risque",
+    "notAssessed": "Non évalué",
+    "systems": "systèmes",
+    "noLinkedSystems": "Aucun système lié",
+    "never": "Jamais",
+    "highRiskWarning": "Fournisseurs à haut risque détectés",
+    "highRiskWarningDescription": "Certains fournisseurs nécessitent une attention immédiate en raison de risques de conformité élevés",
+    "upgradeRequired": "Mise à niveau requise",
+    "upgradeMessage": "Les évaluations de risques fournisseurs sont disponibles à partir du plan Starter",
+    "upgradeToPlan": "Voir les tarifs",
+    "limitReached": "Limite de fournisseurs atteinte",
+    "limitReachedMessage": "Vous avez atteint la limite de votre plan. Passez à un plan supérieur pour ajouter plus de fournisseurs.",
+    "backToVendors": "Retour aux fournisseurs",
+    "vendorNotFound": "Fournisseur introuvable",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce fournisseur ? Cette action est irréversible.",
+    "reassess": "Réévaluer",
+    "riskAssessment": "Évaluation des risques",
+    "runAssessment": "Lancer l'évaluation",
+    "riskScore": "Score de risque",
+    "notAssessedYet": "Fournisseur non encore évalué",
+    "notAssessedDescription": "Lancez une évaluation pour calculer le score de risque de conformité du fournisseur",
+    "riskFactors": "Facteurs de risque",
+    "aiRecommendations": "Recommandations basées sur l'IA",
+    "summary": "Résumé",
+    "recommendations": "Recommandations",
+    "complianceRisks": "Risques de conformité",
+    "vendorDetails": "Détails du fournisseur",
+    "linkedSystems": "Systèmes d'IA liés",
+    "selectSystemToLink": "Sélectionner un système à lier...",
+    "link": "Lier",
+    "unlinkConfirm": "Êtes-vous sûr de vouloir délier ce système du fournisseur ?",
+    "compliance": "conformité",
+    "documented": "Documenté",
+    "notDocumented": "Non documenté",
+    "unknown": "Inconnu",
+    "createdAt": "Créé",
+    "updatedAt": "Mis à jour",
+    "lastAssessed": "Dernière évaluation",
+    "selectKnownVendor": "Sélectionner un fournisseur connu",
+    "selectKnownVendorDescription": "Choisissez parmi notre base de données de fournisseurs préconfigurés avec les données de conformité déjà remplies",
+    "addCustomVendor": "Ajouter un fournisseur personnalisé",
+    "addCustomVendorDescription": "Saisir manuellement les détails du fournisseur et les informations de conformité",
+    "disclaimer": "Les évaluations de risques fournisseurs sont fournies à titre informatif uniquement et ne constituent pas un avis juridique. Vérifiez le statut de conformité du fournisseur directement auprès de celui-ci.",
+    "riskLevels": {
+      "critical": "Critique",
+      "high": "Élevé",
+      "medium": "Moyen",
+      "low": "Faible"
+    },
+    "riskDescriptions": {
+      "critical": "Risque critique - le fournisseur peut ne pas convenir pour les systèmes d'IA réglementés",
+      "high": "Risque élevé - des préoccupations importantes de conformité nécessitent une action immédiate",
+      "medium": "Risque moyen - certaines lacunes de conformité nécessitent attention",
+      "low": "Risque faible - le fournisseur répond à la plupart des exigences de conformité"
+    },
+    "vendorTypes": {
+      "api_provider": "Fournisseur d'API",
+      "saas_with_ai": "SaaS avec IA",
+      "model_host": "Hébergeur de modèles"
+    },
+    "factors": {
+      "DATA_USED_FOR_TRAINING": "Données utilisées pour l'entraînement",
+      "US_PROCESSING_EU_MARKET": "Traitement US pour marché UE",
+      "UNKNOWN_DATA_LOCATION": "Localisation des données inconnue",
+      "NO_DPA": "Pas d'accord de traitement des données",
+      "NO_MODEL_CARD": "Pas de fiche de modèle",
+      "NO_AI_ACT_SUPPORT": "Pas de support Loi sur l'IA",
+      "UNKNOWN_AI_ACT_SUPPORT": "Support Loi sur l'IA inconnu",
+      "UNDOCUMENTED_SUBPROCESSORS": "Sous-traitants non documentés"
+    },
+    "table": {
+      "name": "Nom",
+      "type": "Type",
+      "riskScore": "Score de risque",
+      "riskLevel": "Niveau de risque",
+      "linkedSystems": "Systèmes liés",
+      "lastAssessed": "Dernière évaluation"
+    },
+    "form": {
+      "name": "Nom du fournisseur",
+      "namePlaceholder": "ex. : Acme AI",
+      "vendorType": "Type de fournisseur",
+      "dataUsedForTraining": "Le fournisseur utilise-t-il les données des clients pour l'entraînement du modèle ?",
+      "dataProcessingLocation": "Où les données sont-elles traitées ?",
+      "selectLocation": "Sélectionner le lieu de traitement des données",
+      "hasDPA": "Accord de traitement des données (DPA) en place ?",
+      "hasModelCard": "Fiche de modèle ou documentation disponible ?",
+      "supportsAIAct": "Le fournisseur prend-il en charge la conformité à la Loi sur l'IA de l'UE ?",
+      "usesSubprocessors": "Le fournisseur utilise-t-il des sous-traitants ?",
+      "subprocessorsDocumented": "Les sous-traitants sont-ils documentés ?",
+      "submit": "Créer et évaluer le fournisseur",
+      "submitting": "Création et évaluation...",
+      "selectVendor": "Sélectionner un fournisseur",
+      "selectVendorPlaceholder": "Choisir un fournisseur...",
+      "selectVendorHelp": "Les détails du fournisseur seront pré-remplis à partir de notre base de données de conformité",
+      "unknown": "Inconnu",
+      "locations": {
+        "eu": "Union européenne",
+        "us": "États-Unis",
+        "global": "Mondial / Plusieurs régions"
+      }
+    },
+    "validation": {
+      "nameRequired": "Le nom du fournisseur est requis"
+    }
   },
   "systems": {
     "title": "Systèmes d'IA",
@@ -143,11 +263,10 @@
       "extractedQuotes": "Preuves à l'appui",
       "step1": {
         "title": "Informations de base",
-        "description": "Décrivez votre système d'IA",
+        "description": "Description",
         "name": "Nom du système",
         "namePlaceholder": "ex. : Outil de tri de CV",
         "nameDescription": "Un nom clair et descriptif pour votre système d'IA",
-        "description": "Description",
         "descriptionPlaceholder": "Expliquez ce que fait ce système d'IA et comment il est utilisé...",
         "descriptionDescription": "Décrivez l'objectif, les fonctionnalités et les caractéristiques principales",
         "aiTypeLabel": "Type d'IA",
@@ -251,6 +370,27 @@
     "noGaps": "Toutes les exigences sont remplies",
     "noGapsDescription": "Ce système respecte toutes les exigences de conformité pour les filtres sélectionnés"
   },
+  "intelligence": {
+    "title": "Mises à jour réglementaires",
+    "description": "Restez informé des changements de réglementation IA affectant votre conformité",
+    "loadingDescription": "Chargement des mises à jour réglementaires...",
+    "refresh": "Actualiser",
+    "markAllRead": "Tout marquer comme lu",
+    "markRead": "Marquer comme lu",
+    "viewSource": "Voir la source",
+    "unread": "Non lu",
+    "personalizedTab": "Pour vos marchés",
+    "allTab": "Toutes les réglementations",
+    "filterByRegulation": "Réglementation",
+    "filterByType": "Type",
+    "allRegulations": "Toutes les réglementations",
+    "allTypes": "Tous les types",
+    "impact": "Impact",
+    "upgradeToPlan": "Passez à un plan supérieur pour voir le contenu complet",
+    "upgradeLink": "Voir les plans",
+    "noUpdates": "Aucune mise à jour disponible",
+    "noUpdatesDescription": "Revenez plus tard pour de nouvelles mises à jour réglementaires"
+  },
   "marketing": {
     "tagline": "Gestion de la conformité IA pour les PME",
     "cta": "Essai gratuit"
@@ -266,39 +406,6 @@
     "noDocumentsDescription": "Générez des rapports de conformité pour documenter votre système d'IA",
     "selectType": "Sélectionnez le type de document",
     "classificationReport": "Rapport de classification",
-    "roadmap": "Feuille de route de conformité",
-    "annexIV": "Documentation technique Annexe IV",
-    "upgradeRequired": "Mise à niveau requise",
-    "upgradeMessage": "La génération de documents est disponible à partir du plan Starter",
-    "classificationRequired": "Classification requise",
-    "classificationRequiredMessage": "Le système doit être classifié avant de générer ce document",
-    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce document ?",
-    "report": {
-      "title": "Rapport de classification des risques du système d'IA",
-      "subtitle": "Classification des risques selon la Loi sur l'IA de l'UE",
-      "systemInfo": "Informations sur le système",
-      "systemName": "Nom du système",
-      "description": "Description",
-      "aiType": "Type d'IA",
-      "domain": "Domaine",
-      "markets": "Marchés cibles",
-      "classification": "Résultats de la classification",
-      "riskLevel": "Niveau de risque",
-      "annexCategory": "Catégorie Annexe III",
-      "reasoning": "Raisonnement de la classification",
-      "exceptionAnalysis": "Analyse des exceptions (Article 6.3)",
-      "exceptionApplies": "Exception applicable",
-      "exceptionReason": "Motif de l'exception",
-      "obligations": "Résumé de conformité",
-      "obligationCount": "Total des obligations",
-      "gapCount": "Lacunes en suspens",
-      "providerDeployer": "Votre rôle",
-      "transparency": "Obligations de transparence (Article 50)",
-      "disclaimer": "Ce document est généré par Complyance.io et ne constitue pas un avis juridique. Consultez des professionnels du droit qualifiés pour la vérification de la conformité.",
-      "generatedFor": "Généré pour",
-      "noException": "Aucune exception de l'Article 6.3 ne s'applique. Ce système est soumis à l'ensemble des exigences pour les systèmes d'IA à haut risque.",
-      "notClassified": "Pas encore classifié"
-    },
     "roadmap": {
       "title": "Feuille de route de conformité",
       "subtitle": "Plan étape par étape vers la conformité à la Loi sur l'IA de l'UE",
@@ -369,6 +476,37 @@
       "cybersecurity": "Mesures de cybersécurité",
       "monitoring": "Plan de surveillance",
       "placeholder": "À COMPLÉTER"
+    },
+    "upgradeRequired": "Mise à niveau requise",
+    "upgradeMessage": "La génération de documents est disponible à partir du plan Starter",
+    "classificationRequired": "Classification requise",
+    "classificationRequiredMessage": "Le système doit être classifié avant de générer ce document",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce document ?",
+    "report": {
+      "title": "Rapport de classification des risques du système d'IA",
+      "subtitle": "Classification des risques selon la Loi sur l'IA de l'UE",
+      "systemInfo": "Informations sur le système",
+      "systemName": "Nom du système",
+      "description": "Description",
+      "aiType": "Type d'IA",
+      "domain": "Domaine",
+      "markets": "Marchés cibles",
+      "classification": "Résultats de la classification",
+      "riskLevel": "Niveau de risque",
+      "annexCategory": "Catégorie Annexe III",
+      "reasoning": "Raisonnement de la classification",
+      "exceptionAnalysis": "Analyse des exceptions (Article 6.3)",
+      "exceptionApplies": "Exception applicable",
+      "exceptionReason": "Motif de l'exception",
+      "obligations": "Résumé de conformité",
+      "obligationCount": "Total des obligations",
+      "gapCount": "Lacunes en suspens",
+      "providerDeployer": "Votre rôle",
+      "transparency": "Obligations de transparence (Article 50)",
+      "disclaimer": "Ce document est généré par Complyance.io et ne constitue pas un avis juridique. Consultez des professionnels du droit qualifiés pour la vérification de la conformité.",
+      "generatedFor": "Généré pour",
+      "noException": "Aucune exception de l'Article 6.3 ne s'applique. Ce système est soumis à l'ensemble des exigences pour les systèmes d'IA à haut risque.",
+      "notClassified": "Pas encore classifié"
     }
   },
   "blog": {
@@ -580,6 +718,40 @@
       "pricing": "Voir les tarifs"
     }
   },
+  "admin": {
+    "updates": {
+      "title": "Gérer les mises à jour réglementaires",
+      "description": "Créer et gérer les mises à jour réglementaires qui apparaissent dans le fil d'actualité",
+      "createNew": "Créer une mise à jour",
+      "cancel": "Annuler",
+      "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette mise à jour réglementaire ? Cette action est irréversible.",
+      "noUpdates": "Aucune mise à jour réglementaire",
+      "accessDenied": "Accès refusé",
+      "adminOnly": "Cette page est accessible uniquement aux administrateurs",
+      "form": {
+        "title": "Titre",
+        "summary": "Résumé",
+        "source": "URL source",
+        "regulation": "Réglementation",
+        "changeType": "Type de changement",
+        "impact": "Impact (optionnel)",
+        "affectedArticles": "Articles concernés (optionnel)",
+        "publishedAt": "Date de publication",
+        "selectRegulation": "Sélectionner une réglementation",
+        "selectType": "Sélectionner un type",
+        "articlesHint": "Séparés par des virgules, ex : Article 9, Article 11",
+        "create": "Créer la mise à jour",
+        "update": "Mettre à jour"
+      },
+      "table": {
+        "title": "Titre",
+        "regulation": "Réglementation",
+        "type": "Type",
+        "publishedAt": "Publié",
+        "actions": "Actions"
+      }
+    }
+  },
   "partners": {
     "title": "Partenariat avec Complyance",
     "subtitle": "Rejoignez notre réseau de cabinets d'avocats, de sociétés de conseil et d'experts en conformité aidant les clients à naviguer dans les réglementations IA",
@@ -787,6 +959,54 @@
     "manageBilling": "Gérer la facturation",
     "portalLink": "Consultez les factures et mettez à jour les modes de paiement dans le portail de facturation"
   },
+  "settings": {
+    "billing": {
+      "title": "Facturation et abonnement",
+      "description": "Gérez votre abonnement et vos informations de facturation",
+      "currentPlan": "Plan actuel",
+      "planDescription": "Votre plan d'abonnement actuel",
+      "free": "Gratuit",
+      "paid": "Payant",
+      "freeDescription": "Vous êtes sur le plan gratuit avec des fonctionnalités limitées",
+      "paidDescription": "Vous êtes sur le plan {plan}",
+      "upgrade": {
+        "title": "Passez à un plan supérieur",
+        "description": "Accédez à plus de fonctionnalités et à des limites plus élevées",
+        "cta": "Voir les tarifs"
+      },
+      "changePlan": "Changer de plan",
+      "manageBilling": "Gérer la facturation",
+      "usage": {
+        "title": "Utilisation",
+        "description": "Utilisation actuelle de votre plan",
+        "systems": "Systèmes d'IA",
+        "vendors": "Fournisseurs",
+        "teamMembers": "Membres de l'équipe",
+        "unlimited": "Illimité",
+        "bonus": "bonus",
+        "systemsLimitReached": "Vous avez atteint votre limite de systèmes d'IA. Passez à un plan supérieur pour en ajouter plus.",
+        "vendorsLimitReached": "Vous avez atteint votre limite de fournisseurs. Passez à un plan supérieur pour en ajouter plus."
+      },
+      "features": {
+        "title": "Fonctionnalités du plan",
+        "description": "Fonctionnalités incluses dans votre plan actuel",
+        "regulations": "Réglementations",
+        "documents": "Génération de documents",
+        "evidenceVault": "Coffre de preuves",
+        "biasTesting": "Tests de biais",
+        "cicdAPI": "API CI/CD",
+        "alerts": "Alertes réglementaires",
+        "enabled": "Activé",
+        "disabled": "Non inclus",
+        "unlimited": "Illimité",
+        "month": "mois",
+        "realtime": "Temps réel",
+        "weekly": "Digest hebdomadaire",
+        "allRegulations": "Toutes les réglementations",
+        "regulationCount": "réglementations"
+      }
+    }
+  },
   "footer": {
     "product": {
       "title": "Produit",
@@ -808,5 +1028,298 @@
     },
     "copyright": "© 2026 Complyance. Tous droits réservés.",
     "disclaimer": "Ne constitue pas un avis juridique. Les classifications sont à titre informatif uniquement."
+  },
+  "badge": {
+    "title": "Badge de conformité",
+    "description": "Affichez votre statut de conformité IA sur votre site web",
+    "loading": "Chargement des informations du badge...",
+    "errorLoading": "Échec du chargement des informations du badge",
+    "currentLevel": "Niveau de badge actuel",
+    "currentLevelDescription": "Votre niveau de badge est déterminé par votre plan et votre progression en conformité",
+    "lastVerified": "Dernière vérification",
+    "preview": "Aperçu du badge",
+    "badgeDisabled": "Votre badge de conformité est actuellement désactivé. Activez-le pour l'afficher sur votre site web.",
+    "noBadgeYet": "Vous n'avez pas encore de badge. Classifiez au moins un système d'IA pour obtenir le badge « Loi sur l'IA — Sensibilisé ».",
+    "earnNextLevel": "Obtenir le niveau suivant",
+    "earnNextLevelDescription": "Remplissez ces exigences pour améliorer votre badge",
+    "embedCode": "Code d'intégration",
+    "embedCodeDescription": "Copiez le code ci-dessous pour ajouter votre badge de conformité à votre site web",
+    "copyHTML": "Copier HTML",
+    "copyMarkdown": "Copier Markdown",
+    "copy": "Copier",
+    "verificationLink": "Lien de vérification",
+    "verificationLinkDescription": "Tout le monde peut vérifier votre badge de conformité en visitant ce lien",
+    "viewVerificationPage": "Voir la page de vérification",
+    "levels": {
+      "title": "Niveaux de badge",
+      "description": "Il existe trois niveaux de badge basés sur votre progression en conformité",
+      "aware": {
+        "title": "Loi sur l'IA — Sensibilisé",
+        "description": "Vous avez classifié au moins un système d'IA et comprenez vos obligations au titre de la Loi sur l'IA de l'UE. Disponible avec le plan gratuit."
+      },
+      "ready": {
+        "title": "Loi sur l'IA — Prêt",
+        "description": "Vous travaillez activement sur la conformité avec des lacunes en cours de traitement. Nécessite le plan Starter ou supérieur avec un travail de conformité en cours."
+      },
+      "compliant": {
+        "title": "Loi sur l'IA — Conforme",
+        "description": "Vous avez atteint un score de conformité de 80 % ou plus. Nécessite le plan Professional ou supérieur."
+      }
+    },
+    "verification": {
+      "title": "Vérification de conformité",
+      "subtitle": "Cette page vérifie le badge de conformité d'une organisation",
+      "metaDescription": "Vérifiez le statut de conformité IA de {orgName}",
+      "notFound": "Organisation non trouvée",
+      "organization": "Organisation",
+      "badgeLevel": "Niveau de badge",
+      "lastVerified": "Dernière vérification",
+      "whatThisMeans": "Ce que cela signifie",
+      "verifiedBy": "Vérifié par Complyance",
+      "learnMore": "En savoir plus sur Complyance",
+      "badgeInactiveTitle": "Badge inactif",
+      "badgeInactiveDescription": "Ce badge de conformité n'est plus actif. L'organisation a peut-être annulé son abonnement ou désactivé son badge.",
+      "levelDescription": {
+        "none": "Cette organisation ne dispose pas actuellement d'un badge de conformité actif.",
+        "aware": "Cette organisation a classifié ses systèmes d'IA et est consciente de ses obligations au titre de la Loi sur l'IA de l'UE.",
+        "ready": "Cette organisation travaille activement sur la conformité à la Loi sur l'IA de l'UE avec des lacunes en cours de traitement.",
+        "compliant": "Cette organisation a atteint un haut niveau de conformité à la Loi sur l'IA de l'UE avec un score de 80 % ou plus."
+      }
+    }
+  },
+  "evidence": {
+    "title": "Coffre de preuves",
+    "description": "Stockez et gérez les preuves de conformité avec vérification d'intégrité",
+    "loadingDescription": "Chargement de vos preuves...",
+    "addEvidence": "Ajouter une preuve",
+    "addEvidenceSubtitle": "Téléchargez des documents, captures d'écran, journaux ou résultats de tests comme preuves de conformité",
+    "addFirstEvidence": "Ajouter votre première preuve",
+    "noEvidence": "Aucune preuve",
+    "noEvidenceDescription": "Commencez à constituer votre piste d'audit en ajoutant des preuves de conformité",
+    "backToEvidence": "Retour aux preuves",
+    "evidenceNotFound": "Preuve non trouvée",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette preuve ? Cette action est irréversible.",
+    "editEvidence": "Modifier la preuve",
+    "details": "Détails de la preuve",
+    "noLinkedSystem": "Aucun système lié",
+    "noArticle": "Aucun article associé",
+    "createdAt": "Créé",
+    "upgradeRequired": "Mise à niveau requise",
+    "upgradeMessage": "Le Coffre de preuves est disponible à partir du plan Professional. Stockez des documents, captures d'écran, journaux et résultats de tests avec vérification d'intégrité SHA-256.",
+    "upgradeToPlan": "Voir les tarifs",
+    "whyEvidenceVault": "Pourquoi le Coffre de preuves ?",
+    "whyEvidenceVaultDescription": "Les audits de conformité exigent des preuves documentées. Le Coffre de preuves fournit un dépôt sécurisé et prêt pour l'audit pour tous vos artefacts de conformité.",
+    "benefit1": "Les hachages d'intégrité SHA-256 prouvent l'authenticité des documents",
+    "benefit2": "Liez les preuves à des systèmes d'IA et articles spécifiques",
+    "benefit3": "Exportez des dossiers d'audit complets pour les régulateurs",
+    "benefit4": "Le stockage chiffré répond aux exigences du RGPD",
+    "filterBySystem": "Filtrer par système",
+    "filterByArticle": "Filtrer par article",
+    "filterByType": "Filtrer par type",
+    "allSystems": "Tous les systèmes",
+    "allArticles": "Tous les articles",
+    "allTypes": "Tous les types",
+    "types": {
+      "document": "Document",
+      "screenshot": "Capture d'écran",
+      "log": "Journal",
+      "testResult": "Résultat de test"
+    },
+    "table": {
+      "title": "Titre",
+      "type": "Type",
+      "linkedSystem": "Système lié",
+      "article": "Article",
+      "integrityHash": "Hachage d'intégrité",
+      "createdAt": "Créé le"
+    },
+    "form": {
+      "title": "Titre",
+      "titlePlaceholder": "ex. : Rapport d'évaluation des risques T1 2026",
+      "description": "Description",
+      "descriptionPlaceholder": "Ajoutez du contexte sur cette preuve...",
+      "evidenceType": "Type de preuve",
+      "linkedSystem": "Système d'IA lié",
+      "selectSystem": "Sélectionner un système...",
+      "noLinkedSystem": "Aucun système lié",
+      "linkedSystemHelp": "Liez optionnellement cette preuve à un système d'IA spécifique",
+      "relatedArticle": "Article associé",
+      "selectArticle": "Sélectionner un article...",
+      "noArticle": "Aucun article associé",
+      "relatedArticleHelp": "Quel article de la Loi sur l'IA de l'UE cette preuve soutient-elle ?",
+      "fileUpload": "Téléchargement de fichier",
+      "dropzone": "Déposez les fichiers ici ou cliquez pour télécharger",
+      "dropzoneSupported": "Formats acceptés : PDF, PNG, JPG, CSV, TXT, DOCX (max 10 Mo)",
+      "browseFiles": "Parcourir les fichiers",
+      "submit": "Ajouter la preuve",
+      "submitting": "Ajout en cours..."
+    },
+    "validation": {
+      "titleRequired": "Le titre est requis",
+      "typeRequired": "Veuillez sélectionner un type de preuve",
+      "fileTooLarge": "La taille du fichier dépasse la limite de 10 Mo",
+      "invalidFileType": "Type de fichier non autorisé"
+    },
+    "integrity": {
+      "title": "Vérification d'intégrité",
+      "hash": "Hachage SHA-256",
+      "verify": "Vérifier l'intégrité",
+      "verified": "Intégrité vérifiée",
+      "verifiedDescription": "Cette preuve n'a pas été modifiée depuis son téléchargement",
+      "tampered": "Intégrité compromise",
+      "tamperedDescription": "Attention : cette preuve a peut-être été modifiée. Le hachage actuel ne correspond pas au hachage enregistré.",
+      "noHash": "Aucun hachage disponible",
+      "noHashDescription": "La vérification d'intégrité n'est pas disponible pour cette preuve",
+      "clickToVerify": "Cliquez sur « Vérifier l'intégrité » pour vérifier si cette preuve a été modifiée"
+    },
+    "file": {
+      "title": "Fichier joint",
+      "download": "Télécharger",
+      "noFile": "Aucun fichier joint à cette preuve",
+      "storedSecurely": "Stocké de manière sécurisée avec chiffrement",
+      "imagePreviewPlaceholder": "L'aperçu de l'image sera disponible lorsque le stockage de fichiers sera configuré"
+    },
+    "disclaimer": "Les preuves stockées dans le Coffre de preuves sont chiffrées au repos et incluent une vérification d'intégrité. Cela aide à démontrer la conformité aux auditeurs mais ne garantit pas l'approbation réglementaire. Consultez des professionnels du droit qualifiés pour la vérification de la conformité."
+  },
+  "freeClassifier": {
+    "title": "Classificateur de risques IA gratuit",
+    "subtitle": "Découvrez si votre système d'IA est à haut risque selon la Loi sur l'IA de l'UE en 2 minutes. Gratuit, sans inscription.",
+    "badge": "Outil gratuit — Sans inscription",
+    "stepIndicator": "Étape {current} sur {total}",
+    "analyzing": "Analyse en cours...",
+    "classify": "Classifier mon système d'IA",
+    "steps": {
+      "step1": {
+        "title": "Décrivez votre système d'IA",
+        "description": "Dites-nous ce que fait votre système d'IA"
+      },
+      "step2": {
+        "title": "Comment est-il utilisé ?",
+        "description": "Quel domaine et quelle capacité de décision possède-t-il ?"
+      },
+      "step3": {
+        "title": "Données et utilisateurs",
+        "description": "Quelles données traite-t-il et qui l'utilise ?"
+      },
+      "step4": {
+        "title": "Marchés cibles",
+        "description": "Où vendez-vous ou déployez-vous ce système d'IA ?"
+      },
+      "results": {
+        "title": "Votre classification de risque",
+        "description": "Selon vos réponses, voici votre niveau de risque au titre de la Loi sur l'IA de l'UE"
+      }
+    },
+    "fields": {
+      "description": "Description du système",
+      "descriptionPlaceholder": "Décrivez ce que fait votre système d'IA. Par exemple : « Un chatbot alimenté par l'IA qui aide les clients à trouver des produits et répond aux questions fréquentes sur les commandes et les retours. »",
+      "descriptionHelp": "Soyez précis sur les fonctionnalités, les entrées, les sorties et l'utilisation dans votre entreprise.",
+      "aiType": "Type de technologie IA",
+      "domain": "Domaine / Cas d'utilisation",
+      "domainPlaceholder": "Sélectionnez un domaine...",
+      "makesDecisions": "Ce système prend-il ou influence-t-il des décisions concernant des personnes ?",
+      "dataProcessing": "Traitement des données",
+      "processesPersonalData": "Traite des données personnelles",
+      "processesPersonalDataHelp": "Noms, e-mails, photos, données comportementales ou toute information permettant d'identifier des individus",
+      "profilesUsers": "Crée des profils ou prédictions sur des individus",
+      "profilesUsersHelp": "Scores, classements, prédictions comportementales, évaluations de personnalité ou segmentation d'utilisateurs",
+      "endUsers": "Qui est concerné par ce système ?",
+      "markets": "Marchés cibles",
+      "marketsHelp": "Sélectionnez toutes les régions où ce système d'IA est utilisé ou proposé"
+    },
+    "aiTypes": {
+      "ML_MODEL": "Modèle d'apprentissage automatique",
+      "LLM": "Grand modèle de langage (GPT, Claude, etc.)",
+      "RULE_BASED": "Système basé sur des règles",
+      "HYBRID": "Hybride (ML + règles)"
+    },
+    "domains": {
+      "HR": "Ressources humaines / Recrutement",
+      "FINANCE": "Finance et banque",
+      "HEALTHCARE": "Santé et médecine",
+      "EDUCATION": "Éducation et formation",
+      "SECURITY": "Sécurité et biométrie",
+      "CHATBOT": "Chatbot / Assistant virtuel",
+      "RECOMMENDATIONS": "Recommandations / Personnalisation",
+      "OTHER": "Autre"
+    },
+    "decisions": {
+      "YES": {
+        "label": "Oui — Prend des décisions autonomes",
+        "description": "Le système prend des décisions qui affectent directement les personnes (approbations, rejets, classements)"
+      },
+      "NO": {
+        "label": "Non — Informatif uniquement",
+        "description": "Le système fournit des informations mais les humains prennent toutes les décisions finales"
+      },
+      "PARTIAL": {
+        "label": "Partiellement — Influence les décisions",
+        "description": "Le système fournit des recommandations ou scores qui influencent les décisions humaines"
+      }
+    },
+    "endUsers": {
+      "B2C": "Consommateurs (grand public)",
+      "B2B": "Clients professionnels",
+      "EMPLOYEES": "Vos propres employés",
+      "GOVERNMENT": "Gouvernement / Secteur public"
+    },
+    "markets": {
+      "EU": "Union européenne (UE)",
+      "US": "États-Unis",
+      "UAE": "Émirats arabes unis",
+      "OTHER": "Autres régions"
+    },
+    "noEUWarning": "La Loi sur l'IA de l'UE s'applique principalement aux systèmes déployés dans ou affectant le marché européen. La classification est fournie à titre de référence.",
+    "results": {
+      "annexCategory": "Catégorie Annexe III : {category}",
+      "why": "Pourquoi cette classification ?",
+      "obligations": "Vos obligations de conformité",
+      "disclaimer": "Cette classification est fournie à titre informatif uniquement et ne constitue pas un avis juridique. Pour une évaluation précise de la conformité, consultez des professionnels du droit qualifiés ou utilisez la plateforme complète Complyance pour une analyse détaillée."
+    },
+    "cta": {
+      "title": "Obtenez votre rapport de conformité complet",
+      "description": "Inscrivez-vous gratuitement pour obtenir une documentation détaillée de conformité, une analyse des lacunes et une feuille de route étape par étape.",
+      "features": {
+        "reports": "Générer des rapports de classification PDF",
+        "gapAnalysis": "Analyse détaillée des lacunes avec actions à mener",
+        "vendorRisk": "Évaluations de risques des fournisseurs d'IA",
+        "badge": "Afficher un badge de conformité sur votre site web"
+      },
+      "button": "Obtenir le rapport complet — Gratuit",
+      "startOver": "Classifier un autre système",
+      "noCard": "Aucune carte de crédit requise. Plan gratuit disponible."
+    },
+    "seo": {
+      "title": "Classificateur de risques IA gratuit | Vérifiez le niveau de risque de votre système d'IA",
+      "description": "Découvrez si votre système d'IA est à haut risque selon la Loi sur l'IA de l'UE en 2 minutes. Outil en ligne gratuit, sans inscription. Résultats instantanés.",
+      "whatIsTitle": "Qu'est-ce que le classificateur de risques de la Loi sur l'IA de l'UE ?",
+      "whatIsContent": "La Loi sur l'IA de l'UE classe les systèmes d'IA en quatre niveaux de risque : Inacceptable, Élevé, Limité et Minimal. Les systèmes d'IA à haut risque doivent se conformer à des exigences strictes avant le 2 août 2026. Utilisez cet outil gratuit pour déterminer rapidement la classification de risque de votre système d'IA et comprendre vos obligations de conformité.",
+      "benefits": {
+        "free": {
+          "title": "100 % gratuit",
+          "description": "Sans inscription, sans paiement. Résultats instantanés."
+        },
+        "fast": {
+          "title": "Évaluation en 2 minutes",
+          "description": "Répondez à des questions simples et obtenez votre classification."
+        },
+        "accurate": {
+          "title": "Basé sur la Loi sur l'IA de l'UE",
+          "description": "La classification suit les critères officiels de l'Annexe III."
+        }
+      }
+    },
+    "validation": {
+      "descriptionMin": "La description doit comporter au moins 20 caractères",
+      "aiTypeRequired": "Veuillez sélectionner un type de technologie IA",
+      "domainRequired": "Veuillez sélectionner un domaine",
+      "decisionsRequired": "Veuillez sélectionner une option de prise de décision",
+      "endUsersRequired": "Veuillez sélectionner au moins un groupe concerné",
+      "marketsRequired": "Veuillez sélectionner au moins un marché"
+    },
+    "errors": {
+      "rateLimited": "Trop de requêtes. Veuillez réessayer dans une heure.",
+      "generic": "Une erreur est survenue. Veuillez réessayer."
+    }
   }
 }

@@ -25,7 +25,8 @@
     "intelligence": "Aktualizacje regulacyjne",
     "settings": "Ustawienia",
     "team": "Zespół",
-    "referrals": "Polecenia"
+    "referrals": "Polecenia",
+    "badge": "Badge Zgodności"
   },
   "auth": {
     "login": "Zaloguj się",
@@ -62,7 +63,9 @@
     "noCriticalGapsDescription": "Wszystkie krytyczne wymagania zgodności są realizowane",
     "noSystems": "Brak systemów AI",
     "noSystemsDescription": "Zacznij od dodania pierwszego systemu AI, aby śledzić zgodność",
-    "addFirstSystem": "Dodaj pierwszy system"
+    "addFirstSystem": "Dodaj pierwszy system",
+    "latestUpdates": "Najnowsze Aktualizacje Regulacyjne",
+    "viewAll": "Zobacz Wszystko"
   },
   "classification": {
     "unacceptable": "Ryzyko niedopuszczalne",
@@ -143,11 +146,10 @@
       "extractedQuotes": "Dowody potwierdzające",
       "step1": {
         "title": "Podstawowe informacje",
-        "description": "Opisz swój system AI",
+        "description": "Opis",
         "name": "Nazwa systemu",
         "namePlaceholder": "np. Narzędzie do selekcji CV",
         "nameDescription": "Jasna, opisowa nazwa systemu AI",
-        "description": "Opis",
         "descriptionPlaceholder": "Wyjaśnij, co robi ten system AI i jak jest używany...",
         "descriptionDescription": "Opisz cel, funkcjonalność i główne cechy",
         "aiTypeLabel": "Typ AI",
@@ -266,39 +268,6 @@
     "noDocumentsDescription": "Wygeneruj raporty zgodności, aby udokumentować system AI",
     "selectType": "Wybierz typ dokumentu",
     "classificationReport": "Raport klasyfikacji",
-    "roadmap": "Plan działań zgodności",
-    "annexIV": "Dokumentacja techniczna Załącznik IV",
-    "upgradeRequired": "Wymagana aktualizacja",
-    "upgradeMessage": "Generowanie dokumentów dostępne od planu Starter",
-    "classificationRequired": "Wymagana klasyfikacja",
-    "classificationRequiredMessage": "System musi być sklasyfikowany przed wygenerowaniem tego dokumentu",
-    "deleteConfirm": "Czy na pewno chcesz usunąć ten dokument?",
-    "report": {
-      "title": "Raport klasyfikacji ryzyka systemu AI",
-      "subtitle": "Klasyfikacja ryzyka według Aktu o AI UE",
-      "systemInfo": "Informacje o systemie",
-      "systemName": "Nazwa systemu",
-      "description": "Opis",
-      "aiType": "Typ AI",
-      "domain": "Dziedzina",
-      "markets": "Rynki docelowe",
-      "classification": "Wyniki klasyfikacji",
-      "riskLevel": "Poziom ryzyka",
-      "annexCategory": "Kategoria Załącznika III",
-      "reasoning": "Uzasadnienie klasyfikacji",
-      "exceptionAnalysis": "Analiza wyjątków (Art. 6.3)",
-      "exceptionApplies": "Wyjątek ma zastosowanie",
-      "exceptionReason": "Powód wyjątku",
-      "obligations": "Podsumowanie zgodności",
-      "obligationCount": "Łączna liczba obowiązków",
-      "gapCount": "Otwarte luki",
-      "providerDeployer": "Twoja rola",
-      "transparency": "Obowiązki przejrzystości (Art. 50)",
-      "disclaimer": "Ten dokument został wygenerowany przez Complyance.io i nie stanowi porady prawnej. Skonsultuj się z wykwalifikowanymi specjalistami prawnymi w celu weryfikacji zgodności.",
-      "generatedFor": "Wygenerowano dla",
-      "noException": "Nie ma zastosowania żaden wyjątek z Art. 6.3. Ten system podlega pełnym wymaganiom dla systemów AI wysokiego ryzyka.",
-      "notClassified": "Jeszcze nie sklasyfikowano"
-    },
     "roadmap": {
       "title": "Plan działań zgodności",
       "subtitle": "Plan krok po kroku do zgodności z Aktem o AI UE",
@@ -369,6 +338,37 @@
       "cybersecurity": "Środki cyberbezpieczeństwa",
       "monitoring": "Plan monitorowania",
       "placeholder": "DO UZUPEŁNIENIA"
+    },
+    "upgradeRequired": "Wymagana aktualizacja",
+    "upgradeMessage": "Generowanie dokumentów dostępne od planu Starter",
+    "classificationRequired": "Wymagana klasyfikacja",
+    "classificationRequiredMessage": "System musi być sklasyfikowany przed wygenerowaniem tego dokumentu",
+    "deleteConfirm": "Czy na pewno chcesz usunąć ten dokument?",
+    "report": {
+      "title": "Raport klasyfikacji ryzyka systemu AI",
+      "subtitle": "Klasyfikacja ryzyka według Aktu o AI UE",
+      "systemInfo": "Informacje o systemie",
+      "systemName": "Nazwa systemu",
+      "description": "Opis",
+      "aiType": "Typ AI",
+      "domain": "Dziedzina",
+      "markets": "Rynki docelowe",
+      "classification": "Wyniki klasyfikacji",
+      "riskLevel": "Poziom ryzyka",
+      "annexCategory": "Kategoria Załącznika III",
+      "reasoning": "Uzasadnienie klasyfikacji",
+      "exceptionAnalysis": "Analiza wyjątków (Art. 6.3)",
+      "exceptionApplies": "Wyjątek ma zastosowanie",
+      "exceptionReason": "Powód wyjątku",
+      "obligations": "Podsumowanie zgodności",
+      "obligationCount": "Łączna liczba obowiązków",
+      "gapCount": "Otwarte luki",
+      "providerDeployer": "Twoja rola",
+      "transparency": "Obowiązki przejrzystości (Art. 50)",
+      "disclaimer": "Ten dokument został wygenerowany przez Complyance.io i nie stanowi porady prawnej. Skonsultuj się z wykwalifikowanymi specjalistami prawnymi w celu weryfikacji zgodności.",
+      "generatedFor": "Wygenerowano dla",
+      "noException": "Nie ma zastosowania żaden wyjątek z Art. 6.3. Ten system podlega pełnym wymaganiom dla systemów AI wysokiego ryzyka.",
+      "notClassified": "Jeszcze nie sklasyfikowano"
     }
   },
   "blog": {
@@ -452,7 +452,7 @@
       "title": "Często zadawane pytania",
       "q1": {
         "question": "Co zawiera darmowy plan?",
-        "answer": "Darmowy plan pozwala sklasyfikować 1 system AI, zobaczyć luki zgodności i otrzymać odznakę „Akt o AI — Świadomy". Idealny do poznania wymagań Aktu o AI UE bez zobowiązań."
+        "answer": "Darmowy plan pozwala sklasyfikować 1 system AI, zobaczyć luki zgodności i otrzymać odznakę „Akt o AI — Świadomy\". Idealny do poznania wymagań Aktu o AI UE bez zobowiązań."
       },
       "q2": {
         "question": "Czy mogę później zmienić plan?",
@@ -762,7 +762,7 @@
       },
       "process": {
         "title": "Jak poprosić o zwrot",
-        "contact": "Wyślij e-mail na support@complyance.io z „Wniosek o zwrot" w temacie",
+        "contact": "Wyślij e-mail na support@complyance.io z „Wniosek o zwrot\" w temacie",
         "include": "Podaj e-mail konta i powód (opcjonalnie, ale mile widziane)",
         "processing": "Zwroty przetwarzane w ciągu 5-7 dni roboczych",
         "method": "Zwrot na oryginalną metodę płatności przez Paddle"
@@ -808,5 +808,518 @@
     },
     "copyright": "© 2026 Complyance. Wszelkie prawa zastrzeżone.",
     "disclaimer": "Nie stanowi porady prawnej. Klasyfikacje mają wyłącznie charakter informacyjny."
+  },
+  "vendors": {
+    "title": "Ocena Ryzyka Dostawców",
+    "description": "Oceń i zarządzaj ryzykami zgodności dostawców AI",
+    "loadingDescription": "Ładowanie dostawców...",
+    "addVendor": "Dodaj Dostawcę",
+    "addVendorSubtitle": "Wybierz sposób dodania nowego dostawcy",
+    "addFirstVendor": "Dodaj Pierwszego Dostawcę",
+    "noVendors": "Brak Dostawców",
+    "noVendorsDescription": "Rozpocznij dodając dostawców AI, z którymi współpracujesz, aby ocenić ich ryzyka zgodności",
+    "vendorsUsed": "dostawców wykorzystanych",
+    "filterByRisk": "Filtruj wg ryzyka",
+    "allRiskLevels": "Wszystkie Poziomy Ryzyka",
+    "notAssessed": "Nieoceniony",
+    "systems": "systemy",
+    "noLinkedSystems": "Brak powiązanych systemów",
+    "never": "Nigdy",
+    "highRiskWarning": "Wykryto Dostawców Wysokiego Ryzyka",
+    "highRiskWarningDescription": "Niektórzy dostawcy wymagają natychmiastowej uwagi z powodu wysokich ryzyk zgodności",
+    "upgradeRequired": "Wymagany Upgrade",
+    "upgradeMessage": "Oceny ryzyka dostawców są dostępne od planu Starter",
+    "upgradeToPlan": "Zobacz Cennik",
+    "limitReached": "Osiągnięto Limit Dostawców",
+    "limitReachedMessage": "Osiągnąłeś limit swojego planu. Ulepsz plan, aby dodać więcej dostawców.",
+    "backToVendors": "Powrót do Dostawców",
+    "vendorNotFound": "Dostawca nie znaleziony",
+    "deleteConfirm": "Czy na pewno chcesz usunąć tego dostawcę? Tej akcji nie można cofnąć.",
+    "reassess": "Oceń ponownie",
+    "riskAssessment": "Ocena Ryzyka",
+    "runAssessment": "Uruchom Ocenę",
+    "riskScore": "Wynik Ryzyka",
+    "notAssessedYet": "Dostawca Jeszcze Nieoceniony",
+    "notAssessedDescription": "Uruchom ocenę, aby obliczyć wynik ryzyka zgodności dostawcy",
+    "riskFactors": "Czynniki Ryzyka",
+    "aiRecommendations": "Rekomendacje Oparte na AI",
+    "summary": "Podsumowanie",
+    "recommendations": "Rekomendacje",
+    "complianceRisks": "Ryzyka Zgodności",
+    "vendorDetails": "Szczegóły Dostawcy",
+    "linkedSystems": "Powiązane Systemy AI",
+    "selectSystemToLink": "Wybierz system do powiązania...",
+    "link": "Powiąż",
+    "unlinkConfirm": "Czy na pewno chcesz odłączyć ten system od dostawcy?",
+    "compliance": "zgodność",
+    "documented": "Udokumentowany",
+    "notDocumented": "Nieudokumentowany",
+    "unknown": "Nieznany",
+    "createdAt": "Utworzony",
+    "updatedAt": "Zaktualizowany",
+    "lastAssessed": "Ostatnia ocena",
+    "selectKnownVendor": "Wybierz Znanego Dostawcę",
+    "selectKnownVendorDescription": "Wybierz z naszej wstępnie skonfigurowanej bazy danych dostawców z już wypełnionymi danymi zgodności",
+    "addCustomVendor": "Dodaj Własnego Dostawcę",
+    "addCustomVendorDescription": "Ręcznie wprowadź dane dostawcy i informacje o zgodności",
+    "disclaimer": "Oceny ryzyka dostawców mają charakter wyłącznie informacyjny i nie stanowią porady prawnej.",
+    "riskLevels": {
+      "critical": "Krytyczny",
+      "high": "Wysoki",
+      "medium": "Średni",
+      "low": "Niski"
+    },
+    "riskDescriptions": {
+      "critical": "Ryzyko krytyczne — dostawca może nie być odpowiedni dla regulowanych systemów AI",
+      "high": "Ryzyko wysokie — istotne obawy dotyczące zgodności wymagają natychmiastowego działania",
+      "medium": "Ryzyko średnie — niektóre luki w zgodności wymagają uwagi",
+      "low": "Ryzyko niskie — dostawca spełnia większość wymagań zgodności"
+    },
+    "vendorTypes": {
+      "api_provider": "Dostawca API",
+      "saas_with_ai": "SaaS z AI",
+      "model_host": "Host Modeli"
+    },
+    "factors": {
+      "DATA_USED_FOR_TRAINING": "Dane Używane do Treningu",
+      "US_PROCESSING_EU_MARKET": "Przetwarzanie Danych w USA dla Rynku UE",
+      "UNKNOWN_DATA_LOCATION": "Nieznana Lokalizacja Danych",
+      "NO_DPA": "Brak Umowy Powierzenia Przetwarzania Danych",
+      "NO_MODEL_CARD": "Brak Model Card",
+      "NO_AI_ACT_SUPPORT": "Brak Wsparcia Aktu o AI",
+      "UNKNOWN_AI_ACT_SUPPORT": "Nieznane Wsparcie Aktu o AI",
+      "UNDOCUMENTED_SUBPROCESSORS": "Nieudokumentowani Podwykonawcy"
+    },
+    "table": {
+      "name": "Nazwa",
+      "type": "Typ",
+      "riskScore": "Wynik Ryzyka",
+      "riskLevel": "Poziom Ryzyka",
+      "linkedSystems": "Powiązane Systemy",
+      "lastAssessed": "Ostatnia Ocena"
+    },
+    "form": {
+      "name": "Nazwa Dostawcy",
+      "namePlaceholder": "np. Acme AI",
+      "vendorType": "Typ Dostawcy",
+      "dataUsedForTraining": "Czy dostawca używa danych klientów do treningu modelu?",
+      "dataProcessingLocation": "Gdzie przetwarzane są dane?",
+      "selectLocation": "Wybierz lokalizację przetwarzania danych",
+      "hasDPA": "Umowa Powierzenia Przetwarzania Danych (DPA) zawarta?",
+      "hasModelCard": "Model card lub dokumentacja dostępna?",
+      "supportsAIAct": "Czy dostawca wspiera zgodność z Aktem o AI UE?",
+      "usesSubprocessors": "Czy dostawca korzysta z podwykonawców?",
+      "subprocessorsDocumented": "Czy podwykonawcy są udokumentowani?",
+      "submit": "Utwórz i Oceń Dostawcę",
+      "submitting": "Tworzenie i Ocenianie...",
+      "selectVendor": "Wybierz Dostawcę",
+      "selectVendorPlaceholder": "Wybierz dostawcę...",
+      "selectVendorHelp": "Dane dostawcy zostaną wstępnie wypełnione na podstawie naszej bazy danych zgodności",
+      "unknown": "Nieznany",
+      "locations": {
+        "eu": "Unia Europejska",
+        "us": "Stany Zjednoczone",
+        "global": "Globalnie / Wiele Regionów"
+      }
+    },
+    "validation": {
+      "nameRequired": "Nazwa dostawcy jest wymagana"
+    }
+  },
+  "intelligence": {
+    "title": "Aktualizacje Regulacyjne",
+    "description": "Bądź na bieżąco ze zmianami w regulacjach AI wpływającymi na Twoją zgodność",
+    "loadingDescription": "Ładowanie aktualizacji regulacyjnych...",
+    "refresh": "Odśwież",
+    "markAllRead": "Oznacz Wszystko jako Przeczytane",
+    "markRead": "Oznacz jako Przeczytane",
+    "viewSource": "Zobacz Źródło",
+    "unread": "Nieprzeczytane",
+    "personalizedTab": "Dla Twoich Rynków",
+    "allTab": "Wszystkie Regulacje",
+    "filterByRegulation": "Regulacja",
+    "filterByType": "Typ",
+    "allRegulations": "Wszystkie Regulacje",
+    "allTypes": "Wszystkie Typy",
+    "impact": "Wpływ",
+    "upgradeToPlan": "Ulepsz plan, aby zobaczyć pełną treść",
+    "upgradeLink": "Zobacz Plany",
+    "noUpdates": "Brak Dostępnych Aktualizacji",
+    "noUpdatesDescription": "Wróć później po nowe aktualizacje regulacyjne"
+  },
+  "admin": {
+    "updates": {
+      "title": "Zarządzaj Aktualizacjami Regulacyjnymi",
+      "description": "Twórz i zarządzaj aktualizacjami regulacyjnymi wyświetlanymi w kanale informacyjnym",
+      "createNew": "Utwórz Aktualizację",
+      "cancel": "Anuluj",
+      "deleteConfirm": "Czy na pewno chcesz usunąć tę aktualizację regulacyjną? Tej akcji nie można cofnąć.",
+      "noUpdates": "Brak aktualizacji regulacyjnych",
+      "accessDenied": "Brak Dostępu",
+      "adminOnly": "Ta strona jest dostępna tylko dla administratorów",
+      "form": {
+        "title": "Tytuł",
+        "summary": "Podsumowanie",
+        "source": "URL Źródła",
+        "regulation": "Regulacja",
+        "changeType": "Typ Zmiany",
+        "impact": "Wpływ (opcjonalnie)",
+        "affectedArticles": "Dotknięte Artykuły (opcjonalnie)",
+        "publishedAt": "Data Publikacji",
+        "selectRegulation": "Wybierz regulację",
+        "selectType": "Wybierz typ",
+        "articlesHint": "Oddzielone przecinkami, np. Artykuł 9, Artykuł 11",
+        "create": "Utwórz Aktualizację",
+        "update": "Zaktualizuj"
+      },
+      "table": {
+        "title": "Tytuł",
+        "regulation": "Regulacja",
+        "type": "Typ",
+        "publishedAt": "Opublikowano",
+        "actions": "Akcje"
+      }
+    }
+  },
+  "settings": {
+    "billing": {
+      "title": "Rozliczenia i Subskrypcja",
+      "description": "Zarządzaj swoją subskrypcją i informacjami rozliczeniowymi",
+      "currentPlan": "Aktualny Plan",
+      "planDescription": "Twój aktualny plan subskrypcji",
+      "free": "Darmowy",
+      "paid": "Płatny",
+      "freeDescription": "Korzystasz z darmowego planu z ograniczonymi funkcjami",
+      "paidDescription": "Korzystasz z planu {plan}",
+      "upgrade": {
+        "title": "Ulepsz Swój Plan",
+        "description": "Uzyskaj dostęp do większej liczby funkcji i wyższych limitów",
+        "cta": "Zobacz Cennik"
+      },
+      "changePlan": "Zmień Plan",
+      "manageBilling": "Zarządzaj Rozliczeniami",
+      "usage": {
+        "title": "Wykorzystanie",
+        "description": "Aktualne wykorzystanie Twojego planu",
+        "systems": "Systemy AI",
+        "vendors": "Dostawcy",
+        "teamMembers": "Członkowie Zespołu",
+        "unlimited": "Bez limitu",
+        "bonus": "bonus",
+        "systemsLimitReached": "Osiągnąłeś limit systemów AI. Ulepsz plan, aby dodać więcej.",
+        "vendorsLimitReached": "Osiągnąłeś limit dostawców. Ulepsz plan, aby dodać więcej."
+      },
+      "features": {
+        "title": "Funkcje Planu",
+        "description": "Funkcje zawarte w Twoim aktualnym planie",
+        "regulations": "Regulacje",
+        "documents": "Generowanie Dokumentów",
+        "evidenceVault": "Skarbiec Dowodów",
+        "biasTesting": "Testy Stronniczości",
+        "cicdAPI": "API CI/CD",
+        "alerts": "Alerty Regulacyjne",
+        "enabled": "Włączone",
+        "disabled": "Niedostępne",
+        "unlimited": "Bez limitu",
+        "month": "miesiąc",
+        "realtime": "W czasie rzeczywistym",
+        "weekly": "Tygodniowe podsumowanie",
+        "allRegulations": "Wszystkie regulacje",
+        "regulationCount": "regulacje"
+      }
+    }
+  },
+  "badge": {
+    "title": "Badge Zgodności",
+    "description": "Wyświetl swój status zgodności AI na swojej stronie internetowej",
+    "loading": "Ładowanie informacji o badge...",
+    "errorLoading": "Nie udało się załadować informacji o badge",
+    "currentLevel": "Aktualny Poziom Badge",
+    "currentLevelDescription": "Twój poziom badge jest określany przez Twój plan i postęp zgodności",
+    "lastVerified": "Ostatnia weryfikacja",
+    "preview": "Podgląd Badge",
+    "badgeDisabled": "Twój badge zgodności jest obecnie wyłączony. Włącz go, aby wyświetlić na swojej stronie.",
+    "noBadgeYet": "Nie masz jeszcze badge. Sklasyfikuj co najmniej jeden system AI, aby uzyskać badge Akt o AI Świadomy.",
+    "earnNextLevel": "Zdobądź Następny Poziom",
+    "earnNextLevelDescription": "Spełnij te wymagania, aby ulepszyć swój badge",
+    "embedCode": "Kod Osadzania",
+    "embedCodeDescription": "Skopiuj poniższy kod, aby dodać badge zgodności do swojej strony",
+    "copyHTML": "Kopiuj HTML",
+    "copyMarkdown": "Kopiuj Markdown",
+    "copy": "Kopiuj",
+    "verificationLink": "Link Weryfikacyjny",
+    "verificationLinkDescription": "Każdy może zweryfikować Twój badge zgodności odwiedzając ten link",
+    "viewVerificationPage": "Zobacz Stronę Weryfikacji",
+    "levels": {
+      "title": "Poziomy Badge",
+      "description": "Istnieją trzy poziomy badge oparte na Twoim postępie zgodności",
+      "aware": {
+        "title": "Akt o AI — Świadomy",
+        "description": "Sklasyfikowałeś co najmniej jeden system AI i rozumiesz swoje obowiązki wynikające z Aktu o AI UE. Dostępny w planie darmowym."
+      },
+      "ready": {
+        "title": "Akt o AI — Gotowy",
+        "description": "Aktywnie pracujesz nad zgodnością z lukami w trakcie realizacji. Wymaga planu Starter lub wyższego."
+      },
+      "compliant": {
+        "title": "Akt o AI — Zgodny",
+        "description": "Osiągnąłeś wynik zgodności 80% lub wyższy. Wymaga planu Professional lub wyższego."
+      }
+    },
+    "verification": {
+      "title": "Weryfikacja Zgodności",
+      "subtitle": "Ta strona weryfikuje badge zgodności organizacji",
+      "metaDescription": "Zweryfikuj status zgodności AI organizacji {orgName}",
+      "notFound": "Organizacja Nie Znaleziona",
+      "organization": "Organizacja",
+      "badgeLevel": "Poziom Badge",
+      "lastVerified": "Ostatnia Weryfikacja",
+      "whatThisMeans": "Co To Oznacza",
+      "verifiedBy": "Zweryfikowane przez Complyance",
+      "learnMore": "Dowiedz się więcej o Complyance",
+      "badgeInactiveTitle": "Badge Nieaktywny",
+      "badgeInactiveDescription": "Ten badge zgodności nie jest już aktywny. Organizacja mogła anulować subskrypcję lub wyłączyć badge.",
+      "levelDescription": {
+        "none": "Ta organizacja nie posiada obecnie aktywnego badge zgodności.",
+        "aware": "Ta organizacja sklasyfikowała swoje systemy AI i jest świadoma swoich obowiązków wynikających z Aktu o AI UE.",
+        "ready": "Ta organizacja aktywnie pracuje nad zgodnością z Aktem o AI UE z lukami w trakcie realizacji.",
+        "compliant": "Ta organizacja osiągnęła wysoki poziom zgodności z Aktem o AI UE z wynikiem 80% lub wyższym."
+      }
+    }
+  },
+  "evidence": {
+    "title": "Skarbiec Dowodów",
+    "description": "Przechowuj i zarządzaj dowodami zgodności z weryfikacją integralności",
+    "loadingDescription": "Ładowanie dowodów...",
+    "addEvidence": "Dodaj Dowód",
+    "addEvidenceSubtitle": "Prześlij dokumenty, zrzuty ekranu, logi lub wyniki testów jako dowody zgodności",
+    "addFirstEvidence": "Dodaj Swój Pierwszy Dowód",
+    "noEvidence": "Brak Dowodów",
+    "noEvidenceDescription": "Rozpocznij budowanie ścieżki audytu dodając dowody zgodności",
+    "backToEvidence": "Powrót do Dowodów",
+    "evidenceNotFound": "Dowód nie znaleziony",
+    "deleteConfirm": "Czy na pewno chcesz usunąć ten dowód? Tej akcji nie można cofnąć.",
+    "editEvidence": "Edytuj Dowód",
+    "details": "Szczegóły Dowodu",
+    "noLinkedSystem": "Brak powiązanego systemu",
+    "noArticle": "Brak powiązanego artykułu",
+    "createdAt": "Utworzono",
+    "upgradeRequired": "Wymagany Upgrade",
+    "upgradeMessage": "Skarbiec Dowodów jest dostępny od planu Professional. Przechowuj dokumenty, zrzuty ekranu, logi i wyniki testów z weryfikacją integralności SHA-256.",
+    "upgradeToPlan": "Zobacz Cennik",
+    "whyEvidenceVault": "Dlaczego Skarbiec Dowodów?",
+    "whyEvidenceVaultDescription": "Audyty zgodności wymagają udokumentowanych dowodów. Skarbiec Dowodów zapewnia bezpieczne, gotowe do audytu repozytorium wszystkich artefaktów zgodności.",
+    "benefit1": "Skróty integralności SHA-256 potwierdzają autentyczność dokumentów",
+    "benefit2": "Powiąż dowody z konkretnymi systemami AI i artykułami",
+    "benefit3": "Eksportuj kompletne pakiety audytowe dla regulatorów",
+    "benefit4": "Zaszyfrowane przechowywanie spełnia wymagania RODO",
+    "filterBySystem": "Filtruj wg systemu",
+    "filterByArticle": "Filtruj wg artykułu",
+    "filterByType": "Filtruj wg typu",
+    "allSystems": "Wszystkie Systemy",
+    "allArticles": "Wszystkie Artykuły",
+    "allTypes": "Wszystkie Typy",
+    "types": {
+      "document": "Dokument",
+      "screenshot": "Zrzut Ekranu",
+      "log": "Log",
+      "testResult": "Wynik Testu"
+    },
+    "table": {
+      "title": "Tytuł",
+      "type": "Typ",
+      "linkedSystem": "Powiązany System",
+      "article": "Artykuł",
+      "integrityHash": "Skrót Integralności",
+      "createdAt": "Utworzono"
+    },
+    "form": {
+      "title": "Tytuł",
+      "titlePlaceholder": "np. Raport Oceny Ryzyka Q1 2026",
+      "description": "Opis",
+      "descriptionPlaceholder": "Dodaj kontekst tego dowodu...",
+      "evidenceType": "Typ Dowodu",
+      "linkedSystem": "Powiązany System AI",
+      "selectSystem": "Wybierz system...",
+      "noLinkedSystem": "Brak powiązanego systemu",
+      "linkedSystemHelp": "Opcjonalnie powiąż ten dowód z konkretnym systemem AI",
+      "relatedArticle": "Powiązany Artykuł",
+      "selectArticle": "Wybierz artykuł...",
+      "noArticle": "Brak powiązanego artykułu",
+      "relatedArticleHelp": "Który artykuł Aktu o AI UE ten dowód wspiera?",
+      "fileUpload": "Przesyłanie Pliku",
+      "dropzone": "Upuść pliki tutaj lub kliknij, aby przesłać",
+      "dropzoneSupported": "Obsługiwane: PDF, PNG, JPG, CSV, TXT, DOCX (maks. 10MB)",
+      "browseFiles": "Przeglądaj Pliki",
+      "submit": "Dodaj Dowód",
+      "submitting": "Dodawanie..."
+    },
+    "validation": {
+      "titleRequired": "Tytuł jest wymagany",
+      "typeRequired": "Wybierz typ dowodu",
+      "fileTooLarge": "Rozmiar pliku przekracza limit 10MB",
+      "invalidFileType": "Typ pliku niedozwolony"
+    },
+    "integrity": {
+      "title": "Weryfikacja Integralności",
+      "hash": "Skrót SHA-256",
+      "verify": "Zweryfikuj Integralność",
+      "verified": "Integralność Zweryfikowana",
+      "verifiedDescription": "Ten dowód nie został zmodyfikowany od momentu przesłania",
+      "tampered": "Integralność Naruszona",
+      "tamperedDescription": "Uwaga: ten dowód mógł zostać zmodyfikowany. Aktualny skrót nie odpowiada zapisanemu skrótowi.",
+      "noHash": "Brak Dostępnego Skrótu",
+      "noHashDescription": "Weryfikacja integralności nie jest dostępna dla tego dowodu",
+      "clickToVerify": "Kliknij Zweryfikuj Integralność, aby sprawdzić, czy ten dowód został zmodyfikowany"
+    },
+    "file": {
+      "title": "Załączony Plik",
+      "download": "Pobierz",
+      "noFile": "Brak pliku załączonego do tego dowodu",
+      "storedSecurely": "Bezpiecznie przechowywany z szyfrowaniem",
+      "imagePreviewPlaceholder": "Podgląd obrazu będzie dostępny po skonfigurowaniu przechowywania plików"
+    },
+    "disclaimer": "Dowody przechowywane w Skarbcu Dowodów są szyfrowane w stanie spoczynku i zawierają weryfikację integralności. Pomaga to wykazać zgodność przed audytorami, ale nie gwarantuje zatwierdzenia regulacyjnego."
+  },
+  "freeClassifier": {
+    "title": "Darmowy Klasyfikator Ryzyka Aktu o AI",
+    "subtitle": "Sprawdź, czy Twój system AI jest wysokiego ryzyka zgodnie z Aktem o AI UE w 2 minuty. Za darmo, bez rejestracji.",
+    "badge": "Darmowe Narzędzie — Bez Rejestracji",
+    "stepIndicator": "Krok {current} z {total}",
+    "analyzing": "Analizowanie...",
+    "classify": "Sklasyfikuj Mój System AI",
+    "steps": {
+      "step1": {
+        "title": "Opisz Swój System AI",
+        "description": "Powiedz nam, co robi Twój system AI"
+      },
+      "step2": {
+        "title": "Jak Jest Używany?",
+        "description": "Jaki jest jego obszar zastosowania i zdolność decyzyjna?"
+      },
+      "step3": {
+        "title": "Dane i Użytkownicy",
+        "description": "Jakie dane przetwarza i kto go używa?"
+      },
+      "step4": {
+        "title": "Rynki Docelowe",
+        "description": "Gdzie sprzedajesz lub wdrażasz ten system AI?"
+      },
+      "results": {
+        "title": "Twoja Klasyfikacja Ryzyka",
+        "description": "Na podstawie Twoich odpowiedzi, oto Twój poziom ryzyka zgodnie z Aktem o AI UE"
+      }
+    },
+    "fields": {
+      "description": "Opis Systemu",
+      "descriptionPlaceholder": "Opisz, co robi Twój system AI. Na przykład: Chatbot oparty na AI, który pomaga klientom znaleźć produkty i odpowiada na często zadawane pytania dotyczące zamówień i zwrotów.",
+      "descriptionHelp": "Bądź konkretny w kwestii funkcjonalności, danych wejściowych, wyjściowych i sposobu użycia w Twojej firmie.",
+      "aiType": "Typ Technologii AI",
+      "domain": "Domena / Przypadek Użycia",
+      "domainPlaceholder": "Wybierz domenę...",
+      "makesDecisions": "Czy ten system podejmuje lub wpływa na decyzje dotyczące osób?",
+      "dataProcessing": "Przetwarzanie Danych",
+      "processesPersonalData": "Przetwarza dane osobowe",
+      "processesPersonalDataHelp": "Imiona, e-maile, zdjęcia, dane behawioralne lub inne informacje umożliwiające identyfikację osób",
+      "profilesUsers": "Tworzy profile lub prognozy dotyczące osób",
+      "profilesUsersHelp": "Wyniki, rankingi, prognozy behawioralne, oceny osobowości lub segmentacja użytkowników",
+      "endUsers": "Kogo dotyczy ten system?",
+      "markets": "Rynki Docelowe",
+      "marketsHelp": "Wybierz wszystkie regiony, w których ten system AI jest używany lub oferowany"
+    },
+    "aiTypes": {
+      "ML_MODEL": "Model Uczenia Maszynowego",
+      "LLM": "Duży Model Językowy (GPT, Claude itp.)",
+      "RULE_BASED": "System Oparty na Regułach",
+      "HYBRID": "Hybrydowy (ML + Reguły)"
+    },
+    "domains": {
+      "HR": "Zasoby Ludzkie / Rekrutacja",
+      "FINANCE": "Finanse i Bankowość",
+      "HEALTHCARE": "Opieka Zdrowotna",
+      "EDUCATION": "Edukacja i Szkolenia",
+      "SECURITY": "Bezpieczeństwo i Biometria",
+      "CHATBOT": "Chatbot / Wirtualny Asystent",
+      "RECOMMENDATIONS": "Rekomendacje / Personalizacja",
+      "OTHER": "Inne"
+    },
+    "decisions": {
+      "YES": {
+        "label": "Tak — Podejmuje autonomiczne decyzje",
+        "description": "System podejmuje decyzje bezpośrednio wpływające na osoby (zatwierdzenia, odrzucenia, rankingi)"
+      },
+      "NO": {
+        "label": "Nie — Tylko informacyjny",
+        "description": "System dostarcza informacje, ale ludzie podejmują wszystkie ostateczne decyzje"
+      },
+      "PARTIAL": {
+        "label": "Częściowo — Wpływa na decyzje",
+        "description": "System dostarcza rekomendacje lub wyniki wpływające na decyzje ludzkie"
+      }
+    },
+    "endUsers": {
+      "B2C": "Konsumenci (ogół społeczeństwa)",
+      "B2B": "Klienci biznesowi",
+      "EMPLOYEES": "Twoi pracownicy",
+      "GOVERNMENT": "Rząd / Sektor publiczny"
+    },
+    "markets": {
+      "EU": "Unia Europejska (UE)",
+      "US": "Stany Zjednoczone",
+      "UAE": "Zjednoczone Emiraty Arabskie",
+      "OTHER": "Inne regiony"
+    },
+    "noEUWarning": "Akt o AI UE dotyczy głównie systemów wdrożonych na rynku UE lub mających na niego wpływ. Klasyfikacja jest podana w celach informacyjnych.",
+    "results": {
+      "annexCategory": "Kategoria Załącznika III: {category}",
+      "why": "Dlaczego ta klasyfikacja?",
+      "obligations": "Twoje Obowiązki Zgodności",
+      "disclaimer": "Ta klasyfikacja ma charakter wyłącznie informacyjny i nie stanowi porady prawnej."
+    },
+    "cta": {
+      "title": "Uzyskaj Pełny Raport Zgodności",
+      "description": "Zarejestruj się za darmo, aby otrzymać szczegółową dokumentację zgodności, analizę luk i plan działania krok po kroku.",
+      "features": {
+        "reports": "Generuj raporty klasyfikacji PDF",
+        "gapAnalysis": "Szczegółowa analiza luk z działaniami",
+        "vendorRisk": "Oceny ryzyka dostawców AI",
+        "badge": "Wyświetl badge zgodności na swojej stronie"
+      },
+      "button": "Uzyskaj Pełny Raport — Za Darmo",
+      "startOver": "Sklasyfikuj Inny System",
+      "noCard": "Karta kredytowa nie jest wymagana. Dostępny plan darmowy."
+    },
+    "seo": {
+      "title": "Darmowy Klasyfikator Ryzyka Aktu o AI | Sprawdź Poziom Ryzyka Swojego Systemu AI",
+      "description": "Sprawdź, czy Twój system AI jest wysokiego ryzyka zgodnie z Aktem o AI UE w 2 minuty. Darmowe narzędzie online, bez rejestracji.",
+      "whatIsTitle": "Czym jest Klasyfikator Ryzyka Aktu o AI UE?",
+      "whatIsContent": "Akt o AI UE klasyfikuje systemy AI na cztery poziomy ryzyka: Niedopuszczalny, Wysoki, Ograniczony i Minimalny. Systemy AI wysokiego ryzyka muszą spełnić rygorystyczne wymagania przed 2 sierpnia 2026.",
+      "benefits": {
+        "free": {
+          "title": "100% Za Darmo",
+          "description": "Bez rejestracji, bez płatności. Natychmiastowe wyniki."
+        },
+        "fast": {
+          "title": "Ocena w 2 Minuty",
+          "description": "Odpowiedz na proste pytania i otrzymaj swoją klasyfikację."
+        },
+        "accurate": {
+          "title": "Oparte na Akcie o AI UE",
+          "description": "Klasyfikacja zgodna z oficjalnymi kryteriami Załącznika III."
+        }
+      }
+    },
+    "validation": {
+      "descriptionMin": "Opis musi mieć co najmniej 20 znaków",
+      "aiTypeRequired": "Wybierz typ technologii AI",
+      "domainRequired": "Wybierz domenę",
+      "decisionsRequired": "Wybierz opcję dotyczącą podejmowania decyzji",
+      "endUsersRequired": "Wybierz co najmniej jedną grupę dotkniętą",
+      "marketsRequired": "Wybierz co najmniej jeden rynek"
+    },
+    "errors": {
+      "rateLimited": "Zbyt wiele żądań. Spróbuj ponownie za godzinę.",
+      "generic": "Wystąpił błąd. Spróbuj ponownie."
+    }
   }
 }

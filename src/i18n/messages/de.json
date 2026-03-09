@@ -25,7 +25,8 @@
     "intelligence": "Regulatorische Updates",
     "settings": "Einstellungen",
     "team": "Team",
-    "referrals": "Empfehlungen"
+    "referrals": "Empfehlungen",
+    "badge": "Compliance-Badge"
   },
   "auth": {
     "login": "Anmelden",
@@ -62,7 +63,9 @@
     "noCriticalGapsDescription": "Alle kritischen Compliance-Anforderungen werden bearbeitet",
     "noSystems": "Noch keine KI-Systeme",
     "noSystemsDescription": "Beginnen Sie, indem Sie Ihr erstes KI-System hinzufügen, um die Compliance zu verfolgen",
-    "addFirstSystem": "Erstes System hinzufügen"
+    "addFirstSystem": "Erstes System hinzufügen",
+    "latestUpdates": "Neueste regulatorische Updates",
+    "viewAll": "Alle anzeigen"
   },
   "classification": {
     "unacceptable": "Unannehmbares Risiko",
@@ -143,11 +146,10 @@
       "extractedQuotes": "Nachweise",
       "step1": {
         "title": "Grundinformationen",
-        "description": "Beschreiben Sie Ihr KI-System",
+        "description": "Beschreibung",
         "name": "Systemname",
         "namePlaceholder": "z. B. CV-Screening-Tool",
         "nameDescription": "Ein klarer, beschreibender Name für Ihr KI-System",
-        "description": "Beschreibung",
         "descriptionPlaceholder": "Erklären Sie, was dieses KI-System tut und wie es verwendet wird...",
         "descriptionDescription": "Beschreiben Sie Zweck, Funktionalität und Hauptmerkmale",
         "aiTypeLabel": "KI-Typ",
@@ -266,39 +268,6 @@
     "noDocumentsDescription": "Erstellen Sie Compliance-Berichte, um Ihr KI-System zu dokumentieren",
     "selectType": "Dokumenttyp auswählen",
     "classificationReport": "Klassifizierungsbericht",
-    "roadmap": "Compliance-Fahrplan",
-    "annexIV": "Technische Dokumentation Anhang IV",
-    "upgradeRequired": "Upgrade erforderlich",
-    "upgradeMessage": "Die Dokumenterstellung ist ab dem Starter-Plan verfügbar",
-    "classificationRequired": "Klassifizierung erforderlich",
-    "classificationRequiredMessage": "Das System muss vor der Erstellung dieses Dokuments klassifiziert werden",
-    "deleteConfirm": "Sind Sie sicher, dass Sie dieses Dokument löschen möchten?",
-    "report": {
-      "title": "Risikoklassifizierungsbericht des KI-Systems",
-      "subtitle": "Risikoklassifizierung nach der KI-Verordnung der EU",
-      "systemInfo": "Systeminformationen",
-      "systemName": "Systemname",
-      "description": "Beschreibung",
-      "aiType": "KI-Typ",
-      "domain": "Bereich",
-      "markets": "Zielmärkte",
-      "classification": "Klassifizierungsergebnisse",
-      "riskLevel": "Risikostufe",
-      "annexCategory": "Anhang-III-Kategorie",
-      "reasoning": "Klassifizierungsbegründung",
-      "exceptionAnalysis": "Ausnahmeanalyse (Artikel 6.3)",
-      "exceptionApplies": "Ausnahme anwendbar",
-      "exceptionReason": "Ausnahmebegründung",
-      "obligations": "Compliance-Zusammenfassung",
-      "obligationCount": "Gesamtpflichten",
-      "gapCount": "Offene Lücken",
-      "providerDeployer": "Ihre Rolle",
-      "transparency": "Transparenzpflichten (Artikel 50)",
-      "disclaimer": "Dieses Dokument wurde von Complyance.io erstellt und stellt keine Rechtsberatung dar. Konsultieren Sie qualifizierte Rechtsanwälte für die Compliance-Überprüfung.",
-      "generatedFor": "Erstellt für",
-      "noException": "Keine Ausnahme nach Artikel 6.3 anwendbar. Dieses System unterliegt den vollständigen Anforderungen für Hochrisiko-KI-Systeme.",
-      "notClassified": "Noch nicht klassifiziert"
-    },
     "roadmap": {
       "title": "Compliance-Fahrplan",
       "subtitle": "Schritt-für-Schritt-Plan zur Einhaltung der KI-Verordnung der EU",
@@ -369,6 +338,37 @@
       "cybersecurity": "Cybersicherheitsmaßnahmen",
       "monitoring": "Überwachungsplan",
       "placeholder": "AUSZUFÜLLEN"
+    },
+    "upgradeRequired": "Upgrade erforderlich",
+    "upgradeMessage": "Die Dokumenterstellung ist ab dem Starter-Plan verfügbar",
+    "classificationRequired": "Klassifizierung erforderlich",
+    "classificationRequiredMessage": "Das System muss vor der Erstellung dieses Dokuments klassifiziert werden",
+    "deleteConfirm": "Sind Sie sicher, dass Sie dieses Dokument löschen möchten?",
+    "report": {
+      "title": "Risikoklassifizierungsbericht des KI-Systems",
+      "subtitle": "Risikoklassifizierung nach der KI-Verordnung der EU",
+      "systemInfo": "Systeminformationen",
+      "systemName": "Systemname",
+      "description": "Beschreibung",
+      "aiType": "KI-Typ",
+      "domain": "Bereich",
+      "markets": "Zielmärkte",
+      "classification": "Klassifizierungsergebnisse",
+      "riskLevel": "Risikostufe",
+      "annexCategory": "Anhang-III-Kategorie",
+      "reasoning": "Klassifizierungsbegründung",
+      "exceptionAnalysis": "Ausnahmeanalyse (Artikel 6.3)",
+      "exceptionApplies": "Ausnahme anwendbar",
+      "exceptionReason": "Ausnahmebegründung",
+      "obligations": "Compliance-Zusammenfassung",
+      "obligationCount": "Gesamtpflichten",
+      "gapCount": "Offene Lücken",
+      "providerDeployer": "Ihre Rolle",
+      "transparency": "Transparenzpflichten (Artikel 50)",
+      "disclaimer": "Dieses Dokument wurde von Complyance.io erstellt und stellt keine Rechtsberatung dar. Konsultieren Sie qualifizierte Rechtsanwälte für die Compliance-Überprüfung.",
+      "generatedFor": "Erstellt für",
+      "noException": "Keine Ausnahme nach Artikel 6.3 anwendbar. Dieses System unterliegt den vollständigen Anforderungen für Hochrisiko-KI-Systeme.",
+      "notClassified": "Noch nicht klassifiziert"
     }
   },
   "blog": {
@@ -452,7 +452,7 @@
       "title": "Häufig gestellte Fragen",
       "q1": {
         "question": "Was ist im kostenlosen Plan enthalten?",
-        "answer": "Der kostenlose Plan ermöglicht die Klassifizierung von 1 KI-System, die Anzeige von Compliance-Lücken und den Erhalt eines „KI-Verordnung — Sensibilisiert"-Badges. Er ist perfekt, um die Anforderungen der KI-Verordnung unverbindlich zu erkunden."
+        "answer": "Der kostenlose Plan ermöglicht die Klassifizierung von 1 KI-System, die Anzeige von Compliance-Lücken und den Erhalt eines „KI-Verordnung — Sensibilisiert\"-Badges. Er ist perfekt, um die Anforderungen der KI-Verordnung unverbindlich zu erkunden."
       },
       "q2": {
         "question": "Kann ich meinen Plan später ändern?",
@@ -808,5 +808,518 @@
     },
     "copyright": "© 2026 Complyance. Alle Rechte vorbehalten.",
     "disclaimer": "Keine Rechtsberatung. Klassifizierungen dienen ausschließlich Informationszwecken."
+  },
+  "vendors": {
+    "title": "Anbieter-Risikobewertung",
+    "description": "Bewerten und verwalten Sie die Compliance-Risiken von KI-Anbietern",
+    "loadingDescription": "Anbieter werden geladen...",
+    "addVendor": "Anbieter hinzufügen",
+    "addVendorSubtitle": "Wählen Sie, wie Sie einen neuen Anbieter hinzufügen möchten",
+    "addFirstVendor": "Ersten Anbieter hinzufügen",
+    "noVendors": "Noch keine Anbieter",
+    "noVendorsDescription": "Beginnen Sie, indem Sie KI-Anbieter hinzufügen, mit denen Sie arbeiten, um deren Compliance-Risiken zu bewerten",
+    "vendorsUsed": "Anbieter verwendet",
+    "filterByRisk": "Nach Risiko filtern",
+    "allRiskLevels": "Alle Risikostufen",
+    "notAssessed": "Nicht bewertet",
+    "systems": "Systeme",
+    "noLinkedSystems": "Keine verknüpften Systeme",
+    "never": "Nie",
+    "highRiskWarning": "Hochrisiko-Anbieter erkannt",
+    "highRiskWarningDescription": "Einige Anbieter erfordern aufgrund hoher Compliance-Risiken sofortige Aufmerksamkeit",
+    "upgradeRequired": "Upgrade erforderlich",
+    "upgradeMessage": "Anbieter-Risikobewertungen sind ab dem Starter-Plan verfügbar",
+    "upgradeToPlan": "Preise ansehen",
+    "limitReached": "Anbieterlimit erreicht",
+    "limitReachedMessage": "Sie haben Ihr Planlimit erreicht. Upgraden Sie, um weitere Anbieter hinzuzufügen.",
+    "backToVendors": "Zurück zu den Anbietern",
+    "vendorNotFound": "Anbieter nicht gefunden",
+    "deleteConfirm": "Sind Sie sicher, dass Sie diesen Anbieter löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "reassess": "Neu bewerten",
+    "riskAssessment": "Risikobewertung",
+    "runAssessment": "Bewertung durchführen",
+    "riskScore": "Risiko-Score",
+    "notAssessedYet": "Anbieter noch nicht bewertet",
+    "notAssessedDescription": "Führen Sie eine Bewertung durch, um den Compliance-Risiko-Score des Anbieters zu berechnen",
+    "riskFactors": "Risikofaktoren",
+    "aiRecommendations": "KI-gestützte Empfehlungen",
+    "summary": "Zusammenfassung",
+    "recommendations": "Empfehlungen",
+    "complianceRisks": "Compliance-Risiken",
+    "vendorDetails": "Anbieterdetails",
+    "linkedSystems": "Verknüpfte KI-Systeme",
+    "selectSystemToLink": "System zum Verknüpfen auswählen...",
+    "link": "Verknüpfen",
+    "unlinkConfirm": "Sind Sie sicher, dass Sie dieses System vom Anbieter trennen möchten?",
+    "compliance": "Compliance",
+    "documented": "Dokumentiert",
+    "notDocumented": "Nicht dokumentiert",
+    "unknown": "Unbekannt",
+    "createdAt": "Erstellt",
+    "updatedAt": "Aktualisiert",
+    "lastAssessed": "Zuletzt bewertet",
+    "selectKnownVendor": "Bekannten Anbieter auswählen",
+    "selectKnownVendorDescription": "Wählen Sie aus unserer vorkonfigurierten Anbieterdatenbank mit bereits ausgefüllten Compliance-Daten",
+    "addCustomVendor": "Benutzerdefinierten Anbieter hinzufügen",
+    "addCustomVendorDescription": "Geben Sie Anbieterdetails und Compliance-Informationen manuell ein",
+    "disclaimer": "Anbieter-Risikobewertungen dienen ausschließlich Informationszwecken und stellen keine Rechtsberatung dar.",
+    "riskLevels": {
+      "critical": "Kritisch",
+      "high": "Hoch",
+      "medium": "Mittel",
+      "low": "Niedrig"
+    },
+    "riskDescriptions": {
+      "critical": "Kritisches Risiko — Anbieter möglicherweise nicht für regulierte KI-Systeme geeignet",
+      "high": "Hohes Risiko — erhebliche Compliance-Bedenken erfordern sofortiges Handeln",
+      "medium": "Mittleres Risiko — einige Compliance-Lücken erfordern Aufmerksamkeit",
+      "low": "Niedriges Risiko — Anbieter erfüllt die meisten Compliance-Anforderungen"
+    },
+    "vendorTypes": {
+      "api_provider": "API-Anbieter",
+      "saas_with_ai": "SaaS mit KI",
+      "model_host": "Modell-Host"
+    },
+    "factors": {
+      "DATA_USED_FOR_TRAINING": "Daten für Training verwendet",
+      "US_PROCESSING_EU_MARKET": "US-Datenverarbeitung für EU-Markt",
+      "UNKNOWN_DATA_LOCATION": "Unbekannter Datenstandort",
+      "NO_DPA": "Kein Auftragsverarbeitungsvertrag",
+      "NO_MODEL_CARD": "Keine Model Card",
+      "NO_AI_ACT_SUPPORT": "Keine KI-Verordnung-Unterstützung",
+      "UNKNOWN_AI_ACT_SUPPORT": "KI-Verordnung-Unterstützung unbekannt",
+      "UNDOCUMENTED_SUBPROCESSORS": "Nicht dokumentierte Unterauftragsverarbeiter"
+    },
+    "table": {
+      "name": "Name",
+      "type": "Typ",
+      "riskScore": "Risiko-Score",
+      "riskLevel": "Risikostufe",
+      "linkedSystems": "Verknüpfte Systeme",
+      "lastAssessed": "Zuletzt bewertet"
+    },
+    "form": {
+      "name": "Anbietername",
+      "namePlaceholder": "z. B. Acme AI",
+      "vendorType": "Anbietertyp",
+      "dataUsedForTraining": "Verwendet der Anbieter Kundendaten für das Modelltraining?",
+      "dataProcessingLocation": "Wo werden die Daten verarbeitet?",
+      "selectLocation": "Datenverarbeitungsstandort auswählen",
+      "hasDPA": "Auftragsverarbeitungsvertrag (AVV) vorhanden?",
+      "hasModelCard": "Model Card oder Dokumentation verfügbar?",
+      "supportsAIAct": "Unterstützt der Anbieter die KI-Verordnung-Compliance?",
+      "usesSubprocessors": "Setzt der Anbieter Unterauftragsverarbeiter ein?",
+      "subprocessorsDocumented": "Sind die Unterauftragsverarbeiter dokumentiert?",
+      "submit": "Anbieter erstellen und bewerten",
+      "submitting": "Wird erstellt und bewertet...",
+      "selectVendor": "Anbieter auswählen",
+      "selectVendorPlaceholder": "Anbieter wählen...",
+      "selectVendorHelp": "Anbieterdetails werden aus unserer Compliance-Datenbank vorausgefüllt",
+      "unknown": "Unbekannt",
+      "locations": {
+        "eu": "Europäische Union",
+        "us": "Vereinigte Staaten",
+        "global": "Global / Mehrere Regionen"
+      }
+    },
+    "validation": {
+      "nameRequired": "Anbietername ist erforderlich"
+    }
+  },
+  "intelligence": {
+    "title": "Regulatorische Updates",
+    "description": "Bleiben Sie über Änderungen der KI-Regulierung informiert, die Ihre Compliance betreffen",
+    "loadingDescription": "Regulatorische Updates werden geladen...",
+    "refresh": "Aktualisieren",
+    "markAllRead": "Alle als gelesen markieren",
+    "markRead": "Als gelesen markieren",
+    "viewSource": "Quelle anzeigen",
+    "unread": "Ungelesen",
+    "personalizedTab": "Für Ihre Märkte",
+    "allTab": "Alle Vorschriften",
+    "filterByRegulation": "Vorschrift",
+    "filterByType": "Typ",
+    "allRegulations": "Alle Vorschriften",
+    "allTypes": "Alle Typen",
+    "impact": "Auswirkungen",
+    "upgradeToPlan": "Upgrade für vollständigen Inhalt",
+    "upgradeLink": "Pläne ansehen",
+    "noUpdates": "Keine Updates verfügbar",
+    "noUpdatesDescription": "Schauen Sie später für neue regulatorische Updates vorbei"
+  },
+  "admin": {
+    "updates": {
+      "title": "Regulatorische Updates verwalten",
+      "description": "Erstellen und verwalten Sie regulatorische Updates, die im Nachrichtenfeed erscheinen",
+      "createNew": "Update erstellen",
+      "cancel": "Abbrechen",
+      "deleteConfirm": "Sind Sie sicher, dass Sie dieses regulatorische Update löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "noUpdates": "Noch keine regulatorischen Updates",
+      "accessDenied": "Zugriff verweigert",
+      "adminOnly": "Diese Seite ist nur für Administratoren zugänglich",
+      "form": {
+        "title": "Titel",
+        "summary": "Zusammenfassung",
+        "source": "Quell-URL",
+        "regulation": "Vorschrift",
+        "changeType": "Änderungstyp",
+        "impact": "Auswirkungen (optional)",
+        "affectedArticles": "Betroffene Artikel (optional)",
+        "publishedAt": "Veröffentlichungsdatum",
+        "selectRegulation": "Vorschrift auswählen",
+        "selectType": "Typ auswählen",
+        "articlesHint": "Kommagetrennt, z. B. Artikel 9, Artikel 11",
+        "create": "Update erstellen",
+        "update": "Aktualisieren"
+      },
+      "table": {
+        "title": "Titel",
+        "regulation": "Vorschrift",
+        "type": "Typ",
+        "publishedAt": "Veröffentlicht",
+        "actions": "Aktionen"
+      }
+    }
+  },
+  "settings": {
+    "billing": {
+      "title": "Abrechnung und Abonnement",
+      "description": "Verwalten Sie Ihr Abonnement und Ihre Rechnungsinformationen",
+      "currentPlan": "Aktueller Plan",
+      "planDescription": "Ihr aktueller Abonnementplan",
+      "free": "Kostenlos",
+      "paid": "Bezahlt",
+      "freeDescription": "Sie nutzen den kostenlosen Plan mit eingeschränkten Funktionen",
+      "paidDescription": "Sie nutzen den Plan {plan}",
+      "upgrade": {
+        "title": "Plan upgraden",
+        "description": "Erhalten Sie Zugang zu mehr Funktionen und höheren Limits",
+        "cta": "Preise ansehen"
+      },
+      "changePlan": "Plan wechseln",
+      "manageBilling": "Abrechnung verwalten",
+      "usage": {
+        "title": "Nutzung",
+        "description": "Aktuelle Nutzung Ihres Plans",
+        "systems": "KI-Systeme",
+        "vendors": "Anbieter",
+        "teamMembers": "Teammitglieder",
+        "unlimited": "Unbegrenzt",
+        "bonus": "Bonus",
+        "systemsLimitReached": "Sie haben Ihr KI-Systeme-Limit erreicht. Upgraden Sie, um weitere hinzuzufügen.",
+        "vendorsLimitReached": "Sie haben Ihr Anbieterlimit erreicht. Upgraden Sie, um weitere hinzuzufügen."
+      },
+      "features": {
+        "title": "Planfunktionen",
+        "description": "In Ihrem aktuellen Plan enthaltene Funktionen",
+        "regulations": "Vorschriften",
+        "documents": "Dokumentenerstellung",
+        "evidenceVault": "Nachweisspeicher",
+        "biasTesting": "Bias-Tests",
+        "cicdAPI": "CI/CD-API",
+        "alerts": "Regulatorische Warnungen",
+        "enabled": "Aktiviert",
+        "disabled": "Nicht enthalten",
+        "unlimited": "Unbegrenzt",
+        "month": "Monat",
+        "realtime": "Echtzeit",
+        "weekly": "Wöchentliche Zusammenfassung",
+        "allRegulations": "Alle Vorschriften",
+        "regulationCount": "Vorschriften"
+      }
+    }
+  },
+  "badge": {
+    "title": "Compliance-Badge",
+    "description": "Zeigen Sie Ihren KI-Compliance-Status auf Ihrer Website an",
+    "loading": "Badge-Informationen werden geladen...",
+    "errorLoading": "Fehler beim Laden der Badge-Informationen",
+    "currentLevel": "Aktuelle Badge-Stufe",
+    "currentLevelDescription": "Ihre Badge-Stufe wird durch Ihren Plan und Compliance-Fortschritt bestimmt",
+    "lastVerified": "Zuletzt verifiziert",
+    "preview": "Badge-Vorschau",
+    "badgeDisabled": "Ihr Compliance-Badge ist derzeit deaktiviert. Aktivieren Sie es, um es auf Ihrer Website anzuzeigen.",
+    "noBadgeYet": "Sie haben noch kein Badge. Klassifizieren Sie mindestens ein KI-System, um das Badge KI-Verordnung Sensibilisiert zu erhalten.",
+    "earnNextLevel": "Nächste Stufe erreichen",
+    "earnNextLevelDescription": "Erfüllen Sie diese Anforderungen, um Ihr Badge aufzuwerten",
+    "embedCode": "Einbettungscode",
+    "embedCodeDescription": "Kopieren Sie den folgenden Code, um Ihr Compliance-Badge auf Ihrer Website hinzuzufügen",
+    "copyHTML": "HTML kopieren",
+    "copyMarkdown": "Markdown kopieren",
+    "copy": "Kopieren",
+    "verificationLink": "Verifizierungslink",
+    "verificationLinkDescription": "Jeder kann Ihr Compliance-Badge über diesen Link verifizieren",
+    "viewVerificationPage": "Verifizierungsseite anzeigen",
+    "levels": {
+      "title": "Badge-Stufen",
+      "description": "Es gibt drei Badge-Stufen basierend auf Ihrem Compliance-Fortschritt",
+      "aware": {
+        "title": "KI-Verordnung — Sensibilisiert",
+        "description": "Sie haben mindestens ein KI-System klassifiziert und verstehen Ihre Pflichten nach der KI-Verordnung. Verfügbar im kostenlosen Plan."
+      },
+      "ready": {
+        "title": "KI-Verordnung — Bereit",
+        "description": "Sie arbeiten aktiv an der Compliance mit laufenden Lückenbearbeitungen. Erfordert den Starter-Plan oder höher."
+      },
+      "compliant": {
+        "title": "KI-Verordnung — Konform",
+        "description": "Sie haben einen Compliance-Score von 80 % oder höher erreicht. Erfordert den Professional-Plan oder höher."
+      }
+    },
+    "verification": {
+      "title": "Compliance-Verifizierung",
+      "subtitle": "Diese Seite verifiziert das Compliance-Badge einer Organisation",
+      "metaDescription": "Überprüfen Sie den KI-Compliance-Status von {orgName}",
+      "notFound": "Organisation nicht gefunden",
+      "organization": "Organisation",
+      "badgeLevel": "Badge-Stufe",
+      "lastVerified": "Zuletzt verifiziert",
+      "whatThisMeans": "Was das bedeutet",
+      "verifiedBy": "Verifiziert von Complyance",
+      "learnMore": "Mehr über Complyance erfahren",
+      "badgeInactiveTitle": "Badge inaktiv",
+      "badgeInactiveDescription": "Dieses Compliance-Badge ist nicht mehr aktiv. Die Organisation hat möglicherweise ihr Abonnement gekündigt oder ihr Badge deaktiviert.",
+      "levelDescription": {
+        "none": "Diese Organisation verfügt derzeit nicht über ein aktives Compliance-Badge.",
+        "aware": "Diese Organisation hat ihre KI-Systeme klassifiziert und kennt ihre Pflichten nach der KI-Verordnung.",
+        "ready": "Diese Organisation arbeitet aktiv an der KI-Verordnung-Compliance mit laufenden Lückenbearbeitungen.",
+        "compliant": "Diese Organisation hat ein hohes Niveau der KI-Verordnung-Compliance mit einem Score von 80 % oder höher erreicht."
+      }
+    }
+  },
+  "evidence": {
+    "title": "Nachweisspeicher",
+    "description": "Speichern und verwalten Sie Compliance-Nachweise mit Integritätsprüfung",
+    "loadingDescription": "Nachweise werden geladen...",
+    "addEvidence": "Nachweis hinzufügen",
+    "addEvidenceSubtitle": "Laden Sie Dokumente, Screenshots, Protokolle oder Testergebnisse als Compliance-Nachweise hoch",
+    "addFirstEvidence": "Ersten Nachweis hinzufügen",
+    "noEvidence": "Noch keine Nachweise",
+    "noEvidenceDescription": "Beginnen Sie mit dem Aufbau Ihres Audit-Trails durch Hinzufügen von Compliance-Nachweisen",
+    "backToEvidence": "Zurück zu den Nachweisen",
+    "evidenceNotFound": "Nachweis nicht gefunden",
+    "deleteConfirm": "Sind Sie sicher, dass Sie diesen Nachweis löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "editEvidence": "Nachweis bearbeiten",
+    "details": "Nachweisdetails",
+    "noLinkedSystem": "Kein verknüpftes System",
+    "noArticle": "Kein zugehöriger Artikel",
+    "createdAt": "Erstellt",
+    "upgradeRequired": "Upgrade erforderlich",
+    "upgradeMessage": "Der Nachweisspeicher ist ab dem Professional-Plan verfügbar. Speichern Sie Dokumente, Screenshots, Protokolle und Testergebnisse mit SHA-256-Integritätsprüfung.",
+    "upgradeToPlan": "Preise ansehen",
+    "whyEvidenceVault": "Warum Nachweisspeicher?",
+    "whyEvidenceVaultDescription": "Compliance-Audits erfordern dokumentierte Nachweise. Der Nachweisspeicher bietet ein sicheres, auditbereites Repository für alle Ihre Compliance-Artefakte.",
+    "benefit1": "SHA-256-Integritäts-Hashes beweisen die Dokumentenauthentizität",
+    "benefit2": "Verknüpfen Sie Nachweise mit bestimmten KI-Systemen und Artikeln",
+    "benefit3": "Exportieren Sie vollständige Audit-Pakete für Regulierungsbehörden",
+    "benefit4": "Verschlüsselte Speicherung erfüllt DSGVO-Anforderungen",
+    "filterBySystem": "Nach System filtern",
+    "filterByArticle": "Nach Artikel filtern",
+    "filterByType": "Nach Typ filtern",
+    "allSystems": "Alle Systeme",
+    "allArticles": "Alle Artikel",
+    "allTypes": "Alle Typen",
+    "types": {
+      "document": "Dokument",
+      "screenshot": "Screenshot",
+      "log": "Protokoll",
+      "testResult": "Testergebnis"
+    },
+    "table": {
+      "title": "Titel",
+      "type": "Typ",
+      "linkedSystem": "Verknüpftes System",
+      "article": "Artikel",
+      "integrityHash": "Integritäts-Hash",
+      "createdAt": "Erstellt am"
+    },
+    "form": {
+      "title": "Titel",
+      "titlePlaceholder": "z. B. Risikobewertungsbericht Q1 2026",
+      "description": "Beschreibung",
+      "descriptionPlaceholder": "Fügen Sie Kontext zu diesem Nachweis hinzu...",
+      "evidenceType": "Nachweistyp",
+      "linkedSystem": "Verknüpftes KI-System",
+      "selectSystem": "System auswählen...",
+      "noLinkedSystem": "Kein verknüpftes System",
+      "linkedSystemHelp": "Verknüpfen Sie diesen Nachweis optional mit einem bestimmten KI-System",
+      "relatedArticle": "Zugehöriger Artikel",
+      "selectArticle": "Artikel auswählen...",
+      "noArticle": "Kein zugehöriger Artikel",
+      "relatedArticleHelp": "Welchen Artikel der KI-Verordnung unterstützt dieser Nachweis?",
+      "fileUpload": "Datei-Upload",
+      "dropzone": "Dateien hier ablegen oder klicken zum Hochladen",
+      "dropzoneSupported": "Unterstützt: PDF, PNG, JPG, CSV, TXT, DOCX (max. 10 MB)",
+      "browseFiles": "Dateien durchsuchen",
+      "submit": "Nachweis hinzufügen",
+      "submitting": "Wird hinzugefügt..."
+    },
+    "validation": {
+      "titleRequired": "Titel ist erforderlich",
+      "typeRequired": "Bitte wählen Sie einen Nachweistyp",
+      "fileTooLarge": "Dateigröße überschreitet 10-MB-Limit",
+      "invalidFileType": "Dateityp nicht erlaubt"
+    },
+    "integrity": {
+      "title": "Integritätsprüfung",
+      "hash": "SHA-256-Hash",
+      "verify": "Integrität prüfen",
+      "verified": "Integrität bestätigt",
+      "verifiedDescription": "Dieser Nachweis wurde seit dem Hochladen nicht verändert",
+      "tampered": "Integrität beeinträchtigt",
+      "tamperedDescription": "Warnung: Dieser Nachweis wurde möglicherweise verändert. Der aktuelle Hash stimmt nicht mit dem gespeicherten Hash überein.",
+      "noHash": "Kein Hash verfügbar",
+      "noHashDescription": "Die Integritätsprüfung ist für diesen Nachweis nicht verfügbar",
+      "clickToVerify": "Klicken Sie auf Integrität prüfen, um zu überprüfen, ob dieser Nachweis verändert wurde"
+    },
+    "file": {
+      "title": "Angehängte Datei",
+      "download": "Herunterladen",
+      "noFile": "Keine Datei an diesen Nachweis angehängt",
+      "storedSecurely": "Sicher verschlüsselt gespeichert",
+      "imagePreviewPlaceholder": "Bildvorschau wird verfügbar, wenn der Dateispeicher konfiguriert ist"
+    },
+    "disclaimer": "Nachweise im Nachweisspeicher sind verschlüsselt gespeichert und enthalten Integritätsprüfung. Dies hilft, die Compliance gegenüber Auditoren nachzuweisen, garantiert aber keine behördliche Genehmigung."
+  },
+  "freeClassifier": {
+    "title": "Kostenloser KI-Verordnung-Risikoklassifizierer",
+    "subtitle": "Finden Sie in 2 Minuten heraus, ob Ihr KI-System nach der KI-Verordnung als Hochrisiko eingestuft wird. Kostenlos, ohne Registrierung.",
+    "badge": "Kostenloses Tool — Ohne Registrierung",
+    "stepIndicator": "Schritt {current} von {total}",
+    "analyzing": "Wird analysiert...",
+    "classify": "Mein KI-System klassifizieren",
+    "steps": {
+      "step1": {
+        "title": "Beschreiben Sie Ihr KI-System",
+        "description": "Sagen Sie uns, was Ihr KI-System tut"
+      },
+      "step2": {
+        "title": "Wie wird es verwendet?",
+        "description": "Welcher Bereich und welche Entscheidungsfähigkeit hat es?"
+      },
+      "step3": {
+        "title": "Daten und Nutzer",
+        "description": "Welche Daten verarbeitet es und wer nutzt es?"
+      },
+      "step4": {
+        "title": "Zielmärkte",
+        "description": "Wo verkaufen oder betreiben Sie dieses KI-System?"
+      },
+      "results": {
+        "title": "Ihre Risikoklassifizierung",
+        "description": "Basierend auf Ihren Antworten ist hier Ihre Risikostufe nach der KI-Verordnung"
+      }
+    },
+    "fields": {
+      "description": "Systembeschreibung",
+      "descriptionPlaceholder": "Beschreiben Sie, was Ihr KI-System tut. Zum Beispiel: Ein KI-gestützter Chatbot, der Kunden bei der Produktsuche hilft und häufig gestellte Fragen zu Bestellungen und Rücksendungen beantwortet.",
+      "descriptionHelp": "Seien Sie konkret bezüglich Funktionalität, Eingaben, Ausgaben und Nutzung in Ihrem Unternehmen.",
+      "aiType": "KI-Technologietyp",
+      "domain": "Bereich / Anwendungsfall",
+      "domainPlaceholder": "Bereich auswählen...",
+      "makesDecisions": "Trifft oder beeinflusst dieses System Entscheidungen über Personen?",
+      "dataProcessing": "Datenverarbeitung",
+      "processesPersonalData": "Verarbeitet personenbezogene Daten",
+      "processesPersonalDataHelp": "Namen, E-Mails, Fotos, Verhaltensdaten oder Informationen zur Identifizierung von Personen",
+      "profilesUsers": "Erstellt Profile oder Vorhersagen über Personen",
+      "profilesUsersHelp": "Scores, Rankings, Verhaltensvorhersagen, Persönlichkeitsbewertungen oder Nutzersegmentierung",
+      "endUsers": "Wer ist von diesem System betroffen?",
+      "markets": "Zielmärkte",
+      "marketsHelp": "Wählen Sie alle Regionen, in denen dieses KI-System verwendet oder angeboten wird"
+    },
+    "aiTypes": {
+      "ML_MODEL": "Machine-Learning-Modell",
+      "LLM": "Großes Sprachmodell (GPT, Claude usw.)",
+      "RULE_BASED": "Regelbasiertes System",
+      "HYBRID": "Hybrid (ML + Regeln)"
+    },
+    "domains": {
+      "HR": "Personalwesen / Rekrutierung",
+      "FINANCE": "Finanzen und Bankwesen",
+      "HEALTHCARE": "Gesundheitswesen",
+      "EDUCATION": "Bildung und Ausbildung",
+      "SECURITY": "Sicherheit und Biometrie",
+      "CHATBOT": "Chatbot / Virtueller Assistent",
+      "RECOMMENDATIONS": "Empfehlungen / Personalisierung",
+      "OTHER": "Sonstiges"
+    },
+    "decisions": {
+      "YES": {
+        "label": "Ja — Trifft autonome Entscheidungen",
+        "description": "Das System trifft Entscheidungen, die Personen direkt betreffen (Genehmigungen, Ablehnungen, Rankings)"
+      },
+      "NO": {
+        "label": "Nein — Nur informativ",
+        "description": "Das System liefert Informationen, aber Menschen treffen alle endgültigen Entscheidungen"
+      },
+      "PARTIAL": {
+        "label": "Teilweise — Beeinflusst Entscheidungen",
+        "description": "Das System liefert Empfehlungen oder Scores, die menschliche Entscheidungen beeinflussen"
+      }
+    },
+    "endUsers": {
+      "B2C": "Verbraucher (Allgemeinheit)",
+      "B2B": "Geschäftskunden",
+      "EMPLOYEES": "Eigene Mitarbeiter",
+      "GOVERNMENT": "Regierung / Öffentlicher Sektor"
+    },
+    "markets": {
+      "EU": "Europäische Union (EU)",
+      "US": "Vereinigte Staaten",
+      "UAE": "Vereinigte Arabische Emirate",
+      "OTHER": "Andere Regionen"
+    },
+    "noEUWarning": "Die KI-Verordnung gilt hauptsächlich für Systeme, die im EU-Markt eingesetzt werden oder diesen betreffen. Die Klassifizierung wird als Referenz bereitgestellt.",
+    "results": {
+      "annexCategory": "Anhang-III-Kategorie: {category}",
+      "why": "Warum diese Klassifizierung?",
+      "obligations": "Ihre Compliance-Pflichten",
+      "disclaimer": "Diese Klassifizierung dient ausschließlich Informationszwecken und stellt keine Rechtsberatung dar."
+    },
+    "cta": {
+      "title": "Erhalten Sie Ihren vollständigen Compliance-Bericht",
+      "description": "Registrieren Sie sich kostenlos für detaillierte Compliance-Dokumentation, Lückenanalyse und eine schrittweise Roadmap.",
+      "features": {
+        "reports": "PDF-Klassifizierungsberichte erstellen",
+        "gapAnalysis": "Detaillierte Lückenanalyse mit Maßnahmen",
+        "vendorRisk": "KI-Anbieter-Risikobewertungen",
+        "badge": "Compliance-Badge auf Ihrer Website anzeigen"
+      },
+      "button": "Vollständigen Bericht erhalten — Kostenlos",
+      "startOver": "Anderes System klassifizieren",
+      "noCard": "Keine Kreditkarte erforderlich. Kostenloser Plan verfügbar."
+    },
+    "seo": {
+      "title": "Kostenloser KI-Verordnung-Risikoklassifizierer | KI-System-Risikostufe prüfen",
+      "description": "Finden Sie in 2 Minuten heraus, ob Ihr KI-System nach der KI-Verordnung als Hochrisiko eingestuft wird. Kostenloses Online-Tool, ohne Registrierung.",
+      "whatIsTitle": "Was ist der KI-Verordnung-Risikoklassifizierer?",
+      "whatIsContent": "Die KI-Verordnung klassifiziert KI-Systeme in vier Risikostufen: Unannehmbar, Hoch, Begrenzt und Minimal. Hochrisiko-KI-Systeme müssen vor dem 2. August 2026 strenge Anforderungen erfüllen.",
+      "benefits": {
+        "free": {
+          "title": "100 % kostenlos",
+          "description": "Ohne Registrierung, ohne Zahlung. Sofortige Ergebnisse."
+        },
+        "fast": {
+          "title": "2-Minuten-Bewertung",
+          "description": "Beantworten Sie einfache Fragen und erhalten Sie Ihre Klassifizierung."
+        },
+        "accurate": {
+          "title": "Basierend auf der KI-Verordnung",
+          "description": "Klassifizierung folgt den offiziellen Anhang-III-Kriterien."
+        }
+      }
+    },
+    "validation": {
+      "descriptionMin": "Beschreibung muss mindestens 20 Zeichen haben",
+      "aiTypeRequired": "Bitte wählen Sie einen KI-Technologietyp",
+      "domainRequired": "Bitte wählen Sie einen Bereich",
+      "decisionsRequired": "Bitte wählen Sie eine Entscheidungsoption",
+      "endUsersRequired": "Bitte wählen Sie mindestens eine betroffene Gruppe",
+      "marketsRequired": "Bitte wählen Sie mindestens einen Markt"
+    },
+    "errors": {
+      "rateLimited": "Zu viele Anfragen. Bitte versuchen Sie es in einer Stunde erneut.",
+      "generic": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    }
   }
 }
