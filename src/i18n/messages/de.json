@@ -1319,7 +1319,94 @@
     },
     "errors": {
       "rateLimited": "Zu viele Anfragen. Bitte versuchen Sie es in einer Stunde erneut.",
-      "generic": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+      "generic": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "notFound": {
+        "title": "Seite nicht gefunden",
+        "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+        "goToDashboard": "Zum Dashboard",
+        "goToHome": "Zur Startseite",
+        "helpText": "Wenn Sie glauben, dass dies ein Fehler ist, bitte",
+        "contactSupport": "kontaktieren Sie den Support"
+      },
+      "global": {
+        "title": "Etwas ist schiefgelaufen",
+        "description": "Wir sind auf einen unerwarteten Fehler gestoßen. Bitte versuchen Sie es erneut.",
+        "tryAgain": "Erneut versuchen",
+        "goToDashboard": "Zum Dashboard",
+        "helpText": "Wenn dieses Problem weiterhin besteht, bitte",
+        "contactSupport": "kontaktieren Sie den Support"
+      },
+      "dashboard": {
+        "title": "Fehler beim Laden des Dashboards",
+        "description": "Wir konnten diese Seite aufgrund eines unerwarteten Fehlers nicht laden.",
+        "suggestions": {
+          "title": "Versuchen Sie diese Schritte:",
+          "refresh": "Seite aktualisieren",
+          "checkConnection": "Überprüfen Sie Ihre Internetverbindung",
+          "tryLater": "Versuchen Sie es in ein paar Minuten erneut"
+        },
+        "tryAgain": "Erneut versuchen",
+        "backToDashboard": "Zurück zum Dashboard",
+        "persistentIssue": "Wenn das Problem weiterhin besteht,",
+        "contactSupport": "kontaktieren Sie den Support"
+      }
+    },
+    "notifications": {
+      "system": {
+        "created": "KI-System erfolgreich erstellt",
+        "updated": "KI-System aktualisiert",
+        "deleted": "KI-System gelöscht",
+        "classifying": "KI-System wird klassifiziert...",
+        "classified": "Klassifizierung abgeschlossen",
+        "classificationFailed": "Klassifizierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+        "uploadingDocuments": "Dokumente werden analysiert...",
+        "documentsAnalyzed": "Dokumente erfolgreich analysiert",
+        "documentAnalysisFailed": "Dokumentenanalyse fehlgeschlagen"
+      },
+      "gap": {
+        "updated": "Compliance-Lücke aktualisiert",
+        "statusChanged": "Lückenstatus aktualisiert auf {status}",
+        "deleted": "Lücke entfernt"
+      },
+      "document": {
+        "generating": "Dokument wird generiert...",
+        "generated": "Dokument erfolgreich generiert",
+        "generationFailed": "Dokumentengenerierung fehlgeschlagen",
+        "downloaded": "Dokument heruntergeladen"
+      },
+      "vendor": {
+        "created": "Anbieter erfolgreich hinzugefügt",
+        "updated": "Anbieter aktualisiert",
+        "deleted": "Anbieter entfernt",
+        "assessing": "Anbieterrisiko wird bewertet...",
+        "assessed": "Anbieterbewertung abgeschlossen",
+        "assessmentFailed": "Anbieterbewertung fehlgeschlagen"
+      },
+      "evidence": {
+        "uploaded": "Nachweis erfolgreich hochgeladen",
+        "updated": "Nachweis aktualisiert",
+        "deleted": "Nachweis gelöscht",
+        "uploadFailed": "Hochladen des Nachweises fehlgeschlagen"
+      },
+      "settings": {
+        "saved": "Einstellungen erfolgreich gespeichert",
+        "saveFailed": "Speichern der Einstellungen fehlgeschlagen"
+      },
+      "planLimit": {
+        "reached": "Planlimit erreicht",
+        "systemLimit": "Sie haben Ihr KI-System-Limit erreicht. Upgraden Sie, um mehr hinzuzufügen.",
+        "vendorLimit": "Sie haben Ihr Anbieterbewertungs-Limit erreicht. Upgraden Sie, um mehr hinzuzufügen.",
+        "documentLimit": "Sie haben Ihr Dokumentengenerierungs-Limit erreicht. Upgraden Sie, um fortzufahren.",
+        "upgradeNow": "Jetzt upgraden"
+      },
+      "errors": {
+        "network": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+        "timeout": "Zeitüberschreitung der Anfrage. Bitte versuchen Sie es erneut.",
+        "unauthorized": "Sie haben keine Berechtigung, diese Aktion auszuführen.",
+        "notFound": "Die angeforderte Ressource wurde nicht gefunden.",
+        "validation": "Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut.",
+        "server": "Serverfehler. Bitte versuchen Sie es später erneut."
+      }
     }
   }
 }

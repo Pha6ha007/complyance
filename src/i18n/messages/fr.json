@@ -1319,7 +1319,94 @@
     },
     "errors": {
       "rateLimited": "Trop de requêtes. Veuillez réessayer dans une heure.",
-      "generic": "Une erreur est survenue. Veuillez réessayer."
+      "generic": "Une erreur est survenue. Veuillez réessayer.",
+      "notFound": {
+        "title": "Page introuvable",
+        "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+        "goToDashboard": "Aller au tableau de bord",
+        "goToHome": "Aller à l'accueil",
+        "helpText": "Si vous pensez qu'il s'agit d'une erreur, veuillez",
+        "contactSupport": "contacter le support"
+      },
+      "global": {
+        "title": "Une erreur s'est produite",
+        "description": "Nous avons rencontré une erreur inattendue. Veuillez réessayer.",
+        "tryAgain": "Réessayer",
+        "goToDashboard": "Aller au tableau de bord",
+        "helpText": "Si ce problème persiste, veuillez",
+        "contactSupport": "contacter le support"
+      },
+      "dashboard": {
+        "title": "Erreur de chargement du tableau de bord",
+        "description": "Nous n'avons pas pu charger cette page en raison d'une erreur inattendue.",
+        "suggestions": {
+          "title": "Essayez ces étapes :",
+          "refresh": "Rafraîchir la page",
+          "checkConnection": "Vérifier votre connexion Internet",
+          "tryLater": "Réessayer dans quelques minutes"
+        },
+        "tryAgain": "Réessayer",
+        "backToDashboard": "Retour au tableau de bord",
+        "persistentIssue": "Si le problème persiste,",
+        "contactSupport": "contactez le support"
+      }
+    },
+    "notifications": {
+      "system": {
+        "created": "Système IA créé avec succès",
+        "updated": "Système IA mis à jour",
+        "deleted": "Système IA supprimé",
+        "classifying": "Classification du système IA...",
+        "classified": "Classification terminée",
+        "classificationFailed": "Échec de la classification. Veuillez réessayer.",
+        "uploadingDocuments": "Analyse des documents...",
+        "documentsAnalyzed": "Documents analysés avec succès",
+        "documentAnalysisFailed": "Échec de l'analyse des documents"
+      },
+      "gap": {
+        "updated": "Écart de conformité mis à jour",
+        "statusChanged": "Statut de l'écart mis à jour à {status}",
+        "deleted": "Écart supprimé"
+      },
+      "document": {
+        "generating": "Génération du document...",
+        "generated": "Document généré avec succès",
+        "generationFailed": "Échec de la génération du document",
+        "downloaded": "Document téléchargé"
+      },
+      "vendor": {
+        "created": "Fournisseur ajouté avec succès",
+        "updated": "Fournisseur mis à jour",
+        "deleted": "Fournisseur supprimé",
+        "assessing": "Évaluation du risque fournisseur...",
+        "assessed": "Évaluation du fournisseur terminée",
+        "assessmentFailed": "Échec de l'évaluation du fournisseur"
+      },
+      "evidence": {
+        "uploaded": "Preuve téléchargée avec succès",
+        "updated": "Preuve mise à jour",
+        "deleted": "Preuve supprimée",
+        "uploadFailed": "Échec du téléchargement de la preuve"
+      },
+      "settings": {
+        "saved": "Paramètres enregistrés avec succès",
+        "saveFailed": "Échec de l'enregistrement des paramètres"
+      },
+      "planLimit": {
+        "reached": "Limite du plan atteinte",
+        "systemLimit": "Vous avez atteint votre limite de systèmes IA. Mettez à niveau pour en ajouter plus.",
+        "vendorLimit": "Vous avez atteint votre limite d'évaluations de fournisseurs. Mettez à niveau pour en ajouter plus.",
+        "documentLimit": "Vous avez atteint votre limite de génération de documents. Mettez à niveau pour continuer.",
+        "upgradeNow": "Mettre à niveau maintenant"
+      },
+      "errors": {
+        "network": "Erreur réseau. Veuillez vérifier votre connexion.",
+        "timeout": "Délai d'attente dépassé. Veuillez réessayer.",
+        "unauthorized": "Vous n'avez pas la permission d'effectuer cette action.",
+        "notFound": "La ressource demandée est introuvable.",
+        "validation": "Veuillez vérifier votre saisie et réessayer.",
+        "server": "Erreur serveur. Veuillez réessayer plus tard."
+      }
     }
   }
 }

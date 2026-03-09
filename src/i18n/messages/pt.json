@@ -1319,7 +1319,94 @@
     },
     "errors": {
       "rateLimited": "Muitas solicitações. Tente novamente em uma hora.",
-      "generic": "Ocorreu um erro. Tente novamente."
+      "generic": "Ocorreu um erro. Tente novamente.",
+      "notFound": {
+        "title": "Página não encontrada",
+        "description": "A página que você está procurando não existe ou foi movida.",
+        "goToDashboard": "Ir para o Dashboard",
+        "goToHome": "Ir para a Página Inicial",
+        "helpText": "Se você acredita que isso é um erro, por favor",
+        "contactSupport": "entre em contato com o suporte"
+      },
+      "global": {
+        "title": "Algo deu errado",
+        "description": "Encontramos um erro inesperado. Por favor, tente novamente.",
+        "tryAgain": "Tentar Novamente",
+        "goToDashboard": "Ir para o Dashboard",
+        "helpText": "Se este problema persistir, por favor",
+        "contactSupport": "entre em contato com o suporte"
+      },
+      "dashboard": {
+        "title": "Erro ao carregar o dashboard",
+        "description": "Não foi possível carregar esta página devido a um erro inesperado.",
+        "suggestions": {
+          "title": "Tente estas etapas:",
+          "refresh": "Atualizar a página",
+          "checkConnection": "Verifique sua conexão com a internet",
+          "tryLater": "Tente novamente em alguns minutos"
+        },
+        "tryAgain": "Tentar Novamente",
+        "backToDashboard": "Voltar ao Dashboard",
+        "persistentIssue": "Se o problema persistir,",
+        "contactSupport": "entre em contato com o suporte"
+      }
+    },
+    "notifications": {
+      "system": {
+        "created": "Sistema de IA criado com sucesso",
+        "updated": "Sistema de IA atualizado",
+        "deleted": "Sistema de IA excluído",
+        "classifying": "Classificando sistema de IA...",
+        "classified": "Classificação concluída",
+        "classificationFailed": "Classificação falhou. Por favor, tente novamente.",
+        "uploadingDocuments": "Analisando documentos...",
+        "documentsAnalyzed": "Documentos analisados com sucesso",
+        "documentAnalysisFailed": "Análise de documentos falhou"
+      },
+      "gap": {
+        "updated": "Lacuna de conformidade atualizada",
+        "statusChanged": "Status da lacuna atualizado para {status}",
+        "deleted": "Lacuna removida"
+      },
+      "document": {
+        "generating": "Gerando documento...",
+        "generated": "Documento gerado com sucesso",
+        "generationFailed": "Geração de documento falhou",
+        "downloaded": "Documento baixado"
+      },
+      "vendor": {
+        "created": "Fornecedor adicionado com sucesso",
+        "updated": "Fornecedor atualizado",
+        "deleted": "Fornecedor removido",
+        "assessing": "Avaliando risco do fornecedor...",
+        "assessed": "Avaliação do fornecedor concluída",
+        "assessmentFailed": "Avaliação do fornecedor falhou"
+      },
+      "evidence": {
+        "uploaded": "Evidência carregada com sucesso",
+        "updated": "Evidência atualizada",
+        "deleted": "Evidência excluída",
+        "uploadFailed": "Falha ao carregar evidência"
+      },
+      "settings": {
+        "saved": "Configurações salvas com sucesso",
+        "saveFailed": "Falha ao salvar configurações"
+      },
+      "planLimit": {
+        "reached": "Limite do plano atingido",
+        "systemLimit": "Você atingiu o limite de sistemas de IA. Atualize para adicionar mais.",
+        "vendorLimit": "Você atingiu o limite de avaliações de fornecedores. Atualize para adicionar mais.",
+        "documentLimit": "Você atingiu o limite de geração de documentos. Atualize para continuar.",
+        "upgradeNow": "Atualizar Agora"
+      },
+      "errors": {
+        "network": "Erro de rede. Verifique sua conexão.",
+        "timeout": "Tempo de solicitação esgotado. Por favor, tente novamente.",
+        "unauthorized": "Você não tem permissão para realizar esta ação.",
+        "notFound": "O recurso solicitado não foi encontrado.",
+        "validation": "Por favor, verifique sua entrada e tente novamente.",
+        "server": "Erro do servidor. Por favor, tente novamente mais tarde."
+      }
     }
   }
 }

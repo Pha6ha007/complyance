@@ -1319,7 +1319,94 @@
     },
     "errors": {
       "rateLimited": "Troppe richieste. Riprova tra un'ora.",
-      "generic": "Si è verificato un errore. Riprova."
+      "generic": "Si è verificato un errore. Riprova.",
+      "notFound": {
+        "title": "Pagina non trovata",
+        "description": "La pagina che stai cercando non esiste o è stata spostata.",
+        "goToDashboard": "Vai alla Dashboard",
+        "goToHome": "Vai alla Home",
+        "helpText": "Se ritieni che questo sia un errore, per favore",
+        "contactSupport": "contatta il supporto"
+      },
+      "global": {
+        "title": "Qualcosa è andato storto",
+        "description": "Abbiamo riscontrato un errore imprevisto. Riprova.",
+        "tryAgain": "Riprova",
+        "goToDashboard": "Vai alla Dashboard",
+        "helpText": "Se il problema persiste, per favore",
+        "contactSupport": "contatta il supporto"
+      },
+      "dashboard": {
+        "title": "Errore nel caricamento della dashboard",
+        "description": "Non è stato possibile caricare questa pagina a causa di un errore imprevisto.",
+        "suggestions": {
+          "title": "Prova questi passaggi:",
+          "refresh": "Aggiorna la pagina",
+          "checkConnection": "Controlla la tua connessione internet",
+          "tryLater": "Riprova tra qualche minuto"
+        },
+        "tryAgain": "Riprova",
+        "backToDashboard": "Torna alla Dashboard",
+        "persistentIssue": "Se il problema persiste,",
+        "contactSupport": "contatta il supporto"
+      }
+    },
+    "notifications": {
+      "system": {
+        "created": "Sistema IA creato con successo",
+        "updated": "Sistema IA aggiornato",
+        "deleted": "Sistema IA eliminato",
+        "classifying": "Classificazione sistema IA in corso...",
+        "classified": "Classificazione completata",
+        "classificationFailed": "Classificazione fallita. Riprova.",
+        "uploadingDocuments": "Analisi documenti in corso...",
+        "documentsAnalyzed": "Documenti analizzati con successo",
+        "documentAnalysisFailed": "Analisi documento fallita"
+      },
+      "gap": {
+        "updated": "Lacuna di conformità aggiornata",
+        "statusChanged": "Stato della lacuna aggiornato a {status}",
+        "deleted": "Lacuna rimossa"
+      },
+      "document": {
+        "generating": "Generazione documento in corso...",
+        "generated": "Documento generato con successo",
+        "generationFailed": "Generazione documento fallita",
+        "downloaded": "Documento scaricato"
+      },
+      "vendor": {
+        "created": "Fornitore aggiunto con successo",
+        "updated": "Fornitore aggiornato",
+        "deleted": "Fornitore rimosso",
+        "assessing": "Valutazione rischio fornitore in corso...",
+        "assessed": "Valutazione fornitore completata",
+        "assessmentFailed": "Valutazione fornitore fallita"
+      },
+      "evidence": {
+        "uploaded": "Prova caricata con successo",
+        "updated": "Prova aggiornata",
+        "deleted": "Prova eliminata",
+        "uploadFailed": "Caricamento prova fallito"
+      },
+      "settings": {
+        "saved": "Impostazioni salvate con successo",
+        "saveFailed": "Salvataggio impostazioni fallito"
+      },
+      "planLimit": {
+        "reached": "Limite piano raggiunto",
+        "systemLimit": "Hai raggiunto il limite di sistemi IA. Aggiorna per aggiungerne altri.",
+        "vendorLimit": "Hai raggiunto il limite di valutazioni fornitori. Aggiorna per aggiungerne altri.",
+        "documentLimit": "Hai raggiunto il limite di generazione documenti. Aggiorna per continuare.",
+        "upgradeNow": "Aggiorna ora"
+      },
+      "errors": {
+        "network": "Errore di rete. Controlla la tua connessione.",
+        "timeout": "Timeout della richiesta. Riprova.",
+        "unauthorized": "Non hai i permessi per eseguire questa azione.",
+        "notFound": "La risorsa richiesta non è stata trovata.",
+        "validation": "Controlla il tuo input e riprova.",
+        "server": "Errore del server. Riprova più tardi."
+      }
     }
   }
 }

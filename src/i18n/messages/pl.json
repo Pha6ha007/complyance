@@ -1319,7 +1319,94 @@
     },
     "errors": {
       "rateLimited": "Zbyt wiele żądań. Spróbuj ponownie za godzinę.",
-      "generic": "Wystąpił błąd. Spróbuj ponownie."
+      "generic": "Wystąpił błąd. Spróbuj ponownie.",
+      "notFound": {
+        "title": "Nie znaleziono strony",
+        "description": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+        "goToDashboard": "Przejdź do panelu",
+        "goToHome": "Przejdź do strony głównej",
+        "helpText": "Jeśli uważasz, że to błąd, proszę",
+        "contactSupport": "skontaktuj się z pomocą techniczną"
+      },
+      "global": {
+        "title": "Coś poszło nie tak",
+        "description": "Napotkaliśmy nieoczekiwany błąd. Spróbuj ponownie.",
+        "tryAgain": "Spróbuj ponownie",
+        "goToDashboard": "Przejdź do panelu",
+        "helpText": "Jeśli ten problem się powtarza, proszę",
+        "contactSupport": "skontaktuj się z pomocą techniczną"
+      },
+      "dashboard": {
+        "title": "Błąd ładowania panelu",
+        "description": "Nie mogliśmy załadować tej strony z powodu nieoczekiwanego błędu.",
+        "suggestions": {
+          "title": "Spróbuj tych kroków:",
+          "refresh": "Odśwież stronę",
+          "checkConnection": "Sprawdź połączenie z internetem",
+          "tryLater": "Spróbuj ponownie za kilka minut"
+        },
+        "tryAgain": "Spróbuj ponownie",
+        "backToDashboard": "Powrót do panelu",
+        "persistentIssue": "Jeśli problem się powtarza,",
+        "contactSupport": "skontaktuj się z pomocą techniczną"
+      }
+    },
+    "notifications": {
+      "system": {
+        "created": "System AI utworzony pomyślnie",
+        "updated": "System AI zaktualizowany",
+        "deleted": "System AI usunięty",
+        "classifying": "Klasyfikowanie systemu AI...",
+        "classified": "Klasyfikacja zakończona",
+        "classificationFailed": "Klasyfikacja nie powiodła się. Spróbuj ponownie.",
+        "uploadingDocuments": "Analizowanie dokumentów...",
+        "documentsAnalyzed": "Dokumenty przeanalizowane pomyślnie",
+        "documentAnalysisFailed": "Analiza dokumentu nie powiodła się"
+      },
+      "gap": {
+        "updated": "Luka zgodności zaktualizowana",
+        "statusChanged": "Status luki zmieniony na {status}",
+        "deleted": "Luka usunięta"
+      },
+      "document": {
+        "generating": "Generowanie dokumentu...",
+        "generated": "Dokument wygenerowany pomyślnie",
+        "generationFailed": "Generowanie dokumentu nie powiodło się",
+        "downloaded": "Dokument pobrany"
+      },
+      "vendor": {
+        "created": "Dostawca dodany pomyślnie",
+        "updated": "Dostawca zaktualizowany",
+        "deleted": "Dostawca usunięty",
+        "assessing": "Ocena ryzyka dostawcy...",
+        "assessed": "Ocena dostawcy zakończona",
+        "assessmentFailed": "Ocena dostawcy nie powiodła się"
+      },
+      "evidence": {
+        "uploaded": "Dowód przesłany pomyślnie",
+        "updated": "Dowód zaktualizowany",
+        "deleted": "Dowód usunięty",
+        "uploadFailed": "Przesyłanie dowodu nie powiodło się"
+      },
+      "settings": {
+        "saved": "Ustawienia zapisane pomyślnie",
+        "saveFailed": "Zapisywanie ustawień nie powiodło się"
+      },
+      "planLimit": {
+        "reached": "Osiągnięto limit planu",
+        "systemLimit": "Osiągnięto limit systemów AI. Uaktualnij, aby dodać więcej.",
+        "vendorLimit": "Osiągnięto limit ocen dostawców. Uaktualnij, aby dodać więcej.",
+        "documentLimit": "Osiągnięto limit generowania dokumentów. Uaktualnij, aby kontynuować.",
+        "upgradeNow": "Uaktualnij teraz"
+      },
+      "errors": {
+        "network": "Błąd sieci. Sprawdź połączenie.",
+        "timeout": "Upłynął limit czasu żądania. Spróbuj ponownie.",
+        "unauthorized": "Nie masz uprawnień do wykonania tej akcji.",
+        "notFound": "Żądany zasób nie został znaleziony.",
+        "validation": "Sprawdź wprowadzone dane i spróbuj ponownie.",
+        "server": "Błąd serwera. Spróbuj ponownie później."
+      }
     }
   }
 }

@@ -1323,7 +1323,94 @@
     },
     "errors": {
       "rateLimited": "Too many requests. Please try again in an hour.",
-      "generic": "An error occurred. Please try again."
+      "generic": "An error occurred. Please try again.",
+      "notFound": {
+        "title": "Page Not Found",
+        "description": "The page you're looking for doesn't exist or has been moved.",
+        "goToDashboard": "Go to Dashboard",
+        "goToHome": "Go to Home",
+        "helpText": "If you believe this is an error, please",
+        "contactSupport": "contact support"
+      },
+      "global": {
+        "title": "Something went wrong",
+        "description": "We encountered an unexpected error. Please try again.",
+        "tryAgain": "Try Again",
+        "goToDashboard": "Go to Dashboard",
+        "helpText": "If this problem persists, please",
+        "contactSupport": "contact support"
+      },
+      "dashboard": {
+        "title": "Error loading dashboard",
+        "description": "We couldn't load this page due to an unexpected error.",
+        "suggestions": {
+          "title": "Try these steps:",
+          "refresh": "Refresh the page",
+          "checkConnection": "Check your internet connection",
+          "tryLater": "Try again in a few minutes"
+        },
+        "tryAgain": "Try Again",
+        "backToDashboard": "Back to Dashboard",
+        "persistentIssue": "If the problem persists,",
+        "contactSupport": "contact support"
+      }
+    },
+    "notifications": {
+      "system": {
+        "created": "AI system created successfully",
+        "updated": "AI system updated",
+        "deleted": "AI system deleted",
+        "classifying": "Classifying AI system...",
+        "classified": "Classification complete",
+        "classificationFailed": "Classification failed. Please try again.",
+        "uploadingDocuments": "Analyzing documents...",
+        "documentsAnalyzed": "Documents analyzed successfully",
+        "documentAnalysisFailed": "Document analysis failed"
+      },
+      "gap": {
+        "updated": "Compliance gap updated",
+        "statusChanged": "Gap status updated to {status}",
+        "deleted": "Gap removed"
+      },
+      "document": {
+        "generating": "Generating document...",
+        "generated": "Document generated successfully",
+        "generationFailed": "Document generation failed",
+        "downloaded": "Document downloaded"
+      },
+      "vendor": {
+        "created": "Vendor added successfully",
+        "updated": "Vendor updated",
+        "deleted": "Vendor removed",
+        "assessing": "Assessing vendor risk...",
+        "assessed": "Vendor assessment complete",
+        "assessmentFailed": "Vendor assessment failed"
+      },
+      "evidence": {
+        "uploaded": "Evidence uploaded successfully",
+        "updated": "Evidence updated",
+        "deleted": "Evidence deleted",
+        "uploadFailed": "Evidence upload failed"
+      },
+      "settings": {
+        "saved": "Settings saved successfully",
+        "saveFailed": "Failed to save settings"
+      },
+      "planLimit": {
+        "reached": "Plan limit reached",
+        "systemLimit": "You've reached your AI systems limit. Upgrade to add more.",
+        "vendorLimit": "You've reached your vendor assessment limit. Upgrade to add more.",
+        "documentLimit": "You've reached your document generation limit. Upgrade to continue.",
+        "upgradeNow": "Upgrade Now"
+      },
+      "errors": {
+        "network": "Network error. Please check your connection.",
+        "timeout": "Request timed out. Please try again.",
+        "unauthorized": "You don't have permission to perform this action.",
+        "notFound": "The requested resource was not found.",
+        "validation": "Please check your input and try again.",
+        "server": "Server error. Please try again later."
+      }
     }
   }
 }
