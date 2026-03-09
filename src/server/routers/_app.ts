@@ -2,6 +2,7 @@ import { router } from '../trpc';
 import { systemRouter } from './system';
 import { classificationRouter } from './classification';
 import { documentRouter } from './document';
+import { vendorRouter } from './vendor';
 
 /**
  * This is the primary router for your server.
@@ -12,8 +13,8 @@ export const appRouter = router({
   system: systemRouter,
   classification: classificationRouter,
   document: documentRouter,
+  vendor: vendorRouter,
   // TODO: Add other routers as they are created:
-  // vendor: vendorRouter,
   // evidence: evidenceRouter,
   // incident: incidentRouter,
   // intelligence: intelligenceRouter,

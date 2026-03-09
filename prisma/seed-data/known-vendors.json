@@ -1,0 +1,114 @@
+{
+  "vendors": [
+    {
+      "name": "OpenAI",
+      "vendorType": "API_PROVIDER",
+      "defaultDataTraining": "opt-out available",
+      "defaultDataUsedForTraining": null,
+      "defaultLocation": "US",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": true,
+      "website": "https://openai.com",
+      "description": "Creator of GPT models and ChatGPT. Enterprise API with data opt-out for API usage. Consumer products may use data for training."
+    },
+    {
+      "name": "Anthropic",
+      "vendorType": "API_PROVIDER",
+      "defaultDataTraining": "no training on API data",
+      "defaultDataUsedForTraining": false,
+      "defaultLocation": "US",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": true,
+      "website": "https://anthropic.com",
+      "description": "Creator of Claude AI models. API data is not used for training. Strong focus on AI safety and constitutional AI."
+    },
+    {
+      "name": "Google Vertex AI",
+      "vendorType": "API_PROVIDER",
+      "defaultDataTraining": "configurable",
+      "defaultDataUsedForTraining": null,
+      "defaultLocation": "US/EU",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": true,
+      "website": "https://cloud.google.com/vertex-ai",
+      "description": "Google Cloud's ML platform with Gemini models. Data processing location configurable. Enterprise-grade security controls."
+    },
+    {
+      "name": "AWS Bedrock",
+      "vendorType": "API_PROVIDER",
+      "defaultDataTraining": "no training",
+      "defaultDataUsedForTraining": false,
+      "defaultLocation": "US/EU",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": true,
+      "website": "https://aws.amazon.com/bedrock",
+      "description": "AWS managed service for foundation models. Customer data is not used to train models. Multiple region availability including EU."
+    },
+    {
+      "name": "Hugging Face",
+      "vendorType": "MODEL_HOST",
+      "defaultDataTraining": "depends on model",
+      "defaultDataUsedForTraining": null,
+      "defaultLocation": "EU",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": true,
+      "website": "https://huggingface.co",
+      "description": "Model hosting platform and community. Based in France (EU). Data handling varies by model - check individual model cards."
+    },
+    {
+      "name": "Mistral AI",
+      "vendorType": "API_PROVIDER",
+      "defaultDataTraining": "configurable",
+      "defaultDataUsedForTraining": null,
+      "defaultLocation": "EU",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": true,
+      "website": "https://mistral.ai",
+      "description": "European AI company based in France. Offers open-weight models. Strong EU data sovereignty positioning."
+    },
+    {
+      "name": "Cohere",
+      "vendorType": "API_PROVIDER",
+      "defaultDataTraining": "opt-out available",
+      "defaultDataUsedForTraining": null,
+      "defaultLocation": "CANADA",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": true,
+      "website": "https://cohere.com",
+      "description": "Enterprise NLP and embeddings API. Based in Canada. Offers data opt-out for enterprise customers."
+    },
+    {
+      "name": "Stability AI",
+      "vendorType": "API_PROVIDER",
+      "defaultDataTraining": "varies",
+      "defaultDataUsedForTraining": null,
+      "defaultLocation": "UK",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": true,
+      "website": "https://stability.ai",
+      "description": "Creator of Stable Diffusion image generation models. Based in UK. Open-source focus with API offerings."
+    },
+    {
+      "name": "Midjourney",
+      "vendorType": "SAAS_WITH_AI",
+      "defaultDataTraining": "yes (ToS)",
+      "defaultDataUsedForTraining": true,
+      "defaultLocation": "US",
+      "defaultHasDPA": false,
+      "defaultHasModelCard": false,
+      "website": "https://midjourney.com",
+      "description": "AI image generation service. User generations may be used for training per ToS. Consumer-focused, limited enterprise controls."
+    },
+    {
+      "name": "Jasper",
+      "vendorType": "SAAS_WITH_AI",
+      "defaultDataTraining": "varies",
+      "defaultDataUsedForTraining": null,
+      "defaultLocation": "US",
+      "defaultHasDPA": true,
+      "defaultHasModelCard": false,
+      "website": "https://jasper.ai",
+      "description": "AI content generation platform for marketing. Uses multiple underlying models. Enterprise tier offers data controls."
+    }
+  ]
+}
