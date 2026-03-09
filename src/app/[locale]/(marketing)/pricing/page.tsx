@@ -1,11 +1,113 @@
+import { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { CheckoutButton } from '@/components/billing/checkout-button';
 import { Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-export default function PricingPage() {
+interface PricingPageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PricingPageProps): Promise<Metadata> {
+  const { locale } = await params;
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+  const canonicalUrl = `${baseUrl}/${locale}/pricing`;
+
+  const seoContent: Record<string, { title: string; description: string }> = {
+    en: {
+      title: 'Pricing — Complyance | AI Compliance Platform',
+      description:
+        'Transparent pricing for AI compliance. Free tier available. Starter at $99/mo, Professional at $249/mo, Scale at $499/mo. 30-day money-back guarantee.',
+    },
+    fr: {
+      title: 'Tarifs — Complyance | Plateforme de conformité IA',
+      description:
+        'Tarification transparente pour la conformité IA. Forfait gratuit disponible. Starter à 99 $/mois, Professional à 249 $/mois, Scale à 499 $/mois.',
+    },
+    de: {
+      title: 'Preise — Complyance | KI-Compliance-Plattform',
+      description:
+        'Transparente Preise für KI-Compliance. Kostenlose Version verfügbar. Starter ab $99/Monat, Professional ab $249/Monat, Scale ab $499/Monat.',
+    },
+    pt: {
+      title: 'Preços — Complyance | Plataforma de Conformidade de IA',
+      description:
+        'Preços transparentes para conformidade de IA. Plano gratuito disponível. Starter a $99/mês, Professional a $249/mês, Scale a $499/mês.',
+    },
+    ar: {
+      title: 'الأسعار — Complyance | منصة امتثال الذكاء الاصطناعي',
+      description:
+        'أسعار شفافة لامتثال الذكاء الاصطناعي. خطة مجانية متاحة. Starter بـ 99 دولارًا/شهر، Professional بـ 249 دولارًا/شهر، Scale بـ 499 دولارًا/شهر.',
+    },
+    pl: {
+      title: 'Cennik — Complyance | Platforma zgodności AI',
+      description:
+        'Przejrzyste ceny dla zgodności AI. Dostępny plan darmowy. Starter za $99/mies., Professional za $249/mies., Scale za $499/mies.',
+    },
+    it: {
+      title: 'Prezzi — Complyance | Piattaforma di conformità AI',
+      description:
+        'Prezzi trasparenti per la conformità AI. Piano gratuito disponibile. Starter a $99/mese, Professional a $249/mese, Scale a $499/mese.',
+    },
+  };
+
+  const { title, description } = seoContent[locale] || seoContent.en;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}/en/pricing`,
+        fr: `${baseUrl}/fr/pricing`,
+        de: `${baseUrl}/de/pricing`,
+        pt: `${baseUrl}/pt/pricing`,
+        ar: `${baseUrl}/ar/pricing`,
+        pl: `${baseUrl}/pl/pricing`,
+        it: `${baseUrl}/it/pricing`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: locale,
+      url: canonicalUrl,
+      siteName: 'Complyance',
+      images: [
+        {
+          url: `${baseUrl}/og-pricing.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Complyance Pricing',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${baseUrl}/og-pricing.png`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+export default async function PricingPage({ params }: PricingPageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = useTranslations('pricing');
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
 
   const plans = [
     {
@@ -124,8 +226,63 @@ export default function PricingPage() {
     },
   ];
 
+  // Schema.org Offers for pricing
+  const offersSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Complyance AI Compliance Platform',
+    provider: {
+      '@type': 'Organization',
+      name: 'Complyance',
+    },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Free Plan',
+        price: '0',
+        priceCurrency: 'USD',
+        description: '1 AI System, EU AI Act only',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Starter Plan',
+        price: '99',
+        priceCurrency: 'USD',
+        billingPeriod: 'Monthly',
+        description: '5 AI Systems, Document Generation, 2 Vendor Assessments',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Professional Plan',
+        price: '249',
+        priceCurrency: 'USD',
+        billingPeriod: 'Monthly',
+        description:
+          '20 AI Systems, All Regulations, 10 Vendor Assessments, Evidence Vault, 3 Bias Tests/month',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Scale Plan',
+        price: '499',
+        priceCurrency: 'USD',
+        billingPeriod: 'Monthly',
+        description:
+          '50 AI Systems, Unlimited Vendors, Unlimited Bias Testing, Incident Register, CI/CD API',
+      },
+    ],
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
+    <>
+      {/* Schema.org JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(offersSchema),
+        }}
+      />
+
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Header */}
       <div className="border-b">
         <div className="container mx-auto px-4 py-16 text-center">
@@ -241,5 +398,6 @@ export default function PricingPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
