@@ -1,32 +1,180 @@
 ---
-title: "Is Your SaaS High-Risk Under the EU AI Act?"
-description: "Learn how to determine if your SaaS product falls under the EU AI Act's high-risk classification and what that means for your business."
-date: "2026-02-15"
+title: "Is Your SaaS High-Risk Under the EU AI Act? A Quick Checklist"
+description: "A practical step-by-step checklist for SaaS founders to determine if their AI system is classified as high-risk under the EU AI Act's Annex III. Covers all 8 categories, exceptions under Article 6(3), and a product-type risk mapping table."
+date: "2026-03-03"
 author: "Complyance Team"
-tags: ["EU AI Act", "Risk Classification", "SaaS", "Compliance"]
+tags: ["EU AI Act", "high-risk AI", "Annex III", "SaaS compliance", "AI classification", "risk assessment"]
+slug: "is-your-saas-high-risk-eu-ai-act"
 locale: "en"
 ---
 
-The EU AI Act introduces a risk-based classification system that determines your compliance obligations. If your SaaS product uses AI to make decisions about people—whether in hiring, credit scoring, content moderation, or personalized recommendations—you might be operating a high-risk AI system. Understanding this classification is crucial because high-risk systems face the strictest requirements, including mandatory risk assessments, technical documentation, and ongoing monitoring.
+# Is Your SaaS High-Risk Under the EU AI Act? A Quick Checklist
 
-## What Makes an AI System "High-Risk"?
+You built a SaaS product. It uses AI — maybe a recommendation engine, a chatbot, a scoring model, or an AI-powered hiring tool. You sell to customers in Europe. And now you're hearing about the EU AI Act and its "high-risk" classification.
 
-The EU AI Act defines high-risk AI systems in Annex III, which covers eight specific categories. These include AI systems used in employment, education, law enforcement, and credit scoring, among others. The key factor is whether your system makes or significantly influences decisions that affect people's access to opportunities, services, or rights.
+The question keeping you up at night: **does your product fall into the high-risk category?**
 
-## Common SaaS Use Cases That May Be High-Risk
+If it does, you're looking at a substantial list of compliance obligations — risk management systems, technical documentation, human oversight mechanisms, conformity assessments, and registration in the EU database. If it doesn't, you might only need basic transparency measures or nothing at all.
 
-Many popular SaaS features could trigger high-risk classification:
+This guide gives you a practical, step-by-step checklist to figure out where you stand. No legal jargon marathons. Just clear answers.
 
-- **Recruitment tools** that screen resumes or rank candidates
-- **Performance management** systems that evaluate employees
-- **Credit assessment** features that determine loan eligibility
-- **Content recommendation** systems that profile users
-- **Fraud detection** tools that make automated blocking decisions
+## Why This Matters Right Now
 
-## What This Means for Your Business
+The EU AI Act (Regulation 2024/1689) entered into force on August 1, 2024. Prohibited practices have been enforceable since February 2, 2025. The big deadline — when high-risk AI system obligations kick in — is **August 2, 2026**.
 
-If your SaaS is classified as high-risk, you'll need to implement comprehensive compliance measures before the August 2, 2026 deadline. This includes establishing a risk management system, maintaining detailed technical documentation, ensuring human oversight, and implementing post-market monitoring.
+Yes, the European Commission proposed the Digital Omnibus in November 2025, which could push certain high-risk deadlines to as late as December 2027. But here's the critical detail: the Omnibus is still a proposal working its way through Parliament and Council. Until it's formally adopted, the original August 2026 deadline remains legally binding.
 
-The good news? Complyance helps SMBs navigate these requirements without the enterprise-level budget. Our classification engine analyzes your AI systems in minutes and provides a clear roadmap for compliance.
+Penalties for non-compliance? Up to **€35 million or 7% of your global annual turnover**, whichever is higher. For a SaaS company doing €5 million in revenue, that's €350,000 at minimum.
 
-*Ready to check if your SaaS is high-risk? Try our [Free AI Risk Classifier](/free-classifier) – it takes just 2 minutes.*
+## Step 1: Is Your System Even an "AI System"?
+
+The AI Act defines an AI system as a machine-based system designed to operate with varying levels of autonomy, that may exhibit adaptiveness after deployment, and that infers from input how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments (Article 3(1)).
+
+**Quick test for SaaS founders:**
+
+Does your product use machine learning models, large language models, or statistical inference to generate outputs? If yes, it's likely an AI system. Is it purely rule-based with no learning component and no generative capability? It might not qualify, but review carefully — hybrid systems (rules + ML) typically qualify.
+
+If your product uses OpenAI's API, Claude, Gemini, or any fine-tuned ML model to generate outputs that influence decisions, you have an AI system under the Act.
+
+## Step 2: Check the Prohibited Practices First (Article 5)
+
+Before worrying about high-risk, make sure your system isn't outright **prohibited**. These have been banned since February 2, 2025:
+
+Social scoring by public authorities. Subliminal manipulation that causes significant harm. Exploitation of vulnerabilities (age, disability, social situation) to distort behavior. Real-time remote biometric identification in public spaces for law enforcement (with narrow exceptions). Emotion recognition in workplaces and educational institutions (with narrow exceptions). Untargeted scraping of facial images for facial recognition databases. Biometric categorization to infer sensitive attributes like race, political opinions, or sexual orientation. Predictive policing based solely on profiling.
+
+If your SaaS does any of these, stop. You cannot operate it in the EU regardless of any compliance measures.
+
+## Step 3: The Annex III Checklist — 8 Categories of High-Risk
+
+The core of the high-risk classification lives in **Annex III** of the AI Act. If your AI system falls into any of these 8 categories, it's **presumed high-risk** (subject to exceptions we'll cover in Step 4).
+
+### Category 1: Biometrics (Annex III, §1)
+
+Your system is in this category if it performs remote biometric identification (matching biometric data against a database), biometric categorization by sensitive attributes, or emotion recognition.
+
+**SaaS examples:** Identity verification platforms, facial recognition access control, proctoring software with emotion detection, voice authentication systems.
+
+**Not high-risk:** Simple face unlock on a device (not remote identification), photo filters, age estimation for content gating that doesn't rely on sensitive attributes.
+
+### Category 2: Critical Infrastructure (Annex III, §2)
+
+Your system is in this category if it serves as a safety component of digital infrastructure, road traffic, water, gas, heating, or electricity supply management.
+
+**SaaS examples:** AI-powered grid management dashboards, traffic optimization platforms, predictive maintenance for water treatment systems.
+
+**Not high-risk:** General IT monitoring tools, website uptime checkers, cloud infrastructure management (unless it manages physical critical infrastructure).
+
+### Category 3: Education & Vocational Training (Annex III, §3)
+
+Your system is in this category if it determines access or admission to educational institutions, evaluates learning outcomes, assesses appropriate education levels for individuals, or monitors prohibited behavior during tests.
+
+**SaaS examples:** AI-powered admissions screening tools, automated essay grading, adaptive learning platforms that determine curriculum placement, exam proctoring with AI-based cheating detection.
+
+**Not high-risk:** General LMS platforms without AI-driven placement decisions, flashcard apps, language learning tools that don't determine formal qualifications.
+
+### Category 4: Employment & Worker Management (Annex III, §4)
+
+Your system is in this category if it's used for recruitment and CV screening, job advertisement targeting, evaluating or filtering applications, assessing candidates in interviews, performance evaluation, promotions, or termination decisions, task allocation based on individual behavior or traits, or monitoring and evaluating work performance.
+
+**This is the big one for SaaS.** If your product touches HR, hiring, or workforce management with AI decision-making, you're almost certainly high-risk.
+
+**SaaS examples:** AI resume screeners, automated interview analysis tools, performance management with AI-driven scoring, workforce scheduling optimized by behavior patterns, employee engagement tools that score individuals.
+
+**Not high-risk:** Job boards that don't use AI to rank candidates, time-tracking tools without behavioral analysis, generic HR admin software.
+
+### Category 5: Access to Essential Services (Annex III, §5)
+
+Your system is in this category if it's used for credit scoring or creditworthiness assessment, risk assessment for life and health insurance, eligibility assessment for public benefits, or emergency services call classification and dispatch prioritization.
+
+**SaaS examples:** AI-based lending decision platforms, insurance underwriting with ML models, benefits eligibility screeners, triage tools for emergency call centers.
+
+**Not high-risk:** General financial analytics dashboards, insurance CRM tools without AI underwriting, payment processing systems.
+
+### Category 6: Law Enforcement (Annex III, §6)
+
+Covers AI used by law enforcement for individual risk assessment (recidivism, victimization), polygraph-like tools, evidence reliability assessment, and crime prediction targeting individuals or groups.
+
+**SaaS relevance:** Low for most commercial SaaS, but relevant if you sell to police departments, courts, or government agencies.
+
+### Category 7: Migration, Asylum & Border Control (Annex III, §7)
+
+Covers AI used for risk assessment of migrants, application processing for visas or residence permits, and migrant identification.
+
+**SaaS relevance:** Niche, relevant only if you provide tools to immigration or border management organizations.
+
+### Category 8: Administration of Justice & Democratic Processes (Annex III, §8)
+
+Covers AI used for researching, interpreting, and applying law to facts in judicial contexts, and systems intended to influence election or referendum outcomes.
+
+**SaaS examples:** AI legal research tools used by courts (not law firms doing private advisory), AI systems that target political messaging to influence voters.
+
+## Step 4: Check the Exceptions (Article 6(3))
+
+Even if your system falls into an Annex III category, **Article 6(3) provides exceptions** that can remove you from high-risk classification.
+
+Your system is **not high-risk** despite matching an Annex III category if it meets **all** of these conditions:
+
+**Condition 1:** It does NOT profile natural persons. If your system profiles users — creating or inferring personal characteristics, behaviors, or preferences from data — the exception cannot apply. Profiling always triggers high-risk classification.
+
+**Condition 2:** It meets at least one of the following:
+
+**(a) Narrow procedural task:** The AI performs a narrow procedural or administrative function that doesn't influence the substance of a decision. Example: converting unstructured data to structured format for human review.
+
+**(b) Improving prior human activity:** The AI improves the result of a previously completed human activity. Example: spell-checking a human-written assessment.
+
+**(c) Pattern detection for human review:** The AI detects decision-making patterns but only flags them for human review without replacing or influencing the human decision.
+
+**(d) Preparatory task:** The AI performs a preparatory task for an assessment listed in Annex III without filtering, recommending, or ranking options.
+
+**Practical example:** An AI tool that scans job applications and converts PDFs to structured data fields without ranking, filtering, or recommending candidates could qualify for exception (a) or (d).
+
+**Warning:** These exceptions are narrow. If there's ambiguity, the safer approach is to treat your system as high-risk. The burden of proof is on you, and regulators will scrutinize exception claims.
+
+## The SaaS Risk Level Quick-Reference Table
+
+| Product Type | Likely Risk Level | Key Factor |
+|---|---|---|
+| Customer support chatbot | Limited | Must disclose AI usage (Article 50) |
+| Content generation tool | Limited | Must label AI-generated content |
+| AI-powered CRM with lead scoring | Minimal–Limited | Not in Annex III unless scoring has legal effects |
+| HR/recruitment AI (resume screening) | **High** | Annex III §4 — Employment |
+| AI credit scoring / lending decisions | **High** | Annex III §5 — Essential services |
+| AI-based insurance underwriting | **High** | Annex III §5 — Essential services |
+| EdTech with AI grading or placement | **High** | Annex III §3 — Education |
+| Proctoring with emotion detection | **High** | Annex III §1 + §3 |
+| E-commerce recommendation engine | Minimal | Not a consequential decision |
+| AI-driven content personalization | Minimal–Limited | Unless profiles users for high-risk decisions |
+| AI analytics dashboard | Minimal | Informational, no direct decisions |
+| AI workforce scheduling by behavior | **High** | Annex III §4 — Worker management |
+
+## Step 5: Determine Your Role — Provider vs. Deployer
+
+The AI Act distinguishes between **providers** (who develop and place AI systems on the market) and **deployers** (who use AI systems under their authority).
+
+If you're a SaaS company selling an AI product, you're likely a provider. If you use someone else's AI tool, you're a deployer. Both have obligations for high-risk systems, but providers carry the heavier burden — conformity assessments, technical documentation (Annex IV), CE marking, and EU database registration.
+
+**Key nuance:** If you use a third-party model (OpenAI, Claude, Gemini) but build your own system on top of it, you're likely a **provider** of the resulting AI system. The model maker is a provider of a general-purpose AI (GPAI) model, with separate obligations.
+
+## What Happens If You're High-Risk?
+
+You must comply with Articles 9 through 15 before the deadline. This means establishing a risk management system (Article 9), implementing data governance (Article 10), producing technical documentation per Annex IV (Article 11), enabling automatic logging (Article 12), ensuring transparency for deployers (Article 13), enabling human oversight (Article 14), achieving appropriate accuracy, robustness, and cybersecurity (Article 15), drafting an EU Declaration of Conformity (Article 47), and registering in the EU database (Article 49).
+
+This is substantial but manageable if you start now.
+
+## What If You're Limited or Minimal Risk?
+
+**Limited risk** (chatbots, content generation, emotion recognition systems, deepfakes): Your main obligation is transparency under Article 50 — clearly disclose AI usage to users, and label AI-generated content.
+
+**Minimal risk:** No specific obligations. You can voluntarily adopt good practices.
+
+## Your Next Step
+
+Classification is the foundation of everything. Your gap analysis, documentation roadmap, and compliance score all depend on getting this right.
+
+**Classify your AI system for free at [complyance.io](https://complyance.io).** Our guided wizard walks you through every factor, maps your system against all 8 Annex III categories, checks the Article 6(3) exceptions, and gives you a clear risk classification with documented reasoning — in under 10 minutes.
+
+Don't wait for enforcement to find out where you stand. Know today.
+
+---
+
+*Disclaimer: This article is for informational purposes only and does not constitute legal advice. Risk classification should be verified with a qualified legal professional specializing in AI regulation.*

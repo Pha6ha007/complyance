@@ -1,110 +1,205 @@
 ---
-title: "AI Act vs. Colorado vs. NYC LL144: Which AI Regulations Apply to Your SaaS?"
-description: "Compare the EU AI Act, Colorado AI Act, and NYC Local Law 144 to understand which AI regulations apply to your business and how they differ."
-date: "2026-03-01"
+title: "EU AI Act vs Colorado AI Act vs NYC Local Law 144: What SaaS Founders Need to Know"
+description: "A comprehensive comparison of the three most impactful AI regulations for SaaS companies: the EU AI Act, Colorado's SB 24-205, and NYC's Local Law 144. Includes scope, requirements, timelines, and a practical compliance strategy."
+date: "2026-03-22"
 author: "Complyance Team"
-tags: ["EU AI Act", "Colorado AI Act", "NYC LL144", "Regulatory Comparison", "Multi-Jurisdiction"]
+tags: ["EU AI Act", "Colorado AI Act", "NYC Local Law 144", "AI regulation comparison", "US AI laws", "multi-jurisdiction compliance"]
+slug: "ai-act-vs-colorado-vs-nyc-comparison"
 locale: "en"
 ---
 
-AI regulation is no longer just a European concern. If you're a SaaS company selling into multiple markets, you may need to comply with the EU AI Act, Colorado's AI Act, and New York City's Local Law 144 (LL144)—or all three. Each regulation has different scope, requirements, and deadlines. This guide breaks down the key differences so you can prioritize your compliance efforts.
+# EU AI Act vs Colorado AI Act vs NYC Local Law 144: What SaaS Founders Need to Know
 
-## Geographic Scope: Where Do These Laws Apply?
+If you're building a SaaS product that uses AI and you sell to customers in both the EU and the United States, you're not dealing with one AI regulation. You're dealing with several, each with its own scope, requirements, and timeline.
 
-### EU AI Act
-- **Applies to**: Any company placing AI systems on the EU market or whose AI systems affect people in the EU
-- **Coverage**: 27 EU member states (440+ million people)
-- **Extraterritorial reach**: YES—applies to non-EU companies
+The three most consequential AI regulations for SaaS companies in 2026 are:
 
-### Colorado AI Act
-- **Applies to**: Companies doing business in Colorado that deploy "high-risk AI systems"
-- **Coverage**: Colorado only (~5.8 million people)
-- **Extraterritorial reach**: YES—if you have Colorado customers
+1. **The EU AI Act** (Regulation 2024/1689) — the world's first comprehensive AI law
+2. **The Colorado AI Act** (SB 24-205) — the first comprehensive US state-level AI law
+3. **NYC Local Law 144** — the first US municipal law regulating AI in hiring decisions
 
-### NYC Local Law 144 (LL144)
-- **Applies to**: Employers using AI for employment decisions in NYC
-- **Coverage**: New York City only (~8.3 million people)
-- **Extraterritorial reach**: Limited—applies to employers with NYC employees or candidates
+This article compares all three: what they cover, who they affect, what they require, and what you need to do if you sell into multiple jurisdictions.
 
-## What Counts as "High-Risk AI"?
+## The Quick Comparison
 
-### EU AI Act (Annex III)
-High-risk AI includes 8 categories:
-1. Biometrics
-2. Critical infrastructure
-3. Education
-4. **Employment** (recruiting, performance management)
-5. Essential services (credit, healthcare)
-6. Law enforcement
-7. Migration/border control
-8. Administration of justice
+| | EU AI Act | Colorado AI Act | NYC Local Law 144 |
+|---|---|---|---|
+| **Scope** | All AI systems, risk-based | High-risk AI in consequential decisions | AI in employment decisions only |
+| **Geographic reach** | EU market (extraterritorial) | Colorado residents | NYC-based jobs |
+| **Risk approach** | 4 levels (unacceptable to minimal) | Binary (high-risk or not) | Single focus (employment AEDTs) |
+| **Enforcement** | National authorities + EU AI Office | Colorado Attorney General | NYC DCWP |
+| **Max penalties** | EUR 35M or 7% global turnover | Unfair trade practice liability | $500-$1,500 per violation |
+| **Effective date** | Phased: Feb 2025 to Aug 2027 | June 30, 2026 | Active since July 5, 2023 |
+| **Private right of action** | No (initially) | No | No |
 
-**Key point:** Very broad—covers most AI-driven decisions about people.
+## The EU AI Act in Detail
 
-### Colorado AI Act
-"High-risk AI" means AI that makes or substantially assists **consequential decisions**:
-- Employment (hiring, firing, promotions)
-- Education (admissions, grading)
-- Financial services (credit, insurance)
-- Government services (benefits, licensing)
-- Healthcare
-- Housing
-- Legal services
+### Scope and Approach
 
-**Key point:** Narrower than EU—focused on "consequential decisions."
+The EU AI Act applies to **all AI systems** placed on the EU market or affecting people in the EU, regardless of where the provider is based. It uses a risk-based approach with four levels: unacceptable (prohibited), high-risk (heavy regulation), limited (transparency obligations), and minimal (no specific obligations).
 
-### NYC LL144
-Applies specifically to **automated employment decision tools (AEDTs)**:
-- AI used to screen candidates
-- AI used to evaluate employees for promotion/termination
-- AI that substantially assists hiring/promotion decisions
+The high-risk category, defined primarily by Annex III, covers 8 domains: biometrics, critical infrastructure, education, employment, essential services, law enforcement, migration, and justice. Unlike the other two laws, the EU AI Act regulates AI across the entire economy, not just employment.
 
-**Key point:** Narrowest scope—only employment AI in NYC.
+### Who It Affects
 
-## Key Requirements Comparison
+Any company that places an AI system on the EU market, deploys an AI system in the EU, is located in the EU and uses AI, or produces AI output that's used within the EU. If even a single EU-based customer uses your SaaS product's AI features, you may be in scope.
 
-| Requirement | EU AI Act | Colorado AI Act | NYC LL144 |
-|------------|-----------|----------------|-----------|
-| **Risk Assessment** | Mandatory (Article 9) | Mandatory | Not required |
-| **Bias Audit** | Implied (fairness testing) | Mandatory (annually) | **Mandatory (annually)** |
-| **Technical Documentation** | Mandatory (Annex IV) | Risk assessment summary | Not required |
-| **Human Oversight** | Mandatory (Article 14) | Not specified | Not specified |
-| **Transparency Notice** | Mandatory (Article 50) | Mandatory | **Mandatory (notice to candidates/employees)** |
-| **Data Governance** | Mandatory (Article 10) | Not specified | Not required |
-| **Post-Market Monitoring** | Mandatory (Article 72) | Impact assessments | Not required |
+### Key High-Risk Requirements
 
-## Deadlines
+For high-risk systems, you need: a risk management system (Article 9), data governance measures (Article 10), extensive technical documentation per Annex IV with 9 mandatory sections (Article 11), automatic logging and record-keeping (Article 12), transparency information for deployers (Article 13), human oversight mechanisms (Article 14), accuracy, robustness, and cybersecurity measures (Article 15), a conformity assessment (Article 43), EU database registration (Article 49), and post-market monitoring (Article 72).
 
-- **EU AI Act**: August 2, 2026 (high-risk systems)
-- **Colorado AI Act**: February 1, 2026
-- **NYC LL144**: Already in effect since July 5, 2023
+### Timeline
 
-## Penalties for Non-Compliance
+Prohibited practices and AI literacy took effect on February 2, 2025. GPAI obligations, governance infrastructure, and the penalty regime activated on August 2, 2025. High-risk Annex III obligations and Article 50 transparency rules are scheduled for August 2, 2026. High-risk Annex I obligations for safety components in regulated products come August 2, 2027.
 
-| Regulation | Maximum Fine |
-|-----------|-------------|
-| **EU AI Act** | €15M or 3% of global revenue |
-| **Colorado AI Act** | $500k per violation (if algorithmic discrimination found) |
-| **NYC LL144** | Up to $1,500 per violation (can add up quickly) |
+The European Commission's Digital Omnibus proposal from November 2025 may extend Annex III deadlines to as late as December 2, 2027, but this is still being negotiated in Parliament and Council. The original August 2026 deadline remains legally binding until the Omnibus is formally adopted.
 
-## Multi-Jurisdiction Compliance Strategy
+### Penalties
 
-If you sell into multiple markets:
+The maximums are steep: EUR 35 million or 7% of global annual turnover for prohibited practices, EUR 15 million or 3% for high-risk system non-compliance, and EUR 7.5 million or 1% for misleading information to authorities. SMEs get proportional treatment, but even proportional fines can be devastating.
 
-1. **Start with the strictest regulation**: The EU AI Act has the broadest requirements. If you're EU AI Act compliant, you're 80% of the way to Colorado/NYC compliance.
+## The Colorado AI Act (SB 24-205) in Detail
 
-2. **Focus on employment AI first**: Employment AI is covered by all three regulations. If you use AI for hiring, prioritize this use case.
+### Scope and Approach
 
-3. **Implement bias testing**: Both Colorado and NYC require annual bias audits. Build this into your process early.
+Colorado's AI Act targets algorithmic discrimination in AI-driven "consequential decisions." It applies to AI systems that make or substantially influence decisions with a material, legal, or similarly significant effect on a person's access to education, employment, financial services, government services, healthcare, housing, insurance, or legal services.
 
-4. **Document everything**: Even if a regulation doesn't require documentation, having it makes compliance easier across jurisdictions.
+### Who It Affects
 
-## How Complyance Handles Multi-Jurisdiction Compliance
+**Developers** (entities that create or substantially modify high-risk AI systems) and **deployers** (entities that use high-risk AI systems to make consequential decisions about Colorado residents). The law applies regardless of where the company is based, as long as it affects Colorado residents.
 
-Our platform:
-- Classifies your AI systems across **all applicable regulations** (EU, Colorado, NYC, NIST, ISO 42001)
-- Generates compliance reports for each jurisdiction
-- Tracks deadlines and requirements per market
-- Provides unified vendor risk assessment
+### Key Requirements
 
-*Selling into multiple markets? [Start your free trial](/register) to see which regulations apply to your AI systems and get a unified compliance roadmap.*
+Developers must exercise reasonable care against algorithmic discrimination, provide documentation to deployers (model cards, dataset cards, impact assessments), publish a public website statement about their high-risk AI systems, and notify the Attorney General if they discover their AI caused discrimination.
+
+Deployers must implement a risk management policy and program, conduct an initial and annual impact assessment for each high-risk system, notify consumers before using AI for consequential decisions, provide an appeal process for adverse decisions, publish website disclosures, and notify the Attorney General upon discovering discrimination.
+
+### The NIST Safe Harbor
+
+Colorado provides a rebuttable presumption that you've used "reasonable care" if you comply with the Act and follow a recognized risk management framework, specifically the NIST AI Risk Management Framework or ISO 42001. This is a significant legal advantage worth pursuing.
+
+### Timeline and Status
+
+Originally set for February 1, 2026, Governor Polis signed SB 25B-004 in August 2025 to delay the effective date to **June 30, 2026**. The five-month extension was meant to allow further negotiation, but as of March 2026, the core requirements remain unchanged. The 2026 regular legislative session saw further attempts to amend or soften the law, but as of publication, no substantive changes have passed. The Colorado AI Act remains intact as originally enacted.
+
+### Federal Tension
+
+The Trump Administration's Executive Order 14281 directed federal agencies to move away from disparate-impact liability, creating potential friction with Colorado's Act, which is built around preventing algorithmic discrimination including disparate impact. Until federal courts or Congress resolve this tension, Colorado's statute remains in force.
+
+### Penalties
+
+Violations are treated as unfair trade practices under the Colorado Consumer Protection Act. The Attorney General has exclusive enforcement authority with no private right of action.
+
+## NYC Local Law 144 in Detail
+
+### Scope and Approach
+
+NYC LL 144 regulates **Automated Employment Decision Tools (AEDTs)** used for hiring and promotion decisions for jobs in New York City. An AEDT is any computational process using machine learning, statistical modeling, data analytics, or AI that produces a score, classification, or recommendation used to substantially assist or replace human discretion in employment decisions.
+
+### Who It Affects
+
+Any employer or employment agency using an AEDT for jobs located in NYC (at least part-time), or for fully remote jobs associated with a NYC office. The scope is tied to job location, not company headquarters.
+
+### Key Requirements
+
+**Annual bias audit:** An independent third-party auditor must analyze the AEDT's differential impact across race/ethnicity, gender, and all intersections, using the EEOC's impact ratio methodology and the 4/5ths rule. This must be done annually before using the AEDT.
+
+**Public disclosure:** Summary of the most recent audit results and the date AEDT use began must be published on the employer's website.
+
+**Candidate notice:** At least 10 business days before AEDT use, candidates must be informed about what the tool evaluates, what data is collected, the retention policy, and how to request an alternative process.
+
+Importantly, LL 144 does not require specific corrective action if bias is found. It requires disclosure, but existing anti-discrimination laws (Title VII, NYC Human Rights Law) independently prohibit discriminatory outcomes.
+
+### Timeline and Status
+
+LL 144 has been in force since **July 5, 2023**, making it the oldest of the three regulations. A recent New York State Comptroller audit examined DCWP enforcement between July 2023 and June 2025, signaling growing regulatory scrutiny.
+
+### Penalties
+
+Relatively modest: $500 for a first violation, up to $1,500 for subsequent violations. Each day of non-compliance may be a separate violation, so costs accumulate.
+
+## Requirements Compared Side-by-Side
+
+### What AI Is Covered
+
+| Aspect | EU AI Act | Colorado AI Act | NYC LL 144 |
+|---|---|---|---|
+| Employment/HR | Yes (Annex III, S4) | Yes | Yes |
+| Financial services | Yes (Annex III, S5) | Yes | No |
+| Education | Yes (Annex III, S3) | Yes | No |
+| Healthcare | Yes (Annex III, S2-5) | Yes | No |
+| General chatbots | Yes (transparency only) | No | No |
+| Content generation | Yes (transparency/labeling) | No | No |
+
+### Obligations at a Glance
+
+| Requirement | EU AI Act | Colorado AI Act | NYC LL 144 |
+|---|---|---|---|
+| Risk classification | 4 levels required | Binary (high-risk or not) | Single category (AEDTs) |
+| Risk management system | Yes (Article 9) | Yes (policy and program) | No |
+| Bias/fairness testing | Yes (Articles 10, 15) | Impact assessment required | Annual independent bias audit |
+| Technical documentation | Extensive (Annex IV) | Developer docs for deployers | No |
+| Transparency to users | Yes (Articles 13, 50) | Consumer notice required | 10-day advance notice |
+| Public disclosure | EU database registration | Website statement | Audit results on website |
+| Human oversight | Yes (Article 14) | Appeal process for consumers | Alternative process if available |
+| Incident reporting | Yes (Article 62) | AG notification for discrimination | No |
+| Third-party audit | For some systems (Article 43) | Not required | Required (annual) |
+| Post-market monitoring | Yes (Article 72) | Annual review | Annual audit cycle |
+
+### Enforcement Compared
+
+| Aspect | EU AI Act | Colorado AI Act | NYC LL 144 |
+|---|---|---|---|
+| Enforcer | National authorities + EU AI Office | Colorado AG | NYC DCWP |
+| Private lawsuits | Not initially | No | No |
+| Max penalty | EUR 35M / 7% turnover | Unfair trade practice liability | $1,500 per violation |
+| SME provisions | Proportional fines, sandboxes | Small deployer exemptions (fewer than 50 employees) | None |
+| Safe harbor | Harmonized standards / Code of Practice | NIST AI RMF compliance | None |
+
+## Selling in Both EU and US: A Unified Strategy
+
+If your SaaS product serves customers in the EU, Colorado, and NYC, here's how to build one compliance framework that covers all three.
+
+### Step 1: Use the EU AI Act as Your Baseline
+
+The EU AI Act is the most comprehensive of the three. If you comply with its high-risk requirements for employment-related AI, you'll largely cover Colorado and NYC requirements too. The EU's documentation, risk management, and testing requirements exceed what the US laws demand.
+
+### Step 2: Map Systems to Jurisdictions
+
+Not every regulation applies to every system. Your HR screening tool? All three apply if used with EU customers, Colorado residents, and NYC jobs. Your credit scoring AI? EU AI Act and Colorado, but not NYC. Your customer chatbot? EU AI Act transparency obligations only. Map each system to its applicable regulations.
+
+### Step 3: Build Unified Documentation
+
+Create documentation that satisfies all three regimes at once:
+
+EU Annex IV technical documentation covers Colorado's developer documentation requirements. Your EU risk management system satisfies Colorado's risk management policy. An annual bias audit in EEOC format (NYC requirement) can simultaneously support EU fairness testing and Colorado's impact assessment. Consumer notices can be expanded to cover EU Article 13 transparency, Colorado's pre-decision notice, and NYC's 10-day advance notice.
+
+### Step 4: Adopt NIST AI RMF
+
+The NIST AI Risk Management Framework bridges all three regimes. The EU AI Act references international standards, and NIST aligns with Articles 9-15. Colorado provides an explicit safe harbor for NIST compliance. While NYC doesn't reference it directly, NIST implementation demonstrates governance maturity.
+
+Adopting NIST AI RMF enterprise-wide gives you a single framework satisfying multiple regulations and the strongest legal positioning across jurisdictions.
+
+### Step 5: Track All Timelines
+
+| Regulation | Key 2026 Dates |
+|---|---|
+| EU AI Act | August 2, 2026: High-risk Annex III obligations (plan for this; Digital Omnibus may extend to Dec 2027 but isn't adopted yet) |
+| Colorado AI Act | June 30, 2026: All obligations take effect |
+| NYC LL 144 | Already in force. Maintain current annual audit. |
+
+## The Expanding US Landscape
+
+Beyond Colorado and NYC, watch for:
+
+**Illinois AI Video Interview Act** is already in force, requiring notice and consent for AI-analyzed video interviews. **California** is developing automated decision-making regulations through the CPPA, with multiple AI-specific bills advancing. **New Jersey, Massachusetts, Connecticut, Texas, and Virginia** have AI bills at various stages targeting employment, insurance, and housing decisions.
+
+US AI regulation is happening at the state and municipal level, creating a patchwork that will only grow. Building a robust compliance framework now, anchored on NIST AI RMF and EU AI Act requirements, positions you to absorb new regulations with minimal additional effort.
+
+## Turn Compliance Into Competitive Advantage
+
+Companies that tackle multi-jurisdiction compliance proactively don't just avoid penalties, they win deals. Enterprise customers increasingly require proof of AI compliance during procurement. Demonstrating readiness across EU, Colorado, and NYC signals maturity and trust that competitors can't match.
+
+**Classify your AI system for free at [complyance.io](https://complyance.io).** Our platform supports multi-regulation classification. Enter your AI system details once and see how it maps to the EU AI Act, Colorado AI Act, and NYC Local Law 144 simultaneously. Get a single compliance roadmap covering all your markets, with specific article references and a prioritized gap analysis.
+
+*Disclaimer: This article is for informational purposes only and does not constitute legal advice. AI regulation is evolving rapidly at both the EU and US state level. We recommend consulting qualified legal professionals in each jurisdiction where you operate.*

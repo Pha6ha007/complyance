@@ -1,86 +1,169 @@
 ---
-title: "AI Vendor Compliance: What You Need to Know About OpenAI, Anthropic, and AWS"
-description: "If you use third-party AI APIs like OpenAI or Anthropic, you're still responsible for EU AI Act compliance. Here's how to assess your AI vendors."
-date: "2026-02-25"
+title: "Is Your AI Vendor EU AI Act Compliant? OpenAI, Anthropic, Google Compared"
+description: "A practical guide for SaaS companies using third-party AI providers. Compares OpenAI, Anthropic, Google, AWS Bedrock, and Mistral on EU AI Act readiness, data policies, and deployer obligations. Includes a vendor assessment checklist."
+date: "2026-03-12"
 author: "Complyance Team"
-tags: ["Vendor Risk", "OpenAI", "Anthropic", "Third-Party AI", "Compliance"]
+tags: ["EU AI Act", "AI vendor compliance", "OpenAI", "Anthropic", "Google AI", "deployer obligations", "vendor risk assessment", "GPAI"]
+slug: "ai-vendor-compliance-openai-anthropic"
 locale: "en"
 ---
 
-Many SaaS companies believe that because they use OpenAI's API or Anthropic's Claude, they're not responsible for AI compliance—after all, they're not building the AI themselves. This is a dangerous misconception. Under the EU AI Act, if you **deploy** an AI system (even one built by a third party), you have compliance obligations. This guide explains your responsibilities and how to conduct vendor due diligence.
+# Is Your AI Vendor EU AI Act Compliant? OpenAI, Anthropic, Google Compared
 
-## Provider vs. Deployer: Who's Responsible?
+You're a SaaS founder. You didn't build your own large language model. Instead, you built your product on top of OpenAI's API, or Anthropic's Claude, or Google's Vertex AI. Your customers are in Europe.
 
-The EU AI Act distinguishes between:
+Here's the uncomfortable truth: under the EU AI Act, **you're still responsible for compliance**, even if the underlying model isn't yours. And your choice of AI vendor directly affects your compliance posture.
 
-- **Provider**: The entity that develops and places an AI system on the market (e.g., OpenAI, Anthropic, Google)
-- **Deployer**: The entity that uses the AI system under its authority (e.g., your SaaS company)
+This article breaks down the provider-deployer responsibility split, compares the 5 most commonly used AI vendors on compliance readiness, and gives you a concrete checklist for assessing any AI vendor.
 
-**Key point:** If you integrate OpenAI's API into your recruitment tool to screen candidates, **you are the deployer**—and you're responsible for ensuring the AI system complies with EU AI Act requirements for your specific use case.
+## The Provider vs. Deployer Split Under the AI Act
 
-## What Deployers Must Do
+The AI Act creates two main categories of responsible parties.
 
-Deployers have distinct obligations under the EU AI Act, including:
+**GPAI model providers** (Article 53): Companies that develop and make available general-purpose AI models — OpenAI, Anthropic, Google, Mistral, and others. They have specific obligations around technical documentation, training data summaries, copyright compliance, and (for models with systemic risk) safety and security measures.
 
-1. **Use the AI system according to instructions** provided by the provider
-2. **Monitor the AI system's operation** in your specific context
-3. **Implement human oversight measures** (Article 14)
-4. **Conduct a conformity assessment** if you modify the AI system significantly
-5. **Report serious incidents** to regulatory authorities (Article 73)
+**AI system providers** (Articles 9–15): Companies that build AI systems using those GPAI models and place them on the market. If you built a hiring tool using Claude's API, you're the provider of a high-risk AI system. You bear the full weight of high-risk compliance obligations.
 
-## Vendor Due Diligence: Questions to Ask Your AI Provider
+**Deployers** (Article 26): Companies that use AI systems under their authority. If your client uses your SaaS product, they're a deployer. They have obligations too — using the system according to instructions, ensuring human oversight, and monitoring for issues.
 
-When evaluating AI vendors, ask:
+**The critical implication:** If you're building on a third-party model, you're both a deployer of the GPAI model *and* a provider of the resulting AI system. Your vendor's compliance affects your own, but it doesn't replace it. You can't point to OpenAI's GPAI Code of Practice compliance and call your high-risk system compliant.
 
-### 1. Data Training & Privacy
-- Is our data used to train your models?
-- Where is our data processed (EU, US, other)?
-- Do you have a Data Processing Agreement (DPA)?
+## What You Need From Your AI Vendor
 
-### 2. EU AI Act Compliance
-- Do you provide model cards or technical documentation?
-- Have you conducted a conformity assessment for high-risk use cases?
-- Do you support EU AI Act compliance for deployers?
+Regardless of which vendor you use, there are specific things you need them to provide — and specific risks you need to assess.
 
-### 3. Risk Management
-- What is your approach to bias testing and fairness?
-- Do you have incident reporting procedures?
-- Can we audit your model's performance?
+### Information Rights Under the AI Act
 
-## How Major AI Vendors Stack Up
+Under Article 53, GPAI model providers must make available to downstream providers (that's you): technical documentation about the model's capabilities and limitations, information about training data and methodologies, a completed Model Documentation Form (standardized by the GPAI Code of Practice), and documentation needed for you to complete your own compliance obligations.
+
+If your vendor can't or won't provide this information, you have a gap in your compliance chain.
+
+### Data Processing Concerns
+
+The EU AI Act intersects with the GDPR. Key questions for every vendor include whether customer data sent through the API is used for model training, where data is processed geographically (EU, US, or elsewhere), whether there's a Data Processing Agreement (DPA) in place, how long data is retained, and whether there are subprocessors and whether they're documented.
+
+## Vendor Comparison: The Big 5
+
+Here's how the five most commonly used AI vendors stack up on key compliance factors as of early 2026.
 
 ### OpenAI
-- **Data Training**: No training on API data (as of 2025 policy)
-- **Location**: US-based, data processed globally
-- **DPA**: Available for enterprise customers
-- **Model Cards**: Limited public documentation
-- **EU AI Act Support**: Still developing compliance tools
+
+**GPAI Code of Practice:** Signed the full code in August 2025, including Transparency, Copyright, and Safety and Security chapters.
+
+**Data training policy:** API data is not used for training by default. The API Terms of Service explicitly state that data submitted through the API is not used to train models unless you opt in. Consumer products (ChatGPT) have different terms.
+
+**Data processing location:** Primarily US-based processing. OpenAI offers a DPA, and enterprise customers can negotiate data residency terms. Standard API users should note that data transits through US infrastructure.
+
+**DPA availability:** Available and published. Enterprise agreements include more detailed data processing terms.
+
+**Model documentation:** OpenAI has published model cards for major releases and committed to providing the standardized Model Documentation Form under the Code of Practice. System cards for models like GPT-4 and o3 are publicly available.
+
+**EU AI Act stance:** OpenAI participated in the GPAI Code of Practice development and signed the final version. The company has publicly stated it supports the EU AI Act framework.
+
+**Risk factors for deployers:** US data processing creates GDPR transfer risk unless appropriate safeguards (Standard Contractual Clauses) are in place. Some model behavior changes with updates are not always clearly communicated, which can affect your risk management documentation.
 
 ### Anthropic
-- **Data Training**: No training on API data by default
-- **Location**: US-based
-- **DPA**: Available
-- **Model Cards**: Strong model documentation
-- **EU AI Act Support**: Constitutional AI approach aligns with transparency requirements
 
-### AWS Bedrock / Google Vertex AI
-- **Data Training**: Configurable—can opt out
-- **Location**: EU regions available
-- **DPA**: Comprehensive enterprise agreements
-- **Model Cards**: Depends on underlying model provider
-- **EU AI Act Support**: Enterprise-grade compliance support
+**GPAI Code of Practice:** Signed the full code, covering all three chapters.
 
-## The Bottom Line: You're Still Responsible
+**Data training policy:** API data is not used for training. Anthropic's usage policy explicitly states that API inputs and outputs are not used to train models. This is one of the strongest data protection positions among major providers.
 
-Even if your AI vendor is fully compliant, **you must ensure the AI system is appropriate for your specific use case**. A model that's fine for content generation may not be suitable for high-risk employment decisions without additional safeguards.
+**Data processing location:** US-based. Anthropic offers DPA terms and supports Standard Contractual Clauses for EU data transfers.
 
-## How Complyance Helps with Vendor Risk
+**DPA availability:** Available. Enterprise customers get more detailed agreements.
 
-Our **Vendor Risk Assessment** module:
-- Evaluates your AI vendors against EU AI Act requirements
-- Generates vendor questionnaires
-- Tracks vendor compliance status
-- Links vendors to your AI systems
-- Flags high-risk vendor relationships
+**Model documentation:** Anthropic publishes model cards and system-level documentation. Claude's model cards include capability descriptions, limitations, and safety evaluations.
 
-*[Start your free trial](/register) to assess your AI vendor risk in minutes.*
+**EU AI Act stance:** Anthropic signed the GPAI Code of Practice and has engaged with EU regulatory processes.
+
+**Risk factors for deployers:** US-based processing requires GDPR transfer safeguards. Recent geopolitical tensions around Anthropic and the US government may create questions about operational continuity for government-adjacent use cases, though this doesn't directly affect commercial API access for EU customers.
+
+### Google (Vertex AI / Gemini)
+
+**GPAI Code of Practice:** Signed the full code.
+
+**Data training policy:** Configurable. Google Cloud's Vertex AI platform does not use customer data for training by default. Gemini API consumer products have different terms. Enterprise agreements provide clear data segregation.
+
+**Data processing location:** Configurable. Google Cloud offers EU data residency options. Vertex AI can be configured to process data exclusively within EU data centers — a significant advantage for EU compliance.
+
+**DPA availability:** Comprehensive DPA available through Google Cloud terms. One of the more mature data processing frameworks among major providers.
+
+**Model documentation:** Google has published model cards and detailed technical documentation. The company has also published guidance on implementing GPAI compliance within cloud infrastructure.
+
+**EU AI Act stance:** Active engagement with EU regulatory processes. Google Cloud has published practical compliance frameworks for model providers.
+
+**Risk factors for deployers:** The flexibility of Google's platform means you need to actively configure the right settings. Default configurations may not be EU-optimal. The breadth of Google's AI offerings (Cloud, Consumer, Android) creates some complexity in understanding exactly which terms apply to your specific use.
+
+### AWS Bedrock
+
+**GPAI Code of Practice:** Amazon signed the full code.
+
+**Data training policy:** Customer data is not used for training. AWS Bedrock's terms explicitly state that customer inputs and outputs are not used to improve base models. Data is encrypted and isolated per customer.
+
+**Data processing location:** Configurable by region. AWS offers EU-based regions (Frankfurt, Ireland, Paris, Stockholm, etc.) for Bedrock. You can process data entirely within the EU.
+
+**DPA availability:** Comprehensive. AWS's Data Processing Addendum is one of the most established in the industry, covering GDPR requirements extensively.
+
+**Model documentation:** As a model hosting platform, Bedrock hosts models from multiple providers (Anthropic, Meta, Mistral, Cohere, etc.). Documentation varies by model provider. AWS provides its own documentation on the platform's security and data handling.
+
+**EU AI Act stance:** Amazon signed the GPAI Code of Practice and has invested in EU compliance infrastructure.
+
+**Risk factors for deployers:** Bedrock is a platform, not a single model. Your compliance posture depends on which specific model you're using through Bedrock. A Mistral model on Bedrock has different documentation than an Anthropic model on Bedrock. You need to assess the model provider independently.
+
+### Mistral AI
+
+**GPAI Code of Practice:** Signed the full code.
+
+**Data training policy:** API data is not used for training by default in commercial agreements.
+
+**Data processing location:** EU-based (headquartered in Paris, France). This is Mistral's strongest compliance advantage — data processing within the EU eliminates GDPR cross-border transfer concerns.
+
+**DPA availability:** Available. As an EU-headquartered company, Mistral's data processing terms align natively with GDPR.
+
+**Model documentation:** Mistral publishes model documentation and has committed to the standardized Model Documentation Form under the Code of Practice.
+
+**EU AI Act stance:** As a French company, Mistral has been deeply engaged with EU AI policy. The company initially pushed for lighter GPAI regulation during the AI Act negotiations but has since signed the Code of Practice.
+
+**Risk factors for deployers:** Mistral is smaller than OpenAI, Google, or Anthropic. Enterprise support and documentation may be less mature. Model capabilities may differ from larger providers, potentially affecting your system's accuracy and robustness requirements under Article 15.
+
+### Notable Absence: Meta
+
+Meta declined to sign the GPAI Code of Practice. While Meta's open-source Llama models are widely used, the company has explicitly declined the voluntary compliance framework. If you're building on Llama, you're in a grey zone — Meta's models are available, but the company isn't participating in the streamlined compliance pathway the Code provides. As a downstream provider, you'll need to do more independent documentation work.
+
+## The Vendor Assessment Checklist
+
+For any AI vendor you use or evaluate, work through these questions:
+
+**Data governance:** Does the vendor use your data for model training? Where is data processed? Is there a signed DPA? What's the data retention policy? Are subprocessors documented?
+
+**Documentation:** Does the vendor provide model cards or a Model Documentation Form? Can you access information about model capabilities, limitations, and known risks? Does the vendor document changes between model versions?
+
+**AI Act readiness:** Has the vendor signed the GPAI Code of Practice? Does the vendor provide documentation sufficient for your Annex IV technical documentation? Will the vendor support your conformity assessment needs?
+
+**Operational concerns:** How are model updates communicated? Can you pin to specific model versions for consistency? What's the vendor's SLA for availability and performance? What happens to your service if the vendor discontinues a model?
+
+**Risk score:** Based on these factors, assign each vendor a risk level — Low, Medium, High, or Critical. A vendor that processes data outside the EU, has no DPA, and hasn't signed the Code of Practice is high-risk from a compliance standpoint, regardless of how good their model is.
+
+## Why Most Companies Aren't Doing This
+
+Research consistently shows that a majority of companies using third-party AI lack formal policies for managing AI vendor risk. The AI Act changes this from a best practice to a legal obligation.
+
+As a deployer, you must use high-risk AI systems according to the provider's instructions (Article 26). You must monitor the system's operation and report issues. And as a provider of your own AI system built on a vendor's model, your technical documentation must adequately describe the components you've built on — including the third-party model.
+
+If your vendor changes their model and it breaks your compliance, you're still the one facing the fine.
+
+## Building Vendor Risk Into Your Compliance Process
+
+Vendor assessment isn't a one-time exercise. Your AI vendors will update models, change terms of service, modify data handling practices, and evolve their compliance posture over time.
+
+Build a recurring review cycle. Reassess vendors quarterly or when they release major model updates. Document your assessments as evidence in your compliance record. And maintain a contingency plan — if your primary vendor's compliance posture deteriorates, can you migrate to an alternative without disrupting your service?
+
+## Take Action
+
+Your AI vendor's compliance directly affects yours. Understanding the gap between what your vendor provides and what you need is essential for building a robust compliance position.
+
+**Classify your AI system and assess your vendor risk for free at [complyance.io](https://complyance.io).** Our platform helps you inventory your AI vendors, evaluate their risk profiles, and identify documentation gaps — so you can build on a solid compliance foundation.
+
+---
+
+*Disclaimer: This article is for informational purposes only and does not constitute legal advice. Vendor compliance assessments should be verified with a qualified legal professional. Vendor information in this article reflects publicly available data as of March 2026 and may change.*
