@@ -70,7 +70,26 @@ export default function middleware(request: NextRequest) {
   }
 
   // Apply i18n middleware for all other routes
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+
+  // Add noindex headers for dashboard, admin, and settings routes
+  // Check if pathname includes these routes (accounting for locale prefix)
+  if (
+    pathname.includes('/dashboard') ||
+    pathname.includes('/admin') ||
+    pathname.includes('/settings') ||
+    pathname.includes('/systems') ||
+    pathname.includes('/vendors') ||
+    pathname.includes('/evidence') ||
+    pathname.includes('/incidents') ||
+    pathname.includes('/intelligence') ||
+    pathname.includes('/referrals') ||
+    pathname.includes('/team')
+  ) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+
+  return response;
 }
 
 export const config = {
