@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
 import { CheckoutButton } from '@/components/billing/checkout-button';
 import { Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -106,7 +105,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = useTranslations('pricing');
+  const t = await getTranslations('pricing');
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
 
   const plans = [

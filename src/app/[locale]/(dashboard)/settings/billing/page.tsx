@@ -1,7 +1,6 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckoutButton } from '@/components/billing/checkout-button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
@@ -41,8 +40,8 @@ export default async function BillingPage() {
   const vendorCount = organization.vendors.length;
   const effectiveSystemLimit = getEffectiveSystemLimit(currentPlan, organization.bonusSystems);
 
-  const t = useTranslations('settings.billing');
-  const tCommon = useTranslations('common');
+  const t = await getTranslations('settings.billing');
+  const tCommon = await getTranslations('common');
 
   return (
     <div className="space-y-6">

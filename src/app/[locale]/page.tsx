@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
 import { LocaleSwitcher } from '@/components/shared/locale-switcher';
 
 interface HomePageProps {
@@ -123,7 +122,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = useTranslations('marketing');
+  const t = await getTranslations('marketing');
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
 
   // Schema.org Organization + WebSite markup
