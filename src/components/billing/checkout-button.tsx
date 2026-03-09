@@ -85,24 +85,3 @@ export function CheckoutButton({
     </Button>
   );
 }
-
-// Paddle.js type declarations
-declare global {
-  interface Window {
-    Paddle?: {
-      Checkout: {
-        open: (options: {
-          items: Array<{ priceId: string; quantity: number }>;
-          customer?: { id?: string; email?: string };
-          customData?: Record<string, any>;
-          successCallback?: (data: any) => void;
-          closeCallback?: () => void;
-        }) => void;
-      };
-      Environment: {
-        set: (env: 'sandbox' | 'production') => void;
-      };
-      Initialize: (options: { token: string; eventCallback?: (data: any) => void }) => void;
-    };
-  }
-}

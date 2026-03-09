@@ -212,7 +212,7 @@ export function DocumentGenerator({
                 <button
                   onClick={() => handleGenerate(DocType.CLASSIFICATION_REPORT)}
                   disabled={!isClassified}
-                  className="w-full rounded-md px-3 py-2 text-left text-sm hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full rounded-md px-3 py-2 text-start text-sm hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <div className="font-medium">{t('classificationReport')}</div>
                   {!isClassified && (
@@ -222,7 +222,7 @@ export function DocumentGenerator({
                 <button
                   onClick={() => handleGenerate(DocType.ROADMAP)}
                   disabled={!isClassified}
-                  className="w-full rounded-md px-3 py-2 text-left text-sm hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full rounded-md px-3 py-2 text-start text-sm hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <div className="font-medium">{t('roadmap')}</div>
                   {!isClassified && (
@@ -231,7 +231,7 @@ export function DocumentGenerator({
                 </button>
                 <button
                   onClick={() => handleGenerate(DocType.ANNEX_IV)}
-                  className="w-full rounded-md px-3 py-2 text-left text-sm hover:bg-gray-100"
+                  className="w-full rounded-md px-3 py-2 text-start text-sm hover:bg-gray-100"
                 >
                   <div className="font-medium">{t('annexIV')}</div>
                 </button>

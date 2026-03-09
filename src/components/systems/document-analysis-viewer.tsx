@@ -242,7 +242,7 @@ export function DocumentAnalysisViewer({
             {analysis.extractedQuotes.slice(0, 5).map((quote, index) => (
               <div
                 key={index}
-                className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50"
+                className="border-s-4 border-blue-500 ps-4 py-2 bg-blue-50"
               >
                 <p className="text-sm text-gray-700 italic">"{quote.text}"</p>
                 <div className="flex items-center gap-2 mt-2">
@@ -273,7 +273,7 @@ function RiskItem({
         : 'bg-blue-100 border-blue-300 text-blue-900';
 
   return (
-    <div className={`border-l-4 p-4 ${severityColor}`}>
+    <div className={`border-s-4 p-4 ${severityColor}`}>
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
