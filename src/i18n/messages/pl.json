@@ -1,0 +1,60 @@
+{
+  "common": {
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "loading": "Ładowanie...",
+    "error": "Wystąpił błąd",
+    "success": "Sukces",
+    "confirm": "Potwierdź",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "previous": "Poprzedni",
+    "finish": "Zakończ",
+    "close": "Zamknij"
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "systems": "Systemy AI",
+    "vendors": "Ryzyko dostawcy",
+    "evidence": "Sejf dowodów",
+    "reports": "Raporty",
+    "intelligence": "Aktualizacje regulacyjne",
+    "settings": "Ustawienia",
+    "team": "Zespół",
+    "referrals": "Polecenia"
+  },
+  "auth": {
+    "login": "Zaloguj się",
+    "logout": "Wyloguj się",
+    "register": "Zarejestruj się",
+    "email": "Email",
+    "password": "Hasło",
+    "forgotPassword": "Zapomniałeś hasła?",
+    "rememberMe": "Zapamiętaj mnie",
+    "signInWithGoogle": "Zaloguj się przez Google",
+    "noAccount": "Nie masz konta?",
+    "hasAccount": "Masz już konto?",
+    "referralCode": "Kod polecający (opcjonalnie)"
+  },
+  "dashboard": {
+    "title": "Panel zgodności",
+    "welcome": "Witaj z powrotem",
+    "complianceScore": "Wynik zgodności",
+    "systemsOverview": "Przegląd systemów AI",
+    "criticalGaps": "Krytyczne luki",
+    "deadlineCountdown": "Dni do terminu ustawy o AI UE",
+    "riskDistribution": "Rozkład ryzyka"
+  },
+  "classification": {
+    "unacceptable": "Ryzyko niedopuszczalne",
+    "high": "Wysokie ryzyko",
+    "limited": "Ograniczone ryzyko",
+    "minimal": "Minimalne ryzyko"
+  },
+  "marketing": {
+    "tagline": "Zarządzanie zgodnością AI dla MŚP",
+    "cta": "Rozpocznij darmowy okres próbny"
+  }
+}

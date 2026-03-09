@@ -1,0 +1,60 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "loading": "A carregar...",
+    "error": "Ocorreu um erro",
+    "success": "Sucesso",
+    "confirm": "Confirmar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "finish": "Concluir",
+    "close": "Fechar"
+  },
+  "nav": {
+    "dashboard": "Painel",
+    "systems": "Sistemas de IA",
+    "vendors": "Risco de fornecedor",
+    "evidence": "Cofre de evidências",
+    "reports": "Relatórios",
+    "intelligence": "Atualizações regulamentares",
+    "settings": "Definições",
+    "team": "Equipa",
+    "referrals": "Referências"
+  },
+  "auth": {
+    "login": "Entrar",
+    "logout": "Sair",
+    "register": "Registar",
+    "email": "Email",
+    "password": "Palavra-passe",
+    "forgotPassword": "Esqueceu a palavra-passe?",
+    "rememberMe": "Lembrar-me",
+    "signInWithGoogle": "Entrar com Google",
+    "noAccount": "Não tem uma conta?",
+    "hasAccount": "Já tem uma conta?",
+    "referralCode": "Código de referência (opcional)"
+  },
+  "dashboard": {
+    "title": "Painel de Conformidade",
+    "welcome": "Bem-vindo de volta",
+    "complianceScore": "Pontuação de conformidade",
+    "systemsOverview": "Visão geral dos sistemas de IA",
+    "criticalGaps": "Lacunas críticas",
+    "deadlineCountdown": "Dias até ao prazo da Lei da IA da UE",
+    "riskDistribution": "Distribuição de risco"
+  },
+  "classification": {
+    "unacceptable": "Risco inaceitável",
+    "high": "Alto risco",
+    "limited": "Risco limitado",
+    "minimal": "Risco mínimo"
+  },
+  "marketing": {
+    "tagline": "Gestão de conformidade de IA para PMEs",
+    "cta": "Iniciar teste gratuito"
+  }
+}

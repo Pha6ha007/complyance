@@ -1,0 +1,60 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "finish": "Finish",
+    "close": "Close"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "systems": "AI Systems",
+    "vendors": "Vendor Risk",
+    "evidence": "Evidence Vault",
+    "reports": "Reports",
+    "intelligence": "Regulatory Updates",
+    "settings": "Settings",
+    "team": "Team",
+    "referrals": "Referrals"
+  },
+  "auth": {
+    "login": "Log in",
+    "logout": "Log out",
+    "register": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "rememberMe": "Remember me",
+    "signInWithGoogle": "Sign in with Google",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "referralCode": "Referral code (optional)"
+  },
+  "dashboard": {
+    "title": "Compliance Dashboard",
+    "welcome": "Welcome back",
+    "complianceScore": "Compliance Score",
+    "systemsOverview": "AI Systems Overview",
+    "criticalGaps": "Critical Gaps",
+    "deadlineCountdown": "Days until EU AI Act deadline",
+    "riskDistribution": "Risk Distribution"
+  },
+  "classification": {
+    "unacceptable": "Unacceptable Risk",
+    "high": "High Risk",
+    "limited": "Limited Risk",
+    "minimal": "Minimal Risk"
+  },
+  "marketing": {
+    "tagline": "AI Compliance Management for SMBs",
+    "cta": "Start Free Trial"
+  }
+}

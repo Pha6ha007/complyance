@@ -1,0 +1,60 @@
+{
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "finish": "Terminer",
+    "close": "Fermer"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "systems": "Systèmes d'IA",
+    "vendors": "Risque fournisseur",
+    "evidence": "Coffre-fort de preuves",
+    "reports": "Rapports",
+    "intelligence": "Mises à jour réglementaires",
+    "settings": "Paramètres",
+    "team": "Équipe",
+    "referrals": "Parrainages"
+  },
+  "auth": {
+    "login": "Se connecter",
+    "logout": "Se déconnecter",
+    "register": "S'inscrire",
+    "email": "Email",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié?",
+    "rememberMe": "Se souvenir de moi",
+    "signInWithGoogle": "Se connecter avec Google",
+    "noAccount": "Vous n'avez pas de compte?",
+    "hasAccount": "Vous avez déjà un compte?",
+    "referralCode": "Code de parrainage (facultatif)"
+  },
+  "dashboard": {
+    "title": "Tableau de bord de conformité",
+    "welcome": "Bon retour",
+    "complianceScore": "Score de conformité",
+    "systemsOverview": "Vue d'ensemble des systèmes d'IA",
+    "criticalGaps": "Lacunes critiques",
+    "deadlineCountdown": "Jours avant la date limite de la loi sur l'IA de l'UE",
+    "riskDistribution": "Répartition des risques"
+  },
+  "classification": {
+    "unacceptable": "Risque inacceptable",
+    "high": "Risque élevé",
+    "limited": "Risque limité",
+    "minimal": "Risque minimal"
+  },
+  "marketing": {
+    "tagline": "Gestion de la conformité de l'IA pour les PME",
+    "cta": "Démarrer l'essai gratuit"
+  }
+}

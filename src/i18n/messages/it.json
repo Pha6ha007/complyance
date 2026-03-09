@@ -1,0 +1,60 @@
+{
+  "common": {
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore",
+    "success": "Successo",
+    "confirm": "Conferma",
+    "back": "Indietro",
+    "next": "Avanti",
+    "previous": "Precedente",
+    "finish": "Termina",
+    "close": "Chiudi"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "systems": "Sistemi di IA",
+    "vendors": "Rischio fornitore",
+    "evidence": "Archivio prove",
+    "reports": "Rapporti",
+    "intelligence": "Aggiornamenti normativi",
+    "settings": "Impostazioni",
+    "team": "Team",
+    "referrals": "Referenze"
+  },
+  "auth": {
+    "login": "Accedi",
+    "logout": "Esci",
+    "register": "Registrati",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Password dimenticata?",
+    "rememberMe": "Ricordami",
+    "signInWithGoogle": "Accedi con Google",
+    "noAccount": "Non hai un account?",
+    "hasAccount": "Hai già un account?",
+    "referralCode": "Codice referral (opzionale)"
+  },
+  "dashboard": {
+    "title": "Dashboard di conformità",
+    "welcome": "Bentornato",
+    "complianceScore": "Punteggio di conformità",
+    "systemsOverview": "Panoramica sistemi di IA",
+    "criticalGaps": "Lacune critiche",
+    "deadlineCountdown": "Giorni alla scadenza della Legge sull'IA dell'UE",
+    "riskDistribution": "Distribuzione del rischio"
+  },
+  "classification": {
+    "unacceptable": "Rischio inaccettabile",
+    "high": "Alto rischio",
+    "limited": "Rischio limitato",
+    "minimal": "Rischio minimo"
+  },
+  "marketing": {
+    "tagline": "Gestione della conformità AI per PMI",
+    "cta": "Inizia la prova gratuita"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "نجح",
+    "confirm": "تأكيد",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "finish": "إنهاء",
+    "close": "إغلاق"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "systems": "أنظمة الذكاء الاصطناعي",
+    "vendors": "مخاطر البائع",
+    "evidence": "خزنة الأدلة",
+    "reports": "التقارير",
+    "intelligence": "التحديثات التنظيمية",
+    "settings": "الإعدادات",
+    "team": "الفريق",
+    "referrals": "الإحالات"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "register": "التسجيل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "rememberMe": "تذكرني",
+    "signInWithGoogle": "تسجيل الدخول باستخدام Google",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "هل لديك حساب بالفعل؟",
+    "referralCode": "رمز الإحالة (اختياري)"
+  },
+  "dashboard": {
+    "title": "لوحة الامتثال",
+    "welcome": "مرحبا بعودتك",
+    "complianceScore": "درجة الامتثال",
+    "systemsOverview": "نظرة عامة على أنظمة الذكاء الاصطناعي",
+    "criticalGaps": "الفجوات الحرجة",
+    "deadlineCountdown": "أيام حتى الموعد النهائي لقانون الذكاء الاصطناعي للاتحاد الأوروبي",
+    "riskDistribution": "توزيع المخاطر"
+  },
+  "classification": {
+    "unacceptable": "مخاطر غير مقبولة",
+    "high": "مخاطر عالية",
+    "limited": "مخاطر محدودة",
+    "minimal": "مخاطر ضئيلة"
+  },
+  "marketing": {
+    "tagline": "إدارة امتثال الذكاء الاصطناعي للشركات الصغيرة والمتوسطة",
+    "cta": "ابدأ النسخة التجريبية المجانية"
+  }
+}

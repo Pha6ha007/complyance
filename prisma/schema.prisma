@@ -1,0 +1,453 @@
+// Prisma schema for Complyance AI Compliance Platform
+// PostgreSQL database
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// ORGANIZATION & USER MANAGEMENT
+// ============================================
+
+model Organization {
+  id                   String   @id @default(cuid())
+  name                 String
+  paddleCustomerId     String?  @unique
+  paddleSubscriptionId String?
+  plan                 Plan     @default(FREE)
+  locale               String   @default("en")
+  markets              String[] // ["EU", "US", "UAE"]
+  bonusSystems         Int      @default(0) // Extra systems from referrals
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  users       User[]
+  aiSystems   AISystem[]
+  vendors     Vendor[]
+  evidence    Evidence[]
+  incidents   Incident[]
+  documents   Document[]
+
+  @@index([paddleCustomerId])
+}
+
+model User {
+  id              String   @id @default(cuid())
+  email           String   @unique
+  name            String?
+  passwordHash    String?
+  role            UserRole @default(ADMIN)
+  locale          String   @default("en")
+  referredByCode  String?  // Referral code used at signup
+  emailVerified   DateTime?
+  image           String?
+  organizationId  String
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  // Referral relations
+  referralCode     ReferralCode?    @relation("ReferralOwner")
+  referrerRewards  ReferralReward[] @relation("ReferrerRewards")
+  referredRewards  ReferralReward[] @relation("ReferredRewards")
+
+  // NextAuth relations
+  accounts         Account[]
+  sessions         Session[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([email])
+}
+
+// NextAuth.js required models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ============================================
+// AI SYSTEM CLASSIFICATION
+// ============================================
+
+model AISystem {
+  id                      String   @id @default(cuid())
+  name                    String
+  description             String   @db.Text
+  aiType                  AIType   // ML_MODEL, LLM, RULE_BASED, HYBRID
+  domain                  String   // HR, FINANCE, HEALTHCARE, etc.
+  makesDecisions          Boolean
+  processesPersonalData   Boolean
+  profilesUsers           Boolean
+  endUsers                String[] // ["B2C", "B2B", "EMPLOYEES", "GOVERNMENT"]
+  markets                 String[] // ["EU", "US", "UAE"]
+
+  // Classification results
+  riskLevel               RiskLevel? // UNACCEPTABLE, HIGH, LIMITED, MINIMAL
+  annexIIICategory        String?    // Which Annex III category matched
+  annexIIISubcategory     String?    @db.Text
+  classificationReasoning String?    @db.Text
+  providerOrDeployer      String?    // PROVIDER, DEPLOYER, BOTH
+  exceptionApplies        Boolean    @default(false)
+  exceptionReason         String?    @db.Text
+  confidenceScore         Float?
+  transparencyObligations String[]   // Article 50 obligations
+  classifiedAt            DateTime?
+
+  // Compliance
+  complianceScore         Int?       // 0-100
+  flaggedForReview        Boolean    @default(false)
+
+  // Relations
+  organizationId          String
+  organization            Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  gaps                    ComplianceGap[]
+  documents               Document[]
+  evidence                Evidence[]
+  incidents               Incident[]
+  vendorLinks             SystemVendorLink[]
+
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([riskLevel])
+}
+
+model ComplianceGap {
+  id          String    @id @default(cuid())
+  article     String    // "Article 9", "Article 10", etc.
+  requirement String    @db.Text
+  status      GapStatus @default(NOT_STARTED)
+  priority    Priority
+  notes       String?   @db.Text
+  dueDate     DateTime?
+
+  systemId    String
+  system      AISystem @relation(fields: [systemId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([systemId])
+  @@index([status])
+}
+
+// ============================================
+// VENDOR RISK ASSESSMENT
+// ============================================
+
+model Vendor {
+  id                      String      @id @default(cuid())
+  name                    String
+  vendorType              String      // API_PROVIDER, SAAS_WITH_AI, MODEL_HOST
+  dataUsedForTraining     Boolean?
+  dataProcessingLocation  String?     // "EU", "US", "GLOBAL"
+  hasDPA                  Boolean     @default(false)
+  hasModelCard            Boolean     @default(false)
+  supportsAIAct           Boolean?
+  usesSubprocessors       Boolean     @default(false)
+  subprocessorsDocumented Boolean     @default(false)
+
+  riskScore               Int?        // 0-100
+  riskLevel               VendorRisk?
+  assessmentData          Json?       // Full assessment questionnaire
+  lastAssessedAt          DateTime?
+
+  organizationId          String
+  organization            Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  systemLinks             SystemVendorLink[]
+
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  @@index([organizationId])
+}
+
+model SystemVendorLink {
+  id        String   @id @default(cuid())
+  systemId  String
+  vendorId  String
+  system    AISystem @relation(fields: [systemId], references: [id], onDelete: Cascade)
+  vendor    Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([systemId, vendorId])
+  @@index([systemId])
+  @@index([vendorId])
+}
+
+// ============================================
+// DOCUMENTS & EVIDENCE
+// ============================================
+
+model Document {
+  id             String    @id @default(cuid())
+  type           DocType
+  title          String
+  locale         String    @default("en")
+  fileUrl        String?
+  status         DocStatus @default(DRAFT)
+  version        Int       @default(1)
+  generatedAt    DateTime  @default(now())
+
+  systemId       String?
+  system         AISystem? @relation(fields: [systemId], references: [id], onDelete: SetNull)
+
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([systemId])
+}
+
+model Evidence {
+  id            String   @id @default(cuid())
+  title         String
+  description   String?  @db.Text
+  fileUrl       String?
+  evidenceType  String   // DOCUMENT, SCREENSHOT, LOG, TEST_RESULT
+  article       String?  // Which article this relates to
+  integrityHash String?  // SHA-256 hash for authenticity
+
+  systemId      String?
+  system        AISystem? @relation(fields: [systemId], references: [id], onDelete: SetNull)
+
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  createdAt     DateTime @default(now())
+
+  @@index([organizationId])
+  @@index([systemId])
+}
+
+// ============================================
+// INCIDENTS & RISKS
+// ============================================
+
+model Incident {
+  id                   String         @id @default(cuid())
+  title                String
+  description          String         @db.Text
+  severity             Severity
+  status               IncidentStatus @default(OPEN)
+  correctiveAction     String?        @db.Text
+  reportedToRegulator  Boolean        @default(false)
+
+  systemId             String?
+  system               AISystem?      @relation(fields: [systemId], references: [id], onDelete: SetNull)
+
+  organizationId       String
+  organization         Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  occurredAt           DateTime
+  resolvedAt           DateTime?
+  createdAt            DateTime       @default(now())
+
+  @@index([organizationId])
+  @@index([systemId])
+  @@index([status])
+}
+
+// ============================================
+// REGULATORY INTELLIGENCE
+// ============================================
+
+model RegulatoryUpdate {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String   @db.Text
+  source      String   // URL
+  regulation  String   // "EU_AI_ACT", "COLORADO", "NIST_RMF", etc.
+  impact      String?  @db.Text
+  publishedAt DateTime
+  createdAt   DateTime @default(now())
+
+  @@index([regulation])
+  @@index([publishedAt])
+}
+
+// ============================================
+// REFERRAL SYSTEM
+// ============================================
+
+model ReferralCode {
+  id           String              @id @default(cuid())
+  code         String              @unique // 8-char alphanumeric, e.g. "COMP-A7X2"
+  usesCount    Int                 @default(0)
+  maxUses      Int?                // null = unlimited
+  rewardType   ReferralRewardType  @default(EXTRA_SYSTEMS)
+  rewardAmount Int                 @default(2) // e.g. 2 extra AI systems
+  isActive     Boolean             @default(true)
+
+  userId       String              @unique
+  user         User                @relation("ReferralOwner", fields: [userId], references: [id], onDelete: Cascade)
+
+  rewards      ReferralReward[]    @relation("ReferralCodeRewards")
+
+  createdAt    DateTime            @default(now())
+
+  @@index([code])
+}
+
+model ReferralReward {
+  id                   String               @id @default(cuid())
+  rewardType           ReferralRewardType
+  amount               Int                  // What was granted
+  status               ReferralRewardStatus @default(PENDING)
+
+  referrerId           String               // User who shared the code
+  referrer             User                 @relation("ReferrerRewards", fields: [referrerId], references: [id], onDelete: Cascade)
+
+  referredId           String               // User who used the code
+  referred             User                 @relation("ReferredRewards", fields: [referredId], references: [id], onDelete: Cascade)
+
+  codeId               String
+  code                 ReferralCode         @relation("ReferralCodeRewards", fields: [codeId], references: [id], onDelete: Cascade)
+
+  paddleSubscriptionId String?
+  grantedAt            DateTime?
+  createdAt            DateTime             @default(now())
+
+  @@unique([referrerId, referredId])
+  @@index([referrerId])
+  @@index([referredId])
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum Plan {
+  FREE
+  STARTER
+  PROFESSIONAL
+  SCALE
+  ENTERPRISE
+}
+
+enum UserRole {
+  ADMIN
+  COMPLIANCE_MANAGER
+  DEVELOPER
+  VIEWER
+}
+
+enum AIType {
+  ML_MODEL
+  LLM
+  RULE_BASED
+  HYBRID
+}
+
+enum RiskLevel {
+  UNACCEPTABLE
+  HIGH
+  LIMITED
+  MINIMAL
+}
+
+enum GapStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum Priority {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum VendorRisk {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum DocType {
+  CLASSIFICATION_REPORT
+  ANNEX_IV
+  ROADMAP
+  VENDOR_ASSESSMENT
+  MODEL_CARD
+  BIAS_REPORT
+}
+
+enum DocStatus {
+  DRAFT
+  FINAL
+  ARCHIVED
+}
+
+enum Severity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum IncidentStatus {
+  OPEN
+  INVESTIGATING
+  RESOLVED
+  CLOSED
+}
+
+enum ReferralRewardType {
+  EXTRA_SYSTEMS
+  EXTRA_VENDORS
+  FREE_MONTH
+  PLAN_DISCOUNT
+}
+
+enum ReferralRewardStatus {
+  PENDING
+  GRANTED
+  EXPIRED
+  REVOKED
+}

@@ -1,0 +1,60 @@
+{
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "loading": "Wird geladen...",
+    "error": "Ein Fehler ist aufgetreten",
+    "success": "Erfolg",
+    "confirm": "Bestätigen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "finish": "Fertig",
+    "close": "Schließen"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "systems": "KI-Systeme",
+    "vendors": "Anbieterrisiko",
+    "evidence": "Beweistresor",
+    "reports": "Berichte",
+    "intelligence": "Regulatorische Updates",
+    "settings": "Einstellungen",
+    "team": "Team",
+    "referrals": "Empfehlungen"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "register": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "forgotPassword": "Passwort vergessen?",
+    "rememberMe": "Angemeldet bleiben",
+    "signInWithGoogle": "Mit Google anmelden",
+    "noAccount": "Noch kein Konto?",
+    "hasAccount": "Bereits ein Konto?",
+    "referralCode": "Empfehlungscode (optional)"
+  },
+  "dashboard": {
+    "title": "Compliance-Dashboard",
+    "welcome": "Willkommen zurück",
+    "complianceScore": "Compliance-Score",
+    "systemsOverview": "KI-Systeme Übersicht",
+    "criticalGaps": "Kritische Lücken",
+    "deadlineCountdown": "Tage bis zur EU-KI-Verordnung Frist",
+    "riskDistribution": "Risikoverteilung"
+  },
+  "classification": {
+    "unacceptable": "Unannehmbares Risiko",
+    "high": "Hochrisiko",
+    "limited": "Begrenztes Risiko",
+    "minimal": "Minimales Risiko"
+  },
+  "marketing": {
+    "tagline": "KI-Compliance-Management für KMU",
+    "cta": "Kostenlose Testversion starten"
+  }
+}

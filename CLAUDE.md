@@ -545,7 +545,201 @@ enum ReferralRewardStatus { PENDING, GRANTED, EXPIRED, REVOKED }
 
 ---
 
-## AI Classification Engine
+## Regulation Database & Admin Panel
+
+### Why Regulations Live in DB, Not Code
+
+AI regulation changes every 1-3 months (new guidelines, interpretations, enforcement actions). If rules are hardcoded, every update requires a developer deploy. With rules in the database, the founder updates them via admin panel in 30 minutes — zero code changes.
+
+### Regulation Data Models
+
+```prisma
+model Regulation {
+  id            String   @id @default(cuid())
+  code          String   @unique // "EU_AI_ACT", "COLORADO_AI", "NYC_LL144", "NIST_RMF", "ISO_42001", "UAE_AI"
+  name          String   // "EU AI Act (Regulation 2024/1689)"
+  jurisdiction  String   // "EU", "US_CO", "US_NY", "US_FED", "UAE", "INTL"
+  status        RegulationStatus @default(ACTIVE) // DRAFT, ACTIVE, AMENDED, REPEALED
+  effectiveDate DateTime?
+  version       String   @default("1.0")
+  sourceUrl     String?  // Official legal text URL
+  lastReviewedAt DateTime?
+  
+  categories    RiskCategory[]
+  obligations   Obligation[]
+  updates       RegulationUpdate[]
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model RiskCategory {
+  id            String   @id @default(cuid())
+  code          String   // "ANNEX_III_1", "ANNEX_III_4", "COLORADO_CONSEQUENTIAL"
+  name          String   // "Biometrics", "Employment & Worker Management"
+  description   String   // Full description of what falls under this category
+  examples      String[] // ["CV screening", "automated hiring", "performance evaluation"]
+  keywords      String[] // Keywords for LLM matching: ["recruitment", "hiring", "HR", "candidate"]
+  riskLevel     RiskLevel
+  sortOrder     Int      @default(0)
+  isActive      Boolean  @default(true)
+  
+  regulationId  String
+  regulation    Regulation @relation(fields: [regulationId], references: [id])
+  
+  exceptions    RiskException[]
+  
+  @@unique([regulationId, code])
+}
+
+model RiskException {
+  id            String   @id @default(cuid())
+  code          String   // "ART_6_3_A", "ART_6_3_B"
+  name          String   // "Narrow procedural task"
+  description   String   // Full text of exception
+  conditions    String[] // Machine-readable conditions
+  isActive      Boolean  @default(true)
+  
+  categoryId    String
+  category      RiskCategory @relation(fields: [categoryId], references: [id])
+}
+
+model Obligation {
+  id            String   @id @default(cuid())
+  article       String   // "Article 9", "Article 10"
+  title         String   // "Risk Management System"
+  description   String   // What must be done
+  appliesTo     RiskLevel[] // [HIGH] or [HIGH, LIMITED]
+  priority      Priority
+  guidance      String?  // Practical guidance for SMBs
+  templateUrl   String?  // Link to template document
+  sortOrder     Int      @default(0)
+  isActive      Boolean  @default(true)
+  
+  regulationId  String
+  regulation    Regulation @relation(fields: [regulationId], references: [id])
+  
+  @@unique([regulationId, article])
+}
+
+model RegulationUpdate {
+  id            String   @id @default(cuid())
+  title         String   // "New EC guidelines on Article 6 classification"
+  summary       String   // What changed
+  impact        String?  // How this affects users
+  sourceUrl     String
+  changeType    ChangeType // GUIDELINE, AMENDMENT, ENFORCEMENT, INTERPRETATION
+  affectedArticles String[] // ["Article 6", "Annex III"]
+  publishedAt   DateTime
+  notifiedUsers Boolean  @default(false)
+  
+  regulationId  String
+  regulation    Regulation @relation(fields: [regulationId], references: [id])
+  
+  createdAt     DateTime @default(now())
+}
+
+enum RegulationStatus { DRAFT, ACTIVE, AMENDED, REPEALED }
+enum ChangeType { GUIDELINE, AMENDMENT, ENFORCEMENT, INTERPRETATION, NEW_LAW }
+```
+
+### Admin Panel (founder-only, route: /admin)
+
+Protected by hardcoded admin email check. NOT a full CMS — minimal UI for regulation management.
+
+**Pages:**
+
+```
+/[locale]/(admin)/admin/
+├── regulations/           # List all regulations
+│   ├── [id]/              # Edit regulation details
+│   ├── [id]/categories/   # Manage risk categories
+│   ├── [id]/obligations/  # Manage obligations
+│   └── [id]/exceptions/   # Manage exceptions
+├── updates/               # Add regulatory updates
+│   └── new/               # Create new update + trigger notifications
+├── users/                 # View all users, organizations, plans
+├── analytics/             # Key metrics dashboard
+│   ├── signups            # Daily/weekly signups
+│   ├── classifications    # Classifications performed
+│   ├── conversions        # Free → paid
+│   └── referrals          # Referral performance
+└── seed/                  # Re-seed / import regulation data
+```
+
+**Admin middleware:**
+```ts
+// Simple check — no need for full RBAC for solo founder
+const ADMIN_EMAILS = [process.env.ADMIN_EMAIL]; // Your email
+
+export const adminMiddleware = middleware(async ({ ctx, next }) => {
+  if (!ADMIN_EMAILS.includes(ctx.user.email)) {
+    throw new TRPCError({ code: 'FORBIDDEN' });
+  }
+  return next();
+});
+```
+
+**Workflow for updating regulations:**
+```
+1. EC publishes new guideline → You read it
+2. Open /admin/regulations/EU_AI_ACT/categories
+3. Update affected categories (edit description, add examples, modify keywords)
+4. Open /admin/updates/new → Create update with summary + impact
+5. Check "Notify affected users" → System sends personalized alerts
+6. Done — no code deploy, no PR, no CI/CD
+```
+
+### Seed Data (prisma/seed.ts)
+
+On first deploy, seed all regulation data:
+- EU AI Act: 8 Annex III categories, 3 exceptions, 10+ obligations
+- Colorado AI Act: consequential decision categories
+- NYC LL144: employment decision rules
+- NIST AI RMF: risk mapping categories
+- ISO 42001: AI management system requirements
+- UAE AI Ethics: principles and guidelines
+
+Seed script reads from JSON files in `prisma/seed-data/`:
+```
+prisma/seed-data/
+├── eu-ai-act.json           # Full Annex III categories, obligations, exceptions
+├── colorado-ai-act.json
+├── nyc-ll144.json
+├── nist-ai-rmf.json
+├── iso-42001.json
+└── uae-ai-ethics.json
+```
+
+### How Classification Engine Uses DB Rules
+
+```ts
+// Instead of hardcoded categories, fetch from DB
+async function classifySystem(system: AISystemInput): Promise<ClassificationResult> {
+  const applicableRegulations = await prisma.regulation.findMany({
+    where: {
+      jurisdiction: { in: getJurisdictions(system.markets) },
+      status: 'ACTIVE'
+    },
+    include: {
+      categories: { where: { isActive: true }, include: { exceptions: true } },
+      obligations: { where: { isActive: true } }
+    }
+  });
+  
+  // Pass DB categories + exceptions to LLM as context
+  const llmContext = buildLLMContext(applicableRegulations);
+  
+  // Rule-based pre-filter uses DB categories
+  const preFilterResult = preFilter(system, applicableRegulations);
+  
+  // LLM classifies with DB-sourced rules
+  const llmResult = await llmClassify(system, llmContext);
+  
+  // Validate against DB categories
+  return validate(llmResult, applicableRegulations);
+}
+```
 
 ### Architecture
 
