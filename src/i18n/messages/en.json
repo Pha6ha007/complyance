@@ -1033,5 +1033,146 @@
         "compliant": "This organization has achieved a high level of EU AI Act compliance with a score of 80% or higher."
       }
     }
+  },
+  "freeClassifier": {
+    "title": "Free AI Act Risk Classifier",
+    "subtitle": "Find out if your AI system is high-risk under the EU AI Act in 2 minutes. Free, no signup required.",
+    "badge": "Free Tool - No Signup Required",
+    "stepIndicator": "Step {current} of {total}",
+    "analyzing": "Analyzing...",
+    "classify": "Classify My AI System",
+    "steps": {
+      "step1": {
+        "title": "Describe Your AI System",
+        "description": "Tell us what your AI system does"
+      },
+      "step2": {
+        "title": "How Is It Used?",
+        "description": "What domain and decision-making capability does it have?"
+      },
+      "step3": {
+        "title": "Data & Users",
+        "description": "What data does it process and who uses it?"
+      },
+      "step4": {
+        "title": "Target Markets",
+        "description": "Where do you sell or deploy this AI system?"
+      },
+      "results": {
+        "title": "Your Risk Classification",
+        "description": "Based on your answers, here is your EU AI Act risk level"
+      }
+    },
+    "fields": {
+      "description": "System Description",
+      "descriptionPlaceholder": "Describe what your AI system does. For example: 'An AI-powered chatbot that helps customers find products and answers frequently asked questions about orders and returns.'",
+      "descriptionHelp": "Be specific about functionality, inputs, outputs, and how it's used in your business.",
+      "aiType": "AI Technology Type",
+      "domain": "Domain / Use Case",
+      "domainPlaceholder": "Select a domain...",
+      "makesDecisions": "Does this system make or influence decisions about people?",
+      "dataProcessing": "Data Processing",
+      "processesPersonalData": "Processes personal data",
+      "processesPersonalDataHelp": "Names, emails, photos, behavioral data, or any information that can identify individuals",
+      "profilesUsers": "Creates profiles or predictions about individuals",
+      "profilesUsersHelp": "Scores, rankings, behavioral predictions, personality assessments, or user segmentation",
+      "endUsers": "Who is affected by this system?",
+      "markets": "Target Markets",
+      "marketsHelp": "Select all regions where this AI system is used or offered"
+    },
+    "aiTypes": {
+      "ML_MODEL": "Machine Learning Model",
+      "LLM": "Large Language Model (GPT, Claude, etc.)",
+      "RULE_BASED": "Rule-Based System",
+      "HYBRID": "Hybrid (ML + Rules)"
+    },
+    "domains": {
+      "HR": "Human Resources / Recruitment",
+      "FINANCE": "Finance & Banking",
+      "HEALTHCARE": "Healthcare & Medical",
+      "EDUCATION": "Education & Training",
+      "SECURITY": "Security & Biometrics",
+      "CHATBOT": "Chatbot / Virtual Assistant",
+      "RECOMMENDATIONS": "Recommendations / Personalization",
+      "OTHER": "Other"
+    },
+    "decisions": {
+      "YES": {
+        "label": "Yes - Makes autonomous decisions",
+        "description": "The system makes decisions that directly affect people (approvals, rejections, rankings)"
+      },
+      "NO": {
+        "label": "No - Informational only",
+        "description": "The system provides information but humans make all final decisions"
+      },
+      "PARTIAL": {
+        "label": "Partially - Influences decisions",
+        "description": "The system provides recommendations or scores that influence human decisions"
+      }
+    },
+    "endUsers": {
+      "B2C": "Consumers (general public)",
+      "B2B": "Business customers",
+      "EMPLOYEES": "Your own employees",
+      "GOVERNMENT": "Government / Public sector"
+    },
+    "markets": {
+      "EU": "European Union (EU)",
+      "US": "United States",
+      "UAE": "United Arab Emirates",
+      "OTHER": "Other regions"
+    },
+    "noEUWarning": "The EU AI Act primarily applies to systems deployed in or affecting the EU market. Classification is still provided for reference.",
+    "results": {
+      "annexCategory": "Annex III Category: {category}",
+      "why": "Why this classification?",
+      "obligations": "Your Compliance Obligations",
+      "disclaimer": "This classification is informational only and does not constitute legal advice. For accurate compliance assessment, consult with qualified legal professionals or use the full Complyance platform for a detailed analysis."
+    },
+    "cta": {
+      "title": "Get Your Full Compliance Report",
+      "description": "Sign up for free to get detailed compliance documentation, gap analysis, and a step-by-step roadmap.",
+      "features": {
+        "reports": "Generate PDF classification reports",
+        "gapAnalysis": "Detailed gap analysis with action items",
+        "vendorRisk": "AI vendor risk assessments",
+        "badge": "Display a compliance badge on your website"
+      },
+      "button": "Get Full Report - Free",
+      "startOver": "Classify Another System",
+      "noCard": "No credit card required. Free plan available."
+    },
+    "seo": {
+      "title": "Free AI Act Risk Classifier | Check Your AI System Risk Level",
+      "description": "Find out if your AI system is high-risk under the EU AI Act in 2 minutes. Free online tool, no signup required. Instant classification results.",
+      "whatIsTitle": "What is the EU AI Act Risk Classifier?",
+      "whatIsContent": "The EU AI Act classifies AI systems into four risk levels: Unacceptable, High, Limited, and Minimal. High-risk AI systems must comply with strict requirements before August 2, 2026. Use this free tool to quickly determine your AI system's risk classification and understand your compliance obligations.",
+      "benefits": {
+        "free": {
+          "title": "100% Free",
+          "description": "No signup, no payment. Get instant results."
+        },
+        "fast": {
+          "title": "2-Minute Assessment",
+          "description": "Answer simple questions and get your classification."
+        },
+        "accurate": {
+          "title": "Based on EU AI Act",
+          "description": "Classification follows official Annex III criteria."
+        }
+      }
+    },
+    "validation": {
+      "descriptionMin": "Description must be at least 20 characters",
+      "aiTypeRequired": "Please select an AI technology type",
+      "domainRequired": "Please select a domain",
+      "decisionsRequired": "Please select a decision-making option",
+      "endUsersRequired": "Please select at least one affected group",
+      "marketsRequired": "Please select at least one market"
+    },
+    "errors": {
+      "rateLimited": "Too many requests. Please try again in an hour.",
+      "generic": "An error occurred. Please try again."
+    }
   }
 }
