@@ -11,25 +11,27 @@
     "back": "Indietro",
     "next": "Avanti",
     "previous": "Precedente",
-    "finish": "Termina",
-    "close": "Chiudi"
+    "finish": "Completa",
+    "close": "Chiudi",
+    "yes": "Sì",
+    "no": "No"
   },
   "nav": {
     "dashboard": "Dashboard",
     "systems": "Sistemi di IA",
-    "vendors": "Rischio fornitore",
+    "vendors": "Rischi fornitori",
     "evidence": "Archivio prove",
-    "reports": "Rapporti",
+    "reports": "Report",
     "intelligence": "Aggiornamenti normativi",
     "settings": "Impostazioni",
     "team": "Team",
-    "referrals": "Referenze"
+    "referrals": "Referral"
   },
   "auth": {
     "login": "Accedi",
     "logout": "Esci",
     "register": "Registrati",
-    "email": "Email",
+    "email": "E-mail",
     "password": "Password",
     "forgotPassword": "Password dimenticata?",
     "rememberMe": "Ricordami",
@@ -40,12 +42,27 @@
   },
   "dashboard": {
     "title": "Dashboard di conformità",
+    "subtitle": "Panoramica dello stato di conformità IA",
     "welcome": "Bentornato",
     "complianceScore": "Punteggio di conformità",
-    "systemsOverview": "Panoramica sistemi di IA",
+    "systemsOverview": "Panoramica dei sistemi di IA",
+    "totalSystems": "Sistemi totali",
+    "classified": "classificati",
+    "average": "media",
     "criticalGaps": "Lacune critiche",
-    "deadlineCountdown": "Giorni alla scadenza della Legge sull'IA dell'UE",
-    "riskDistribution": "Distribuzione del rischio"
+    "requiresAttention": "richiede attenzione",
+    "deadlineCountdown": "Giorni alla scadenza della Legge sull'IA",
+    "euAiActDeadline": "Scadenza Legge sull'IA dell'UE",
+    "daysRemaining": "giorni rimanenti",
+    "riskDistribution": "Distribuzione dei rischi",
+    "topCriticalGaps": "Lacune critiche di conformità",
+    "system": "Sistema",
+    "viewGaps": "Vedi lacune",
+    "noCriticalGaps": "Nessuna lacuna critica",
+    "noCriticalGapsDescription": "Tutti i requisiti critici di conformità sono in fase di gestione",
+    "noSystems": "Nessun sistema di IA",
+    "noSystemsDescription": "Inizia aggiungendo il tuo primo sistema di IA per monitorare la conformità",
+    "addFirstSystem": "Aggiungi il primo sistema"
   },
   "classification": {
     "unacceptable": "Rischio inaccettabile",
@@ -53,8 +70,743 @@
     "limited": "Rischio limitato",
     "minimal": "Rischio minimo"
   },
+  "systems": {
+    "title": "Sistemi di IA",
+    "description": "Gestisci l'inventario dei sistemi di IA e le loro classificazioni",
+    "systemsUsed": "sistemi utilizzati",
+    "addSystem": "Aggiungi sistema",
+    "addFirstSystem": "Aggiungi il primo sistema",
+    "noSystems": "Nessun sistema di IA",
+    "noSystemsDescription": "Inizia aggiungendo il tuo primo sistema di IA per monitorare la conformità",
+    "loading": "Caricamento sistemi...",
+    "loadingDescription": "Attendere il caricamento dei sistemi di IA",
+    "error": "Impossibile caricare i sistemi",
+    "notClassified": "Non classificato",
+    "open": "aperte",
+    "none": "Nessuno",
+    "backToSystems": "Torna ai sistemi",
+    "systemNotFound": "Sistema non trovato",
+    "deleteConfirm": "Sei sicuro di voler eliminare questo sistema? Questa azione non può essere annullata.",
+    "basicInformation": "Informazioni di base",
+    "aiType": "Tipo di IA",
+    "domain": "Dominio",
+    "markets": "Mercati",
+    "endUsers": "Utenti finali",
+    "riskClassification": "Classificazione del rischio",
+    "riskLevel": "Livello di rischio",
+    "annexCategory": "Categoria Allegato III",
+    "complianceScore": "Punteggio di conformità",
+    "classifiedAt": "Classificato il",
+    "notClassifiedYet": "Questo sistema non è ancora stato classificato",
+    "notClassifiedDescription": "Avvia il motore di classificazione per determinare il livello di rischio e i requisiti di conformità",
+    "classifyNow": "Classifica ora",
+    "characteristics": "Caratteristiche",
+    "makesDecisions": "Prende decisioni",
+    "processesPersonalData": "Tratta dati personali",
+    "profilesUsers": "Profila gli utenti",
+    "yes": "Sì",
+    "no": "No",
+    "complianceGaps": "Lacune di conformità",
+    "viewAllGaps": "Vedi tutte le lacune",
+    "classificationResult": "Risultato della classificazione",
+    "reclassify": "Riclassifica",
+    "confidenceScore": "Punteggio di affidabilità",
+    "role": "Il tuo ruolo",
+    "exceptionApplied": "Eccezione applicata",
+    "reasoning": "Motivazione della classificazione",
+    "viewComplianceGaps": "Vedi lacune di conformità",
+    "wizard": {
+      "title": "Aggiungi nuovo sistema di IA",
+      "subtitle": "Completa questa procedura guidata per classificare il tuo sistema di IA e identificare i requisiti di conformità",
+      "uploadOption": "Carica documenti",
+      "manualOption": "Compila manualmente",
+      "uploadTitle": "Carica la documentazione del prodotto",
+      "uploadDescription": "Analizzeremo i tuoi documenti e precompileremo il modulo di classificazione",
+      "uploadDropzone": "Trascina i file qui o clicca per caricare",
+      "uploadDropHere": "Rilascia i file qui...",
+      "uploadSupported": "Supportati: PDF, DOCX, MD, TXT (max 10 MB ciascuno, fino a 5 file)",
+      "uploadMaxFilesError": "Puoi caricare fino a {max} file",
+      "uploadComplete": "Caricamento completato",
+      "uploadedFilesCount": "{count} file caricati con successo",
+      "analyzing": "Analisi dei documenti in corso...",
+      "analysisComplete": "Analisi completata! Verifica le informazioni estratte qui sotto.",
+      "extractedFrom": "Estratto dai tuoi documenti",
+      "detectedRisk": "Rischio rilevato",
+      "detectedRisks": "Rischi rilevati",
+      "detectedRiskDescription": "Abbiamo trovato potenziali rischi di conformità nei tuoi documenti",
+      "noRisksFound": "Nessun rischio aggiuntivo rilevato",
+      "reviewAndConfirm": "Verifica e conferma le informazioni qui sotto",
+      "systemName": "Nome del sistema",
+      "confident": "affidabilità",
+      "keyFindings": "Risultati principali",
+      "unknown": "Sconosciuto",
+      "extractedQuotes": "Prove a supporto",
+      "step1": {
+        "title": "Informazioni di base",
+        "description": "Descrivi il tuo sistema di IA",
+        "name": "Nome del sistema",
+        "namePlaceholder": "es. Strumento di screening CV",
+        "nameDescription": "Un nome chiaro e descrittivo per il tuo sistema di IA",
+        "description": "Descrizione",
+        "descriptionPlaceholder": "Spiega cosa fa questo sistema di IA e come viene utilizzato...",
+        "descriptionDescription": "Descrivi lo scopo, le funzionalità e le caratteristiche principali",
+        "aiTypeLabel": "Tipo di IA",
+        "aiTypeDescription": "Che tipo di tecnologia IA utilizza questo sistema?",
+        "mlModel": "Modello di apprendimento automatico",
+        "llm": "Grande modello linguistico (LLM)",
+        "ruleBased": "Sistema basato su regole",
+        "hybrid": "Ibrido (ML + regole)"
+      },
+      "step2": {
+        "title": "Caso d'uso",
+        "description": "Come viene utilizzato questo sistema di IA?",
+        "domainLabel": "Dominio",
+        "domainDescription": "In quale ambito opera questo sistema di IA?",
+        "domainPlaceholder": "Seleziona un dominio",
+        "hr": "Risorse umane",
+        "finance": "Finanza e banche",
+        "healthcare": "Sanità",
+        "education": "Istruzione",
+        "security": "Sicurezza e biometria",
+        "content": "Moderazione dei contenuti",
+        "chatbot": "Chatbot / Assistente virtuale",
+        "recommendations": "Raccomandazioni",
+        "other": "Altro"
+      },
+      "step3": {
+        "title": "Dati e impatto",
+        "description": "Quali dati tratta e qual è il suo impatto?",
+        "decisionsLabel": "Prende decisioni",
+        "decisionsDescription": "Questo sistema prende o influenza significativamente decisioni sulle persone?",
+        "personalDataLabel": "Tratta dati personali",
+        "personalDataDescription": "Tratta informazioni personali o sensibili?",
+        "profilesLabel": "Profila gli utenti",
+        "profilesDescription": "Crea profili, punteggi o previsioni sugli individui?",
+        "endUsersLabel": "Utenti finali",
+        "endUsersDescription": "Chi sono gli utenti finali interessati da questo sistema?",
+        "b2c": "Consumatori (B2C)",
+        "b2b": "Utenti business (B2B)",
+        "employees": "Dipendenti",
+        "government": "Governo / Settore pubblico"
+      },
+      "step4": {
+        "title": "Mercati",
+        "description": "Dove operi?",
+        "marketsLabel": "Mercati target",
+        "marketsDescription": "Seleziona tutti i mercati in cui questo sistema di IA viene utilizzato o distribuito",
+        "eu": "Unione Europea (UE)",
+        "us": "Stati Uniti (US)",
+        "uae": "Emirati Arabi Uniti (EAU)",
+        "other": "Altro"
+      },
+      "step5": {
+        "title": "Revisione e invio",
+        "description": "Verifica le informazioni prima dell'invio",
+        "summary": "Riepilogo del sistema",
+        "submitButton": "Classifica sistema",
+        "submitting": "Classificazione in corso...",
+        "success": "Sistema creato con successo!",
+        "error": "Impossibile creare il sistema"
+      },
+      "validation": {
+        "nameRequired": "Il nome del sistema è obbligatorio",
+        "nameMax": "Il nome del sistema deve avere meno di 200 caratteri",
+        "descriptionRequired": "La descrizione è obbligatoria",
+        "descriptionMin": "La descrizione deve avere almeno 10 caratteri",
+        "aiTypeRequired": "Seleziona un tipo di IA",
+        "domainRequired": "Seleziona un dominio",
+        "endUsersRequired": "Seleziona almeno un tipo di utente finale",
+        "marketsRequired": "Seleziona almeno un mercato"
+      }
+    },
+    "table": {
+      "name": "Nome",
+      "domain": "Dominio",
+      "riskLevel": "Livello di rischio",
+      "complianceScore": "Conformità",
+      "gaps": "Lacune",
+      "created": "Creato"
+    }
+  },
+  "gaps": {
+    "title": "Lacune di conformità",
+    "subtitle": "per",
+    "backToSystem": "Torna al sistema",
+    "overallProgress": "Progresso generale",
+    "of": "di",
+    "completed": "completate",
+    "complete": "completato",
+    "filterByStatus": "Filtra per stato",
+    "filterByPriority": "Filtra per priorità",
+    "allStatuses": "Tutti gli stati",
+    "allPriorities": "Tutte le priorità",
+    "notStarted": "Non iniziato",
+    "inProgress": "In corso",
+    "critical": "Critico",
+    "high": "Alto",
+    "medium": "Medio",
+    "low": "Basso",
+    "notes": "Note",
+    "dueDate": "Scadenza",
+    "noGaps": "Tutti i requisiti soddisfatti",
+    "noGapsDescription": "Questo sistema soddisfa tutti i requisiti di conformità per i filtri selezionati"
+  },
   "marketing": {
-    "tagline": "Gestione della conformità AI per PMI",
+    "tagline": "Gestione della conformità IA per le PMI",
     "cta": "Inizia la prova gratuita"
+  },
+  "documents": {
+    "title": "Documenti",
+    "generate": "Genera report",
+    "generating": "Generazione in corso...",
+    "download": "Scarica",
+    "delete": "Elimina",
+    "generatedAt": "Generato il",
+    "noDocuments": "Nessun documento generato",
+    "noDocumentsDescription": "Genera report di conformità per documentare il tuo sistema di IA",
+    "selectType": "Seleziona tipo di documento",
+    "classificationReport": "Report di classificazione",
+    "roadmap": "Piano di conformità",
+    "annexIV": "Documentazione tecnica Allegato IV",
+    "upgradeRequired": "Aggiornamento richiesto",
+    "upgradeMessage": "La generazione di documenti è disponibile dal piano Starter",
+    "classificationRequired": "Classificazione richiesta",
+    "classificationRequiredMessage": "Il sistema deve essere classificato prima di generare questo documento",
+    "deleteConfirm": "Sei sicuro di voler eliminare questo documento?",
+    "report": {
+      "title": "Report di classificazione del rischio del sistema di IA",
+      "subtitle": "Classificazione del rischio secondo la Legge sull'IA dell'UE",
+      "systemInfo": "Informazioni sul sistema",
+      "systemName": "Nome del sistema",
+      "description": "Descrizione",
+      "aiType": "Tipo di IA",
+      "domain": "Dominio",
+      "markets": "Mercati target",
+      "classification": "Risultati della classificazione",
+      "riskLevel": "Livello di rischio",
+      "annexCategory": "Categoria Allegato III",
+      "reasoning": "Motivazione della classificazione",
+      "exceptionAnalysis": "Analisi delle eccezioni (Articolo 6.3)",
+      "exceptionApplies": "Eccezione applicabile",
+      "exceptionReason": "Motivo dell'eccezione",
+      "obligations": "Riepilogo di conformità",
+      "obligationCount": "Obblighi totali",
+      "gapCount": "Lacune in sospeso",
+      "providerDeployer": "Il tuo ruolo",
+      "transparency": "Obblighi di trasparenza (Articolo 50)",
+      "disclaimer": "Questo documento è generato da Complyance.io e non costituisce consulenza legale. Consultare professionisti legali qualificati per la verifica della conformità.",
+      "generatedFor": "Generato per",
+      "noException": "Nessuna eccezione dell'Articolo 6.3 applicabile. Questo sistema è soggetto a tutti i requisiti per i sistemi di IA ad alto rischio.",
+      "notClassified": "Non ancora classificato"
+    },
+    "roadmap": {
+      "title": "Piano di conformità",
+      "subtitle": "Piano passo dopo passo per la conformità alla Legge sull'IA dell'UE",
+      "systemName": "Sistema",
+      "deadline": "Scadenza di conformità alla Legge sull'IA dell'UE",
+      "daysRemaining": "giorni rimanenti",
+      "overview": "Panoramica",
+      "totalGaps": "Requisiti totali",
+      "criticalGaps": "Critici",
+      "highGaps": "Alta priorità",
+      "timeline": "Cronoprogramma di implementazione",
+      "phase": "Fase",
+      "article": "Articolo",
+      "requirement": "Requisito",
+      "priority": "Priorità",
+      "dueDate": "Scadenza",
+      "status": "Stato",
+      "disclaimer": "Questo piano è uno strumento di pianificazione e non costituisce consulenza legale. Le tempistiche devono essere adattate alla capacità della tua organizzazione e alle scadenze normative.",
+      "generatedFor": "Generato per",
+      "notStarted": "Non iniziato",
+      "inProgress": "In corso",
+      "completed": "Completato",
+      "immediate": "Immediato (0-3 mesi)",
+      "shortTerm": "Breve termine (3-6 mesi)",
+      "mediumTerm": "Medio termine (6-12 mesi)",
+      "longTerm": "Lungo termine (12+ mesi)"
+    },
+    "annexIV": {
+      "title": "Documentazione tecnica Allegato IV",
+      "subtitle": "Requisiti dell'Articolo 11 della Legge sull'IA dell'UE",
+      "section1": "Sezione 1:",
+      "section1Title": "Descrizione generale",
+      "section1Content": "Questa sezione fornisce una descrizione dettagliata del sistema di IA, del suo scopo previsto e delle persone o gruppi di persone su cui il sistema è destinato ad essere utilizzato.",
+      "section2": "Sezione 2:",
+      "section2Title": "Specifiche tecniche",
+      "section2Content": "Descrizione dell'architettura del modello di IA, degli algoritmi, dei requisiti dei dati e delle specifiche tecniche.",
+      "section3": "Sezione 3:",
+      "section3Title": "Sistema di gestione dei rischi",
+      "section3Content": "Documentazione del sistema di gestione dei rischi come richiesto dall'Articolo 9 della Legge sull'IA dell'UE.",
+      "section4": "Sezione 4:",
+      "section4Title": "Misure di sorveglianza umana",
+      "section4Content": "Descrizione delle misure di sorveglianza umana implementate per garantire un funzionamento sicuro (Articolo 14).",
+      "section5": "Sezione 5:",
+      "section5Title": "Accuratezza, robustezza e cybersicurezza",
+      "section5Content": "Documentazione delle misure per garantire livelli adeguati di accuratezza, robustezza e cybersicurezza (Articolo 15).",
+      "section6": "Sezione 6:",
+      "section6Title": "Monitoraggio post-commercializzazione",
+      "section6Content": "Descrizione del sistema di monitoraggio post-commercializzazione come richiesto dall'Articolo 72.",
+      "systemInfo": "Informazioni sul sistema",
+      "systemName": "Nome del sistema",
+      "description": "Descrizione",
+      "aiType": "Tipo di IA",
+      "domain": "Dominio",
+      "markets": "Mercati target",
+      "riskLevel": "Livello di rischio",
+      "providerInfo": "Informazioni sul fornitore",
+      "organizationName": "Organizzazione",
+      "generatedDate": "Data di generazione",
+      "version": "Versione",
+      "disclaimer": "Questo è un documento modello. Tutte le sezioni segnaposto devono essere completate con informazioni specifiche sul tuo sistema di IA. Questo non costituisce consulenza legale.",
+      "generatedFor": "Generato per",
+      "intendedPurpose": "Scopo previsto",
+      "technicalSpecs": "Specifiche tecniche",
+      "dataRequirements": "Requisiti dei dati",
+      "humanOversight": "Sorveglianza umana",
+      "accuracy": "Metriche di accuratezza",
+      "robustness": "Robustezza e resilienza",
+      "cybersecurity": "Misure di cybersicurezza",
+      "monitoring": "Piano di monitoraggio",
+      "placeholder": "DA COMPILARE"
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog | Complyance - Approfondimenti sulla conformità IA",
+      "description": "Approfondimenti di esperti sulla conformità IA, la Legge sull'IA dell'UE e aggiornamenti normativi per aziende SaaS"
+    },
+    "title": "Blog sulla conformità",
+    "subtitle": "Approfondimenti di esperti sulla conformità IA, la Legge sull'IA dell'UE e aggiornamenti normativi",
+    "allPosts": "Tutti gli articoli",
+    "noPosts": "Nessun articolo disponibile al momento. Torna presto!",
+    "readMore": "Leggi di più",
+    "backToBlog": "Torna al blog",
+    "relatedArticles": "Articoli correlati",
+    "sidebar": {
+      "classifier": {
+        "title": "Classificatore gratuito di rischio IA",
+        "description": "Verifica se il tuo sistema di IA è ad alto rischio secondo la Legge sull'IA dell'UE — in 2 minuti",
+        "cta": "Prova ora (gratuito)"
+      },
+      "about": {
+        "title": "Info su questo blog",
+        "description": "Resta aggiornato sulle ultime notizie sulla conformità IA, aggiornamenti normativi e guide pratiche per aziende SaaS."
+      },
+      "toc": {
+        "title": "In questo articolo",
+        "description": "Vai alle sezioni"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Prezzi semplici e trasparenti",
+    "subtitle": "Scegli il piano adatto alle tue esigenze di conformità. Tutti i piani includono classificazione del rischio e analisi delle lacune.",
+    "popular": "Più popolare",
+    "perMonth": "mese",
+    "plans": {
+      "free": {
+        "description": "Perfetto per esplorare i requisiti di conformità IA",
+        "cta": "Inizia gratis"
+      },
+      "starter": {
+        "description": "Per piccoli team che iniziano la conformità alla Legge sull'IA dell'UE",
+        "cta": "Prova gratuita"
+      },
+      "professional": {
+        "description": "Per team in crescita che gestiscono più sistemi di IA",
+        "cta": "Prova gratuita"
+      },
+      "scale": {
+        "description": "Per organizzazioni con esigenze di conformità complesse",
+        "cta": "Prova gratuita"
+      }
+    },
+    "features": {
+      "systems": "{count, plural, =1 {1 sistema di IA} other {{count} sistemi di IA}}",
+      "regulations": "{count, plural, =1 {1 regolamento (solo UE)} other {{count} regolamenti}}",
+      "classification": "Classificazione del rischio",
+      "gapAnalysis": "Analisi delle lacune",
+      "badge": "Badge di conformità ({level})",
+      "vendors": "{count, plural, =0 {Valutazioni rischi fornitori} =1 {{count} valutazione fornitore} other {{count} valutazioni fornitori}}",
+      "documents": "Generazione documenti",
+      "evidence": "Archivio prove",
+      "alerts": "Avvisi normativi",
+      "alertsWeekly": "Riepilogo settimanale",
+      "alertsRealtime": "Notifiche in tempo reale",
+      "biasTesting": "{count, plural, =0 {Test di bias} other {{count} test di bias/mese}}",
+      "biasTestingUnlimited": "Illimitato",
+      "teamMembers": "{count, plural, =1 {{count} membro del team} other {{count} membri del team}}",
+      "incidents": "Registro incidenti",
+      "gdprModule": "Modulo GDPR-IA",
+      "cicdAPI": "API integrazione CI/CD",
+      "allRegulations": "Tutti i regolamenti",
+      "vendorsUnlimited": "Illimitato"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "description": "Soluzioni personalizzate per grandi organizzazioni con supporto dedicato, opzioni white-label e flussi di conformità su misura.",
+      "cta": "Contatta le vendite"
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "q1": {
+        "question": "Cosa include il piano gratuito?",
+        "answer": "Il piano gratuito consente di classificare 1 sistema di IA, vedere le lacune di conformità e ottenere un badge 'Legge sull'IA — Consapevole'. Perfetto per esplorare i requisiti della Legge sull'IA dell'UE senza impegno."
+      },
+      "q2": {
+        "question": "Posso cambiare piano in seguito?",
+        "answer": "Sì! Puoi aggiornare o ridurre il piano in qualsiasi momento. Con l'aggiornamento ottieni accesso immediato alle nuove funzionalità. Con la riduzione, le modifiche hanno effetto alla fine del ciclo di fatturazione."
+      },
+      "q3": {
+        "question": "Quali regolamenti coprite?",
+        "answer": "Attualmente supportiamo la Legge sull'IA dell'UE, il Colorado AI Act (SB 24-205), la NYC Local Law 144, il NIST AI RMF, l'ISO 42001 e i principi etici IA degli EAU. I piani Professional e Scale includono tutti i regolamenti."
+      },
+      "q4": {
+        "question": "I miei dati sono al sicuro?",
+        "answer": "Sì. Tutti i dati sono crittografati a riposo (AES-256) e in transito (TLS 1.3). Siamo conformi SOC 2 Tipo II e pronti per il GDPR. I dati di conformità non lasciano mai la nostra infrastruttura sicura nell'UE."
+      },
+      "q5": {
+        "question": "Offrite rimborsi?",
+        "answer": "Sì! Offriamo una garanzia soddisfatti o rimborsati di 14 giorni per tutti i piani a pagamento. Se non sei soddisfatto, contattaci entro 14 giorni dal primo pagamento per un rimborso completo."
+      },
+      "q6": {
+        "question": "Quali metodi di pagamento accettate?",
+        "answer": "Accettiamo tutte le principali carte di credito (Visa, Mastercard, American Express) e supportiamo più valute. I pagamenti sono elaborati in modo sicuro tramite Paddle, il nostro Merchant of Record."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contattaci",
+    "subtitle": "Hai una domanda? Siamo qui per aiutarti.",
+    "info": {
+      "title": "Mettiti in contatto",
+      "support": {
+        "title": "Supporto generale",
+        "desc": "Domande sul tuo account, fatturazione o funzionalità della piattaforma"
+      },
+      "privacy": {
+        "title": "Privacy e dati",
+        "desc": "Protezione dei dati, richieste GDPR o questioni di privacy"
+      },
+      "partnership": {
+        "title": "Partnership",
+        "desc": "Studi legali, società di consulenza e opportunità di rivendita"
+      },
+      "hours": {
+        "title": "Tempi di risposta",
+        "desc": "Di solito rispondiamo entro 24 ore nei giorni lavorativi (lunedì-venerdì, 9:00-18:00 CET)"
+      }
+    },
+    "form": {
+      "title": "Inviaci un messaggio",
+      "name": "Nome",
+      "email": "E-mail",
+      "subject": "Oggetto",
+      "subjects": {
+        "general": "Richiesta generica",
+        "support": "Supporto tecnico",
+        "partnership": "Opportunità di partnership",
+        "press": "Stampa e media",
+        "other": "Altro"
+      },
+      "message": "Messaggio",
+      "submit": "Invia messaggio",
+      "sending": "Invio in corso...",
+      "success": "Grazie! Ti risponderemo entro 24 ore."
+    }
+  },
+  "about": {
+    "title": "Chi è Complyance",
+    "subtitle": "Rendere la conformità IA accessibile a ogni azienda SaaS",
+    "mission": {
+      "title": "La nostra missione",
+      "p1": "La Legge sull'IA dell'UE è il primo regolamento completo sull'IA al mondo e interessa migliaia di aziende SaaS che vendono in Europa. Ma gli strumenti di conformità progettati per le aziende Fortune 500 sono fuori portata per la maggior parte delle PMI.",
+      "p2": "Abbiamo creato Complyance per democratizzare la conformità IA. Nessun team legale necessario. Nessun budget aziendale richiesto. Solo guide chiare e strumenti pratici per aiutarti a fornire prodotti IA conformi."
+    },
+    "problem": {
+      "title": "Il problema che risolviamo",
+      "p1": "La maggior parte delle piattaforme di conformità IA è progettata per grandi aziende con team legali dedicati e budget a partire da 50.000 $/anno. Richiedono consulenti per l'implementazione, mesi per l'integrazione e supporto legale continuo.",
+      "p2": "Nel frattempo, migliaia di fondatori SaaS stanno costruendo con l'IA — chatbot, motori di raccomandazione, strumenti di screening CV, sistemi di rilevamento frodi — senza rendersi conto di essere soggetti ai regolamenti sull'IA ad alto rischio.",
+      "p3": "La scadenza della Legge sull'IA dell'UE è il 2 agosto 2026. Il mancato rispetto significa sanzioni fino a 35 milioni di euro o il 7% del fatturato globale. Ma assumere un consulente di conformità costa oltre 15.000 € per sistema. Per la maggior parte delle PMI, non è un'opzione."
+    },
+    "solution": {
+      "title": "La nostra soluzione",
+      "subtitle": "Gestione della conformità IA self-service per team che non possono permettersi piattaforme enterprise",
+      "automated": {
+        "title": "Classificazione automatica del rischio",
+        "desc": "Il nostro motore IA analizza il tuo sistema secondo le categorie dell'Allegato III della Legge sull'IA dell'UE e ti dice se sei ad alto rischio in pochi minuti."
+      },
+      "actionable": {
+        "title": "Piani di conformità attuabili",
+        "desc": "Ottieni un piano passo dopo passo con scadenze, priorità e spiegazioni chiare di cosa devi fare."
+      },
+      "affordable": {
+        "title": "Accessibile per le PMI",
+        "desc": "A partire da 99 $/mese. Nessun consulente necessario. Nessun costo nascosto. Cancella quando vuoi."
+      }
+    },
+    "what": {
+      "title": "Cosa facciamo",
+      "classify": {
+        "title": "Classificazione del rischio",
+        "desc": "Determina se il tuo sistema di IA è ad alto rischio, rischio limitato o rischio minimo secondo la Legge sull'IA dell'UE, il Colorado AI Act e altri regolamenti."
+      },
+      "gaps": {
+        "title": "Analisi delle lacune",
+        "desc": "Identifica esattamente quali requisiti di conformità ti mancano e cosa devi fare per soddisfarli."
+      },
+      "documents": {
+        "title": "Generazione documenti",
+        "desc": "Genera report di conformità, documentazione tecnica (Allegato IV) e piani con un clic."
+      },
+      "vendors": {
+        "title": "Valutazione rischi fornitori",
+        "desc": "Valuta i fornitori IA (OpenAI, Anthropic, ecc.) per rischi di conformità e pratiche di trattamento dati."
+      },
+      "updates": {
+        "title": "Intelligence normativa",
+        "desc": "Resta aggiornato su nuove linee guida, azioni di enforcement e modifiche normative che interessano i tuoi sistemi di IA."
+      }
+    },
+    "disclaimer": {
+      "title": "Avviso importante",
+      "desc": "Complyance è uno strumento di gestione della conformità, non uno studio legale. La nostra piattaforma aiuta a organizzare e monitorare il lavoro di conformità, ma non costituisce consulenza legale. Per registrazioni normative o certificazioni, consultare professionisti legali qualificati."
+    },
+    "cta": {
+      "title": "Pronto per la conformità?",
+      "subtitle": "Inizia con il nostro piano gratuito e classifica il tuo primo sistema di IA in 5 minuti. Nessuna carta di credito richiesta.",
+      "start": "Inizia gratis",
+      "pricing": "Vedi i prezzi"
+    }
+  },
+  "partners": {
+    "title": "Partnership con Complyance",
+    "subtitle": "Unisciti alla nostra rete di studi legali, società di consulenza ed esperti di conformità che aiutano i clienti a navigare i regolamenti sull'IA",
+    "benefits": {
+      "title": "Vantaggi della partnership",
+      "revenue": {
+        "title": "Condivisione dei ricavi",
+        "desc": "Guadagna il 20% di commissione ricorrente su tutti i clienti segnalati per 12 mesi"
+      },
+      "whiteLabel": {
+        "title": "Opzioni white-label",
+        "desc": "Offri Complyance con il tuo marchio con dominio personalizzato e branding (livello Enterprise)"
+      },
+      "support": {
+        "title": "Supporto dedicato",
+        "desc": "Canale di supporto prioritario e account manager dedicato per i tuoi clienti"
+      },
+      "training": {
+        "title": "Formazione e risorse",
+        "desc": "Accesso alla formazione partner, materiali di co-marketing e risorse di supporto alle vendite"
+      }
+    },
+    "ideal": {
+      "title": "Profili partner ideali",
+      "lawFirms": {
+        "title": "Studi legali",
+        "desc": "Pratiche di diritto tecnologico che assistono clienti SaaS su privacy dei dati, conformità IA e questioni normative"
+      },
+      "consultancies": {
+        "title": "Società di consulenza sulla conformità",
+        "desc": "Aziende che forniscono servizi di consulenza GDPR, ISO 27001, SOC 2 o conformità IA"
+      },
+      "auditors": {
+        "title": "Revisori e valutatori",
+        "desc": "Organizzazioni che conducono audit di conformità, certificazioni o valutazioni di terze parti"
+      }
+    },
+    "form": {
+      "title": "Candidati come partner",
+      "subtitle": "Parlaci della tua azienda e di come vorresti collaborare",
+      "companyName": "Nome azienda",
+      "website": "Sito web",
+      "contactName": "Il tuo nome",
+      "email": "E-mail",
+      "type": "Tipo di partner",
+      "types": {
+        "lawFirm": "Studio legale",
+        "consultancy": "Società di consulenza sulla conformità",
+        "auditor": "Revisore / Valutatore",
+        "other": "Altro"
+      },
+      "message": "Parlaci della tua azienda",
+      "messagePlaceholder": "Quali servizi offri? Quanti clienti servi? Perché vuoi diventare partner di Complyance?",
+      "submit": "Invia candidatura",
+      "sending": "Invio in corso...",
+      "success": "Grazie! Esamineremo la tua candidatura e ti risponderemo entro 3 giorni lavorativi."
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Informativa sulla privacy",
+      "introduction": "Complyance rispetta la tua privacy. Questa Informativa sulla privacy spiega come raccogliamo, utilizziamo e proteggiamo le tue informazioni personali quando utilizzi la nostra piattaforma di gestione della conformità IA.",
+      "dataCollection": {
+        "title": "Dati che raccogliamo",
+        "account": "Informazioni sull'account (nome, e-mail, organizzazione)",
+        "usage": "Dati di utilizzo (sistemi IA classificati, documenti generati)",
+        "technical": "Dati tecnici (indirizzo IP, tipo di browser, informazioni sul dispositivo)",
+        "documents": "Documenti caricati per l'analisi IA (crittografati a riposo)"
+      },
+      "usage": {
+        "title": "Come utilizziamo i tuoi dati",
+        "service": "Per fornire e migliorare i nostri servizi di gestione della conformità",
+        "ai": "Per classificare i sistemi IA e generare report di conformità tramite l'API Claude",
+        "billing": "Per elaborare i pagamenti tramite Paddle (il nostro Merchant of Record)",
+        "communication": "Per inviare aggiornamenti del servizio, avvisi normativi e notifiche di conformità"
+      },
+      "thirdParties": {
+        "title": "Servizi di terze parti",
+        "anthropic": "Anthropic (API Claude) - Classificazione IA e analisi documenti",
+        "paddle": "Paddle - Elaborazione pagamenti e gestione abbonamenti",
+        "aws": "AWS S3 - Archiviazione crittografata dei documenti (regione UE)",
+        "resend": "Resend - Invio e-mail transazionali",
+        "desc": "Non vendiamo mai i tuoi dati. Le terze parti trattano i dati solo nella misura necessaria per fornire i servizi."
+      },
+      "cookies": {
+        "title": "Cookie",
+        "essential": "Cookie essenziali per l'autenticazione e la gestione delle sessioni",
+        "analytics": "Cookie analitici per migliorare le prestazioni della piattaforma (opzionali)",
+        "desc": "Puoi controllare le preferenze dei cookie nelle impostazioni del browser."
+      },
+      "retention": {
+        "title": "Conservazione dei dati",
+        "active": "Dati dell'account conservati finché l'abbonamento è attivo",
+        "grace": "Periodo di grazia di 30 giorni dopo la cancellazione prima dell'eliminazione",
+        "legal": "Alcuni dati conservati più a lungo per conformità legale (es. registri di fatturazione)"
+      },
+      "gdprRights": {
+        "title": "I tuoi diritti GDPR",
+        "access": "Diritto di accesso ai tuoi dati personali",
+        "rectification": "Diritto di rettifica dei dati inesatti",
+        "erasure": "Diritto alla cancellazione dei tuoi dati ('diritto all'oblio')",
+        "portability": "Diritto alla portabilità dei dati in formato leggibile da macchina",
+        "objection": "Diritto di opposizione al trattamento",
+        "desc": "Per esercitare questi diritti, contatta privacy@complyance.io"
+      },
+      "security": {
+        "title": "Sicurezza",
+        "encryption": "Tutti i dati crittografati a riposo (AES-256) e in transito (TLS 1.3)",
+        "infrastructure": "Infrastruttura basata nell'UE per la conformità GDPR",
+        "access": "Controlli di accesso basati sui ruoli e registri di audit",
+        "desc": "Seguiamo le migliori pratiche del settore per proteggere i tuoi dati."
+      }
+    },
+    "terms": {
+      "title": "Termini di servizio",
+      "acceptance": {
+        "title": "Accettazione dei termini",
+        "desc": "Accedendo o utilizzando Complyance, accetti di essere vincolato da questi Termini di servizio. Se non accetti, non puoi utilizzare la piattaforma."
+      },
+      "serviceDescription": {
+        "title": "Descrizione del servizio",
+        "desc": "Complyance è una piattaforma SaaS self-service per la gestione della conformità IA. Forniamo strumenti di classificazione del rischio, analisi delle lacune, generazione di documenti e intelligence normativa per aiutare le organizzazioni a conformarsi ai regolamenti sull'IA, inclusa la Legge sull'IA dell'UE."
+      },
+      "disclaimer": {
+        "title": "Avviso legale",
+        "notAdvice": "Complyance è uno strumento di gestione della conformità, non uno studio legale o un consulente legale.",
+        "informational": "Tutte le classificazioni, i report e le raccomandazioni sono solo a scopo informativo e non costituiscono consulenza legale.",
+        "professional": "Per registrazioni normative, certificazioni o pareri legali, consultare professionisti legali qualificati.",
+        "liability": "Non siamo responsabili per inadempimenti di conformità, sanzioni normative o conseguenze legali derivanti dall'uso della nostra piattaforma."
+      },
+      "accounts": {
+        "title": "Account utente",
+        "responsibility": "Sei responsabile del mantenimento della riservatezza delle credenziali del tuo account",
+        "accurate": "Devi fornire informazioni accurate e complete",
+        "notify": "Avvisaci immediatamente di qualsiasi accesso non autorizzato",
+        "prohibited": "Non puoi condividere account o trasferire l'accesso senza autorizzazione"
+      },
+      "billing": {
+        "title": "Fatturazione e pagamenti",
+        "paddle": "Pagamenti elaborati da Paddle (Merchant of Record)",
+        "subscription": "Gli abbonamenti si rinnovano automaticamente salvo cancellazione",
+        "prices": "I prezzi sono in USD e soggetti a modifiche con preavviso di 30 giorni",
+        "taxes": "Paddle gestisce tutti i calcoli fiscali e la conformità fiscale"
+      },
+      "prohibitedUse": {
+        "title": "Uso vietato",
+        "illegal": "Violare leggi o regolamenti applicabili",
+        "misrepresent": "Rappresentare falsamente i tuoi sistemi IA o lo stato di conformità",
+        "reverse": "Reverse engineering, decompilare o modificare la piattaforma",
+        "abuse": "Abusare, molestare o danneggiare altri utenti o i nostri sistemi",
+        "resell": "Rivendere o ridistribuire i nostri servizi senza autorizzazione"
+      },
+      "ip": {
+        "title": "Proprietà intellettuale",
+        "ownership": "Complyance detiene tutti i diritti sulla piattaforma, il software e i contenuti",
+        "yourData": "Mantieni la proprietà dei tuoi dati (sistemi IA, documenti, prove)",
+        "license": "Ti concediamo una licenza limitata per utilizzare la piattaforma secondo il tuo piano",
+        "feedback": "Il feedback fornito può essere utilizzato per migliorare la piattaforma"
+      },
+      "liability": {
+        "title": "Limitazione di responsabilità",
+        "asIs": "Piattaforma fornita 'così com'è' senza garanzie",
+        "noLiability": "Non siamo responsabili per danni indiretti, incidentali o consequenziali",
+        "cap": "Responsabilità totale limitata all'importo pagato negli ultimi 12 mesi",
+        "force": "Non responsabili per eventi al di fuori del nostro ragionevole controllo"
+      }
+    },
+    "refund": {
+      "title": "Politica di rimborso",
+      "policy": {
+        "title": "Garanzia soddisfatti o rimborsati di 14 giorni",
+        "desc": "Offriamo una garanzia di rimborso di 14 giorni per tutti i piani a pagamento. Se non sei soddisfatto di Complyance, richiedi un rimborso completo entro 14 giorni dal primo pagamento."
+      },
+      "eligibility": {
+        "title": "Idoneità al rimborso",
+        "firstPayment": "Si applica solo al primo pagamento (non ai rinnovi)",
+        "within14": "La richiesta deve essere effettuata entro 14 giorni dal pagamento",
+        "notAbused": "Privilegio di rimborso non utilizzato in precedenza su un altro account",
+        "goodFaith": "Account utilizzato in buona fede (nessun abuso o violazione)"
+      },
+      "process": {
+        "title": "Come richiedere un rimborso",
+        "contact": "Invia un'e-mail a support@complyance.io con 'Richiesta di rimborso' nell'oggetto",
+        "include": "Includi l'e-mail del tuo account e il motivo (opzionale ma apprezzato)",
+        "processing": "Rimborsi elaborati entro 5-7 giorni lavorativi",
+        "method": "Rimborso emesso sul metodo di pagamento originale tramite Paddle"
+      },
+      "proRata": {
+        "title": "Rimborsi proporzionali (downgrade)",
+        "desc": "Se effettui un downgrade a metà ciclo, il tempo non utilizzato non viene rimborsato ma accreditato sul prossimo periodo di fatturazione."
+      },
+      "euRights": {
+        "title": "Diritti dei consumatori UE",
+        "withdrawal": "I consumatori UE hanno un diritto di recesso di 14 giorni ai sensi della Direttiva UE 2011/83/UE",
+        "digital": "Avviando l'abbonamento, riconosci che i servizi digitali iniziano immediatamente e rinunci al diritto di recesso dopo l'utilizzo del servizio",
+        "unused": "Se annulli prima di utilizzare il servizio, hai diritto a un rimborso completo"
+      }
+    }
+  },
+  "billing": {
+    "currentPlan": "Piano attuale",
+    "usage": "Utilizzo",
+    "upgrade": "Aggiorna piano",
+    "cancel": "Cancella abbonamento",
+    "manageBilling": "Gestisci fatturazione",
+    "portalLink": "Visualizza fatture e aggiorna metodi di pagamento nel portale di fatturazione"
+  },
+  "footer": {
+    "product": {
+      "title": "Prodotto",
+      "pricing": "Prezzi",
+      "blog": "Blog",
+      "freeClassifier": "Classificatore gratuito"
+    },
+    "company": {
+      "title": "Azienda",
+      "about": "Chi siamo",
+      "partners": "Partner",
+      "contact": "Contatti"
+    },
+    "legal": {
+      "title": "Legale",
+      "privacy": "Informativa sulla privacy",
+      "terms": "Termini di servizio",
+      "refund": "Politica di rimborso"
+    },
+    "copyright": "© 2026 Complyance. Tutti i diritti riservati.",
+    "disclaimer": "Non costituisce consulenza legale. Le classificazioni sono solo a scopo informativo."
   }
 }

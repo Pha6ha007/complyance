@@ -4,21 +4,23 @@
     "cancel": "Abbrechen",
     "delete": "Löschen",
     "edit": "Bearbeiten",
-    "loading": "Wird geladen...",
+    "loading": "Laden...",
     "error": "Ein Fehler ist aufgetreten",
-    "success": "Erfolg",
+    "success": "Erfolgreich",
     "confirm": "Bestätigen",
     "back": "Zurück",
     "next": "Weiter",
-    "previous": "Vorherige",
-    "finish": "Fertig",
-    "close": "Schließen"
+    "previous": "Zurück",
+    "finish": "Abschließen",
+    "close": "Schließen",
+    "yes": "Ja",
+    "no": "Nein"
   },
   "nav": {
     "dashboard": "Dashboard",
     "systems": "KI-Systeme",
-    "vendors": "Anbieterrisiko",
-    "evidence": "Beweistresor",
+    "vendors": "Anbieterrisiken",
+    "evidence": "Nachweisspeicher",
     "reports": "Berichte",
     "intelligence": "Regulatorische Updates",
     "settings": "Einstellungen",
@@ -40,21 +42,771 @@
   },
   "dashboard": {
     "title": "Compliance-Dashboard",
+    "subtitle": "Überblick über Ihren KI-Compliance-Status",
     "welcome": "Willkommen zurück",
     "complianceScore": "Compliance-Score",
-    "systemsOverview": "KI-Systeme Übersicht",
+    "systemsOverview": "Übersicht der KI-Systeme",
+    "totalSystems": "Systeme gesamt",
+    "classified": "klassifiziert",
+    "average": "Durchschnitt",
     "criticalGaps": "Kritische Lücken",
-    "deadlineCountdown": "Tage bis zur EU-KI-Verordnung Frist",
-    "riskDistribution": "Risikoverteilung"
+    "requiresAttention": "erfordert Aufmerksamkeit",
+    "deadlineCountdown": "Tage bis zur KI-Verordnung-Frist",
+    "euAiActDeadline": "KI-Verordnung-Frist",
+    "daysRemaining": "Tage verbleibend",
+    "riskDistribution": "Risikoverteilung",
+    "topCriticalGaps": "Kritische Compliance-Lücken",
+    "system": "System",
+    "viewGaps": "Lücken anzeigen",
+    "noCriticalGaps": "Keine kritischen Lücken",
+    "noCriticalGapsDescription": "Alle kritischen Compliance-Anforderungen werden bearbeitet",
+    "noSystems": "Noch keine KI-Systeme",
+    "noSystemsDescription": "Beginnen Sie, indem Sie Ihr erstes KI-System hinzufügen, um die Compliance zu verfolgen",
+    "addFirstSystem": "Erstes System hinzufügen"
   },
   "classification": {
     "unacceptable": "Unannehmbares Risiko",
-    "high": "Hochrisiko",
+    "high": "Hohes Risiko",
     "limited": "Begrenztes Risiko",
     "minimal": "Minimales Risiko"
   },
+  "systems": {
+    "title": "KI-Systeme",
+    "description": "Verwalten Sie Ihr KI-Systeminventar und die Klassifizierungen",
+    "systemsUsed": "Systeme verwendet",
+    "addSystem": "System hinzufügen",
+    "addFirstSystem": "Erstes System hinzufügen",
+    "noSystems": "Noch keine KI-Systeme",
+    "noSystemsDescription": "Beginnen Sie, indem Sie Ihr erstes KI-System hinzufügen, um die Compliance zu verfolgen",
+    "loading": "Systeme werden geladen...",
+    "loadingDescription": "Bitte warten Sie, während Ihre KI-Systeme geladen werden",
+    "error": "Fehler beim Laden der Systeme",
+    "notClassified": "Nicht klassifiziert",
+    "open": "offen",
+    "none": "Keine",
+    "backToSystems": "Zurück zu den Systemen",
+    "systemNotFound": "System nicht gefunden",
+    "deleteConfirm": "Sind Sie sicher, dass Sie dieses System löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "basicInformation": "Grundinformationen",
+    "aiType": "KI-Typ",
+    "domain": "Bereich",
+    "markets": "Märkte",
+    "endUsers": "Endnutzer",
+    "riskClassification": "Risikoklassifizierung",
+    "riskLevel": "Risikostufe",
+    "annexCategory": "Anhang-III-Kategorie",
+    "complianceScore": "Compliance-Score",
+    "classifiedAt": "Klassifiziert am",
+    "notClassifiedYet": "Dieses System wurde noch nicht klassifiziert",
+    "notClassifiedDescription": "Starten Sie die Klassifizierungs-Engine, um die Risikostufe und die Compliance-Anforderungen zu bestimmen",
+    "classifyNow": "Jetzt klassifizieren",
+    "characteristics": "Merkmale",
+    "makesDecisions": "Trifft Entscheidungen",
+    "processesPersonalData": "Verarbeitet personenbezogene Daten",
+    "profilesUsers": "Erstellt Nutzerprofile",
+    "yes": "Ja",
+    "no": "Nein",
+    "complianceGaps": "Compliance-Lücken",
+    "viewAllGaps": "Alle Lücken anzeigen",
+    "classificationResult": "Klassifizierungsergebnis",
+    "reclassify": "Neu klassifizieren",
+    "confidenceScore": "Konfidenzwert",
+    "role": "Ihre Rolle",
+    "exceptionApplied": "Ausnahme angewendet",
+    "reasoning": "Klassifizierungsbegründung",
+    "viewComplianceGaps": "Compliance-Lücken anzeigen",
+    "wizard": {
+      "title": "Neues KI-System hinzufügen",
+      "subtitle": "Durchlaufen Sie diesen Assistenten, um Ihr KI-System zu klassifizieren und Compliance-Anforderungen zu identifizieren",
+      "uploadOption": "Dokumente hochladen",
+      "manualOption": "Manuell ausfüllen",
+      "uploadTitle": "Laden Sie Ihre Produktdokumentation hoch",
+      "uploadDescription": "Wir analysieren Ihre Dokumente und füllen das Klassifizierungsformular vor",
+      "uploadDropzone": "Dateien hier ablegen oder klicken zum Hochladen",
+      "uploadDropHere": "Dateien hier ablegen...",
+      "uploadSupported": "Unterstützt: PDF, DOCX, MD, TXT (max. 10 MB pro Datei, bis zu 5 Dateien)",
+      "uploadMaxFilesError": "Sie können bis zu {max} Dateien hochladen",
+      "uploadComplete": "Upload abgeschlossen",
+      "uploadedFilesCount": "{count} Datei(en) erfolgreich hochgeladen",
+      "analyzing": "Ihre Dokumente werden analysiert...",
+      "analysisComplete": "Analyse abgeschlossen! Überprüfen Sie die extrahierten Informationen unten.",
+      "extractedFrom": "Aus Ihren Dokumenten extrahiert",
+      "detectedRisk": "Risiko erkannt",
+      "detectedRisks": "Erkannte Risiken",
+      "detectedRiskDescription": "Wir haben potenzielle Compliance-Risiken in Ihren Dokumenten gefunden",
+      "noRisksFound": "Keine zusätzlichen Risiken erkannt",
+      "reviewAndConfirm": "Bitte überprüfen und bestätigen Sie die Informationen unten",
+      "systemName": "Systemname",
+      "confident": "Konfidenz",
+      "keyFindings": "Wichtigste Ergebnisse",
+      "unknown": "Unbekannt",
+      "extractedQuotes": "Nachweise",
+      "step1": {
+        "title": "Grundinformationen",
+        "description": "Beschreiben Sie Ihr KI-System",
+        "name": "Systemname",
+        "namePlaceholder": "z. B. CV-Screening-Tool",
+        "nameDescription": "Ein klarer, beschreibender Name für Ihr KI-System",
+        "description": "Beschreibung",
+        "descriptionPlaceholder": "Erklären Sie, was dieses KI-System tut und wie es verwendet wird...",
+        "descriptionDescription": "Beschreiben Sie Zweck, Funktionalität und Hauptmerkmale",
+        "aiTypeLabel": "KI-Typ",
+        "aiTypeDescription": "Welche Art von KI-Technologie verwendet dieses System?",
+        "mlModel": "Machine-Learning-Modell",
+        "llm": "Großes Sprachmodell (LLM)",
+        "ruleBased": "Regelbasiertes System",
+        "hybrid": "Hybrid (ML + Regeln)"
+      },
+      "step2": {
+        "title": "Anwendungsfall",
+        "description": "Wie wird dieses KI-System verwendet?",
+        "domainLabel": "Bereich",
+        "domainDescription": "In welchem Bereich arbeitet dieses KI-System?",
+        "domainPlaceholder": "Bereich auswählen",
+        "hr": "Personalwesen",
+        "finance": "Finanzen und Bankwesen",
+        "healthcare": "Gesundheitswesen",
+        "education": "Bildung",
+        "security": "Sicherheit und Biometrie",
+        "content": "Inhaltsmoderation",
+        "chatbot": "Chatbot / Virtueller Assistent",
+        "recommendations": "Empfehlungen",
+        "other": "Sonstiges"
+      },
+      "step3": {
+        "title": "Daten und Auswirkungen",
+        "description": "Welche Daten verarbeitet es und welche Auswirkungen hat es?",
+        "decisionsLabel": "Trifft Entscheidungen",
+        "decisionsDescription": "Trifft oder beeinflusst dieses System wesentlich Entscheidungen über Personen?",
+        "personalDataLabel": "Verarbeitet personenbezogene Daten",
+        "personalDataDescription": "Verarbeitet es persönliche oder sensible Informationen?",
+        "profilesLabel": "Erstellt Nutzerprofile",
+        "profilesDescription": "Erstellt es Profile, Bewertungen oder Vorhersagen über Personen?",
+        "endUsersLabel": "Endnutzer",
+        "endUsersDescription": "Wer sind die von diesem System betroffenen Endnutzer?",
+        "b2c": "Verbraucher (B2C)",
+        "b2b": "Geschäftskunden (B2B)",
+        "employees": "Mitarbeiter",
+        "government": "Regierung / Öffentlicher Sektor"
+      },
+      "step4": {
+        "title": "Märkte",
+        "description": "Wo sind Sie tätig?",
+        "marketsLabel": "Zielmärkte",
+        "marketsDescription": "Wählen Sie alle Märkte aus, in denen dieses KI-System verwendet oder eingesetzt wird",
+        "eu": "Europäische Union (EU)",
+        "us": "Vereinigte Staaten (US)",
+        "uae": "Vereinigte Arabische Emirate (VAE)",
+        "other": "Sonstiges"
+      },
+      "step5": {
+        "title": "Überprüfung und Absenden",
+        "description": "Überprüfen Sie Ihre Informationen vor dem Absenden",
+        "summary": "Systemzusammenfassung",
+        "submitButton": "System klassifizieren",
+        "submitting": "Wird klassifiziert...",
+        "success": "System erfolgreich erstellt!",
+        "error": "Fehler beim Erstellen des Systems"
+      },
+      "validation": {
+        "nameRequired": "Systemname ist erforderlich",
+        "nameMax": "Systemname muss weniger als 200 Zeichen haben",
+        "descriptionRequired": "Beschreibung ist erforderlich",
+        "descriptionMin": "Beschreibung muss mindestens 10 Zeichen haben",
+        "aiTypeRequired": "Bitte wählen Sie einen KI-Typ aus",
+        "domainRequired": "Bitte wählen Sie einen Bereich aus",
+        "endUsersRequired": "Bitte wählen Sie mindestens einen Endnutzertyp aus",
+        "marketsRequired": "Bitte wählen Sie mindestens einen Markt aus"
+      }
+    },
+    "table": {
+      "name": "Name",
+      "domain": "Bereich",
+      "riskLevel": "Risikostufe",
+      "complianceScore": "Compliance",
+      "gaps": "Lücken",
+      "created": "Erstellt"
+    }
+  },
+  "gaps": {
+    "title": "Compliance-Lücken",
+    "subtitle": "für",
+    "backToSystem": "Zurück zum System",
+    "overallProgress": "Gesamtfortschritt",
+    "of": "von",
+    "completed": "abgeschlossen",
+    "complete": "abgeschlossen",
+    "filterByStatus": "Nach Status filtern",
+    "filterByPriority": "Nach Priorität filtern",
+    "allStatuses": "Alle Status",
+    "allPriorities": "Alle Prioritäten",
+    "notStarted": "Nicht begonnen",
+    "inProgress": "In Bearbeitung",
+    "critical": "Kritisch",
+    "high": "Hoch",
+    "medium": "Mittel",
+    "low": "Niedrig",
+    "notes": "Notizen",
+    "dueDate": "Fälligkeitsdatum",
+    "noGaps": "Alle Anforderungen erfüllt",
+    "noGapsDescription": "Dieses System erfüllt alle Compliance-Anforderungen für die ausgewählten Filter"
+  },
   "marketing": {
     "tagline": "KI-Compliance-Management für KMU",
-    "cta": "Kostenlose Testversion starten"
+    "cta": "Kostenlos starten"
+  },
+  "documents": {
+    "title": "Dokumente",
+    "generate": "Bericht erstellen",
+    "generating": "Wird erstellt...",
+    "download": "Herunterladen",
+    "delete": "Löschen",
+    "generatedAt": "Erstellt am",
+    "noDocuments": "Noch keine Dokumente erstellt",
+    "noDocumentsDescription": "Erstellen Sie Compliance-Berichte, um Ihr KI-System zu dokumentieren",
+    "selectType": "Dokumenttyp auswählen",
+    "classificationReport": "Klassifizierungsbericht",
+    "roadmap": "Compliance-Fahrplan",
+    "annexIV": "Technische Dokumentation Anhang IV",
+    "upgradeRequired": "Upgrade erforderlich",
+    "upgradeMessage": "Die Dokumenterstellung ist ab dem Starter-Plan verfügbar",
+    "classificationRequired": "Klassifizierung erforderlich",
+    "classificationRequiredMessage": "Das System muss vor der Erstellung dieses Dokuments klassifiziert werden",
+    "deleteConfirm": "Sind Sie sicher, dass Sie dieses Dokument löschen möchten?",
+    "report": {
+      "title": "Risikoklassifizierungsbericht des KI-Systems",
+      "subtitle": "Risikoklassifizierung nach der KI-Verordnung der EU",
+      "systemInfo": "Systeminformationen",
+      "systemName": "Systemname",
+      "description": "Beschreibung",
+      "aiType": "KI-Typ",
+      "domain": "Bereich",
+      "markets": "Zielmärkte",
+      "classification": "Klassifizierungsergebnisse",
+      "riskLevel": "Risikostufe",
+      "annexCategory": "Anhang-III-Kategorie",
+      "reasoning": "Klassifizierungsbegründung",
+      "exceptionAnalysis": "Ausnahmeanalyse (Artikel 6.3)",
+      "exceptionApplies": "Ausnahme anwendbar",
+      "exceptionReason": "Ausnahmebegründung",
+      "obligations": "Compliance-Zusammenfassung",
+      "obligationCount": "Gesamtpflichten",
+      "gapCount": "Offene Lücken",
+      "providerDeployer": "Ihre Rolle",
+      "transparency": "Transparenzpflichten (Artikel 50)",
+      "disclaimer": "Dieses Dokument wurde von Complyance.io erstellt und stellt keine Rechtsberatung dar. Konsultieren Sie qualifizierte Rechtsanwälte für die Compliance-Überprüfung.",
+      "generatedFor": "Erstellt für",
+      "noException": "Keine Ausnahme nach Artikel 6.3 anwendbar. Dieses System unterliegt den vollständigen Anforderungen für Hochrisiko-KI-Systeme.",
+      "notClassified": "Noch nicht klassifiziert"
+    },
+    "roadmap": {
+      "title": "Compliance-Fahrplan",
+      "subtitle": "Schritt-für-Schritt-Plan zur Einhaltung der KI-Verordnung der EU",
+      "systemName": "System",
+      "deadline": "Frist zur Einhaltung der KI-Verordnung der EU",
+      "daysRemaining": "Tage verbleibend",
+      "overview": "Überblick",
+      "totalGaps": "Gesamtanforderungen",
+      "criticalGaps": "Kritisch",
+      "highGaps": "Hohe Priorität",
+      "timeline": "Umsetzungszeitplan",
+      "phase": "Phase",
+      "article": "Artikel",
+      "requirement": "Anforderung",
+      "priority": "Priorität",
+      "dueDate": "Fälligkeitsdatum",
+      "status": "Status",
+      "disclaimer": "Dieser Fahrplan ist ein Planungswerkzeug und keine Rechtsberatung. Zeitpläne sollten an die Kapazitäten Ihrer Organisation und regulatorische Fristen angepasst werden.",
+      "generatedFor": "Erstellt für",
+      "notStarted": "Nicht begonnen",
+      "inProgress": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "immediate": "Sofort (0-3 Monate)",
+      "shortTerm": "Kurzfristig (3-6 Monate)",
+      "mediumTerm": "Mittelfristig (6-12 Monate)",
+      "longTerm": "Langfristig (12+ Monate)"
+    },
+    "annexIV": {
+      "title": "Technische Dokumentation Anhang IV",
+      "subtitle": "Anforderungen nach Artikel 11 der KI-Verordnung der EU",
+      "section1": "Abschnitt 1:",
+      "section1Title": "Allgemeine Beschreibung",
+      "section1Content": "Dieser Abschnitt enthält eine detaillierte Beschreibung des KI-Systems, seines Verwendungszwecks und der Personen oder Personengruppen, für die das System bestimmt ist.",
+      "section2": "Abschnitt 2:",
+      "section2Title": "Technische Spezifikationen",
+      "section2Content": "Beschreibung der KI-Modellarchitektur, der Algorithmen, der Datenanforderungen und der technischen Spezifikationen.",
+      "section3": "Abschnitt 3:",
+      "section3Title": "Risikomanagementsystem",
+      "section3Content": "Dokumentation des Risikomanagementsystems gemäß Artikel 9 der KI-Verordnung der EU.",
+      "section4": "Abschnitt 4:",
+      "section4Title": "Maßnahmen zur menschlichen Aufsicht",
+      "section4Content": "Beschreibung der Maßnahmen zur menschlichen Aufsicht für einen sicheren Betrieb (Artikel 14).",
+      "section5": "Abschnitt 5:",
+      "section5Title": "Genauigkeit, Robustheit und Cybersicherheit",
+      "section5Content": "Dokumentation der Maßnahmen zur Gewährleistung angemessener Genauigkeit, Robustheit und Cybersicherheit (Artikel 15).",
+      "section6": "Abschnitt 6:",
+      "section6Title": "Nachmarktüberwachung",
+      "section6Content": "Beschreibung des Nachmarktüberwachungssystems gemäß Artikel 72.",
+      "systemInfo": "Systeminformationen",
+      "systemName": "Systemname",
+      "description": "Beschreibung",
+      "aiType": "KI-Typ",
+      "domain": "Bereich",
+      "markets": "Zielmärkte",
+      "riskLevel": "Risikostufe",
+      "providerInfo": "Anbieterinformationen",
+      "organizationName": "Organisation",
+      "generatedDate": "Erstellungsdatum",
+      "version": "Version",
+      "disclaimer": "Dies ist ein Vorlagendokument. Alle Platzhalterabschnitte müssen mit spezifischen Informationen über Ihr KI-System ausgefüllt werden. Dies stellt keine Rechtsberatung dar.",
+      "generatedFor": "Erstellt für",
+      "intendedPurpose": "Verwendungszweck",
+      "technicalSpecs": "Technische Spezifikationen",
+      "dataRequirements": "Datenanforderungen",
+      "humanOversight": "Menschliche Aufsicht",
+      "accuracy": "Genauigkeitsmetriken",
+      "robustness": "Robustheit und Resilienz",
+      "cybersecurity": "Cybersicherheitsmaßnahmen",
+      "monitoring": "Überwachungsplan",
+      "placeholder": "AUSZUFÜLLEN"
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog | Complyance - Einblicke in KI-Compliance",
+      "description": "Experteneinblicke zu KI-Compliance, KI-Verordnung und regulatorische Updates für SaaS-Unternehmen"
+    },
+    "title": "Compliance-Blog",
+    "subtitle": "Experteneinblicke zu KI-Compliance, KI-Verordnung und regulatorische Updates",
+    "allPosts": "Alle Beiträge",
+    "noPosts": "Noch keine Blog-Beiträge verfügbar. Schauen Sie bald wieder vorbei!",
+    "readMore": "Weiterlesen",
+    "backToBlog": "Zurück zum Blog",
+    "relatedArticles": "Verwandte Artikel",
+    "sidebar": {
+      "classifier": {
+        "title": "Kostenloser KI-Risikoklassifizierer",
+        "description": "Prüfen Sie, ob Ihr KI-System nach der KI-Verordnung als Hochrisiko eingestuft wird — in 2 Minuten",
+        "cta": "Jetzt testen (kostenlos)"
+      },
+      "about": {
+        "title": "Über diesen Blog",
+        "description": "Bleiben Sie auf dem Laufenden über die neuesten KI-Compliance-Nachrichten, regulatorische Updates und praktische Anleitungen für SaaS-Unternehmen."
+      },
+      "toc": {
+        "title": "In diesem Artikel",
+        "description": "Zu Abschnitten springen"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Einfache, transparente Preise",
+    "subtitle": "Wählen Sie den Plan, der zu Ihren Compliance-Anforderungen passt. Alle Pläne beinhalten Risikoklassifizierung und Lückenanalyse.",
+    "popular": "Am beliebtesten",
+    "perMonth": "Monat",
+    "plans": {
+      "free": {
+        "description": "Perfekt zum Erkunden der KI-Compliance-Anforderungen",
+        "cta": "Kostenlos starten"
+      },
+      "starter": {
+        "description": "Für kleine Teams, die mit der KI-Verordnung-Compliance beginnen",
+        "cta": "Kostenlos testen"
+      },
+      "professional": {
+        "description": "Für wachsende Teams, die mehrere KI-Systeme verwalten",
+        "cta": "Kostenlos testen"
+      },
+      "scale": {
+        "description": "Für Organisationen mit komplexen Compliance-Anforderungen",
+        "cta": "Kostenlos testen"
+      }
+    },
+    "features": {
+      "systems": "{count, plural, =1 {1 KI-System} other {{count} KI-Systeme}}",
+      "regulations": "{count, plural, =1 {1 Verordnung (nur EU)} other {{count} Verordnungen}}",
+      "classification": "Risikoklassifizierung",
+      "gapAnalysis": "Lückenanalyse",
+      "badge": "Compliance-Badge ({level})",
+      "vendors": "{count, plural, =0 {Anbieter-Risikobewertungen} =1 {{count} Anbieterbewertung} other {{count} Anbieterbewertungen}}",
+      "documents": "Dokumenterstellung",
+      "evidence": "Nachweisspeicher",
+      "alerts": "Regulatorische Warnungen",
+      "alertsWeekly": "Wöchentliche Zusammenfassung",
+      "alertsRealtime": "Echtzeit-Benachrichtigungen",
+      "biasTesting": "{count, plural, =0 {Bias-Tests} other {{count} Bias-Tests/Monat}}",
+      "biasTestingUnlimited": "Unbegrenzt",
+      "teamMembers": "{count, plural, =1 {{count} Teammitglied} other {{count} Teammitglieder}}",
+      "incidents": "Vorfallregister",
+      "gdprModule": "DSGVO-KI-Modul",
+      "cicdAPI": "CI/CD-Integrations-API",
+      "allRegulations": "Alle Verordnungen",
+      "vendorsUnlimited": "Unbegrenzt"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "description": "Maßgeschneiderte Lösungen für große Organisationen mit dediziertem Support, White-Label-Optionen und individuellen Compliance-Workflows.",
+      "cta": "Vertrieb kontaktieren"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": {
+        "question": "Was ist im kostenlosen Plan enthalten?",
+        "answer": "Der kostenlose Plan ermöglicht die Klassifizierung von 1 KI-System, die Anzeige von Compliance-Lücken und den Erhalt eines „KI-Verordnung — Sensibilisiert"-Badges. Er ist perfekt, um die Anforderungen der KI-Verordnung unverbindlich zu erkunden."
+      },
+      "q2": {
+        "question": "Kann ich meinen Plan später ändern?",
+        "answer": "Ja! Sie können Ihren Plan jederzeit upgraden oder downgraden. Beim Upgrade erhalten Sie sofortigen Zugang zu neuen Funktionen. Beim Downgrade werden Änderungen am Ende Ihres Abrechnungszyklus wirksam."
+      },
+      "q3": {
+        "question": "Welche Vorschriften decken Sie ab?",
+        "answer": "Wir unterstützen derzeit die KI-Verordnung der EU, den Colorado AI Act (SB 24-205), NYC Local Law 144, NIST AI RMF, ISO 42001 und die KI-Ethikprinzipien der VAE. Professional- und Scale-Pläne umfassen alle Vorschriften."
+      },
+      "q4": {
+        "question": "Sind meine Daten sicher?",
+        "answer": "Ja. Alle Daten werden im Ruhezustand (AES-256) und bei der Übertragung (TLS 1.3) verschlüsselt. Wir sind SOC 2 Typ II-konform und DSGVO-bereit. Ihre Compliance-Daten verlassen niemals unsere sichere EU-Infrastruktur."
+      },
+      "q5": {
+        "question": "Bieten Sie Rückerstattungen an?",
+        "answer": "Ja! Wir bieten eine 14-tägige Geld-zurück-Garantie für alle kostenpflichtigen Pläne. Wenn Sie nicht zufrieden sind, kontaktieren Sie uns innerhalb von 14 Tagen nach Ihrer ersten Zahlung für eine vollständige Rückerstattung."
+      },
+      "q6": {
+        "question": "Welche Zahlungsmethoden akzeptieren Sie?",
+        "answer": "Wir akzeptieren alle gängigen Kreditkarten (Visa, Mastercard, American Express) und unterstützen mehrere Währungen. Zahlungen werden sicher über Paddle, unseren Handelsvertreter, abgewickelt."
+      }
+    }
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Haben Sie eine Frage? Wir helfen Ihnen gerne.",
+    "info": {
+      "title": "Kontakt aufnehmen",
+      "support": {
+        "title": "Allgemeiner Support",
+        "desc": "Fragen zu Ihrem Konto, zur Abrechnung oder zu Plattformfunktionen"
+      },
+      "privacy": {
+        "title": "Datenschutz und Daten",
+        "desc": "Datenschutz, DSGVO-Anfragen oder Datenschutzbedenken"
+      },
+      "partnership": {
+        "title": "Partnerschaften",
+        "desc": "Anwaltskanzleien, Beratungsunternehmen und Vertriebsmöglichkeiten"
+      },
+      "hours": {
+        "title": "Antwortzeit",
+        "desc": "Wir antworten in der Regel innerhalb von 24 Stunden an Werktagen (Montag–Freitag, 9–18 Uhr MEZ)"
+      }
+    },
+    "form": {
+      "title": "Senden Sie uns eine Nachricht",
+      "name": "Name",
+      "email": "E-Mail",
+      "subject": "Betreff",
+      "subjects": {
+        "general": "Allgemeine Anfrage",
+        "support": "Technischer Support",
+        "partnership": "Partnerschaftsmöglichkeit",
+        "press": "Presse und Medien",
+        "other": "Sonstiges"
+      },
+      "message": "Nachricht",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "success": "Vielen Dank! Wir melden uns innerhalb von 24 Stunden."
+    }
+  },
+  "about": {
+    "title": "Über Complyance",
+    "subtitle": "KI-Compliance für jedes SaaS-Unternehmen zugänglich machen",
+    "mission": {
+      "title": "Unsere Mission",
+      "p1": "Die KI-Verordnung der EU ist die weltweit erste umfassende KI-Regulierung und betrifft Tausende von SaaS-Unternehmen, die in Europa verkaufen. Aber Compliance-Tools für Fortune-500-Unternehmen sind für die meisten KMU unerreichbar.",
+      "p2": "Wir haben Complyance gegründet, um KI-Compliance zu demokratisieren. Kein Rechtsteam erforderlich. Kein Enterprise-Budget nötig. Nur klare Anleitungen und praktische Werkzeuge, die Ihnen helfen, konforme KI-Produkte zu liefern."
+    },
+    "problem": {
+      "title": "Das Problem, das wir lösen",
+      "p1": "Die meisten KI-Compliance-Plattformen sind für große Unternehmen mit dedizierten Rechtsteams und Budgets ab 50.000 $/Jahr konzipiert. Sie erfordern Berater für die Implementierung, Monate für die Einrichtung und ständige rechtliche Unterstützung.",
+      "p2": "Gleichzeitig entwickeln Tausende von SaaS-Gründern mit KI — Chatbots, Empfehlungsmaschinen, CV-Screening-Tools, Betrugserkennungssysteme — ohne zu wissen, dass sie den Hochrisiko-KI-Vorschriften unterliegen.",
+      "p3": "Die Frist der KI-Verordnung ist der 2. August 2026. Versäumnis bedeutet Bußgelder bis zu 35 Mio. € oder 7 % des weltweiten Umsatzes. Aber einen Compliance-Berater einzustellen kostet über 15.000 € pro System. Für die meisten KMU ist das keine Option."
+    },
+    "solution": {
+      "title": "Unsere Lösung",
+      "subtitle": "Self-Service-KI-Compliance-Management für Teams, die sich keine Enterprise-Plattformen leisten können",
+      "automated": {
+        "title": "Automatisierte Risikoklassifizierung",
+        "desc": "Unsere KI-Engine analysiert Ihr System anhand der Anhang-III-Kategorien der KI-Verordnung und sagt Ihnen in Minuten, ob Sie als Hochrisiko eingestuft werden."
+      },
+      "actionable": {
+        "title": "Umsetzbare Compliance-Fahrpläne",
+        "desc": "Erhalten Sie einen Schritt-für-Schritt-Plan mit Fristen, Prioritäten und verständlichen Erklärungen, was zu tun ist."
+      },
+      "affordable": {
+        "title": "Erschwinglich für KMU",
+        "desc": "Ab 99 $/Monat. Keine Berater erforderlich. Keine versteckten Kosten. Jederzeit kündbar."
+      }
+    },
+    "what": {
+      "title": "Was wir tun",
+      "classify": {
+        "title": "Risikoklassifizierung",
+        "desc": "Bestimmen Sie, ob Ihr KI-System nach der KI-Verordnung, dem Colorado AI Act und anderen Vorschriften als hohes, begrenztes oder minimales Risiko eingestuft wird."
+      },
+      "gaps": {
+        "title": "Lückenanalyse",
+        "desc": "Identifizieren Sie genau, welche Compliance-Anforderungen Ihnen fehlen und was Sie tun müssen, um sie zu erfüllen."
+      },
+      "documents": {
+        "title": "Dokumenterstellung",
+        "desc": "Erstellen Sie Compliance-Berichte, technische Dokumentation (Anhang IV) und Fahrpläne mit einem Klick."
+      },
+      "vendors": {
+        "title": "Anbieter-Risikobewertung",
+        "desc": "Bewerten Sie KI-Anbieter (OpenAI, Anthropic usw.) hinsichtlich Compliance-Risiken und Datenverarbeitungspraktiken."
+      },
+      "updates": {
+        "title": "Regulatorische Intelligenz",
+        "desc": "Bleiben Sie über neue Richtlinien, Durchsetzungsmaßnahmen und regulatorische Änderungen informiert, die Ihre KI-Systeme betreffen."
+      }
+    },
+    "disclaimer": {
+      "title": "Wichtiger Hinweis",
+      "desc": "Complyance ist ein Compliance-Management-Tool, keine Anwaltskanzlei. Unsere Plattform hilft bei der Organisation und Verfolgung von Compliance-Arbeit, stellt aber keine Rechtsberatung dar. Für regulatorische Einreichungen oder Zertifizierungen konsultieren Sie qualifizierte Rechtsanwälte."
+    },
+    "cta": {
+      "title": "Bereit für Compliance?",
+      "subtitle": "Starten Sie mit unserem kostenlosen Plan und klassifizieren Sie Ihr erstes KI-System in 5 Minuten. Keine Kreditkarte erforderlich.",
+      "start": "Kostenlos starten",
+      "pricing": "Preise ansehen"
+    }
+  },
+  "partners": {
+    "title": "Partnerschaft mit Complyance",
+    "subtitle": "Treten Sie unserem Netzwerk aus Anwaltskanzleien, Beratungsunternehmen und Compliance-Experten bei, die Kunden bei der Navigation durch KI-Vorschriften unterstützen",
+    "benefits": {
+      "title": "Partnervorteile",
+      "revenue": {
+        "title": "Umsatzbeteiligung",
+        "desc": "Verdienen Sie 20 % wiederkehrende Provision auf alle empfohlenen Kunden für 12 Monate"
+      },
+      "whiteLabel": {
+        "title": "White-Label-Optionen",
+        "desc": "Bieten Sie Complyance unter Ihrer Marke mit eigener Domain und Branding an (Enterprise-Stufe)"
+      },
+      "support": {
+        "title": "Dedizierter Support",
+        "desc": "Prioritäts-Support-Kanal und dedizierter Account-Manager für Ihre Kunden"
+      },
+      "training": {
+        "title": "Schulung und Ressourcen",
+        "desc": "Zugang zu Partnerschulungen, Co-Marketing-Materialien und Vertriebsunterstützung"
+      }
+    },
+    "ideal": {
+      "title": "Ideale Partnerprofile",
+      "lawFirms": {
+        "title": "Anwaltskanzleien",
+        "desc": "Tech-Rechtspraxen, die SaaS-Kunden zu Datenschutz, KI-Compliance und regulatorischen Fragen beraten"
+      },
+      "consultancies": {
+        "title": "Compliance-Beratungen",
+        "desc": "Unternehmen, die DSGVO-, ISO 27001-, SOC 2- oder KI-Compliance-Beratungsdienste anbieten"
+      },
+      "auditors": {
+        "title": "Prüfer und Gutachter",
+        "desc": "Organisationen, die Compliance-Audits, Zertifizierungen oder Drittpartei-Bewertungen durchführen"
+      }
+    },
+    "form": {
+      "title": "Als Partner bewerben",
+      "subtitle": "Erzählen Sie uns von Ihrem Unternehmen und wie Sie zusammenarbeiten möchten",
+      "companyName": "Unternehmensname",
+      "website": "Website",
+      "contactName": "Ihr Name",
+      "email": "E-Mail",
+      "type": "Partnertyp",
+      "types": {
+        "lawFirm": "Anwaltskanzlei",
+        "consultancy": "Compliance-Beratung",
+        "auditor": "Prüfer / Gutachter",
+        "other": "Sonstiges"
+      },
+      "message": "Erzählen Sie uns von Ihrem Unternehmen",
+      "messagePlaceholder": "Welche Dienstleistungen bieten Sie an? Wie viele Kunden betreuen Sie? Warum möchten Sie Partner von Complyance werden?",
+      "submit": "Bewerbung absenden",
+      "sending": "Wird gesendet...",
+      "success": "Vielen Dank! Wir werden Ihre Bewerbung prüfen und uns innerhalb von 3 Werktagen bei Ihnen melden."
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "introduction": "Complyance respektiert Ihre Privatsphäre. Diese Datenschutzerklärung erklärt, wie wir Ihre personenbezogenen Daten erheben, verwenden und schützen, wenn Sie unsere KI-Compliance-Management-Plattform nutzen.",
+      "dataCollection": {
+        "title": "Daten, die wir erheben",
+        "account": "Kontoinformationen (Name, E-Mail, Organisation)",
+        "usage": "Nutzungsdaten (klassifizierte KI-Systeme, erstellte Dokumente)",
+        "technical": "Technische Daten (IP-Adresse, Browsertyp, Geräteinformationen)",
+        "documents": "Dokumente, die Sie zur KI-Analyse hochladen (verschlüsselt gespeichert)"
+      },
+      "usage": {
+        "title": "Wie wir Ihre Daten verwenden",
+        "service": "Zur Bereitstellung und Verbesserung unserer Compliance-Management-Dienste",
+        "ai": "Zur Klassifizierung von KI-Systemen und Erstellung von Compliance-Berichten über die Claude-API",
+        "billing": "Zur Zahlungsabwicklung über Paddle (unser Handelsvertreter)",
+        "communication": "Zum Senden von Service-Updates, regulatorischen Warnungen und Compliance-Benachrichtigungen"
+      },
+      "thirdParties": {
+        "title": "Drittanbieterdienste",
+        "anthropic": "Anthropic (Claude-API) - KI-Klassifizierung und Dokumentanalyse",
+        "paddle": "Paddle - Zahlungsabwicklung und Abonnementverwaltung",
+        "aws": "AWS S3 - Verschlüsselte Dokumentspeicherung (EU-Region)",
+        "resend": "Resend - Transaktions-E-Mail-Versand",
+        "desc": "Wir verkaufen niemals Ihre Daten. Dritte verarbeiten Daten nur soweit für die Diensterbringung erforderlich."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "essential": "Essentielle Cookies für Authentifizierung und Sitzungsverwaltung",
+        "analytics": "Analyse-Cookies zur Verbesserung der Plattformleistung (optional)",
+        "desc": "Sie können Cookie-Einstellungen in Ihren Browsereinstellungen steuern."
+      },
+      "retention": {
+        "title": "Datenspeicherung",
+        "active": "Kontodaten werden gespeichert, solange das Abonnement aktiv ist",
+        "grace": "30-tägige Karenzzeit nach Kündigung vor der Löschung",
+        "legal": "Einige Daten werden für gesetzliche Compliance länger aufbewahrt (z. B. Abrechnungsunterlagen)"
+      },
+      "gdprRights": {
+        "title": "Ihre DSGVO-Rechte",
+        "access": "Recht auf Zugang zu Ihren personenbezogenen Daten",
+        "rectification": "Recht auf Berichtigung unrichtiger Daten",
+        "erasure": "Recht auf Löschung Ihrer Daten (‚Recht auf Vergessenwerden')",
+        "portability": "Recht auf Datenübertragbarkeit in maschinenlesbarem Format",
+        "objection": "Recht auf Widerspruch gegen die Verarbeitung",
+        "desc": "Um diese Rechte auszuüben, kontaktieren Sie privacy@complyance.io"
+      },
+      "security": {
+        "title": "Sicherheit",
+        "encryption": "Alle Daten verschlüsselt im Ruhezustand (AES-256) und bei der Übertragung (TLS 1.3)",
+        "infrastructure": "EU-basierte Infrastruktur für DSGVO-Konformität",
+        "access": "Rollenbasierte Zugriffskontrollen und Audit-Logs",
+        "desc": "Wir folgen den besten Branchenpraktiken zum Schutz Ihrer Daten."
+      }
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "acceptance": {
+        "title": "Annahme der Bedingungen",
+        "desc": "Durch den Zugriff auf oder die Nutzung von Complyance stimmen Sie diesen Nutzungsbedingungen zu. Wenn Sie nicht zustimmen, dürfen Sie die Plattform nicht nutzen."
+      },
+      "serviceDescription": {
+        "title": "Dienstbeschreibung",
+        "desc": "Complyance ist eine Self-Service-SaaS-Plattform für KI-Compliance-Management. Wir bieten Werkzeuge zur Risikoklassifizierung, Lückenanalyse, Dokumenterstellung und regulatorischen Intelligenz, um Organisationen bei der Einhaltung von KI-Vorschriften einschließlich der KI-Verordnung der EU zu unterstützen."
+      },
+      "disclaimer": {
+        "title": "Rechtlicher Hinweis",
+        "notAdvice": "Complyance ist ein Compliance-Management-Tool, keine Anwaltskanzlei oder Rechtsberater.",
+        "informational": "Alle Klassifizierungen, Berichte und Empfehlungen dienen ausschließlich Informationszwecken und stellen keine Rechtsberatung dar.",
+        "professional": "Für regulatorische Einreichungen, Zertifizierungen oder Rechtsgutachten konsultieren Sie qualifizierte Rechtsanwälte.",
+        "liability": "Wir haften nicht für Compliance-Verstöße, regulatorische Bußgelder oder rechtliche Konsequenzen, die aus der Nutzung unserer Plattform resultieren."
+      },
+      "accounts": {
+        "title": "Benutzerkonten",
+        "responsibility": "Sie sind für die Geheimhaltung Ihrer Zugangsdaten verantwortlich",
+        "accurate": "Sie müssen genaue und vollständige Informationen angeben",
+        "notify": "Benachrichtigen Sie uns sofort bei unbefugtem Zugriff",
+        "prohibited": "Sie dürfen Konten nicht teilen oder den Zugang ohne Erlaubnis übertragen"
+      },
+      "billing": {
+        "title": "Abrechnung und Zahlungen",
+        "paddle": "Zahlungen werden von Paddle (Handelsvertreter) abgewickelt",
+        "subscription": "Abonnements verlängern sich automatisch, sofern nicht gekündigt",
+        "prices": "Preise sind in USD und können mit 30 Tagen Vorankündigung geändert werden",
+        "taxes": "Paddle übernimmt alle Steuerberechnungen und die steuerliche Compliance"
+      },
+      "prohibitedUse": {
+        "title": "Verbotene Nutzung",
+        "illegal": "Verstoß gegen geltende Gesetze oder Vorschriften",
+        "misrepresent": "Falsche Darstellung Ihrer KI-Systeme oder Ihres Compliance-Status",
+        "reverse": "Reverse Engineering, Dekompilierung oder Modifikation der Plattform",
+        "abuse": "Missbrauch, Belästigung oder Schädigung anderer Nutzer oder unserer Systeme",
+        "resell": "Weiterverkauf oder Weiterverteilung unserer Dienste ohne Genehmigung"
+      },
+      "ip": {
+        "title": "Geistiges Eigentum",
+        "ownership": "Complyance besitzt alle Rechte an der Plattform, Software und Inhalten",
+        "yourData": "Sie behalten das Eigentum an Ihren Daten (KI-Systeme, Dokumente, Nachweise)",
+        "license": "Wir gewähren Ihnen eine eingeschränkte Lizenz zur Nutzung der Plattform gemäß Ihrem Plan",
+        "feedback": "Von Ihnen bereitgestelltes Feedback kann zur Verbesserung der Plattform verwendet werden"
+      },
+      "liability": {
+        "title": "Haftungsbeschränkung",
+        "asIs": "Plattform wird ohne Gewährleistungen bereitgestellt",
+        "noLiability": "Wir haften nicht für indirekte, beiläufige oder Folgeschäden",
+        "cap": "Gesamthaftung begrenzt auf den in den letzten 12 Monaten gezahlten Betrag",
+        "force": "Keine Haftung für Ereignisse außerhalb unserer angemessenen Kontrolle"
+      }
+    },
+    "refund": {
+      "title": "Rückerstattungsrichtlinie",
+      "policy": {
+        "title": "14-tägige Geld-zurück-Garantie",
+        "desc": "Wir bieten eine 14-tägige Geld-zurück-Garantie für alle kostenpflichtigen Pläne. Wenn Sie mit Complyance nicht zufrieden sind, fordern Sie innerhalb von 14 Tagen nach Ihrer ersten Zahlung eine vollständige Rückerstattung an."
+      },
+      "eligibility": {
+        "title": "Rückerstattungsberechtigung",
+        "firstPayment": "Gilt nur für Ihre erste Zahlung (nicht für Verlängerungen)",
+        "within14": "Der Antrag muss innerhalb von 14 Tagen nach Zahlung gestellt werden",
+        "notAbused": "Rückerstattungsrecht wurde nicht zuvor auf einem anderen Konto genutzt",
+        "goodFaith": "Konto wurde in gutem Glauben genutzt (kein Missbrauch oder Verstöße)"
+      },
+      "process": {
+        "title": "So beantragen Sie eine Rückerstattung",
+        "contact": "Senden Sie eine E-Mail an support@complyance.io mit ‚Rückerstattungsanfrage' im Betreff",
+        "include": "Geben Sie Ihre Konto-E-Mail und den Grund an (optional, aber geschätzt)",
+        "processing": "Rückerstattungen werden innerhalb von 5–7 Werktagen bearbeitet",
+        "method": "Rückerstattung auf die ursprüngliche Zahlungsmethode über Paddle"
+      },
+      "proRata": {
+        "title": "Anteilige Rückerstattungen (Downgrades)",
+        "desc": "Bei einem Downgrade während des Abrechnungszyklus wird die nicht genutzte Zeit nicht erstattet, sondern Ihrem nächsten Abrechnungszeitraum gutgeschrieben."
+      },
+      "euRights": {
+        "title": "EU-Verbraucherrechte",
+        "withdrawal": "EU-Verbraucher haben ein 14-tägiges Widerrufsrecht gemäß EU-Richtlinie 2011/83/EU",
+        "digital": "Mit Beginn Ihres Abonnements bestätigen Sie, dass digitale Dienste sofort beginnen und verzichten nach Nutzung auf das Widerrufsrecht",
+        "unused": "Bei Kündigung vor Nutzung des Dienstes haben Sie Anspruch auf vollständige Rückerstattung"
+      }
+    }
+  },
+  "billing": {
+    "currentPlan": "Aktueller Plan",
+    "usage": "Nutzung",
+    "upgrade": "Plan upgraden",
+    "cancel": "Abonnement kündigen",
+    "manageBilling": "Abrechnung verwalten",
+    "portalLink": "Rechnungen einsehen und Zahlungsmethoden im Abrechnungsportal aktualisieren"
+  },
+  "footer": {
+    "product": {
+      "title": "Produkt",
+      "pricing": "Preise",
+      "blog": "Blog",
+      "freeClassifier": "Kostenloser Klassifizierer"
+    },
+    "company": {
+      "title": "Unternehmen",
+      "about": "Über uns",
+      "partners": "Partner",
+      "contact": "Kontakt"
+    },
+    "legal": {
+      "title": "Rechtliches",
+      "privacy": "Datenschutzerklärung",
+      "terms": "Nutzungsbedingungen",
+      "refund": "Rückerstattungsrichtlinie"
+    },
+    "copyright": "© 2026 Complyance. Alle Rechte vorbehalten.",
+    "disclaimer": "Keine Rechtsberatung. Klassifizierungen dienen ausschließlich Informationszwecken."
   }
 }

@@ -203,6 +203,176 @@
 
 ---
 
+## Фаза 6: Deep Integration (2028-2029) — «Compliance Built-In»
+
+### 6.1 CI/CD Compliance Gate (первый шаг интеграции)
+
+**Что это:** API-endpoint, который вызывается перед деплоем. Если compliance-статус не OK — деплой блокируется.
+
+**Реализация:**
+- REST API: `POST /api/v1/check` → returns `{ allowed: true/false, reason: "..." }`
+- GitHub Action: `complyance/compliance-check@v1` — добавляется в workflow за 2 минуты
+- GitLab CI template
+- Webhook: уведомление при изменении compliance-статуса системы
+
+**Пример:**
+```yaml
+# .github/workflows/deploy.yml
+- name: Compliance Check
+  uses: complyance/compliance-check@v1
+  with:
+    api-key: ${{ secrets.COMPLYANCE_API_KEY }}
+    system-id: "sys_abc123"
+    fail-on: "HIGH"  # Block deploy if any HIGH/CRITICAL gaps open
+```
+
+**За что платит пользователь:** Compliance встроен в процесс разработки. Невозможно случайно задеплоить non-compliant код. Максимальный switching cost — переключиться = переписать все пайплайны.
+
+**Pricing:** Только план Scale ($499/мес) и выше.
+
+### 6.2 Lightweight SDK — Логирование AI-вызовов
+
+**Что это:** Минимальный SDK (Python + Node.js), который оборачивает AI-вызовы клиента и логирует метаданные для compliance.
+
+**Что логирует (НЕ содержимое, только мета):**
+- Timestamp вызова
+- Какая модель используется (gpt-4, claude-sonnet, etc.)
+- Тип запроса (classification, generation, recommendation)
+- Обрабатываются ли персональные данные (PII detection flag)
+- Latency, token count
+- Ошибки и отказы
+
+**Что НЕ логирует:** содержимое промптов и ответов (privacy). Только metadata.
+
+**Реализация:**
+```python
+# pip install complyance
+from complyance import ComplyanceTracker
+
+tracker = ComplyanceTracker(api_key="...", system_id="sys_abc123")
+
+# Wraps existing OpenAI call
+response = tracker.wrap(openai.chat.completions.create)(
+    model="gpt-4",
+    messages=[...]
+)
+
+# Automatically logs: model, timestamp, tokens, latency, PII flag
+# Data appears in Complyance dashboard → Evidence Vault
+```
+
+```javascript
+// npm install @complyance/sdk
+import { ComplyanceTracker } from '@complyance/sdk';
+
+const tracker = new ComplyanceTracker({ apiKey: '...', systemId: 'sys_abc123' });
+
+// Wraps existing Anthropic call
+const response = await tracker.wrap(anthropic.messages.create)({
+  model: 'claude-sonnet-4-20250514',
+  messages: [...]
+});
+```
+
+**За что платит пользователь:**
+- Автоматическое заполнение Evidence Vault — не нужно вручную загружать скриншоты
+- Record-keeping для Article 12 (logging requirement)
+- Доказательство для аудитора: «вот лог всех AI-вызовов за последние 6 месяцев»
+- PII detection алерты: «ваша система обработала 1,247 запросов с персональными данными на этой неделе»
+
+**Pricing:** Plan Professional ($249/мес) и выше.
+
+### 6.3 Drift & Anomaly Detection
+
+**Что это:** На основе данных SDK — автоматическое обнаружение изменений в поведении AI-системы.
+
+**Что детектит:**
+- Model drift: клиент переключился с GPT-4 на GPT-4-mini → алерт (изменение модели может повлиять на классификацию)
+- Usage spike: количество AI-вызовов выросло в 10 раз → возможно добавлена новая фича → нужна переклассификация
+- PII spike: резкий рост обработки персональных данных → алерт
+- Error rate spike: модель стала отказывать чаще → reliability concern (Article 15)
+- New endpoint: SDK обнаружил вызовы к новому AI-провайдеру → нужен vendor assessment
+
+**За что платит пользователь:** Compliance не ломается тихо. Каждое значимое изменение → алерт → action item в дашборде.
+
+---
+
+## Фаза 7: Full Compliance Agent (2029+) — «AI-Аудитор внутри продукта»
+
+### 7.1 Complyance Agent — автономный compliance-мониторинг
+
+**Что это:** AI-агент, который полностью интегрируется в инфраструктуру клиента и непрерывно мониторит compliance.
+
+**Что делает агент:**
+- Сканирует кодовую базу (через GitHub/GitLab integration) → находит все AI-вызовы
+- Анализирует data flows → какие данные куда идут, есть ли PII
+- Мониторит AI-ответы в реальном времени → детектит bias, галлюцинации, токсичность
+- Отслеживает изменения в коде → новая AI-фича? → автоматическая переклассификация
+- Генерирует compliance-отчёты автоматически → Evidence Vault заполняется без участия человека
+- Алертит при нарушениях → «Ваш чат-бот дал ответ, нарушающий Article 50 transparency requirement»
+
+**Архитектура:**
+```
+Customer's infrastructure
+├── Complyance Agent (lightweight container / sidecar)
+│   ├── Code Scanner (reads repo, finds AI usage patterns)
+│   ├── Traffic Monitor (intercepts AI API calls, metadata only)
+│   ├── Response Analyzer (samples AI outputs for quality/bias)
+│   └── Reporter (sends aggregated data to Complyance cloud)
+│
+Complyance Cloud
+├── Dashboard (real-time compliance status)
+├── Alert Engine (risk-based notifications)
+├── Evidence Vault (auto-populated from agent data)
+└── Report Generator (continuous compliance reports)
+```
+
+**Bounded Autonomy:**
+- Агент ТОЛЬКО мониторит и алертит
+- Агент НЕ изменяет код, НЕ блокирует запросы, НЕ модифицирует ответы
+- Все решения принимает человек
+- Полный audit trail действий агента
+
+**Security:**
+- Agent runs in customer's infrastructure (data не покидает их среду)
+- Только агрегированные метрики отправляются в Complyance cloud
+- SOC 2 Type II certification для агента (к этому моменту нужно)
+- On-premise deployment option для regulated industries
+
+**За что платит пользователь:** Полностью автономный compliance. Человек открывает дашборд раз в неделю, видит зелёный статус, подписывает quarterly report. Всё остальное — автоматически.
+
+**Pricing:** Enterprise план $2,999-9,999/мес. Это конкурирует с Credo AI, но с self-serve онбордингом.
+
+### 7.2 Multi-Agent Governance
+
+**Что это:** Управление compliance для компаний, которые деплоят множественные AI-агенты (не модели, а автономные агенты).
+
+**Проблема к 2029:** Компании будут иметь десятки AI-агентов: sales agent, support agent, coding agent, analytics agent. Каждый агент вызывает инструменты, принимает решения, взаимодействует с другими агентами. Текущие compliance-фреймворки не покрывают agent-to-agent коммуникацию.
+
+**Что делает:**
+- Inventory: какие агенты, что делают, какие tools вызывают, к каким данным имеют доступ
+- Dependency mapping: агент A вызывает агента B → chain of responsibility
+- Autonomy scoring: насколько автономен каждый агент (1-10 шкала)
+- Escalation rules: когда агент должен передать решение человеку
+- Cross-agent audit trail: полная цепочка действий через все агенты
+
+---
+
+## Эволюция интеграции (от tool к infrastructure)
+
+| Этап | Глубина | Effort клиента | Switching cost | Ценность |
+|------|---------|---------------|----------------|----------|
+| **Tool** (Фазы 1-2) | Описание + документы | 30 минут | Низкий | Классификация + отчёты |
+| **Document Analysis** (Фаза 2+) | Загрузка документов | 10 минут | Средний | Авто-анализ рисков |
+| **CI/CD Gate** (Фаза 6.1) | 1 строка в pipeline | 5 минут | Высокий | Блокировка non-compliant деплоев |
+| **SDK** (Фаза 6.2) | Обёртка AI-вызовов | 1 час | Очень высокий | Авто-логирование + evidence |
+| **Drift Detection** (Фаза 6.3) | Автоматически | 0 минут | Очень высокий | Превентивные алерты |
+| **Full Agent** (Фаза 7) | Контейнер в инфраструктуре | 2-4 часа | Максимальный | Полностью автономный compliance |
+
+Каждый шаг увеличивает глубину интеграции → switching cost → retention → ARPU.
+
+---
+
 ## Эволюция ценности для пользователя
 
 | Фаза | Пользователь говорит | Готов платить |
@@ -212,6 +382,8 @@
 | 3 | «Мне нужно управлять compliance для AI-агентов» | $499-999/мес |
 | 4 | «Мне нужна экосистема: вендоры, консультанты, бенчмарки» | $499-1499/мес |
 | 5 | «Мне нужна сертификация и industry-standard» | $999-2999/мес |
+| 6 | «Мне нужен compliance, встроенный в мой код» | $499-2999/мес |
+| 7 | «Мне нужен автономный AI-аудитор внутри моего продукта» | $2999-9999/мес |
 
 Ключевое: пользователь никогда не платит за фичи. Он платит за **уверенность** — уверенность, что его бизнес защищён от штрафов, репутационных потерь и потери клиентов.
 
@@ -223,23 +395,26 @@
 |-----|-----------|----------|-------|-----------------|
 | 2026 | SMB compliance platform | Enterprise AI governance | General GRC | Static tools |
 | 2027 | AI Trust OS + Agentic governance | Enterprise + agentic | Adding AI modules | Abandoned/outdated |
-| 2028 | Compliance infrastructure (API + Marketplace + Certification) | Enterprise platform | Competing on AI features | Dead |
+| 2028 | Compliance infrastructure (API + SDK + Marketplace) | Enterprise platform | Competing on AI features | Dead |
+| 2029 | Full compliance agent + Multi-agent governance | Enterprise + agent monitoring | May acquire AI compliance startup | — |
 
-**Твоя стратегическая ставка:** Credo AI и IBM watsonx.governance никогда не спустятся в SMB-сегмент — слишком дорого обслуживать мелких клиентов с их sales-моделью. Vanta добавит AI-модули, но AI governance не будет их core competency. Твоя ниша — self-serve AI compliance для 10,000+ SMB компаний, которые используют AI, но не имеют compliance-команды.
+**Твоя стратегическая ставка:** Credo AI и IBM watsonx.governance никогда не спустятся в SMB-сегмент — слишком дорого обслуживать мелких клиентов с их sales-моделью. Vanta добавит AI-модули, но AI governance не будет их core competency. Твоя ниша — self-serve AI compliance для 10,000+ SMB компаний, которые используют AI, но не имеют compliance-команды. К моменту когда конкуренты доберутся до SMB, ты уже будешь на уровне infrastructure (SDK + Agent) с максимальным switching cost.
 
 ---
 
 ## Ключевые метрики по фазам
 
-| Метрика | Фаза 1 (Q2'26) | Фаза 2 (Q3'26) | Фаза 3 (Q1'27) | Фаза 4 (Q4'27) | Фаза 5 (2028) |
-|---------|----------------|----------------|----------------|----------------|---------------|
-| Users (total) | 500 | 2,000 | 8,000 | 25,000 | 75,000 |
-| Paying users | 25-50 | 150-300 | 500-1,000 | 2,000-3,000 | 5,000+ |
-| MRR | $5K | $15K | $50K | $150K | $500K |
-| ARR | $60K | $180K | $600K | $1.8M | $6M |
-| AI Systems classified | 200 | 2,000 | 15,000 | 60,000 | 200,000+ |
-| Vendors in directory | — | — | 50 | 500 | 2,000+ |
-| Churn (monthly) | 8-10% | 5-7% | 3-5% | 2-4% | 2-3% |
+| Метрика | Фаза 1 (Q2'26) | Фаза 2 (Q3'26) | Фаза 3 (Q1'27) | Фаза 4 (Q4'27) | Фаза 5 (2028) | Фаза 6-7 (2029) |
+|---------|----------------|----------------|----------------|----------------|---------------|-----------------|
+| Users (total) | 500 | 2,000 | 8,000 | 25,000 | 75,000 | 150,000+ |
+| Paying users | 25-50 | 150-300 | 500-1,000 | 2,000-3,000 | 5,000+ | 10,000+ |
+| MRR | $5K | $15K | $50K | $150K | $500K | $1M+ |
+| ARR | $60K | $180K | $600K | $1.8M | $6M | $12M+ |
+| AI Systems classified | 200 | 2,000 | 15,000 | 60,000 | 200,000+ | 500,000+ |
+| Vendors in directory | — | — | 50 | 500 | 2,000+ | 5,000+ |
+| SDK integrations | — | — | — | — | 100+ | 1,000+ |
+| Agent deployments | — | — | — | — | — | 50+ |
+| Churn (monthly) | 8-10% | 5-7% | 3-5% | 2-4% | 2-3% | 1-2% |
 
 ---
 

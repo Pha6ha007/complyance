@@ -12,13 +12,15 @@
     "next": "Dalej",
     "previous": "Poprzedni",
     "finish": "Zakończ",
-    "close": "Zamknij"
+    "close": "Zamknij",
+    "yes": "Tak",
+    "no": "Nie"
   },
   "nav": {
     "dashboard": "Panel",
     "systems": "Systemy AI",
-    "vendors": "Ryzyko dostawcy",
-    "evidence": "Sejf dowodów",
+    "vendors": "Ryzyko dostawców",
+    "evidence": "Skarbiec dowodów",
     "reports": "Raporty",
     "intelligence": "Aktualizacje regulacyjne",
     "settings": "Ustawienia",
@@ -29,23 +31,38 @@
     "login": "Zaloguj się",
     "logout": "Wyloguj się",
     "register": "Zarejestruj się",
-    "email": "Email",
+    "email": "E-mail",
     "password": "Hasło",
-    "forgotPassword": "Zapomniałeś hasła?",
+    "forgotPassword": "Nie pamiętasz hasła?",
     "rememberMe": "Zapamiętaj mnie",
     "signInWithGoogle": "Zaloguj się przez Google",
     "noAccount": "Nie masz konta?",
     "hasAccount": "Masz już konto?",
-    "referralCode": "Kod polecający (opcjonalnie)"
+    "referralCode": "Kod polecenia (opcjonalnie)"
   },
   "dashboard": {
     "title": "Panel zgodności",
-    "welcome": "Witaj z powrotem",
+    "subtitle": "Przegląd statusu zgodności AI",
+    "welcome": "Witaj ponownie",
     "complianceScore": "Wynik zgodności",
     "systemsOverview": "Przegląd systemów AI",
+    "totalSystems": "Łączna liczba systemów",
+    "classified": "sklasyfikowanych",
+    "average": "średnia",
     "criticalGaps": "Krytyczne luki",
-    "deadlineCountdown": "Dni do terminu ustawy o AI UE",
-    "riskDistribution": "Rozkład ryzyka"
+    "requiresAttention": "wymaga uwagi",
+    "deadlineCountdown": "Dni do terminu Aktu o AI",
+    "euAiActDeadline": "Termin Aktu o AI UE",
+    "daysRemaining": "dni pozostało",
+    "riskDistribution": "Rozkład ryzyka",
+    "topCriticalGaps": "Krytyczne luki zgodności",
+    "system": "System",
+    "viewGaps": "Zobacz luki",
+    "noCriticalGaps": "Brak krytycznych luk",
+    "noCriticalGapsDescription": "Wszystkie krytyczne wymagania zgodności są realizowane",
+    "noSystems": "Brak systemów AI",
+    "noSystemsDescription": "Zacznij od dodania pierwszego systemu AI, aby śledzić zgodność",
+    "addFirstSystem": "Dodaj pierwszy system"
   },
   "classification": {
     "unacceptable": "Ryzyko niedopuszczalne",
@@ -53,8 +70,743 @@
     "limited": "Ograniczone ryzyko",
     "minimal": "Minimalne ryzyko"
   },
+  "systems": {
+    "title": "Systemy AI",
+    "description": "Zarządzaj inwentarzem systemów AI i ich klasyfikacjami",
+    "systemsUsed": "systemów użytych",
+    "addSystem": "Dodaj system",
+    "addFirstSystem": "Dodaj pierwszy system",
+    "noSystems": "Brak systemów AI",
+    "noSystemsDescription": "Zacznij od dodania pierwszego systemu AI, aby śledzić zgodność",
+    "loading": "Ładowanie systemów...",
+    "loadingDescription": "Proszę czekać, trwa ładowanie systemów AI",
+    "error": "Nie udało się załadować systemów",
+    "notClassified": "Nieklasyfikowany",
+    "open": "otwartych",
+    "none": "Brak",
+    "backToSystems": "Powrót do systemów",
+    "systemNotFound": "System nie znaleziony",
+    "deleteConfirm": "Czy na pewno chcesz usunąć ten system? Tej operacji nie można cofnąć.",
+    "basicInformation": "Podstawowe informacje",
+    "aiType": "Typ AI",
+    "domain": "Dziedzina",
+    "markets": "Rynki",
+    "endUsers": "Użytkownicy końcowi",
+    "riskClassification": "Klasyfikacja ryzyka",
+    "riskLevel": "Poziom ryzyka",
+    "annexCategory": "Kategoria Załącznika III",
+    "complianceScore": "Wynik zgodności",
+    "classifiedAt": "Sklasyfikowano",
+    "notClassifiedYet": "Ten system nie został jeszcze sklasyfikowany",
+    "notClassifiedDescription": "Uruchom silnik klasyfikacji, aby określić poziom ryzyka i wymagania zgodności",
+    "classifyNow": "Sklasyfikuj teraz",
+    "characteristics": "Cechy",
+    "makesDecisions": "Podejmuje decyzje",
+    "processesPersonalData": "Przetwarza dane osobowe",
+    "profilesUsers": "Profiluje użytkowników",
+    "yes": "Tak",
+    "no": "Nie",
+    "complianceGaps": "Luki zgodności",
+    "viewAllGaps": "Zobacz wszystkie luki",
+    "classificationResult": "Wynik klasyfikacji",
+    "reclassify": "Reklasyfikuj",
+    "confidenceScore": "Wskaźnik pewności",
+    "role": "Twoja rola",
+    "exceptionApplied": "Zastosowano wyjątek",
+    "reasoning": "Uzasadnienie klasyfikacji",
+    "viewComplianceGaps": "Zobacz luki zgodności",
+    "wizard": {
+      "title": "Dodaj nowy system AI",
+      "subtitle": "Ukończ ten kreator, aby sklasyfikować system AI i zidentyfikować wymagania zgodności",
+      "uploadOption": "Prześlij dokumenty",
+      "manualOption": "Wypełnij ręcznie",
+      "uploadTitle": "Prześlij dokumentację produktu",
+      "uploadDescription": "Przeanalizujemy dokumenty i wstępnie wypełnimy formularz klasyfikacji",
+      "uploadDropzone": "Przeciągnij pliki tutaj lub kliknij, aby przesłać",
+      "uploadDropHere": "Upuść pliki tutaj...",
+      "uploadSupported": "Obsługiwane: PDF, DOCX, MD, TXT (maks. 10 MB każdy, do 5 plików)",
+      "uploadMaxFilesError": "Możesz przesłać do {max} plików",
+      "uploadComplete": "Przesyłanie zakończone",
+      "uploadedFilesCount": "Pomyślnie przesłano {count} plik(ów)",
+      "analyzing": "Analizowanie dokumentów...",
+      "analysisComplete": "Analiza zakończona! Sprawdź wyodrębnione informacje poniżej.",
+      "extractedFrom": "Wyodrębnione z dokumentów",
+      "detectedRisk": "Wykryto ryzyko",
+      "detectedRisks": "Wykryte ryzyka",
+      "detectedRiskDescription": "Znaleźliśmy potencjalne ryzyka zgodności w dokumentach",
+      "noRisksFound": "Nie wykryto dodatkowych ryzyk",
+      "reviewAndConfirm": "Sprawdź i potwierdź informacje poniżej",
+      "systemName": "Nazwa systemu",
+      "confident": "pewność",
+      "keyFindings": "Kluczowe wyniki",
+      "unknown": "Nieznany",
+      "extractedQuotes": "Dowody potwierdzające",
+      "step1": {
+        "title": "Podstawowe informacje",
+        "description": "Opisz swój system AI",
+        "name": "Nazwa systemu",
+        "namePlaceholder": "np. Narzędzie do selekcji CV",
+        "nameDescription": "Jasna, opisowa nazwa systemu AI",
+        "description": "Opis",
+        "descriptionPlaceholder": "Wyjaśnij, co robi ten system AI i jak jest używany...",
+        "descriptionDescription": "Opisz cel, funkcjonalność i główne cechy",
+        "aiTypeLabel": "Typ AI",
+        "aiTypeDescription": "Jakiego rodzaju technologię AI wykorzystuje ten system?",
+        "mlModel": "Model uczenia maszynowego",
+        "llm": "Duży model językowy (LLM)",
+        "ruleBased": "System oparty na regułach",
+        "hybrid": "Hybrydowy (ML + reguły)"
+      },
+      "step2": {
+        "title": "Przypadek użycia",
+        "description": "Jak używany jest ten system AI?",
+        "domainLabel": "Dziedzina",
+        "domainDescription": "W jakiej dziedzinie działa ten system AI?",
+        "domainPlaceholder": "Wybierz dziedzinę",
+        "hr": "Zasoby ludzkie",
+        "finance": "Finanse i bankowość",
+        "healthcare": "Opieka zdrowotna",
+        "education": "Edukacja",
+        "security": "Bezpieczeństwo i biometria",
+        "content": "Moderacja treści",
+        "chatbot": "Chatbot / Wirtualny asystent",
+        "recommendations": "Rekomendacje",
+        "other": "Inne"
+      },
+      "step3": {
+        "title": "Dane i wpływ",
+        "description": "Jakie dane przetwarza i jaki ma wpływ?",
+        "decisionsLabel": "Podejmuje decyzje",
+        "decisionsDescription": "Czy ten system podejmuje lub istotnie wpływa na decyzje dotyczące ludzi?",
+        "personalDataLabel": "Przetwarza dane osobowe",
+        "personalDataDescription": "Czy przetwarza dane osobowe lub wrażliwe?",
+        "profilesLabel": "Profiluje użytkowników",
+        "profilesDescription": "Czy tworzy profile, oceny lub prognozy dotyczące osób?",
+        "endUsersLabel": "Użytkownicy końcowi",
+        "endUsersDescription": "Kim są użytkownicy końcowi, na których wpływa ten system?",
+        "b2c": "Konsumenci (B2C)",
+        "b2b": "Użytkownicy biznesowi (B2B)",
+        "employees": "Pracownicy",
+        "government": "Rząd / Sektor publiczny"
+      },
+      "step4": {
+        "title": "Rynki",
+        "description": "Gdzie działasz?",
+        "marketsLabel": "Rynki docelowe",
+        "marketsDescription": "Wybierz wszystkie rynki, na których ten system AI jest używany lub wdrożony",
+        "eu": "Unia Europejska (UE)",
+        "us": "Stany Zjednoczone (US)",
+        "uae": "Zjednoczone Emiraty Arabskie (ZEA)",
+        "other": "Inne"
+      },
+      "step5": {
+        "title": "Przegląd i wysłanie",
+        "description": "Sprawdź informacje przed wysłaniem",
+        "summary": "Podsumowanie systemu",
+        "submitButton": "Sklasyfikuj system",
+        "submitting": "Klasyfikowanie...",
+        "success": "System utworzony pomyślnie!",
+        "error": "Nie udało się utworzyć systemu"
+      },
+      "validation": {
+        "nameRequired": "Nazwa systemu jest wymagana",
+        "nameMax": "Nazwa systemu musi mieć mniej niż 200 znaków",
+        "descriptionRequired": "Opis jest wymagany",
+        "descriptionMin": "Opis musi mieć co najmniej 10 znaków",
+        "aiTypeRequired": "Proszę wybrać typ AI",
+        "domainRequired": "Proszę wybrać dziedzinę",
+        "endUsersRequired": "Proszę wybrać co najmniej jeden typ użytkownika końcowego",
+        "marketsRequired": "Proszę wybrać co najmniej jeden rynek"
+      }
+    },
+    "table": {
+      "name": "Nazwa",
+      "domain": "Dziedzina",
+      "riskLevel": "Poziom ryzyka",
+      "complianceScore": "Zgodność",
+      "gaps": "Luki",
+      "created": "Utworzono"
+    }
+  },
+  "gaps": {
+    "title": "Luki zgodności",
+    "subtitle": "dla",
+    "backToSystem": "Powrót do systemu",
+    "overallProgress": "Ogólny postęp",
+    "of": "z",
+    "completed": "ukończonych",
+    "complete": "ukończono",
+    "filterByStatus": "Filtruj wg statusu",
+    "filterByPriority": "Filtruj wg priorytetu",
+    "allStatuses": "Wszystkie statusy",
+    "allPriorities": "Wszystkie priorytety",
+    "notStarted": "Nie rozpoczęto",
+    "inProgress": "W trakcie",
+    "critical": "Krytyczny",
+    "high": "Wysoki",
+    "medium": "Średni",
+    "low": "Niski",
+    "notes": "Notatki",
+    "dueDate": "Termin",
+    "noGaps": "Wszystkie wymagania spełnione",
+    "noGapsDescription": "Ten system spełnia wszystkie wymagania zgodności dla wybranych filtrów"
+  },
   "marketing": {
     "tagline": "Zarządzanie zgodnością AI dla MŚP",
-    "cta": "Rozpocznij darmowy okres próbny"
+    "cta": "Rozpocznij bezpłatny okres próbny"
+  },
+  "documents": {
+    "title": "Dokumenty",
+    "generate": "Generuj raport",
+    "generating": "Generowanie...",
+    "download": "Pobierz",
+    "delete": "Usuń",
+    "generatedAt": "Wygenerowano",
+    "noDocuments": "Brak wygenerowanych dokumentów",
+    "noDocumentsDescription": "Wygeneruj raporty zgodności, aby udokumentować system AI",
+    "selectType": "Wybierz typ dokumentu",
+    "classificationReport": "Raport klasyfikacji",
+    "roadmap": "Plan działań zgodności",
+    "annexIV": "Dokumentacja techniczna Załącznik IV",
+    "upgradeRequired": "Wymagana aktualizacja",
+    "upgradeMessage": "Generowanie dokumentów dostępne od planu Starter",
+    "classificationRequired": "Wymagana klasyfikacja",
+    "classificationRequiredMessage": "System musi być sklasyfikowany przed wygenerowaniem tego dokumentu",
+    "deleteConfirm": "Czy na pewno chcesz usunąć ten dokument?",
+    "report": {
+      "title": "Raport klasyfikacji ryzyka systemu AI",
+      "subtitle": "Klasyfikacja ryzyka według Aktu o AI UE",
+      "systemInfo": "Informacje o systemie",
+      "systemName": "Nazwa systemu",
+      "description": "Opis",
+      "aiType": "Typ AI",
+      "domain": "Dziedzina",
+      "markets": "Rynki docelowe",
+      "classification": "Wyniki klasyfikacji",
+      "riskLevel": "Poziom ryzyka",
+      "annexCategory": "Kategoria Załącznika III",
+      "reasoning": "Uzasadnienie klasyfikacji",
+      "exceptionAnalysis": "Analiza wyjątków (Art. 6.3)",
+      "exceptionApplies": "Wyjątek ma zastosowanie",
+      "exceptionReason": "Powód wyjątku",
+      "obligations": "Podsumowanie zgodności",
+      "obligationCount": "Łączna liczba obowiązków",
+      "gapCount": "Otwarte luki",
+      "providerDeployer": "Twoja rola",
+      "transparency": "Obowiązki przejrzystości (Art. 50)",
+      "disclaimer": "Ten dokument został wygenerowany przez Complyance.io i nie stanowi porady prawnej. Skonsultuj się z wykwalifikowanymi specjalistami prawnymi w celu weryfikacji zgodności.",
+      "generatedFor": "Wygenerowano dla",
+      "noException": "Nie ma zastosowania żaden wyjątek z Art. 6.3. Ten system podlega pełnym wymaganiom dla systemów AI wysokiego ryzyka.",
+      "notClassified": "Jeszcze nie sklasyfikowano"
+    },
+    "roadmap": {
+      "title": "Plan działań zgodności",
+      "subtitle": "Plan krok po kroku do zgodności z Aktem o AI UE",
+      "systemName": "System",
+      "deadline": "Termin zgodności z Aktem o AI UE",
+      "daysRemaining": "dni pozostało",
+      "overview": "Przegląd",
+      "totalGaps": "Łączna liczba wymagań",
+      "criticalGaps": "Krytyczne",
+      "highGaps": "Wysoki priorytet",
+      "timeline": "Harmonogram wdrożenia",
+      "phase": "Faza",
+      "article": "Artykuł",
+      "requirement": "Wymaganie",
+      "priority": "Priorytet",
+      "dueDate": "Termin",
+      "status": "Status",
+      "disclaimer": "Ten plan działań jest narzędziem planistycznym i nie stanowi porady prawnej. Harmonogramy powinny być dostosowane do możliwości organizacji i terminów regulacyjnych.",
+      "generatedFor": "Wygenerowano dla",
+      "notStarted": "Nie rozpoczęto",
+      "inProgress": "W trakcie",
+      "completed": "Ukończono",
+      "immediate": "Natychmiast (0-3 miesiące)",
+      "shortTerm": "Krótkoterminowo (3-6 miesięcy)",
+      "mediumTerm": "Średnioterminowo (6-12 miesięcy)",
+      "longTerm": "Długoterminowo (12+ miesięcy)"
+    },
+    "annexIV": {
+      "title": "Dokumentacja techniczna Załącznik IV",
+      "subtitle": "Wymagania Art. 11 Aktu o AI UE",
+      "section1": "Sekcja 1:",
+      "section1Title": "Opis ogólny",
+      "section1Content": "Ta sekcja zawiera szczegółowy opis systemu AI, jego przeznaczenia oraz osób lub grup osób, dla których system jest przeznaczony.",
+      "section2": "Sekcja 2:",
+      "section2Title": "Specyfikacje techniczne",
+      "section2Content": "Opis architektury modelu AI, algorytmów, wymagań dotyczących danych i specyfikacji technicznych.",
+      "section3": "Sekcja 3:",
+      "section3Title": "System zarządzania ryzykiem",
+      "section3Content": "Dokumentacja systemu zarządzania ryzykiem wymaganego przez Art. 9 Aktu o AI UE.",
+      "section4": "Sekcja 4:",
+      "section4Title": "Środki nadzoru ludzkiego",
+      "section4Content": "Opis środków nadzoru ludzkiego wdrożonych w celu zapewnienia bezpiecznego działania (Art. 14).",
+      "section5": "Sekcja 5:",
+      "section5Title": "Dokładność, odporność i cyberbezpieczeństwo",
+      "section5Content": "Dokumentacja środków zapewniających odpowiedni poziom dokładności, odporności i cyberbezpieczeństwa (Art. 15).",
+      "section6": "Sekcja 6:",
+      "section6Title": "Monitorowanie po wprowadzeniu do obrotu",
+      "section6Content": "Opis systemu monitorowania po wprowadzeniu do obrotu wymaganego przez Art. 72.",
+      "systemInfo": "Informacje o systemie",
+      "systemName": "Nazwa systemu",
+      "description": "Opis",
+      "aiType": "Typ AI",
+      "domain": "Dziedzina",
+      "markets": "Rynki docelowe",
+      "riskLevel": "Poziom ryzyka",
+      "providerInfo": "Informacje o dostawcy",
+      "organizationName": "Organizacja",
+      "generatedDate": "Data wygenerowania",
+      "version": "Wersja",
+      "disclaimer": "To jest dokument szablonowy. Wszystkie sekcje zastępcze muszą być uzupełnione konkretnymi informacjami o systemie AI. Nie stanowi to porady prawnej.",
+      "generatedFor": "Wygenerowano dla",
+      "intendedPurpose": "Zamierzony cel",
+      "technicalSpecs": "Specyfikacje techniczne",
+      "dataRequirements": "Wymagania dotyczące danych",
+      "humanOversight": "Nadzór ludzki",
+      "accuracy": "Metryki dokładności",
+      "robustness": "Odporność i elastyczność",
+      "cybersecurity": "Środki cyberbezpieczeństwa",
+      "monitoring": "Plan monitorowania",
+      "placeholder": "DO UZUPEŁNIENIA"
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog | Complyance - Informacje o zgodności AI",
+      "description": "Eksperckie informacje o zgodności AI, Akcie o AI UE i aktualizacjach regulacyjnych dla firm SaaS"
+    },
+    "title": "Blog o zgodności",
+    "subtitle": "Eksperckie informacje o zgodności AI, Akcie o AI UE i aktualizacjach regulacyjnych",
+    "allPosts": "Wszystkie wpisy",
+    "noPosts": "Brak dostępnych wpisów na blogu. Wróć wkrótce!",
+    "readMore": "Czytaj więcej",
+    "backToBlog": "Powrót do bloga",
+    "relatedArticles": "Powiązane artykuły",
+    "sidebar": {
+      "classifier": {
+        "title": "Bezpłatny klasyfikator ryzyka AI",
+        "description": "Sprawdź, czy Twój system AI jest wysokiego ryzyka według Aktu o AI UE — w 2 minuty",
+        "cta": "Wypróbuj teraz (bezpłatnie)"
+      },
+      "about": {
+        "title": "O tym blogu",
+        "description": "Bądź na bieżąco z najnowszymi wiadomościami o zgodności AI, aktualizacjami regulacyjnymi i praktycznymi wskazówkami dla firm SaaS."
+      },
+      "toc": {
+        "title": "W tym artykule",
+        "description": "Przejdź do sekcji"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Proste, przejrzyste ceny",
+    "subtitle": "Wybierz plan dopasowany do Twoich potrzeb zgodności. Wszystkie plany obejmują klasyfikację ryzyka i analizę luk.",
+    "popular": "Najpopularniejszy",
+    "perMonth": "miesiąc",
+    "plans": {
+      "free": {
+        "description": "Idealny do poznania wymagań zgodności AI",
+        "cta": "Rozpocznij bezpłatnie"
+      },
+      "starter": {
+        "description": "Dla małych zespołów rozpoczynających zgodność z Aktem o AI UE",
+        "cta": "Bezpłatny okres próbny"
+      },
+      "professional": {
+        "description": "Dla rosnących zespołów zarządzających wieloma systemami AI",
+        "cta": "Bezpłatny okres próbny"
+      },
+      "scale": {
+        "description": "Dla organizacji ze złożonymi potrzebami zgodności",
+        "cta": "Bezpłatny okres próbny"
+      }
+    },
+    "features": {
+      "systems": "{count, plural, =1 {1 system AI} other {{count} systemów AI}}",
+      "regulations": "{count, plural, =1 {1 regulacja (tylko UE)} other {{count} regulacji}}",
+      "classification": "Klasyfikacja ryzyka",
+      "gapAnalysis": "Analiza luk",
+      "badge": "Odznaka zgodności ({level})",
+      "vendors": "{count, plural, =0 {Oceny ryzyka dostawców} =1 {{count} ocena dostawcy} other {{count} ocen dostawców}}",
+      "documents": "Generowanie dokumentów",
+      "evidence": "Skarbiec dowodów",
+      "alerts": "Alerty regulacyjne",
+      "alertsWeekly": "Tygodniowe podsumowanie",
+      "alertsRealtime": "Powiadomienia w czasie rzeczywistym",
+      "biasTesting": "{count, plural, =0 {Testy stronniczości} other {{count} testów stronniczości/miesiąc}}",
+      "biasTestingUnlimited": "Bez limitu",
+      "teamMembers": "{count, plural, =1 {{count} członek zespołu} other {{count} członków zespołu}}",
+      "incidents": "Rejestr incydentów",
+      "gdprModule": "Moduł RODO-AI",
+      "cicdAPI": "API integracji CI/CD",
+      "allRegulations": "Wszystkie regulacje",
+      "vendorsUnlimited": "Bez limitu"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "description": "Rozwiązania dostosowane dla dużych organizacji z dedykowanym wsparciem, opcjami white-label i niestandardowymi przepływami zgodności.",
+      "cta": "Skontaktuj się ze sprzedażą"
+    },
+    "faq": {
+      "title": "Często zadawane pytania",
+      "q1": {
+        "question": "Co zawiera darmowy plan?",
+        "answer": "Darmowy plan pozwala sklasyfikować 1 system AI, zobaczyć luki zgodności i otrzymać odznakę „Akt o AI — Świadomy". Idealny do poznania wymagań Aktu o AI UE bez zobowiązań."
+      },
+      "q2": {
+        "question": "Czy mogę później zmienić plan?",
+        "answer": "Tak! Możesz podwyższyć lub obniżyć plan w dowolnym momencie. Przy podwyższeniu uzyskujesz natychmiastowy dostęp do nowych funkcji. Przy obniżeniu zmiany wchodzą w życie na koniec okresu rozliczeniowego."
+      },
+      "q3": {
+        "question": "Jakie regulacje obejmujecie?",
+        "answer": "Obecnie obsługujemy Akt o AI UE, Colorado AI Act (SB 24-205), NYC Local Law 144, NIST AI RMF, ISO 42001 oraz zasady etyki AI ZEA. Plany Professional i Scale obejmują wszystkie regulacje."
+      },
+      "q4": {
+        "question": "Czy moje dane są bezpieczne?",
+        "answer": "Tak. Wszystkie dane są szyfrowane w spoczynku (AES-256) i podczas przesyłania (TLS 1.3). Jesteśmy zgodni z SOC 2 Type II i gotowi na RODO. Dane zgodności nigdy nie opuszczają naszej bezpiecznej infrastruktury w UE."
+      },
+      "q5": {
+        "question": "Czy oferujecie zwroty?",
+        "answer": "Tak! Oferujemy 14-dniową gwarancję zwrotu pieniędzy dla wszystkich płatnych planów. Jeśli nie jesteś zadowolony, skontaktuj się z nami w ciągu 14 dni od pierwszej płatności, aby uzyskać pełny zwrot."
+      },
+      "q6": {
+        "question": "Jakie metody płatności akceptujecie?",
+        "answer": "Akceptujemy wszystkie główne karty kredytowe (Visa, Mastercard, American Express) i obsługujemy wiele walut. Płatności są przetwarzane bezpiecznie przez Paddle, naszego pośrednika handlowego."
+      }
+    }
+  },
+  "contact": {
+    "title": "Skontaktuj się z nami",
+    "subtitle": "Masz pytanie? Jesteśmy tu, aby pomóc.",
+    "info": {
+      "title": "Kontakt",
+      "support": {
+        "title": "Wsparcie ogólne",
+        "desc": "Pytania dotyczące konta, rozliczeń lub funkcji platformy"
+      },
+      "privacy": {
+        "title": "Prywatność i dane",
+        "desc": "Ochrona danych, wnioski RODO lub kwestie prywatności"
+      },
+      "partnership": {
+        "title": "Partnerstwa",
+        "desc": "Kancelarie prawne, firmy konsultingowe i możliwości odsprzedaży"
+      },
+      "hours": {
+        "title": "Czas odpowiedzi",
+        "desc": "Zwykle odpowiadamy w ciągu 24 godzin w dni robocze (poniedziałek-piątek, 9:00-18:00 CET)"
+      }
+    },
+    "form": {
+      "title": "Wyślij nam wiadomość",
+      "name": "Imię i nazwisko",
+      "email": "E-mail",
+      "subject": "Temat",
+      "subjects": {
+        "general": "Zapytanie ogólne",
+        "support": "Wsparcie techniczne",
+        "partnership": "Możliwość partnerstwa",
+        "press": "Prasa i media",
+        "other": "Inne"
+      },
+      "message": "Wiadomość",
+      "submit": "Wyślij wiadomość",
+      "sending": "Wysyłanie...",
+      "success": "Dziękujemy! Odpowiemy w ciągu 24 godzin."
+    }
+  },
+  "about": {
+    "title": "O Complyance",
+    "subtitle": "Udostępniamy zgodność AI każdej firmie SaaS",
+    "mission": {
+      "title": "Nasza misja",
+      "p1": "Akt o AI UE to pierwsze kompleksowe rozporządzenie o AI na świecie i dotyczy tysięcy firm SaaS sprzedających w Europie. Ale narzędzia zgodności stworzone dla firm z Fortune 500 są poza zasięgiem większości MŚP.",
+      "p2": "Stworzyliśmy Complyance, aby zdemokratyzować zgodność AI. Bez zespołu prawnego. Bez budżetu korporacyjnego. Tylko jasne wskazówki i praktyczne narzędzia, które pomogą Ci dostarczać zgodne produkty AI."
+    },
+    "problem": {
+      "title": "Problem, który rozwiązujemy",
+      "p1": "Większość platform zgodności AI jest projektowana dla dużych przedsiębiorstw z dedykowanymi zespołami prawnymi i budżetami od 50 000 $/rok. Wymagają konsultantów do wdrożenia, miesięcy na integrację i stałego wsparcia prawnego.",
+      "p2": "Tymczasem tysiące założycieli SaaS buduje z AI — chatboty, silniki rekomendacji, narzędzia selekcji CV, systemy wykrywania oszustw — nie zdając sobie sprawy, że podlegają regulacjom dotyczącym AI wysokiego ryzyka.",
+      "p3": "Termin Aktu o AI UE to 2 sierpnia 2026. Niezgodność oznacza kary do 35 mln EUR lub 7% globalnych obrotów. Ale zatrudnienie konsultanta ds. zgodności kosztuje ponad 15 000 EUR za system. Dla większości MŚP to nie jest opcja."
+    },
+    "solution": {
+      "title": "Nasze rozwiązanie",
+      "subtitle": "Samoobsługowe zarządzanie zgodnością AI dla zespołów, które nie mogą pozwolić sobie na platformy korporacyjne",
+      "automated": {
+        "title": "Automatyczna klasyfikacja ryzyka",
+        "desc": "Nasz silnik AI analizuje system według kategorii Załącznika III Aktu o AI UE i informuje, czy jesteś wysokiego ryzyka, w ciągu minut."
+      },
+      "actionable": {
+        "title": "Wykonalne plany zgodności",
+        "desc": "Otrzymaj plan krok po kroku z terminami, priorytetami i zrozumiałymi wyjaśnieniami, co należy zrobić."
+      },
+      "affordable": {
+        "title": "Przystępne dla MŚP",
+        "desc": "Od 99 $/miesiąc. Bez konsultantów. Bez ukrytych opłat. Anuluj w dowolnym momencie."
+      }
+    },
+    "what": {
+      "title": "Co robimy",
+      "classify": {
+        "title": "Klasyfikacja ryzyka",
+        "desc": "Określ, czy Twój system AI jest wysokiego, ograniczonego czy minimalnego ryzyka według Aktu o AI UE, Colorado AI Act i innych regulacji."
+      },
+      "gaps": {
+        "title": "Analiza luk",
+        "desc": "Zidentyfikuj dokładnie, jakich wymagań zgodności brakuje i co musisz zrobić, aby je spełnić."
+      },
+      "documents": {
+        "title": "Generowanie dokumentów",
+        "desc": "Generuj raporty zgodności, dokumentację techniczną (Załącznik IV) i plany działań jednym kliknięciem."
+      },
+      "vendors": {
+        "title": "Ocena ryzyka dostawców",
+        "desc": "Oceniaj dostawców AI (OpenAI, Anthropic itp.) pod kątem ryzyka zgodności i praktyk przetwarzania danych."
+      },
+      "updates": {
+        "title": "Wywiad regulacyjny",
+        "desc": "Bądź na bieżąco z nowymi wytycznymi, działaniami egzekucyjnymi i zmianami regulacyjnymi wpływającymi na Twoje systemy AI."
+      }
+    },
+    "disclaimer": {
+      "title": "Ważna informacja",
+      "desc": "Complyance to narzędzie zarządzania zgodnością, a nie kancelaria prawna. Nasza platforma pomaga organizować i śledzić prace związane ze zgodnością, ale nie stanowi porady prawnej. W przypadku zgłoszeń regulacyjnych lub certyfikacji skonsultuj się z wykwalifikowanymi specjalistami prawnymi."
+    },
+    "cta": {
+      "title": "Gotowy na zgodność?",
+      "subtitle": "Zacznij od naszego darmowego planu i sklasyfikuj pierwszy system AI w 5 minut. Karta kredytowa nie jest wymagana.",
+      "start": "Rozpocznij bezpłatnie",
+      "pricing": "Zobacz cennik"
+    }
+  },
+  "partners": {
+    "title": "Partnerstwo z Complyance",
+    "subtitle": "Dołącz do naszej sieci kancelarii prawnych, firm konsultingowych i ekspertów ds. zgodności pomagających klientom w nawigacji po regulacjach AI",
+    "benefits": {
+      "title": "Korzyści z partnerstwa",
+      "revenue": {
+        "title": "Podział przychodów",
+        "desc": "Zarabiaj 20% cyklicznej prowizji od wszystkich poleconych klientów przez 12 miesięcy"
+      },
+      "whiteLabel": {
+        "title": "Opcje white-label",
+        "desc": "Oferuj Complyance pod własną marką z własną domeną i brandingiem (poziom Enterprise)"
+      },
+      "support": {
+        "title": "Dedykowane wsparcie",
+        "desc": "Priorytetowy kanał wsparcia i dedykowany menedżer konta dla Twoich klientów"
+      },
+      "training": {
+        "title": "Szkolenia i zasoby",
+        "desc": "Dostęp do szkoleń partnerskich, materiałów co-marketingowych i zasobów wspierających sprzedaż"
+      }
+    },
+    "ideal": {
+      "title": "Idealne profile partnerów",
+      "lawFirms": {
+        "title": "Kancelarie prawne",
+        "desc": "Praktyki prawa technologicznego doradzające klientom SaaS w zakresie prywatności danych, zgodności AI i kwestii regulacyjnych"
+      },
+      "consultancies": {
+        "title": "Firmy konsultingowe ds. zgodności",
+        "desc": "Firmy świadczące usługi doradcze RODO, ISO 27001, SOC 2 lub zgodności AI"
+      },
+      "auditors": {
+        "title": "Audytorzy i rzeczoznawcy",
+        "desc": "Organizacje przeprowadzające audyty zgodności, certyfikacje lub oceny stron trzecich"
+      }
+    },
+    "form": {
+      "title": "Zostań partnerem",
+      "subtitle": "Opowiedz nam o swojej firmie i jak chciałbyś współpracować",
+      "companyName": "Nazwa firmy",
+      "website": "Strona internetowa",
+      "contactName": "Twoje imię i nazwisko",
+      "email": "E-mail",
+      "type": "Typ partnera",
+      "types": {
+        "lawFirm": "Kancelaria prawna",
+        "consultancy": "Firma konsultingowa ds. zgodności",
+        "auditor": "Audytor / Rzeczoznawca",
+        "other": "Inne"
+      },
+      "message": "Opowiedz nam o swojej firmie",
+      "messagePlaceholder": "Jakie usługi oferujesz? Ilu klientów obsługujesz? Dlaczego chcesz zostać partnerem Complyance?",
+      "submit": "Złóż wniosek",
+      "sending": "Wysyłanie...",
+      "success": "Dziękujemy! Przejrzymy Twój wniosek i odpowiemy w ciągu 3 dni roboczych."
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Polityka prywatności",
+      "introduction": "Complyance szanuje Twoją prywatność. Niniejsza Polityka prywatności wyjaśnia, jak zbieramy, wykorzystujemy i chronimy Twoje dane osobowe podczas korzystania z naszej platformy zarządzania zgodnością AI.",
+      "dataCollection": {
+        "title": "Dane, które zbieramy",
+        "account": "Informacje o koncie (imię, e-mail, organizacja)",
+        "usage": "Dane o użytkowaniu (sklasyfikowane systemy AI, wygenerowane dokumenty)",
+        "technical": "Dane techniczne (adres IP, typ przeglądarki, informacje o urządzeniu)",
+        "documents": "Dokumenty przesłane do analizy AI (szyfrowane w spoczynku)"
+      },
+      "usage": {
+        "title": "Jak wykorzystujemy Twoje dane",
+        "service": "Do świadczenia i ulepszania naszych usług zarządzania zgodnością",
+        "ai": "Do klasyfikacji systemów AI i generowania raportów zgodności za pomocą API Claude",
+        "billing": "Do przetwarzania płatności przez Paddle (nasz pośrednik handlowy)",
+        "communication": "Do wysyłania aktualizacji usług, alertów regulacyjnych i powiadomień o zgodności"
+      },
+      "thirdParties": {
+        "title": "Usługi stron trzecich",
+        "anthropic": "Anthropic (API Claude) - Klasyfikacja AI i analiza dokumentów",
+        "paddle": "Paddle - Przetwarzanie płatności i zarządzanie subskrypcjami",
+        "aws": "AWS S3 - Szyfrowane przechowywanie dokumentów (region UE)",
+        "resend": "Resend - Dostarczanie e-maili transakcyjnych",
+        "desc": "Nigdy nie sprzedajemy Twoich danych. Strony trzecie przetwarzają dane tylko w zakresie niezbędnym do świadczenia usług."
+      },
+      "cookies": {
+        "title": "Pliki cookie",
+        "essential": "Niezbędne pliki cookie do uwierzytelniania i zarządzania sesją",
+        "analytics": "Analityczne pliki cookie do poprawy wydajności platformy (opcjonalne)",
+        "desc": "Możesz kontrolować preferencje plików cookie w ustawieniach przeglądarki."
+      },
+      "retention": {
+        "title": "Przechowywanie danych",
+        "active": "Dane konta przechowywane podczas aktywnej subskrypcji",
+        "grace": "30-dniowy okres karencji po anulowaniu przed usunięciem",
+        "legal": "Niektóre dane przechowywane dłużej ze względu na wymogi prawne (np. zapisy rozliczeniowe)"
+      },
+      "gdprRights": {
+        "title": "Twoje prawa RODO",
+        "access": "Prawo dostępu do danych osobowych",
+        "rectification": "Prawo do sprostowania niedokładnych danych",
+        "erasure": "Prawo do usunięcia danych ('prawo do bycia zapomnianym')",
+        "portability": "Prawo do przenoszenia danych w formacie nadającym się do odczytu maszynowego",
+        "objection": "Prawo do sprzeciwu wobec przetwarzania",
+        "desc": "Aby skorzystać z tych praw, skontaktuj się z privacy@complyance.io"
+      },
+      "security": {
+        "title": "Bezpieczeństwo",
+        "encryption": "Wszystkie dane szyfrowane w spoczynku (AES-256) i podczas przesyłania (TLS 1.3)",
+        "infrastructure": "Infrastruktura zlokalizowana w UE dla zgodności z RODO",
+        "access": "Kontrola dostępu oparta na rolach i dzienniki audytu",
+        "desc": "Stosujemy najlepsze praktyki branżowe w celu ochrony Twoich danych."
+      }
+    },
+    "terms": {
+      "title": "Warunki korzystania z usług",
+      "acceptance": {
+        "title": "Akceptacja warunków",
+        "desc": "Uzyskując dostęp do Complyance lub korzystając z niej, zgadzasz się na niniejsze Warunki korzystania z usług. Jeśli się nie zgadzasz, nie możesz korzystać z platformy."
+      },
+      "serviceDescription": {
+        "title": "Opis usługi",
+        "desc": "Complyance to samoobsługowa platforma SaaS do zarządzania zgodnością AI. Zapewniamy narzędzia do klasyfikacji ryzyka, analizy luk, generowania dokumentów i wywiadu regulacyjnego, aby pomóc organizacjom w przestrzeganiu regulacji AI, w tym Aktu o AI UE."
+      },
+      "disclaimer": {
+        "title": "Zastrzeżenie prawne",
+        "notAdvice": "Complyance to narzędzie zarządzania zgodnością, a nie kancelaria prawna ani doradca prawny.",
+        "informational": "Wszystkie klasyfikacje, raporty i rekomendacje mają wyłącznie charakter informacyjny i nie stanowią porady prawnej.",
+        "professional": "W przypadku zgłoszeń regulacyjnych, certyfikacji lub opinii prawnych skonsultuj się z wykwalifikowanymi specjalistami prawnymi.",
+        "liability": "Nie ponosimy odpowiedzialności za niezgodność, kary regulacyjne ani konsekwencje prawne wynikające z korzystania z naszej platformy."
+      },
+      "accounts": {
+        "title": "Konta użytkowników",
+        "responsibility": "Jesteś odpowiedzialny za zachowanie poufności danych logowania do konta",
+        "accurate": "Musisz podać dokładne i kompletne informacje",
+        "notify": "Natychmiast powiadom nas o nieautoryzowanym dostępie",
+        "prohibited": "Nie możesz udostępniać kont ani przekazywać dostępu bez pozwolenia"
+      },
+      "billing": {
+        "title": "Rozliczenia i płatności",
+        "paddle": "Płatności przetwarzane przez Paddle (pośrednik handlowy)",
+        "subscription": "Subskrypcje odnawiają się automatycznie, chyba że zostaną anulowane",
+        "prices": "Ceny podane w USD i mogą ulec zmianie z 30-dniowym wyprzedzeniem",
+        "taxes": "Paddle obsługuje wszystkie obliczenia podatkowe i zgodność podatkową"
+      },
+      "prohibitedUse": {
+        "title": "Zabronione użytkowanie",
+        "illegal": "Naruszanie obowiązujących przepisów lub regulacji",
+        "misrepresent": "Fałszywe przedstawianie systemów AI lub statusu zgodności",
+        "reverse": "Inżynieria wsteczna, dekompilacja lub modyfikacja platformy",
+        "abuse": "Nadużywanie, nękanie lub szkodzenie innym użytkownikom lub naszym systemom",
+        "resell": "Odsprzedaż lub redystrybucja naszych usług bez autoryzacji"
+      },
+      "ip": {
+        "title": "Własność intelektualna",
+        "ownership": "Complyance posiada wszystkie prawa do platformy, oprogramowania i treści",
+        "yourData": "Zachowujesz własność swoich danych (systemy AI, dokumenty, dowody)",
+        "license": "Udzielamy ograniczonej licencji na korzystanie z platformy zgodnie z planem",
+        "feedback": "Przekazane opinie mogą być wykorzystane do ulepszenia platformy"
+      },
+      "liability": {
+        "title": "Ograniczenie odpowiedzialności",
+        "asIs": "Platforma dostarczana 'w stanie, w jakim jest' bez gwarancji",
+        "noLiability": "Nie ponosimy odpowiedzialności za szkody pośrednie, przypadkowe lub wynikowe",
+        "cap": "Całkowita odpowiedzialność ograniczona do kwoty zapłaconej w ostatnich 12 miesiącach",
+        "force": "Brak odpowiedzialności za zdarzenia pozostające poza naszą uzasadnioną kontrolą"
+      }
+    },
+    "refund": {
+      "title": "Polityka zwrotów",
+      "policy": {
+        "title": "14-dniowa gwarancja zwrotu pieniędzy",
+        "desc": "Oferujemy 14-dniową gwarancję zwrotu pieniędzy dla wszystkich płatnych planów. Jeśli nie jesteś zadowolony z Complyance, poproś o pełny zwrot w ciągu 14 dni od pierwszej płatności."
+      },
+      "eligibility": {
+        "title": "Uprawnienie do zwrotu",
+        "firstPayment": "Dotyczy tylko pierwszej płatności (nie odnowień)",
+        "within14": "Wniosek musi być złożony w ciągu 14 dni od płatności",
+        "notAbused": "Przywilej zwrotu nie był wcześniej wykorzystany na innym koncie",
+        "goodFaith": "Konto było używane w dobrej wierze (bez nadużyć lub naruszeń)"
+      },
+      "process": {
+        "title": "Jak poprosić o zwrot",
+        "contact": "Wyślij e-mail na support@complyance.io z „Wniosek o zwrot" w temacie",
+        "include": "Podaj e-mail konta i powód (opcjonalnie, ale mile widziane)",
+        "processing": "Zwroty przetwarzane w ciągu 5-7 dni roboczych",
+        "method": "Zwrot na oryginalną metodę płatności przez Paddle"
+      },
+      "proRata": {
+        "title": "Zwroty proporcjonalne (obniżenie planu)",
+        "desc": "Jeśli obniżysz plan w trakcie cyklu, niewykorzystany czas nie jest zwracany, ale zaliczany na następny okres rozliczeniowy."
+      },
+      "euRights": {
+        "title": "Prawa konsumenta UE",
+        "withdrawal": "Konsumenci UE mają 14-dniowe prawo odstąpienia na mocy dyrektywy UE 2011/83/UE",
+        "digital": "Rozpoczynając subskrypcję, potwierdzasz, że usługi cyfrowe rozpoczynają się natychmiast i zrzekasz się prawa odstąpienia po skorzystaniu z usługi",
+        "unused": "Jeśli anulujesz przed skorzystaniem z usługi, masz prawo do pełnego zwrotu"
+      }
+    }
+  },
+  "billing": {
+    "currentPlan": "Aktualny plan",
+    "usage": "Użycie",
+    "upgrade": "Podwyższ plan",
+    "cancel": "Anuluj subskrypcję",
+    "manageBilling": "Zarządzaj rozliczeniami",
+    "portalLink": "Przeglądaj faktury i aktualizuj metody płatności w portalu rozliczeniowym"
+  },
+  "footer": {
+    "product": {
+      "title": "Produkt",
+      "pricing": "Cennik",
+      "blog": "Blog",
+      "freeClassifier": "Bezpłatny klasyfikator"
+    },
+    "company": {
+      "title": "Firma",
+      "about": "O nas",
+      "partners": "Partnerzy",
+      "contact": "Kontakt"
+    },
+    "legal": {
+      "title": "Prawne",
+      "privacy": "Polityka prywatności",
+      "terms": "Warunki korzystania z usług",
+      "refund": "Polityka zwrotów"
+    },
+    "copyright": "© 2026 Complyance. Wszelkie prawa zastrzeżone.",
+    "disclaimer": "Nie stanowi porady prawnej. Klasyfikacje mają wyłącznie charakter informacyjny."
   }
 }
