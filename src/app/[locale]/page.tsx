@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LocaleSwitcher } from '@/components/shared/locale-switcher';
+import Link from 'next/link';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -226,9 +227,12 @@ export default async function HomePage({ params }: HomePageProps) {
             Complyance
           </h1>
           <p className="mb-8 text-xl text-slate-600">{t('tagline')}</p>
-          <button className="rounded-lg bg-blue-600 px-8 py-3 text-white hover:bg-blue-700 transition">
+          <Link
+            href={`/${locale}/login`}
+            className="inline-block rounded-lg bg-blue-600 px-8 py-3 text-white hover:bg-blue-700 transition"
+          >
             {t('cta')}
-          </button>
+          </Link>
         </main>
 
         <footer className="absolute bottom-4 text-sm text-slate-500">
