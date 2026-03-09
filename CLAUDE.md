@@ -47,174 +47,207 @@ We use **Railway** as the single deployment platform for both frontend and backe
 | **Monitoring** | Sentry | Error tracking |
 | **Analytics** | PostHog (self-hosted or cloud) | Product analytics, funnels |
 
-### Monorepo Structure
+### Monorepo Structure (ACTUAL — reflects current implementation)
 
 ```
 complyance/
 ├── CLAUDE.md                          # THIS FILE — primary project guide
+├── auth.ts                            # Auth.js v5 configuration
+├── auth.config.ts                     # Auth configuration
+├── next.config.mjs                    # Next.js config (MDX, i18n)
+├── tailwind.config.ts                 # Tailwind CSS config
+├── tsconfig.json                      # TypeScript config
+├── postcss.config.mjs                 # PostCSS config
+├── components.json                    # shadcn/ui config
+├── package.json                       # Dependencies
+├── railway.toml                       # Railway deployment config
+├── Dockerfile                         # Container build
+├── .env.example                       # Environment template
+│
 ├── docs/                              # Project documentation
 │   ├── ARCHITECTURE.md                # System architecture
-│   ├── DATABASE.md                    # Database schema & migrations
-│   ├── API.md                         # API endpoints reference
 │   ├── AI_ENGINE.md                   # Classification logic & prompts
 │   ├── I18N.md                        # Internationalization guide
 │   ├── DEPLOYMENT.md                  # Railway deployment guide
-│   ├── COMPLIANCE_LOGIC.md            # EU AI Act rules engine
-│   └── PADDLE_INTEGRATION.md         # Payment integration guide
+│   ├── PADDLE_INTEGRATION.md          # Payment integration guide
+│   └── business/                      # Business context
+│       ├── MVP_SCOPE_AI_Compliance_SaaS.md
+│       ├── FULL_PRODUCT_SCOPE_AI_Compliance_SaaS.md
+│       └── PLATFORM_EXPANSION_STRATEGY.md
+│
 ├── prisma/
-│   ├── schema.prisma                  # Database schema
-│   ├── seed.ts                        # Seed data (regulations, categories)
-│   └── migrations/                    # Migration history
+│   ├── schema.prisma                  # Database schema (full)
+│   └── seed.ts                        # Seed data script
+│
+├── content/                           # Blog content
+│   └── blog/                          # MDX articles
+│       ├── ai-act-vs-colorado-vs-nyc-comparison.mdx
+│       ├── ai-vendor-compliance-openai-anthropic.mdx
+│       ├── annex-iii-explained-8-categories.mdx
+│       ├── eu-ai-act-deadline-2026-what-to-do.mdx
+│       └── is-your-saas-high-risk-eu-ai-act.mdx
+│
 ├── src/
+│   ├── middleware.ts                  # Next.js middleware (auth, i18n)
+│   │
 │   ├── app/                           # Next.js App Router
 │   │   ├── [locale]/                  # Locale-prefixed routes
-│   │   │   ├── (marketing)/           # Public pages (landing, pricing, blog)
-│   │   │   │   ├── page.tsx           # Landing page
-│   │   │   │   ├── pricing/
+│   │   │   ├── layout.tsx             # Root layout
+│   │   │   ├── page.tsx               # Landing page
+│   │   │   │
+│   │   │   ├── (marketing)/           # Public pages
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── about/page.tsx
 │   │   │   │   ├── blog/
-│   │   │   │   └── free-classifier/   # Free AI Act Risk Classifier tool
-│   │   │   ├── (auth)/                # Auth pages
-│   │   │   │   ├── login/
-│   │   │   │   ├── register/
-│   │   │   │   └── forgot-password/
+│   │   │   │   │   ├── page.tsx       # Blog listing
+│   │   │   │   │   └── [slug]/page.tsx # Blog post (MDX)
+│   │   │   │   ├── contact/page.tsx
+│   │   │   │   ├── partners/page.tsx
+│   │   │   │   ├── pricing/page.tsx
+│   │   │   │   ├── privacy/page.tsx
+│   │   │   │   ├── terms/page.tsx
+│   │   │   │   └── refund/page.tsx
+│   │   │   │
 │   │   │   └── (dashboard)/           # Protected app
-│   │   │       ├── dashboard/
-│   │   │       ├── systems/           # AI System inventory
+│   │   │       ├── layout.tsx         # Dashboard layout
+│   │   │       ├── dashboard/page.tsx # Main dashboard
+│   │   │       ├── systems/
 │   │   │       │   ├── page.tsx       # List all systems
-│   │   │       │   ├── new/           # Add new AI system wizard
-│   │   │       │   └── [id]/          # System detail
-│   │   │       │       ├── page.tsx
-│   │   │       │       ├── classification/
-│   │   │       │       ├── gaps/
-│   │   │       │       └── documents/
-│   │   │       ├── vendors/           # AI Vendor risk assessment
-│   │   │       ├── evidence/          # Evidence vault
-│   │   │       ├── incidents/         # Incident & risk register
-│   │   │       ├── reports/           # Generated reports
-│   │   │       ├── intelligence/      # Regulatory intelligence feed
-│   │   │       ├── settings/
-│   │   │       ├── referrals/         # Referral program dashboard
-│   │   │       └── team/              # Team management
+│   │   │       │   ├── new/page.tsx   # Classification wizard
+│   │   │       │   └── [id]/
+│   │   │       │       ├── page.tsx   # System detail
+│   │   │       │       └── gaps/page.tsx # Compliance gaps
+│   │   │       └── settings/
+│   │   │           └── billing/page.tsx # Billing settings
+│   │   │
 │   │   └── api/                       # API routes
-│   │       ├── trpc/[trpc]/           # tRPC handler
-│   │       ├── webhooks/
-│   │       │   ├── paddle/            # Paddle webhook
-│   │       │   └── stripe/            # (future)
-│   │       ├── public/                # Public API (CI/CD)
-│   │       │   └── v1/
-│   │       │       ├── classify/
-│   │       │       ├── status/
-│   │       │       └── badge/
-│   │       └── cron/                  # Cron endpoints
-│   │           ├── regulatory-scan/
-│   │           └── compliance-check/
+│   │       ├── auth/[...nextauth]/route.ts # Auth.js handler
+│   │       ├── health/route.ts        # Health check
+│   │       ├── contact/route.ts       # Contact form
+│   │       ├── partners/route.ts      # Partners endpoint
+│   │       ├── trpc/[trpc]/route.ts   # tRPC handler
+│   │       └── webhooks/
+│   │           └── paddle/route.ts    # Paddle webhooks
+│   │
 │   ├── server/                        # Server-side logic
+│   │   ├── trpc.ts                    # tRPC initialization
+│   │   │
 │   │   ├── routers/                   # tRPC routers
-│   │   │   ├── system.ts
-│   │   │   ├── classification.ts
-│   │   │   ├── vendor.ts
-│   │   │   ├── document.ts
-│   │   │   ├── evidence.ts
-│   │   │   ├── incident.ts
-│   │   │   ├── intelligence.ts
-│   │   │   ├── team.ts
-│   │   │   ├── billing.ts
-│   │   │   └── referral.ts
+│   │   │   ├── _app.ts                # Router aggregation
+│   │   │   ├── system.ts              # System CRUD
+│   │   │   ├── classification.ts      # Classification ops
+│   │   │   └── document.ts            # Document generation
+│   │   │
 │   │   ├── services/                  # Business logic
-│   │   │   ├── classification/
-│   │   │   │   ├── engine.ts          # Main classification engine
+│   │   │   ├── classification/        # AI Act classification
+│   │   │   │   ├── engine.ts          # Main orchestrator
 │   │   │   │   ├── rules.ts           # Rule-based pre-filter
-│   │   │   │   ├── llm.ts            # LLM classification
+│   │   │   │   ├── llm.ts             # LLM classification
 │   │   │   │   ├── validator.ts       # Post-LLM validation
-│   │   │   │   └── regulations/       # Regulation-specific logic
-│   │   │   │       ├── eu-ai-act.ts
-│   │   │   │       ├── colorado.ts
-│   │   │   │       ├── nyc-ll144.ts
-│   │   │   │       └── uae.ts
-│   │   │   ├── documents/
-│   │   │   │   ├── generator.ts       # PDF generation orchestrator
-│   │   │   │   ├── templates/         # Document templates
-│   │   │   │   │   ├── classification-report.tsx
-│   │   │   │   │   ├── annex-iv.tsx
-│   │   │   │   │   ├── roadmap.tsx
-│   │   │   │   │   ├── vendor-assessment.tsx
-│   │   │   │   │   └── model-card.tsx
-│   │   │   │   └── pdf.ts            # PDF rendering
-│   │   │   ├── vendors/
-│   │   │   │   ├── assessment.ts      # Vendor risk scoring
-│   │   │   │   └── questionnaire.ts   # Questionnaire generator
-│   │   │   ├── evidence/
-│   │   │   ├── intelligence/
-│   │   │   │   ├── scanner.ts         # Regulatory change scanner
-│   │   │   │   └── notifier.ts        # Alert system
-│   │   │   ├── badge/
-│   │   │   │   ├── generator.ts       # SVG/HTML badge generation
-│   │   │   │   └── verifier.ts        # Public verification page
+│   │   │   │   └── gaps.ts            # Generate compliance gaps
+│   │   │   │
+│   │   │   ├── documents/             # PDF generation
+│   │   │   │   ├── generator.ts       # Orchestrate generation
+│   │   │   │   ├── pdf.tsx            # React-PDF renderer
+│   │   │   │   ├── storage.ts         # S3/R2 upload
+│   │   │   │   ├── analyzer.ts        # Document analysis (Claude)
+│   │   │   │   ├── text-extractor.ts  # Extract text from files
+│   │   │   │   └── templates/
+│   │   │   │       ├── classification-report.tsx
+│   │   │   │       ├── annex-iv.tsx
+│   │   │   │       └── roadmap.tsx
+│   │   │   │
 │   │   │   └── billing/
 │   │   │       └── paddle.ts          # Paddle integration
-│   │   │   ├── referral/
-│   │   │   │   ├── code.ts            # Code generation & validation
-│   │   │   │   ├── rewards.ts         # Reward granting logic
-│   │   │   │   └── tracking.ts        # Referral analytics
+│   │   │
 │   │   ├── ai/                        # AI/LLM layer
-│   │   │   ├── client.ts             # Anthropic client wrapper
-│   │   │   ├── prompts/              # System prompts
+│   │   │   ├── client.ts              # Anthropic SDK wrapper
+│   │   │   ├── prompts/
 │   │   │   │   ├── classification.ts
-│   │   │   │   ├── gap-analysis.ts
-│   │   │   │   ├── document-gen.ts
-│   │   │   │   └── vendor-risk.ts
-│   │   │   └── schemas/              # Structured output schemas
+│   │   │   │   └── document-analysis.ts
+│   │   │   └── schemas/
 │   │   │       ├── classification-result.ts
-│   │   │       └── vendor-risk-result.ts
-│   │   └── db/                        # Database utilities
-│   │       └── client.ts             # Prisma client
+│   │   │       └── document-analysis-result.ts
+│   │   │
+│   │   └── db/
+│   │       └── client.ts              # Prisma client
+│   │
 │   ├── lib/                           # Shared utilities
+│   │   ├── trpc/
+│   │   │   ├── client.ts
+│   │   │   ├── server.ts
+│   │   │   └── provider.tsx
+│   │   ├── auth.ts
+│   │   ├── blog.ts                    # MDX utilities
 │   │   ├── utils.ts
-│   │   ├── constants.ts
-│   │   └── types.ts
+│   │   └── constants.ts
+│   │
 │   ├── components/                    # React components
 │   │   ├── ui/                        # shadcn/ui components
+│   │   │   ├── badge.tsx
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── checkbox.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── label.tsx
+│   │   │   ├── progress.tsx
+│   │   │   ├── radio-group.tsx
+│   │   │   ├── select.tsx
+│   │   │   ├── table.tsx
+│   │   │   └── textarea.tsx
+│   │   │
+│   │   ├── shared/
+│   │   │   ├── locale-switcher.tsx    # Language selector
+│   │   │   └── footer.tsx             # Site footer
+│   │   │
 │   │   ├── dashboard/
+│   │   │   ├── header.tsx
+│   │   │   └── sidebar.tsx
+│   │   │
 │   │   ├── systems/
-│   │   ├── vendors/
-│   │   ├── documents/
-│   │   ├── marketing/
-│   │   └── shared/
-│   │       ├── locale-switcher.tsx
-│   │       └── compliance-badge.tsx
-│   ├── hooks/                         # Custom React hooks
+│   │   │   ├── classification-wizard.tsx
+│   │   │   ├── document-uploader.tsx
+│   │   │   ├── document-analysis-viewer.tsx
+│   │   │   └── document-generator.tsx
+│   │   │
+│   │   └── billing/
+│   │       └── checkout-button.tsx
+│   │
 │   ├── i18n/                          # Internationalization
-│   │   ├── config.ts                  # i18n configuration
-│   │   ├── request.ts                # next-intl request config
-│   │   └── messages/                  # Translation files
-│   │       ├── en.json               # English (primary)
-│   │       ├── fr.json               # French
-│   │       ├── de.json               # German
-│   │       ├── pt.json               # Portuguese
-│   │       ├── ar.json               # Arabic
-│   │       ├── pl.json               # Polish
-│   │       └── it.json               # Italian
+│   │   ├── config.ts
+│   │   ├── request.ts
+│   │   └── messages/
+│   │       ├── en.json                # English (primary)
+│   │       ├── fr.json                # French
+│   │       ├── de.json                # German
+│   │       ├── pt.json                # Portuguese
+│   │       ├── ar.json                # Arabic (RTL)
+│   │       ├── pl.json                # Polish
+│   │       └── it.json                # Italian
+│   │
 │   └── styles/
 │       └── globals.css
-├── public/
-│   ├── locales/                       # Static locale assets
-│   └── badges/                        # Badge templates
-├── scripts/
-│   ├── seed-regulations.ts            # Seed EU AI Act, NIST, etc.
-│   └── generate-translations.ts       # AI-assisted translation helper
-├── tests/
-│   ├── classification/                # Classification engine tests
-│   ├── api/                           # API endpoint tests
-│   └── e2e/                           # Playwright E2E tests
-├── .env.example
-├── .env.local
-├── next.config.ts
-├── tailwind.config.ts
-├── tsconfig.json
-├── package.json
-├── railway.toml                       # Railway deployment config
-└── Dockerfile                         # Container build
+│
+└── public/                            # Static assets
 ```
+
+**Not yet implemented (Phase 4+):**
+- `src/app/[locale]/(dashboard)/vendors/` — Vendor risk assessment
+- `src/app/[locale]/(dashboard)/evidence/` — Evidence vault
+- `src/app/[locale]/(dashboard)/incidents/` — Incident register
+- `src/app/[locale]/(dashboard)/intelligence/` — Regulatory feed
+- `src/app/[locale]/(dashboard)/referrals/` — Referral program
+- `src/app/[locale]/(dashboard)/team/` — Team management
+- `src/app/[locale]/(admin)/` — Admin panel
+- `src/app/api/public/v1/` — Public CI/CD API
+- `src/app/api/cron/` — Scheduled tasks
+- `src/server/services/vendors/` — Vendor assessment service
+- `src/server/services/evidence/` — Evidence service
+- `src/server/services/intelligence/` — Regulatory scanner
+- `src/server/services/badge/` — Compliance badge generator
+- `src/server/services/referral/` — Referral system
+- `scripts/` — Seeding & translation scripts
+- `tests/` — Test suites
 
 ---
 
@@ -316,20 +349,23 @@ complyance/
 // Key models — full schema in docs/DATABASE.md
 
 model Organization {
-  id            String   @id @default(cuid())
-  name          String
-  paddleCustomerId String? @unique
-  plan          Plan     @default(FREE)
-  locale        String   @default("en")
-  markets       String[] // ["EU", "US", "UAE"]
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                   String   @id @default(cuid())
+  name                 String
+  paddleCustomerId     String?  @unique
+  paddleSubscriptionId String?
+  plan                 Plan     @default(FREE)
+  locale               String   @default("en")
+  markets              String[] // ["EU", "US", "UAE"]
+  bonusSystems         Int      @default(0) // Extra systems from referrals
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
 
   users         User[]
   aiSystems     AISystem[]
   vendors       Vendor[]
   evidence      Evidence[]
   incidents     Incident[]
+  documents     Document[]
 }
 
 model User {
@@ -366,16 +402,23 @@ model AISystem {
   // Classification results
   riskLevel       RiskLevel? // UNACCEPTABLE, HIGH, LIMITED, MINIMAL
   annexIIICategory String?   // Which Annex III category matched
+  annexIIISubcategory String? // Specific subcategory
   classificationReasoning String? // LLM explanation
   providerOrDeployer String? // PROVIDER, DEPLOYER, BOTH
+  exceptionApplies Boolean   @default(false)
+  exceptionReason  String?   // Why exception applies
+  confidenceScore  Float?    // Classification confidence
+  transparencyObligations String[] // Article 50 obligations
   classifiedAt    DateTime?
 
   // Compliance
   complianceScore Int?      // 0-100
+  flaggedForReview Boolean  @default(false)
   gaps            ComplianceGap[]
   documents       Document[]
   evidence        Evidence[]
   incidents       Incident[]
+  uploadedDocuments SystemDocument[] // Product docs for analysis
 
   // Relations
   organizationId  String
@@ -441,6 +484,29 @@ model Document {
   systemId    String?
   system      AISystem? @relation(fields: [systemId], references: [id])
   organizationId String
+}
+
+// Product documentation uploaded for AI-powered analysis
+model SystemDocument {
+  id             String         @id @default(cuid())
+  fileName       String
+  fileType       String         // pdf, docx, md, txt
+  fileSize       Int            // Bytes
+  fileUrl        String         // S3/R2 URL (encrypted)
+  integrityHash  String?        // SHA-256 hash for authenticity
+
+  // Analysis results
+  analysisStatus AnalysisStatus @default(PENDING)
+  analysisResult Json?          // DocumentAnalysisResult as JSON
+  detectedRisks  Json?          // DetectedRisk[] as JSON
+  analyzedAt     DateTime?
+
+  // Relations
+  systemId       String
+  system         AISystem       @relation(fields: [systemId], references: [id], onDelete: Cascade)
+  organizationId String
+
+  createdAt      DateTime       @default(now())
 }
 
 model Evidence {
@@ -541,6 +607,7 @@ enum Severity { CRITICAL, HIGH, MEDIUM, LOW }
 enum IncidentStatus { OPEN, INVESTIGATING, RESOLVED, CLOSED }
 enum ReferralRewardType { EXTRA_SYSTEMS, EXTRA_VENDORS, FREE_MONTH, PLAN_DISCOUNT }
 enum ReferralRewardStatus { PENDING, GRANTED, EXPIRED, REVOKED }
+enum AnalysisStatus { PENDING, ANALYZING, COMPLETED, FAILED }
 ```
 
 ---
@@ -1078,43 +1145,50 @@ Pre-populate common AI vendors so users don't start from scratch:
 
 ## Development Order (for Claude Code)
 
-### Phase 1: Foundation (Week 1-2)
-1. Initialize Next.js project with TypeScript, Tailwind, shadcn/ui
-2. Set up Prisma with PostgreSQL schema
-3. Configure next-intl with all 7 locales
-4. Set up NextAuth.js (email + Google)
-5. Create base layout with locale switcher and RTL support
-6. Build marketing pages (landing, pricing)
-7. Set up railway.toml and Dockerfile
+### ✅ Phase 1: Foundation (COMPLETED)
+1. ✅ Initialize Next.js project with TypeScript, Tailwind, shadcn/ui
+2. ✅ Set up Prisma with PostgreSQL schema
+3. ✅ Configure next-intl with all 7 locales (en, fr, de, pt, ar, pl, it)
+4. ✅ Set up NextAuth.js v5 (Auth.js) with email + Google OAuth
+5. ✅ Create base layout with locale switcher and RTL support
+6. ✅ Build marketing pages (landing, pricing)
+7. ✅ Set up railway.toml and Dockerfile
 
-### Phase 2: Core Features (Week 3-4)
-1. AI System Inventory (CRUD)
-2. Classification Wizard (5-step form)
-3. Classification Engine (rules + LLM + validation)
-4. Gap Analysis module
-5. Dashboard with compliance score
+### ✅ Phase 2: Core Features (COMPLETED)
+1. ✅ Phase 2.1: Dashboard layout + AI System Inventory CRUD
+2. ✅ Phase 2.2: Classification Wizard (5-step form)
+3. ✅ Phase 2.3: Classification Engine (rules → LLM → validation)
+4. ✅ Phase 2.4: Gap Analysis UI + Dashboard with compliance score
+5. ✅ Document Upload & AI Analysis (extract data from uploaded docs)
 
-### Phase 3: Documents & Payments (Week 5-6)
-1. PDF generation pipeline
-2. Classification Report template
-3. Annex IV template
-4. Compliance Roadmap template
-5. Paddle integration (subscriptions, webhooks)
-6. Plan limit enforcement
+### ✅ Phase 3: Documents & Payments (COMPLETED)
+1. ✅ Phase 3.1: PDF generation pipeline + 3 document templates
+   - Classification Report template
+   - Annex IV template
+   - Compliance Roadmap template
+2. ✅ Phase 3.2: Blog system with MDX + SEO + 5 placeholder articles
+3. ✅ Phase 3.3: Paddle billing integration
+   - Subscriptions & webhooks
+   - Legal pages (privacy, terms, refund)
+   - Marketing pages (contact, partners, about)
+   - Footer component
+4. ✅ Full i18n translations for all 7 locales
 
-### Phase 4: Competitive Features (Week 7-8)
+### Phase 4: Competitive Features (PENDING)
 1. Vendor Risk Assessment module
 2. Compliance Badge generator
 3. Free AI Act Risk Classifier (public tool)
 4. Evidence Vault
 5. Regulatory Intelligence feed (basic)
+6. Referral system
 
-### Phase 5: Launch Prep (Week 8)
+### Phase 5: Launch Prep (PENDING)
 1. SEO meta tags (per locale)
 2. Error handling & edge cases
 3. E2E tests (critical paths)
 4. Production environment setup
 5. Monitoring (Sentry + PostHog)
+6. Admin panel for regulation management
 
 ---
 
