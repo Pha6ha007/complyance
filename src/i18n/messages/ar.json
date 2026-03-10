@@ -14,7 +14,8 @@
     "finish": "إنهاء",
     "close": "إغلاق",
     "yes": "نعم",
-    "no": "لا"
+    "no": "لا",
+    "download": "تحميل"
   },
   "nav": {
     "dashboard": "لوحة التحكم",
@@ -785,7 +786,8 @@
     "upgrade": "ترقية الخطة",
     "cancel": "إلغاء الاشتراك",
     "manageBilling": "إدارة الفوترة",
-    "portalLink": "عرض الفواتير وتحديث طرق الدفع في بوابة الفوترة"
+    "portalLink": "عرض الفواتير وتحديث طرق الدفع في بوابة الفوترة",
+    "subscribe": "Subscribe"
   },
   "footer": {
     "product": {
@@ -947,6 +949,18 @@
     "noUpdates": "لا توجد تحديثات متاحة",
     "noUpdatesDescription": "عد لاحقاً للاطلاع على تحديثات تنظيمية جديدة"
   },
+  "reports": {
+    "title": "التقارير",
+    "subtitle": "عرض وتنزيل مستندات الامتثال المُنشأة",
+    "classificationReport": "تقرير التصنيف",
+    "complianceRoadmap": "خارطة طريق الامتثال",
+    "annexIvDocumentation": "وثائق الملحق الرابع",
+    "processing": "قيد المعالجة...",
+    "failed": "فشل الإنشاء",
+    "noReports": "لا توجد تقارير بعد",
+    "noReportsDescription": "قم بإنشاء تقارير من أنظمة الذكاء الاصطناعي الخاصة بك لرؤيتها هنا",
+    "goToSystems": "انتقل إلى أنظمة الذكاء الاصطناعي"
+  },
   "admin": {
     "updates": {
       "title": "إدارة التحديثات التنظيمية",
@@ -982,6 +996,39 @@
     }
   },
   "settings": {
+    "title": "الإعدادات",
+    "subtitle": "إدارة تفضيلات حسابك والمؤسسة",
+    "profile": "الملف الشخصي",
+    "profileDescription": "تحديث معلوماتك الشخصية",
+    "name": "الاسم",
+    "namePlaceholder": "أدخل اسمك",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "organization": "المؤسسة",
+    "organizationDescription": "إدارة إعدادات مؤسستك",
+    "organizationName": "اسم المؤسسة",
+    "organizationNamePlaceholder": "أدخل اسم المؤسسة",
+    "language": "اللغة",
+    "languageDescription": "قم بتغيير اللغة من القائمة العلوية",
+    "subscription": "الاشتراك",
+    "subscriptionDescription": "إدارة الفوترة والخطة",
+    "currentPlan": "الخطة الحالية",
+    "freePlanDescription": "نظام ذكاء اصطناعي واحد، ميزات أساسية",
+    "upgradePlan": "ترقية الخطة",
+    "notifications": "الإشعارات",
+    "notificationsDescription": "تكوين تفضيلات الإشعارات",
+    "emailNotifications": "إشعارات البريد الإلكتروني",
+    "emailNotificationsDescription": "تلقي التحديثات حول حالة الامتثال الخاصة بك",
+    "enabled": "مفعّل",
+    "disabled": "معطّل",
+    "security": "الأمان",
+    "securityDescription": "إدارة أمان حسابك",
+    "changePassword": "تغيير كلمة المرور",
+    "dangerZone": "منطقة الخطر",
+    "dangerZoneDescription": "إجراءات لا رجعة فيها",
+    "deleteAccount": "حذف الحساب",
+    "deleteAccountDescription": "حذف حسابك وجميع البيانات بشكل دائم",
+    "deleteAccountButton": "حذف الحساب",
     "billing": {
       "title": "الفوترة والاشتراك",
       "description": "إدارة اشتراكك ومعلومات الفوترة",
@@ -1408,5 +1455,77 @@
         "server": "خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقاً."
       }
     }
+  },
+  "referrals": {
+    "title": "برنامج الإحالة",
+    "subtitle": "قم بدعوة شبكتك واكسب أنظمة ذكاء اصطناعي إضافية",
+    "yourLink": "رابط الإحالة الخاص بك",
+    "yourCode": "كود الإحالة الخاص بك",
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "copyLink": "نسخ الرابط",
+    "copyCode": "نسخ الكود",
+    "shareTitle": "شارك رابط الإحالة الخاص بك",
+    "shareDescription": "قم بدعوة مؤسسي SaaS الآخرين إلى Complyance",
+    "stats": {
+      "title": "إحصائيات الإحالة الخاصة بك",
+      "totalInvited": "إجمالي المدعوين",
+      "totalConverted": "تم التحويل إلى مدفوع",
+      "totalPending": "التحويلات المعلقة",
+      "totalBonusSystems": "إجمالي الأنظمة الإضافية المكتسبة"
+    },
+    "howItWorks": {
+      "title": "كيف يعمل",
+      "step1Title": "شارك رابطك",
+      "step1Description": "أرسل رابط الإحالة الفريد الخاص بك إلى مؤسسي SaaS الآخرين",
+      "step2Title": "يسجلون",
+      "step2Description": "يحصل المستخدمون الجدد على +1 نظام ذكاء اصطناعي إضافي في الخطة المجانية أو تجربة Starter لمدة 14 يومًا",
+      "step3Title": "تكسب المكافآت",
+      "step3Description": "عندما يقومون بالترقية إلى أي خطة مدفوعة، تحصل على +2 أنظمة ذكاء اصطناعي إضافية بشكل دائم"
+    },
+    "recent": {
+      "title": "الإحالات الأخيرة",
+      "empty": "لا توجد إحالات حتى الآن. ابدأ في مشاركة رابطك!",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "plan": "الخطة",
+      "status": "الحالة",
+      "reward": "المكافأة",
+      "date": "التاريخ"
+    },
+    "status": {
+      "PENDING": "معلق",
+      "GRANTED": "ممنوح",
+      "REVOKED": "ملغي"
+    },
+    "reward": {
+      "systems": "{count} أنظمة"
+    },
+    "benefits": {
+      "title": "فوائد الإحالة",
+      "forReferrer": "لك (المُحيل)",
+      "forReferrerReward": "+2 أنظمة ذكاء اصطناعي إضافية عندما يقومون بالترقية إلى أي خطة مدفوعة",
+      "forReferred": "لصديقك (مستخدم جديد)",
+      "forReferredReward": "+1 نظام ذكاء اصطناعي إضافي في الخطة المجانية أو تجربة Starter لمدة 14 يومًا"
+    },
+    "terms": {
+      "title": "الشروط",
+      "item1": "يتم منح المكافآت عندما يبدأ المستخدم المُحال اشتراكًا مدفوعًا",
+      "item2": "الأنظمة الإضافية دائمة ولا تنتهي صلاحيتها",
+      "item3": "لا يمكنك إحالة نفسك أو نفس البريد الإلكتروني مرتين",
+      "item4": "قد يتم إلغاء المكافآت إذا تم إلغاء الاشتراك خلال 7 أيام",
+      "item5": "الحد الأقصى 50 طلب إحالة يوميًا لكل كود"
+    },
+    "cta": {
+      "startSharing": "ابدأ المشاركة",
+      "inviteFriends": "ادعُ الأصدقاء"
+    }
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found",
+    "unauthorized": "You must be logged in to access this page",
+    "forbidden": "You don't have permission to access this resource",
+    "validation": "Please check your input and try again"
   }
 }

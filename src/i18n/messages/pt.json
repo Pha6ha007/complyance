@@ -14,7 +14,8 @@
     "finish": "Concluir",
     "close": "Fechar",
     "yes": "Sim",
-    "no": "Não"
+    "no": "Não",
+    "download": "Descarregar"
   },
   "nav": {
     "dashboard": "Painel",
@@ -785,7 +786,8 @@
     "upgrade": "Atualizar Plano",
     "cancel": "Cancelar Subscrição",
     "manageBilling": "Gerir Faturação",
-    "portalLink": "Ver faturas e atualizar métodos de pagamento no portal de faturação"
+    "portalLink": "Ver faturas e atualizar métodos de pagamento no portal de faturação",
+    "subscribe": "Subscribe"
   },
   "footer": {
     "product": {
@@ -947,6 +949,18 @@
     "noUpdates": "Nenhuma Atualização Disponível",
     "noUpdatesDescription": "Volte mais tarde para novas atualizações regulatórias"
   },
+  "reports": {
+    "title": "Relatórios",
+    "subtitle": "Ver e transferir documentos de conformidade gerados",
+    "classificationReport": "Relatório de Classificação",
+    "complianceRoadmap": "Roteiro de Conformidade",
+    "annexIvDocumentation": "Documentação Anexo IV",
+    "processing": "A processar...",
+    "failed": "Falha na geração",
+    "noReports": "Ainda não há relatórios",
+    "noReportsDescription": "Gere relatórios a partir dos seus sistemas de IA para os ver aqui",
+    "goToSystems": "Ir para Sistemas de IA"
+  },
   "admin": {
     "updates": {
       "title": "Gerenciar Atualizações Regulatórias",
@@ -982,6 +996,39 @@
     }
   },
   "settings": {
+    "title": "Configurações",
+    "subtitle": "Gerir as preferências da sua conta e organização",
+    "profile": "Perfil",
+    "profileDescription": "Atualizar as suas informações pessoais",
+    "name": "Nome",
+    "namePlaceholder": "Introduza o seu nome",
+    "email": "Email",
+    "emailPlaceholder": "Introduza o seu email",
+    "organization": "Organização",
+    "organizationDescription": "Gerir as configurações da sua organização",
+    "organizationName": "Nome da organização",
+    "organizationNamePlaceholder": "Introduza o nome da organização",
+    "language": "Idioma",
+    "languageDescription": "Alterar idioma no menu superior",
+    "subscription": "Subscrição",
+    "subscriptionDescription": "Gerir a sua faturação e plano",
+    "currentPlan": "Plano atual",
+    "freePlanDescription": "1 sistema de IA, funcionalidades básicas",
+    "upgradePlan": "Atualizar plano",
+    "notifications": "Notificações",
+    "notificationsDescription": "Configurar as suas preferências de notificação",
+    "emailNotifications": "Notificações por email",
+    "emailNotificationsDescription": "Receber atualizações sobre o seu estado de conformidade",
+    "enabled": "Ativado",
+    "disabled": "Desativado",
+    "security": "Segurança",
+    "securityDescription": "Gerir a segurança da sua conta",
+    "changePassword": "Alterar palavra-passe",
+    "dangerZone": "Zona de perigo",
+    "dangerZoneDescription": "Ações irreversíveis",
+    "deleteAccount": "Eliminar conta",
+    "deleteAccountDescription": "Eliminar permanentemente a sua conta e todos os dados",
+    "deleteAccountButton": "Eliminar conta",
     "billing": {
       "title": "Faturamento e Assinatura",
       "description": "Gerencie sua assinatura e informações de faturamento",
@@ -1408,5 +1455,77 @@
         "server": "Erro do servidor. Por favor, tente novamente mais tarde."
       }
     }
+  },
+  "referrals": {
+    "title": "Programa de Indicação",
+    "subtitle": "Convide sua rede e ganhe sistemas de IA extras",
+    "yourLink": "Seu Link de Indicação",
+    "yourCode": "Seu Código de Indicação",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "copyLink": "Copiar Link",
+    "copyCode": "Copiar Código",
+    "shareTitle": "Compartilhe seu link de indicação",
+    "shareDescription": "Convide outros fundadores de SaaS para o Complyance",
+    "stats": {
+      "title": "Suas Estatísticas de Indicação",
+      "totalInvited": "Total de Convidados",
+      "totalConverted": "Convertidos para Pago",
+      "totalPending": "Conversões Pendentes",
+      "totalBonusSystems": "Total de Sistemas Bônus Ganhos"
+    },
+    "howItWorks": {
+      "title": "Como Funciona",
+      "step1Title": "Compartilhe seu link",
+      "step1Description": "Envie seu link de indicação único para outros fundadores de SaaS",
+      "step2Title": "Eles se cadastram",
+      "step2Description": "Novos usuários ganham +1 sistema de IA bônus no plano gratuito ou teste Starter de 14 dias",
+      "step3Title": "Você ganha recompensas",
+      "step3Description": "Quando eles atualizam para qualquer plano pago, você ganha +2 sistemas de IA extras permanentemente"
+    },
+    "recent": {
+      "title": "Indicações Recentes",
+      "empty": "Ainda não há indicações. Comece a compartilhar seu link!",
+      "name": "Nome",
+      "email": "Email",
+      "plan": "Plano",
+      "status": "Status",
+      "reward": "Recompensa",
+      "date": "Data"
+    },
+    "status": {
+      "PENDING": "Pendente",
+      "GRANTED": "Concedido",
+      "REVOKED": "Revogado"
+    },
+    "reward": {
+      "systems": "{count} sistemas"
+    },
+    "benefits": {
+      "title": "Benefícios da Indicação",
+      "forReferrer": "Para Você (Indicador)",
+      "forReferrerReward": "+2 sistemas de IA extras quando eles atualizam para qualquer plano pago",
+      "forReferred": "Para Seu Amigo (Novo Usuário)",
+      "forReferredReward": "+1 sistema de IA bônus no plano gratuito OU teste Starter de 14 dias"
+    },
+    "terms": {
+      "title": "Termos",
+      "item1": "Recompensas são concedidas quando o usuário indicado inicia uma assinatura paga",
+      "item2": "Sistemas bônus são permanentes e não expiram",
+      "item3": "Não é possível indicar você mesmo ou o mesmo e-mail duas vezes",
+      "item4": "Recompensas podem ser revogadas se a assinatura for cancelada dentro de 7 dias",
+      "item5": "Máximo de 50 aplicações de indicação por dia por código"
+    },
+    "cta": {
+      "startSharing": "Começar a Compartilhar",
+      "inviteFriends": "Convidar Amigos"
+    }
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found",
+    "unauthorized": "You must be logged in to access this page",
+    "forbidden": "You don't have permission to access this resource",
+    "validation": "Please check your input and try again"
   }
 }

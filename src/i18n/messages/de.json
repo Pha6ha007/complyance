@@ -14,7 +14,8 @@
     "finish": "Abschließen",
     "close": "Schließen",
     "yes": "Ja",
-    "no": "Nein"
+    "no": "Nein",
+    "download": "Herunterladen"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -785,7 +786,8 @@
     "upgrade": "Plan upgraden",
     "cancel": "Abonnement kündigen",
     "manageBilling": "Abrechnung verwalten",
-    "portalLink": "Rechnungen einsehen und Zahlungsmethoden im Abrechnungsportal aktualisieren"
+    "portalLink": "Rechnungen einsehen und Zahlungsmethoden im Abrechnungsportal aktualisieren",
+    "subscribe": "Subscribe"
   },
   "footer": {
     "product": {
@@ -947,6 +949,18 @@
     "noUpdates": "Keine Updates verfügbar",
     "noUpdatesDescription": "Schauen Sie später für neue regulatorische Updates vorbei"
   },
+  "reports": {
+    "title": "Berichte",
+    "subtitle": "Generierte Compliance-Dokumente ansehen und herunterladen",
+    "classificationReport": "Klassifizierungsbericht",
+    "complianceRoadmap": "Compliance-Roadmap",
+    "annexIvDocumentation": "Anhang IV Dokumentation",
+    "processing": "Wird verarbeitet...",
+    "failed": "Generierung fehlgeschlagen",
+    "noReports": "Noch keine Berichte",
+    "noReportsDescription": "Generieren Sie Berichte aus Ihren KI-Systemen, um sie hier zu sehen",
+    "goToSystems": "Zu KI-Systemen"
+  },
   "admin": {
     "updates": {
       "title": "Regulatorische Updates verwalten",
@@ -982,6 +996,39 @@
     }
   },
   "settings": {
+    "title": "Einstellungen",
+    "subtitle": "Verwalten Sie Ihre Konto- und Organisationseinstellungen",
+    "profile": "Profil",
+    "profileDescription": "Aktualisieren Sie Ihre persönlichen Informationen",
+    "name": "Name",
+    "namePlaceholder": "Geben Sie Ihren Namen ein",
+    "email": "E-Mail",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+    "organization": "Organisation",
+    "organizationDescription": "Verwalten Sie Ihre Organisationseinstellungen",
+    "organizationName": "Organisationsname",
+    "organizationNamePlaceholder": "Geben Sie den Organisationsnamen ein",
+    "language": "Sprache",
+    "languageDescription": "Sprache über das obere Menü ändern",
+    "subscription": "Abonnement",
+    "subscriptionDescription": "Verwalten Sie Ihre Abrechnung und Ihren Plan",
+    "currentPlan": "Aktueller Plan",
+    "freePlanDescription": "1 KI-System, Basisfunktionen",
+    "upgradePlan": "Plan upgraden",
+    "notifications": "Benachrichtigungen",
+    "notificationsDescription": "Konfigurieren Sie Ihre Benachrichtigungseinstellungen",
+    "emailNotifications": "E-Mail-Benachrichtigungen",
+    "emailNotificationsDescription": "Erhalten Sie Updates zu Ihrem Compliance-Status",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+    "security": "Sicherheit",
+    "securityDescription": "Verwalten Sie Ihre Kontosicherheit",
+    "changePassword": "Passwort ändern",
+    "dangerZone": "Gefahrenzone",
+    "dangerZoneDescription": "Irreversible Aktionen",
+    "deleteAccount": "Konto löschen",
+    "deleteAccountDescription": "Löschen Sie Ihr Konto und alle Daten dauerhaft",
+    "deleteAccountButton": "Konto löschen",
     "billing": {
       "title": "Abrechnung und Abonnement",
       "description": "Verwalten Sie Ihr Abonnement und Ihre Rechnungsinformationen",
@@ -1408,5 +1455,77 @@
         "server": "Serverfehler. Bitte versuchen Sie es später erneut."
       }
     }
+  },
+  "referrals": {
+    "title": "Empfehlungsprogramm",
+    "subtitle": "Laden Sie Ihr Netzwerk ein und verdienen Sie zusätzliche KI-Systeme",
+    "yourLink": "Ihr Empfehlungslink",
+    "yourCode": "Ihr Empfehlungscode",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "copyLink": "Link kopieren",
+    "copyCode": "Code kopieren",
+    "shareTitle": "Teilen Sie Ihren Empfehlungslink",
+    "shareDescription": "Laden Sie andere SaaS-Gründer zu Complyance ein",
+    "stats": {
+      "title": "Ihre Empfehlungsstatistiken",
+      "totalInvited": "Gesamt eingeladen",
+      "totalConverted": "In Bezahlt konvertiert",
+      "totalPending": "Ausstehende Konversionen",
+      "totalBonusSystems": "Gesamt verdiente Bonussysteme"
+    },
+    "howItWorks": {
+      "title": "So funktioniert's",
+      "step1Title": "Teilen Sie Ihren Link",
+      "step1Description": "Senden Sie Ihren einzigartigen Empfehlungslink an andere SaaS-Gründer",
+      "step2Title": "Sie melden sich an",
+      "step2Description": "Neue Benutzer erhalten +1 Bonus-KI-System im kostenlosen Plan oder 14-tägige Starter-Testversion",
+      "step3Title": "Sie verdienen Belohnungen",
+      "step3Description": "Wenn sie auf einen bezahlten Plan upgraden, erhalten Sie dauerhaft +2 zusätzliche KI-Systeme"
+    },
+    "recent": {
+      "title": "Letzte Empfehlungen",
+      "empty": "Noch keine Empfehlungen. Beginnen Sie, Ihren Link zu teilen!",
+      "name": "Name",
+      "email": "E-Mail",
+      "plan": "Plan",
+      "status": "Status",
+      "reward": "Belohnung",
+      "date": "Datum"
+    },
+    "status": {
+      "PENDING": "Ausstehend",
+      "GRANTED": "Gewährt",
+      "REVOKED": "Widerrufen"
+    },
+    "reward": {
+      "systems": "{count} Systeme"
+    },
+    "benefits": {
+      "title": "Empfehlungsvorteile",
+      "forReferrer": "Für Sie (Empfehlender)",
+      "forReferrerReward": "+2 zusätzliche KI-Systeme, wenn sie auf einen bezahlten Plan upgraden",
+      "forReferred": "Für Ihren Freund (Neuer Benutzer)",
+      "forReferredReward": "+1 Bonus-KI-System im kostenlosen Plan ODER 14-tägige Starter-Testversion"
+    },
+    "terms": {
+      "title": "Bedingungen",
+      "item1": "Belohnungen werden gewährt, wenn der empfohlene Benutzer ein bezahltes Abonnement startet",
+      "item2": "Bonussysteme sind dauerhaft und verfallen nicht",
+      "item3": "Sie können sich nicht selbst oder dieselbe E-Mail zweimal empfehlen",
+      "item4": "Belohnungen können widerrufen werden, wenn das Abonnement innerhalb von 7 Tagen gekündigt wird",
+      "item5": "Maximal 50 Empfehlungsanwendungen pro Tag pro Code"
+    },
+    "cta": {
+      "startSharing": "Beginnen Sie zu teilen",
+      "inviteFriends": "Freunde einladen"
+    }
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found",
+    "unauthorized": "You must be logged in to access this page",
+    "forbidden": "You don't have permission to access this resource",
+    "validation": "Please check your input and try again"
   }
 }

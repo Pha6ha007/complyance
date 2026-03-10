@@ -1,13 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { trpc } from '@/lib/trpc/client';
 import Link from 'next/link';
 
 interface LoginFormProps {
@@ -17,6 +18,7 @@ interface LoginFormProps {
 export function LoginForm({ locale }: LoginFormProps) {
   const t = useTranslations('auth');
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [mode, setMode] = useState<'login' | 'register'>('login');
@@ -25,7 +27,19 @@ export function LoginForm({ locale }: LoginFormProps) {
     email: '',
     password: '',
     name: '',
+    referralCode: '',
   });
+
+  const applyReferralMutation = trpc.referral.applyCode.useMutation();
+
+  // Check for referral code in URL parameters
+  useEffect(() => {
+    const refCode = searchParams?.get('ref');
+    if (refCode) {
+      setFormData((prev) => ({ ...prev, referralCode: refCode }));
+      setMode('register'); // Auto-switch to register mode if referral code present
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,13 +65,33 @@ export function LoginForm({ locale }: LoginFormProps) {
         const response = await fetch('/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
+          }),
         });
 
         if (!response.ok) {
           const data = await response.json();
           setError(data.error || 'Registration failed');
         } else {
+          const data = await response.json();
+          const userId = data.user.id;
+
+          // Apply referral code if provided
+          if (formData.referralCode) {
+            try {
+              await applyReferralMutation.mutateAsync({
+                code: formData.referralCode,
+                userId,
+              });
+            } catch (error) {
+              // Don't block registration if referral code is invalid
+              console.warn('Failed to apply referral code:', error);
+            }
+          }
+
           // Auto-login after registration
           const result = await signIn('credentials', {
             email: formData.email,
@@ -187,6 +221,22 @@ export function LoginForm({ locale }: LoginFormProps) {
               minLength={6}
             />
           </div>
+
+          {mode === 'register' && (
+            <div className="space-y-2">
+              <Label htmlFor="referralCode">{t('referralCode')}</Label>
+              <Input
+                id="referralCode"
+                type="text"
+                value={formData.referralCode}
+                onChange={(e) =>
+                  setFormData({ ...formData, referralCode: e.target.value })
+                }
+                placeholder="COMP-XXXX"
+                disabled={isLoading}
+              />
+            </div>
+          )}
 
           {mode === 'login' && (
             <div className="flex items-center justify-between">

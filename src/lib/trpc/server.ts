@@ -11,7 +11,7 @@ import { NextRequest } from 'next/server';
  */
 export const createCaller = async (req?: NextRequest) => {
   const context = await createTRPCContext({
-    req: req || new NextRequest(new URL('http://localhost:3000')),
+    req: req || new NextRequest(new URL(process.env.NEXTAUTH_URL || 'http://localhost:3000')),
   });
 
   return appRouter.createCaller(context);

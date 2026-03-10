@@ -14,7 +14,8 @@
     "finish": "Zakończ",
     "close": "Zamknij",
     "yes": "Tak",
-    "no": "Nie"
+    "no": "Nie",
+    "download": "Pobierz"
   },
   "nav": {
     "dashboard": "Panel",
@@ -785,7 +786,8 @@
     "upgrade": "Podwyższ plan",
     "cancel": "Anuluj subskrypcję",
     "manageBilling": "Zarządzaj rozliczeniami",
-    "portalLink": "Przeglądaj faktury i aktualizuj metody płatności w portalu rozliczeniowym"
+    "portalLink": "Przeglądaj faktury i aktualizuj metody płatności w portalu rozliczeniowym",
+    "subscribe": "Subscribe"
   },
   "footer": {
     "product": {
@@ -947,6 +949,18 @@
     "noUpdates": "Brak Dostępnych Aktualizacji",
     "noUpdatesDescription": "Wróć później po nowe aktualizacje regulacyjne"
   },
+  "reports": {
+    "title": "Raporty",
+    "subtitle": "Przeglądaj i pobieraj wygenerowane dokumenty zgodności",
+    "classificationReport": "Raport klasyfikacji",
+    "complianceRoadmap": "Mapa zgodności",
+    "annexIvDocumentation": "Dokumentacja Załącznik IV",
+    "processing": "Przetwarzanie...",
+    "failed": "Generowanie nie powiodło się",
+    "noReports": "Jeszcze brak raportów",
+    "noReportsDescription": "Generuj raporty ze swoich systemów AI, aby je tutaj zobaczyć",
+    "goToSystems": "Przejdź do systemów AI"
+  },
   "admin": {
     "updates": {
       "title": "Zarządzaj Aktualizacjami Regulacyjnymi",
@@ -982,6 +996,39 @@
     }
   },
   "settings": {
+    "title": "Ustawienia",
+    "subtitle": "Zarządzaj preferencjami konta i organizacji",
+    "profile": "Profil",
+    "profileDescription": "Zaktualizuj swoje dane osobowe",
+    "name": "Imię",
+    "namePlaceholder": "Wprowadź swoje imię",
+    "email": "Email",
+    "emailPlaceholder": "Wprowadź swój email",
+    "organization": "Organizacja",
+    "organizationDescription": "Zarządzaj ustawieniami swojej organizacji",
+    "organizationName": "Nazwa organizacji",
+    "organizationNamePlaceholder": "Wprowadź nazwę organizacji",
+    "language": "Język",
+    "languageDescription": "Zmień język w górnym menu",
+    "subscription": "Subskrypcja",
+    "subscriptionDescription": "Zarządzaj płatnościami i planem",
+    "currentPlan": "Obecny plan",
+    "freePlanDescription": "1 system AI, podstawowe funkcje",
+    "upgradePlan": "Uaktualnij plan",
+    "notifications": "Powiadomienia",
+    "notificationsDescription": "Skonfiguruj preferencje powiadomień",
+    "emailNotifications": "Powiadomienia email",
+    "emailNotificationsDescription": "Otrzymuj aktualizacje o statusie zgodności",
+    "enabled": "Włączone",
+    "disabled": "Wyłączone",
+    "security": "Bezpieczeństwo",
+    "securityDescription": "Zarządzaj bezpieczeństwem konta",
+    "changePassword": "Zmień hasło",
+    "dangerZone": "Strefa zagrożenia",
+    "dangerZoneDescription": "Nieodwracalne działania",
+    "deleteAccount": "Usuń konto",
+    "deleteAccountDescription": "Trwale usuń swoje konto i wszystkie dane",
+    "deleteAccountButton": "Usuń konto",
     "billing": {
       "title": "Rozliczenia i Subskrypcja",
       "description": "Zarządzaj swoją subskrypcją i informacjami rozliczeniowymi",
@@ -1408,5 +1455,77 @@
         "server": "Błąd serwera. Spróbuj ponownie później."
       }
     }
+  },
+  "referrals": {
+    "title": "Program Poleceń",
+    "subtitle": "Zaproś swoją sieć i zdobądź dodatkowe systemy AI",
+    "yourLink": "Twój Link Polecający",
+    "yourCode": "Twój Kod Polecający",
+    "copy": "Kopiuj",
+    "copied": "Skopiowano!",
+    "copyLink": "Kopiuj Link",
+    "copyCode": "Kopiuj Kod",
+    "shareTitle": "Udostępnij swój link polecający",
+    "shareDescription": "Zaproś innych założycieli SaaS do Complyance",
+    "stats": {
+      "title": "Twoje Statystyki Poleceń",
+      "totalInvited": "Łącznie Zaproszonych",
+      "totalConverted": "Przekonwertowanych na Płatne",
+      "totalPending": "Oczekujące Konwersje",
+      "totalBonusSystems": "Łącznie Zdobytych Systemów Bonusowych"
+    },
+    "howItWorks": {
+      "title": "Jak to Działa",
+      "step1Title": "Udostępnij swój link",
+      "step1Description": "Wyślij swój unikalny link polecający innym założycielom SaaS",
+      "step2Title": "Oni się rejestrują",
+      "step2Description": "Nowi użytkownicy otrzymują +1 bonusowy system AI w planie darmowym lub 14-dniowy okres próbny Starter",
+      "step3Title": "Zdobywasz nagrody",
+      "step3Description": "Gdy uaktualnią do płatnego planu, otrzymujesz na stałe +2 dodatkowe systemy AI"
+    },
+    "recent": {
+      "title": "Ostatnie Polecenia",
+      "empty": "Brak poleceń. Zacznij udostępniać swój link!",
+      "name": "Imię",
+      "email": "Email",
+      "plan": "Plan",
+      "status": "Status",
+      "reward": "Nagroda",
+      "date": "Data"
+    },
+    "status": {
+      "PENDING": "Oczekujące",
+      "GRANTED": "Przyznane",
+      "REVOKED": "Cofnięte"
+    },
+    "reward": {
+      "systems": "{count} systemów"
+    },
+    "benefits": {
+      "title": "Korzyści z Poleceń",
+      "forReferrer": "Dla Ciebie (Polecający)",
+      "forReferrerReward": "+2 dodatkowe systemy AI, gdy uaktualnią do płatnego planu",
+      "forReferred": "Dla Twojego Znajomego (Nowy Użytkownik)",
+      "forReferredReward": "+1 bonusowy system AI w planie darmowym LUB 14-dniowy okres próbny Starter"
+    },
+    "terms": {
+      "title": "Warunki",
+      "item1": "Nagrody przyznawane są, gdy polecony użytkownik rozpocznie płatną subskrypcję",
+      "item2": "Systemy bonusowe są stałe i nie wygasają",
+      "item3": "Nie można polecić siebie lub tego samego adresu e-mail dwukrotnie",
+      "item4": "Nagrody mogą zostać cofnięte, jeśli subskrypcja zostanie anulowana w ciągu 7 dni",
+      "item5": "Maksymalnie 50 aplikacji poleceń dziennie na kod"
+    },
+    "cta": {
+      "startSharing": "Zacznij Udostępniać",
+      "inviteFriends": "Zaproś Znajomych"
+    }
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found",
+    "unauthorized": "You must be logged in to access this page",
+    "forbidden": "You don't have permission to access this resource",
+    "validation": "Please check your input and try again"
   }
 }

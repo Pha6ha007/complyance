@@ -1,6 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from '@/i18n/config';
 import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '../auth';
 
 // Simple in-memory rate limiter for public API
 // In production with multiple instances, use Redis-backed limiter
@@ -44,8 +45,9 @@ const intlMiddleware = createMiddleware({
   localePrefix: 'as-needed',
 });
 
-export default function middleware(request: NextRequest) {
+export default auth(async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const session = (request as any).auth;
 
   // Apply rate limiting to public API endpoints
   if (pathname.startsWith('/api/public/')) {
@@ -69,28 +71,47 @@ export default function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Protected routes that require authentication
+  const protectedRoutes = [
+    '/dashboard',
+    '/admin',
+    '/settings',
+    '/systems',
+    '/vendors',
+    '/evidence',
+    '/incidents',
+    '/intelligence',
+    '/referrals',
+    '/reports',
+    '/team',
+  ];
+
+  // Check if current path is a protected route (accounting for locale prefix)
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    pathname.includes(route)
+  );
+
+  // Redirect to login if accessing protected route without authentication
+  if (isProtectedRoute && !session) {
+    // Extract locale from pathname or use default
+    const localeMatch = pathname.match(/^\/(en|fr|de|pt|ar|pl|it)/);
+    const locale = localeMatch ? localeMatch[1] : defaultLocale;
+
+    const loginUrl = new URL(`/${locale}/login`, request.url);
+    loginUrl.searchParams.set('callbackUrl', pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
   // Apply i18n middleware for all other routes
   const response = intlMiddleware(request);
 
   // Add noindex headers for dashboard, admin, and settings routes
-  // Check if pathname includes these routes (accounting for locale prefix)
-  if (
-    pathname.includes('/dashboard') ||
-    pathname.includes('/admin') ||
-    pathname.includes('/settings') ||
-    pathname.includes('/systems') ||
-    pathname.includes('/vendors') ||
-    pathname.includes('/evidence') ||
-    pathname.includes('/incidents') ||
-    pathname.includes('/intelligence') ||
-    pathname.includes('/referrals') ||
-    pathname.includes('/team')
-  ) {
+  if (isProtectedRoute) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   }
 
   return response;
-}
+});
 
 export const config = {
   matcher: ['/((?!_next|_vercel|.*\\..*).*)'],

@@ -14,7 +14,8 @@
     "finish": "Completa",
     "close": "Chiudi",
     "yes": "Sì",
-    "no": "No"
+    "no": "No",
+    "download": "Scarica"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -785,7 +786,8 @@
     "upgrade": "Aggiorna piano",
     "cancel": "Cancella abbonamento",
     "manageBilling": "Gestisci fatturazione",
-    "portalLink": "Visualizza fatture e aggiorna metodi di pagamento nel portale di fatturazione"
+    "portalLink": "Visualizza fatture e aggiorna metodi di pagamento nel portale di fatturazione",
+    "subscribe": "Subscribe"
   },
   "footer": {
     "product": {
@@ -947,6 +949,18 @@
     "noUpdates": "Nessun Aggiornamento Disponibile",
     "noUpdatesDescription": "Torna più tardi per nuovi aggiornamenti normativi"
   },
+  "reports": {
+    "title": "Rapporti",
+    "subtitle": "Visualizza e scarica i documenti di conformità generati",
+    "classificationReport": "Rapporto di classificazione",
+    "complianceRoadmap": "Roadmap di conformità",
+    "annexIvDocumentation": "Documentazione Allegato IV",
+    "processing": "Elaborazione...",
+    "failed": "Generazione fallita",
+    "noReports": "Ancora nessun rapporto",
+    "noReportsDescription": "Genera rapporti dai tuoi sistemi AI per vederli qui",
+    "goToSystems": "Vai ai sistemi AI"
+  },
   "admin": {
     "updates": {
       "title": "Gestisci Aggiornamenti Normativi",
@@ -982,6 +996,39 @@
     }
   },
   "settings": {
+    "title": "Impostazioni",
+    "subtitle": "Gestisci le preferenze del tuo account e dell'organizzazione",
+    "profile": "Profilo",
+    "profileDescription": "Aggiorna le tue informazioni personali",
+    "name": "Nome",
+    "namePlaceholder": "Inserisci il tuo nome",
+    "email": "Email",
+    "emailPlaceholder": "Inserisci la tua email",
+    "organization": "Organizzazione",
+    "organizationDescription": "Gestisci le impostazioni della tua organizzazione",
+    "organizationName": "Nome organizzazione",
+    "organizationNamePlaceholder": "Inserisci il nome dell'organizzazione",
+    "language": "Lingua",
+    "languageDescription": "Cambia lingua dal menu superiore",
+    "subscription": "Abbonamento",
+    "subscriptionDescription": "Gestisci la fatturazione e il piano",
+    "currentPlan": "Piano attuale",
+    "freePlanDescription": "1 sistema IA, funzionalità base",
+    "upgradePlan": "Aggiorna piano",
+    "notifications": "Notifiche",
+    "notificationsDescription": "Configura le tue preferenze di notifica",
+    "emailNotifications": "Notifiche email",
+    "emailNotificationsDescription": "Ricevi aggiornamenti sul tuo stato di conformità",
+    "enabled": "Abilitato",
+    "disabled": "Disabilitato",
+    "security": "Sicurezza",
+    "securityDescription": "Gestisci la sicurezza del tuo account",
+    "changePassword": "Cambia password",
+    "dangerZone": "Zona pericolosa",
+    "dangerZoneDescription": "Azioni irreversibili",
+    "deleteAccount": "Elimina account",
+    "deleteAccountDescription": "Elimina permanentemente il tuo account e tutti i dati",
+    "deleteAccountButton": "Elimina account",
     "billing": {
       "title": "Fatturazione e Abbonamento",
       "description": "Gestisci il tuo abbonamento e le informazioni di fatturazione",
@@ -1408,5 +1455,77 @@
         "server": "Errore del server. Riprova più tardi."
       }
     }
+  },
+  "referrals": {
+    "title": "Programma di Referral",
+    "subtitle": "Invita la tua rete e guadagna sistemi IA extra",
+    "yourLink": "Il Tuo Link di Referral",
+    "yourCode": "Il Tuo Codice di Referral",
+    "copy": "Copia",
+    "copied": "Copiato!",
+    "copyLink": "Copia Link",
+    "copyCode": "Copia Codice",
+    "shareTitle": "Condividi il tuo link di referral",
+    "shareDescription": "Invita altri fondatori SaaS a Complyance",
+    "stats": {
+      "title": "Le Tue Statistiche di Referral",
+      "totalInvited": "Totale Invitati",
+      "totalConverted": "Convertiti a Pagamento",
+      "totalPending": "Conversioni in Sospeso",
+      "totalBonusSystems": "Totale Sistemi Bonus Guadagnati"
+    },
+    "howItWorks": {
+      "title": "Come Funziona",
+      "step1Title": "Condividi il tuo link",
+      "step1Description": "Invia il tuo link di referral unico ad altri fondatori SaaS",
+      "step2Title": "Si iscrivono",
+      "step2Description": "I nuovi utenti ricevono +1 sistema IA bonus nel piano gratuito o prova Starter di 14 giorni",
+      "step3Title": "Guadagni ricompense",
+      "step3Description": "Quando passano a un piano a pagamento, ottieni +2 sistemi IA extra permanentemente"
+    },
+    "recent": {
+      "title": "Referral Recenti",
+      "empty": "Nessun referral ancora. Inizia a condividere il tuo link!",
+      "name": "Nome",
+      "email": "Email",
+      "plan": "Piano",
+      "status": "Stato",
+      "reward": "Ricompensa",
+      "date": "Data"
+    },
+    "status": {
+      "PENDING": "In Sospeso",
+      "GRANTED": "Concesso",
+      "REVOKED": "Revocato"
+    },
+    "reward": {
+      "systems": "{count} sistemi"
+    },
+    "benefits": {
+      "title": "Vantaggi del Referral",
+      "forReferrer": "Per Te (Referente)",
+      "forReferrerReward": "+2 sistemi IA extra quando passano a un piano a pagamento",
+      "forReferred": "Per il Tuo Amico (Nuovo Utente)",
+      "forReferredReward": "+1 sistema IA bonus nel piano gratuito O prova Starter di 14 giorni"
+    },
+    "terms": {
+      "title": "Termini",
+      "item1": "Le ricompense vengono concesse quando l'utente referito avvia un abbonamento a pagamento",
+      "item2": "I sistemi bonus sono permanenti e non scadono",
+      "item3": "Non puoi riferire te stesso o la stessa email due volte",
+      "item4": "Le ricompense possono essere revocate se l'abbonamento viene cancellato entro 7 giorni",
+      "item5": "Massimo 50 applicazioni di referral al giorno per codice"
+    },
+    "cta": {
+      "startSharing": "Inizia a Condividere",
+      "inviteFriends": "Invita Amici"
+    }
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found",
+    "unauthorized": "You must be logged in to access this page",
+    "forbidden": "You don't have permission to access this resource",
+    "validation": "Please check your input and try again"
   }
 }

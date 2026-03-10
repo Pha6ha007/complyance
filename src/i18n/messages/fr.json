@@ -14,7 +14,8 @@
     "finish": "Terminer",
     "close": "Fermer",
     "yes": "Oui",
-    "no": "Non"
+    "no": "Non",
+    "download": "Télécharger"
   },
   "nav": {
     "dashboard": "Tableau de bord",
@@ -390,6 +391,18 @@
     "upgradeLink": "Voir les plans",
     "noUpdates": "Aucune mise à jour disponible",
     "noUpdatesDescription": "Revenez plus tard pour de nouvelles mises à jour réglementaires"
+  },
+  "reports": {
+    "title": "Rapports",
+    "subtitle": "Consulter et télécharger les documents de conformité générés",
+    "classificationReport": "Rapport de classification",
+    "complianceRoadmap": "Feuille de route de conformité",
+    "annexIvDocumentation": "Documentation Annexe IV",
+    "processing": "Traitement en cours...",
+    "failed": "Échec de la génération",
+    "noReports": "Aucun rapport pour le moment",
+    "noReportsDescription": "Générez des rapports à partir de vos systèmes IA pour les voir ici",
+    "goToSystems": "Aller aux systèmes IA"
   },
   "marketing": {
     "tagline": "Gestion de la conformité IA pour les PME",
@@ -957,9 +970,43 @@
     "upgrade": "Mettre à niveau",
     "cancel": "Annuler l'abonnement",
     "manageBilling": "Gérer la facturation",
-    "portalLink": "Consultez les factures et mettez à jour les modes de paiement dans le portail de facturation"
+    "portalLink": "Consultez les factures et mettez à jour les modes de paiement dans le portail de facturation",
+    "subscribe": "Subscribe"
   },
   "settings": {
+    "title": "Paramètres",
+    "subtitle": "Gérer les préférences de votre compte et de votre organisation",
+    "profile": "Profil",
+    "profileDescription": "Mettre à jour vos informations personnelles",
+    "name": "Nom",
+    "namePlaceholder": "Entrez votre nom",
+    "email": "Email",
+    "emailPlaceholder": "Entrez votre email",
+    "organization": "Organisation",
+    "organizationDescription": "Gérer les paramètres de votre organisation",
+    "organizationName": "Nom de l'organisation",
+    "organizationNamePlaceholder": "Entrez le nom de l'organisation",
+    "language": "Langue",
+    "languageDescription": "Changer la langue depuis le menu supérieur",
+    "subscription": "Abonnement",
+    "subscriptionDescription": "Gérer votre facturation et votre plan",
+    "currentPlan": "Plan actuel",
+    "freePlanDescription": "1 système IA, fonctionnalités de base",
+    "upgradePlan": "Mettre à niveau le plan",
+    "notifications": "Notifications",
+    "notificationsDescription": "Configurer vos préférences de notification",
+    "emailNotifications": "Notifications par email",
+    "emailNotificationsDescription": "Recevoir des mises à jour sur votre statut de conformité",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
+    "security": "Sécurité",
+    "securityDescription": "Gérer la sécurité de votre compte",
+    "changePassword": "Changer le mot de passe",
+    "dangerZone": "Zone dangereuse",
+    "dangerZoneDescription": "Actions irréversibles",
+    "deleteAccount": "Supprimer le compte",
+    "deleteAccountDescription": "Supprimer définitivement votre compte et toutes les données",
+    "deleteAccountButton": "Supprimer le compte",
     "billing": {
       "title": "Facturation et abonnement",
       "description": "Gérez votre abonnement et vos informations de facturation",
@@ -1408,5 +1455,77 @@
         "server": "Erreur serveur. Veuillez réessayer plus tard."
       }
     }
+  },
+  "referrals": {
+    "title": "Programme de parrainage",
+    "subtitle": "Invitez votre réseau et gagnez des systèmes IA supplémentaires",
+    "yourLink": "Votre lien de parrainage",
+    "yourCode": "Votre code de parrainage",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "copyLink": "Copier le lien",
+    "copyCode": "Copier le code",
+    "shareTitle": "Partagez votre lien de parrainage",
+    "shareDescription": "Invitez d'autres fondateurs SaaS à Complyance",
+    "stats": {
+      "title": "Vos statistiques de parrainage",
+      "totalInvited": "Total invités",
+      "totalConverted": "Convertis en payant",
+      "totalPending": "Conversions en attente",
+      "totalBonusSystems": "Total des systèmes bonus gagnés"
+    },
+    "howItWorks": {
+      "title": "Comment ça marche",
+      "step1Title": "Partagez votre lien",
+      "step1Description": "Envoyez votre lien de parrainage unique à d'autres fondateurs SaaS",
+      "step2Title": "Ils s'inscrivent",
+      "step2Description": "Les nouveaux utilisateurs obtiennent +1 système IA bonus sur le plan gratuit ou un essai Starter de 14 jours",
+      "step3Title": "Vous gagnez des récompenses",
+      "step3Description": "Lorsqu'ils passent à un plan payant, vous obtenez +2 systèmes IA supplémentaires de manière permanente"
+    },
+    "recent": {
+      "title": "Parrainages récents",
+      "empty": "Aucun parrainage pour le moment. Commencez à partager votre lien !",
+      "name": "Nom",
+      "email": "Email",
+      "plan": "Plan",
+      "status": "Statut",
+      "reward": "Récompense",
+      "date": "Date"
+    },
+    "status": {
+      "PENDING": "En attente",
+      "GRANTED": "Accordé",
+      "REVOKED": "Révoqué"
+    },
+    "reward": {
+      "systems": "{count} systèmes"
+    },
+    "benefits": {
+      "title": "Avantages du parrainage",
+      "forReferrer": "Pour vous (parrain)",
+      "forReferrerReward": "+2 systèmes IA supplémentaires lorsqu'ils passent à un plan payant",
+      "forReferred": "Pour votre ami (nouvel utilisateur)",
+      "forReferredReward": "+1 système IA bonus sur le plan gratuit OU essai Starter de 14 jours"
+    },
+    "terms": {
+      "title": "Conditions",
+      "item1": "Les récompenses sont accordées lorsque l'utilisateur parrainé commence un abonnement payant",
+      "item2": "Les systèmes bonus sont permanents et n'expirent pas",
+      "item3": "Impossible de se parrainer soi-même ou le même email deux fois",
+      "item4": "Les récompenses peuvent être révoquées si l'abonnement est annulé dans les 7 jours",
+      "item5": "Maximum 50 applications de parrainage par jour par code"
+    },
+    "cta": {
+      "startSharing": "Commencer à partager",
+      "inviteFriends": "Inviter des amis"
+    }
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found",
+    "unauthorized": "You must be logged in to access this page",
+    "forbidden": "You don't have permission to access this resource",
+    "validation": "Please check your input and try again"
   }
 }

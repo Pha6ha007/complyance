@@ -14,7 +14,8 @@
     "finish": "Finish",
     "close": "Close",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "download": "Download"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -391,6 +392,18 @@
     "upgradeLink": "View Plans",
     "noUpdates": "No Updates Available",
     "noUpdatesDescription": "Check back later for new regulatory updates"
+  },
+  "reports": {
+    "title": "Reports",
+    "subtitle": "View and download generated compliance documents",
+    "classificationReport": "Classification Report",
+    "complianceRoadmap": "Compliance Roadmap",
+    "annexIvDocumentation": "Annex IV Documentation",
+    "processing": "Processing...",
+    "failed": "Generation failed",
+    "noReports": "No Reports Yet",
+    "noReportsDescription": "Generate reports from your AI systems to see them here",
+    "goToSystems": "Go to AI Systems"
   },
   "marketing": {
     "tagline": "AI Compliance Management for SMBs",
@@ -816,141 +829,352 @@
   "legal": {
     "privacy": {
       "title": "Privacy Policy",
-      "introduction": "Complyance respects your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you use our AI compliance management platform.",
-      "dataCollection": {
-        "title": "Data We Collect",
-        "account": "Account information (name, email, organization)",
-        "usage": "Usage data (AI systems classified, documents generated)",
-        "technical": "Technical data (IP address, browser type, device information)",
-        "documents": "Documents you upload for AI analysis (encrypted at rest)"
+      "lastUpdated": "Last Updated",
+      "introduction": {
+        "title": "Introduction",
+        "p1": "Complyance.io ('we', 'us', 'our') is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use our AI compliance management platform.",
+        "p2": "By using Complyance, you agree to the collection and use of information in accordance with this policy. If you do not agree, please do not use our services."
+      },
+      "collection": {
+        "title": "What Data We Collect",
+        "account": {
+          "title": "Account Information",
+          "email": "Email address",
+          "name": "Name (optional)",
+          "company": "Company or organization name",
+          "markets": "Target markets for compliance tracking"
+        },
+        "system": {
+          "title": "AI System Data",
+          "descriptions": "AI system descriptions and technical details you provide",
+          "documents": "Documents you upload for classification assistance (PDFs, DOCX, etc.)",
+          "classifications": "Risk classification results and compliance gap analysis"
+        },
+        "technical": {
+          "title": "Technical Data",
+          "ip": "IP address and geolocation data",
+          "browser": "Browser type, version, and device information",
+          "usage": "Usage analytics (pages visited, features used, session duration)",
+          "errors": "Error logs and diagnostic data (via Sentry)"
+        }
       },
       "usage": {
         "title": "How We Use Your Data",
-        "service": "To provide and improve our compliance management services",
-        "ai": "To classify AI systems and generate compliance reports using Claude API",
-        "billing": "To process payments via Paddle (our Merchant of Record)",
-        "communication": "To send service updates, regulatory alerts, and compliance notifications"
+        "service": "Provide and maintain the Complyance platform",
+        "classification": "Perform AI risk classification and gap analysis using Claude API",
+        "documents": "Generate compliance reports and technical documentation",
+        "support": "Respond to support requests and customer inquiries",
+        "improvements": "Improve platform features and user experience via analytics",
+        "billing": "Process payments and manage subscriptions via Paddle",
+        "legal": "Comply with legal obligations and enforce our Terms of Service"
       },
       "thirdParties": {
-        "title": "Third-Party Services",
-        "anthropic": "Anthropic (Claude API) - AI classification and document analysis",
-        "paddle": "Paddle - Payment processing and subscription management",
-        "aws": "AWS S3 - Encrypted document storage (EU region)",
-        "resend": "Resend - Transactional email delivery",
-        "desc": "We never sell your data. Third parties process data only as necessary to provide services."
+        "title": "Third-Party Services We Use",
+        "intro": "We share your data with the following third-party service providers only as necessary to operate the platform:",
+        "anthropic": {
+          "purpose": "AI risk classification and document analysis",
+          "dataShared": "Data Shared",
+          "dataSharedDesc": "AI system descriptions and uploaded documents (NOT your account email or personal details)",
+          "training": "Training",
+          "trainingDesc": "Anthropic does NOT use your data for model training (per our Commercial Terms agreement)"
+        },
+        "aws": {
+          "purpose": "Encrypted file storage",
+          "dataShared": "Data Shared",
+          "dataSharedDesc": "Uploaded documents (PDFs, evidence files) encrypted with AES-256",
+          "security": "Security",
+          "securityDesc": "All data stored in EU region with server-side encryption and access controls"
+        },
+        "paddle": {
+          "purpose": "Payment processing (Merchant of Record)",
+          "dataShared": "Data Shared",
+          "dataSharedDesc": "Email, billing address, payment method (handled by Paddle, not stored by us)"
+        },
+        "resend": {
+          "purpose": "Transactional email delivery",
+          "dataShared": "Data Shared",
+          "dataSharedDesc": "Email address and message content (password resets, compliance alerts, notifications)"
+        },
+        "posthog": {
+          "purpose": "Product analytics and feature usage tracking",
+          "dataShared": "Data Shared",
+          "dataSharedDesc": "Anonymized usage events (features used, clicks, navigation patterns)"
+        },
+        "sentry": {
+          "purpose": "Error monitoring and debugging",
+          "dataShared": "Data Shared",
+          "dataSharedDesc": "Error logs, stack traces, request metadata (personal data is scrubbed)"
+        }
       },
       "cookies": {
-        "title": "Cookies",
-        "essential": "Essential cookies for authentication and session management",
-        "analytics": "Analytics cookies to improve platform performance (optional)",
-        "desc": "You can control cookie preferences in your browser settings."
+        "title": "Cookies & Tracking",
+        "intro": "We use cookies and similar technologies to maintain your session and improve the platform. Types of cookies used:",
+        "essential": {
+          "title": "Essential Cookies",
+          "desc": "Required for authentication, session management, and security (cannot be disabled)"
+        },
+        "analytics": {
+          "title": "Analytics Cookies",
+          "desc": "Optional cookies to track usage patterns and improve user experience (PostHog)"
+        }
       },
       "retention": {
         "title": "Data Retention",
-        "active": "Account data retained while subscription is active",
-        "grace": "30-day grace period after cancellation before deletion",
-        "legal": "Some data retained longer for legal compliance (e.g., billing records)"
+        "account": {
+          "title": "Account Data",
+          "desc": "Retained as long as your account is active"
+        },
+        "documents": {
+          "title": "Generated Documents & Evidence",
+          "desc": "Retained for 30 days after subscription cancellation, then permanently deleted"
+        },
+        "analytics": {
+          "title": "Analytics Data",
+          "desc": "Anonymized usage data retained for up to 12 months"
+        },
+        "backups": {
+          "title": "Backups",
+          "desc": "Backup data retained for 90 days for disaster recovery purposes"
+        }
       },
-      "gdprRights": {
-        "title": "Your GDPR Rights",
-        "access": "Right to access your personal data",
-        "rectification": "Right to correct inaccurate data",
-        "erasure": "Right to delete your data ('right to be forgotten')",
-        "portability": "Right to export your data in machine-readable format",
-        "objection": "Right to object to processing",
-        "desc": "To exercise these rights, contact privacy@complyance.io"
+      "gdpr": {
+        "title": "Your GDPR Rights (EU Users)",
+        "intro": "If you are located in the European Union, you have the following data protection rights under GDPR:",
+        "access": {
+          "title": "Right to Access",
+          "desc": "Request a copy of all personal data we hold about you"
+        },
+        "rectification": {
+          "title": "Right to Rectification",
+          "desc": "Request correction of inaccurate or incomplete data"
+        },
+        "erasure": {
+          "title": "Right to Erasure",
+          "desc": "Request deletion of your personal data ('right to be forgotten')"
+        },
+        "portability": {
+          "title": "Right to Data Portability",
+          "desc": "Request export of your data in machine-readable format (JSON)"
+        },
+        "objection": {
+          "title": "Right to Object",
+          "desc": "Object to processing of your personal data for specific purposes"
+        },
+        "exercise": "To exercise any of these rights, contact us at"
       },
       "security": {
-        "title": "Security",
+        "title": "Security Measures",
         "encryption": "All data encrypted at rest (AES-256) and in transit (TLS 1.3)",
-        "infrastructure": "EU-based infrastructure for GDPR compliance",
-        "access": "Role-based access controls and audit logs",
-        "desc": "We follow industry best practices to protect your data."
+        "storage": "EU-based infrastructure (Railway, AWS EU region) for GDPR compliance",
+        "access": "Role-based access controls and audit logging for all data access",
+        "monitoring": "24/7 security monitoring and automated threat detection"
+      },
+      "international": {
+        "title": "International Data Transfers",
+        "desc": "Your data is primarily stored in the EU (Railway, AWS EU region). However, some third-party services (Anthropic, Sentry) may process data in the US under Standard Contractual Clauses (SCCs) and GDPR-compliant safeguards."
+      },
+      "children": {
+        "title": "Children's Privacy",
+        "desc": "Complyance is not intended for individuals under 18 years of age. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us at privacy@complyance.io and we will delete it."
+      },
+      "changes": {
+        "title": "Changes to This Privacy Policy",
+        "desc": "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated 'Last Updated' date. If changes are material, we will notify you via email. Continued use of the platform after changes constitutes acceptance of the updated policy."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "email": "Email",
+        "website": "Website"
       }
     },
     "terms": {
       "title": "Terms of Service",
+      "lastUpdated": "Last Updated",
       "acceptance": {
         "title": "Acceptance of Terms",
-        "desc": "By accessing or using Complyance, you agree to be bound by these Terms of Service. If you do not agree, you may not use the platform."
+        "p1": "By accessing or using Complyance.io ('the Service', 'the Platform'), you agree to be bound by these Terms of Service ('Terms'). These Terms constitute a legally binding agreement between you ('User', 'you', 'your') and Complyance.io ('we', 'us', 'our').",
+        "p2": "If you do not agree to these Terms, you may not access or use the Platform. By creating an account or using any part of the Service, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy."
       },
-      "serviceDescription": {
-        "title": "Service Description",
-        "desc": "Complyance is a self-serve SaaS platform for AI compliance management. We provide risk classification, gap analysis, document generation, and regulatory intelligence tools to help organizations comply with AI regulations including the EU AI Act."
+      "service": {
+        "title": "Description of Service",
+        "p1": "Complyance is a self-serve SaaS platform that helps organizations manage AI compliance. Our platform provides the following features:",
+        "classification": "AI risk classification under EU AI Act, Colorado AI Act, and other regulations",
+        "gapAnalysis": "Compliance gap analysis and requirement tracking",
+        "documentGeneration": "Automated generation of compliance reports and technical documentation",
+        "vendorRisk": "AI vendor risk assessments and due diligence",
+        "evidence": "Evidence vault for storing compliance artifacts",
+        "regulatory": "Regulatory intelligence and updates on AI compliance developments"
       },
       "disclaimer": {
         "title": "Legal Disclaimer",
-        "notAdvice": "Complyance is a compliance management tool, not a law firm or legal advisor.",
-        "informational": "All classifications, reports, and recommendations are informational only and do not constitute legal advice.",
-        "professional": "For regulatory filings, certifications, or legal opinions, consult with qualified legal professionals.",
-        "liability": "We are not liable for compliance failures, regulatory fines, or legal consequences resulting from use of our platform."
+        "p1": "Complyance is a compliance management tool, not a law firm or legal advisor. We do not provide legal advice, legal opinions, or legal services.",
+        "p2": "All risk classifications, compliance reports, gap analyses, and recommendations provided by the Platform are informational only and do not constitute legal advice. Our AI-powered tools are designed to assist with compliance tracking, but they cannot replace professional legal counsel.",
+        "p3": "For regulatory filings, certifications, legal opinions, or final compliance verification, you must consult with qualified legal professionals. We are not liable for compliance failures, regulatory fines, enforcement actions, or any legal consequences resulting from your use of the Platform."
       },
       "accounts": {
         "title": "User Accounts",
-        "responsibility": "You are responsible for maintaining the confidentiality of your account credentials",
-        "accurate": "You must provide accurate and complete information",
-        "notify": "Notify us immediately of any unauthorized access",
-        "prohibited": "You may not share accounts or transfer access without permission"
+        "p1": "To use most features of Complyance, you must create an account. When creating and maintaining your account, you agree to:",
+        "accurate": "Provide accurate, current, and complete information during registration",
+        "confidential": "Maintain the confidentiality of your account credentials and password",
+        "notify": "Notify us immediately of any unauthorized access or security breach",
+        "responsible": "Accept responsibility for all activities that occur under your account"
       },
       "billing": {
-        "title": "Billing & Payments",
-        "paddle": "Payments processed by Paddle (Merchant of Record)",
-        "subscription": "Subscriptions renew automatically unless cancelled",
-        "prices": "Prices are in USD and subject to change with 30 days notice",
-        "taxes": "Paddle handles all tax calculations and compliance"
+        "title": "Subscriptions and Billing",
+        "plans": {
+          "title": "Subscription Plans",
+          "desc": "Complyance offers multiple subscription plans (Free, Starter, Professional, Scale). Plan features, limits, and pricing are described on our Pricing page. By subscribing to a paid plan, you agree to pay the applicable fees."
+        },
+        "payment": {
+          "title": "Payment Processing",
+          "desc": "All payments are processed by Paddle.com Market Limited ('Paddle'), our Merchant of Record. Paddle is responsible for billing, payment collection, tax calculations, and invoicing. By subscribing, you agree to Paddle's Terms of Use."
+        },
+        "renewal": {
+          "title": "Automatic Renewal",
+          "desc": "Paid subscriptions renew automatically at the end of each billing cycle (monthly or annually) unless cancelled before the renewal date. You will be charged the then-current subscription price. Paddle will send renewal reminders prior to charging your payment method."
+        },
+        "changes": {
+          "title": "Price Changes",
+          "desc": "We reserve the right to change subscription prices with at least 30 days' notice. Price changes will not affect your current billing cycle. If you do not agree to a price increase, you may cancel your subscription before the new price takes effect."
+        },
+        "cancellation": {
+          "title": "Cancellation and Refunds",
+          "desc": "You may cancel your subscription at any time through your account settings or the Paddle billing portal. Cancellations take effect at the end of the current billing period. See our Refund Policy for information about refunds within the first 14 days."
+        }
       },
-      "prohibitedUse": {
-        "title": "Prohibited Use",
-        "illegal": "Violate any applicable laws or regulations",
-        "misrepresent": "Misrepresent your AI systems or compliance status",
-        "reverse": "Reverse engineer, decompile, or modify the platform",
-        "abuse": "Abuse, harass, or harm other users or our systems",
-        "resell": "Resell or redistribute our services without authorization"
+      "use": {
+        "title": "Acceptable Use",
+        "intro": "You agree not to use the Platform for any unlawful purpose or in any way that violates these Terms. Prohibited activities include, but are not limited to:",
+        "violate": "Violating any applicable laws, regulations, or third-party rights",
+        "harmful": "Uploading malicious code, viruses, or harmful content",
+        "infringe": "Infringing on intellectual property rights of Complyance or third parties",
+        "interfere": "Interfering with or disrupting the Platform or servers",
+        "reverse": "Reverse engineering, decompiling, or attempting to extract source code",
+        "scrape": "Scraping, crawling, or using automated tools to extract data without permission",
+        "resell": "Reselling, sublicensing, or redistributing the Service without authorization"
       },
       "ip": {
         "title": "Intellectual Property",
-        "ownership": "Complyance owns all rights to the platform, software, and content",
-        "yourData": "You retain ownership of your data (AI systems, documents, evidence)",
-        "license": "We grant you a limited license to use the platform according to your plan",
-        "feedback": "Feedback you provide may be used to improve the platform"
+        "ownership": {
+          "title": "Our Ownership",
+          "desc": "Complyance.io and its licensors own all rights, title, and interest in the Platform, including all software, design, content, trademarks, and intellectual property. These Terms do not grant you any ownership rights."
+        },
+        "userContent": {
+          "title": "Your Content",
+          "desc": "You retain ownership of all data you submit to the Platform, including AI system descriptions, documents, evidence, and other content ('User Content'). You grant us a limited license to use, store, and process User Content solely to provide the Service."
+        },
+        "license": {
+          "title": "License to Use",
+          "desc": "Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Platform according to your subscription plan. This license terminates upon cancellation or termination of your account."
+        }
       },
       "liability": {
         "title": "Limitation of Liability",
-        "asIs": "Platform provided 'as is' without warranties",
-        "noLiability": "We are not liable for indirect, incidental, or consequential damages",
-        "cap": "Total liability capped at amount paid in last 12 months",
-        "force": "Not liable for events beyond our reasonable control"
+        "p1": "THE PLATFORM IS PROVIDED 'AS IS' AND 'AS AVAILABLE' WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE PLATFORM WILL BE UNINTERRUPTED, ERROR-FREE, OR COMPLETELY SECURE.",
+        "p2": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, COMPLYANCE.IO SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR BUSINESS OPPORTUNITIES, ARISING FROM YOUR USE OF THE PLATFORM. OUR TOTAL LIABILITY FOR ANY CLAIMS RELATED TO THE SERVICE SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM."
+      },
+      "indemnification": {
+        "title": "Indemnification",
+        "desc": "You agree to indemnify, defend, and hold harmless Complyance.io, its affiliates, officers, directors, employees, and agents from any claims, liabilities, damages, losses, or expenses (including legal fees) arising from your use of the Platform, violation of these Terms, or infringement of any third-party rights."
+      },
+      "termination": {
+        "title": "Termination",
+        "p1": "You may terminate your account at any time by cancelling your subscription through your account settings. Upon cancellation, your access to paid features will continue until the end of your billing period.",
+        "p2": "We reserve the right to suspend or terminate your account immediately, without prior notice, if you violate these Terms, engage in fraudulent activity, or use the Platform in a way that harms us or other users.",
+        "p3": "Upon termination, your right to use the Platform will cease immediately. We may retain certain data as required by law or for legitimate business purposes (e.g., backups, legal compliance). See our Privacy Policy for details on data retention."
+      },
+      "deletion": {
+        "title": "Data Deletion After Termination",
+        "p1": "If you cancel your subscription, your User Content (AI systems, documents, evidence) will be retained for 30 days to allow for reactivation. After 30 days, all User Content will be permanently deleted from our production systems.",
+        "p2": "Backup copies may persist for up to 90 days for disaster recovery purposes, after which they are also permanently deleted. If you require immediate data deletion, contact us at support@complyance.io to request expedited removal."
+      },
+      "law": {
+        "title": "Governing Law",
+        "desc": "These Terms shall be governed by and construed in accordance with the laws of Portugal, without regard to its conflict of law provisions. Any disputes arising from these Terms or your use of the Platform shall be subject to the exclusive jurisdiction of the courts of Portugal."
+      },
+      "changes": {
+        "title": "Changes to Terms",
+        "desc": "We may update these Terms from time to time to reflect changes in our practices, legal requirements, or service features. Material changes will be communicated via email or a notice on the Platform at least 30 days before taking effect. Your continued use of the Platform after changes take effect constitutes acceptance of the updated Terms."
+      },
+      "contact": {
+        "title": "Contact Information",
+        "email": "Email",
+        "website": "Website"
       }
     },
     "refund": {
       "title": "Refund Policy",
-      "policy": {
-        "title": "14-Day Money-Back Guarantee",
-        "desc": "We offer a 14-day money-back guarantee for all paid plans. If you're not satisfied with Complyance, request a full refund within 14 days of your first payment."
+      "lastUpdated": "Last Updated",
+      "introduction": {
+        "title": "Introduction",
+        "p1": "We offer a 14-day money-back guarantee for all paid plans. If you're not satisfied with Complyance, you can request a full refund within 14 days of your first payment. This policy is designed to give you confidence when trying our platform."
+      },
+      "period": {
+        "title": "14-Day Refund Window",
+        "p1": "You have 14 calendar days from your first payment to request a full refund. This applies to both monthly and annual subscriptions.",
+        "p2": "The 14-day refund period is calculated as follows:",
+        "monthly": "Monthly subscriptions: 14 days from the date of your first charge",
+        "annual": "Annual subscriptions: 14 days from the date of your first charge (full refund for the entire year)"
       },
       "eligibility": {
         "title": "Refund Eligibility",
-        "firstPayment": "Applies to your first payment only (not renewals)",
-        "within14": "Request must be made within 14 days of payment",
-        "notAbused": "Refund privilege not previously used on another account",
-        "goodFaith": "Account was used in good faith (no abuse or violations)"
+        "p1": "To be eligible for a refund, you must meet the following criteria:",
+        "within14": "Refund request is submitted within 14 calendar days of your first payment",
+        "firstTime": "This is your first subscription (refunds apply to first payment only, not renewals)",
+        "noViolation": "Account was used in good faith without violations of our Terms of Service",
+        "notEligible": {
+          "title": "Refunds are not available if:",
+          "after14": "More than 14 days have passed since your first payment",
+          "abuse": "You've previously requested a refund on another Complyance account",
+          "violation": "Your account was terminated due to Terms of Service violations or abuse"
+        }
       },
       "process": {
         "title": "How to Request a Refund",
-        "contact": "Email support@complyance.io with 'Refund Request' in subject line",
-        "include": "Include your account email and reason (optional but appreciated)",
-        "processing": "Refunds processed within 5-7 business days",
-        "method": "Refund issued to original payment method via Paddle"
+        "p1": "To request a refund, follow these steps:",
+        "step1": "Email support@complyance.io with the subject line 'Refund Request'",
+        "step2": "Include your account email address and the reason for your refund request (optional but appreciated for feedback)",
+        "step3": "Our team will review and process your refund within 5-7 business days",
+        "alternative": "Alternatively, you can request a refund directly through the Paddle billing portal"
       },
-      "proRata": {
-        "title": "Pro-Rata Refunds (Downgrades)",
-        "desc": "If you downgrade mid-cycle, unused time is not refunded but credited to your next billing period. For example, downgrading from Professional to Starter applies the difference to your next invoice."
+      "prorata": {
+        "title": "Pro-Rata Refunds for Downgrades",
+        "p1": "If you downgrade your plan mid-billing cycle (e.g., from Professional to Starter), you will not receive a cash refund for the unused portion. Instead, the difference will be credited to your next billing period.",
+        "example": "Example: If you downgrade from Professional ($249/month) to Starter ($99/month) on day 15 of your billing cycle, the $150 difference will be credited toward your next Starter invoice."
       },
-      "euRights": {
-        "title": "EU Consumer Rights",
-        "withdrawal": "EU consumers have a 14-day right of withdrawal under EU Directive 2011/83/EU",
-        "digital": "By starting your subscription, you acknowledge that digital services begin immediately and waive the right of withdrawal after service usage",
-        "unused": "If you cancel before using the service, you're entitled to a full refund"
+      "processing": {
+        "title": "Refund Processing Time",
+        "p1": "Once approved, refunds are processed as follows:",
+        "review": "Review: We aim to approve refund requests within 1-2 business days",
+        "approval": "Processing: Refunds are issued to your original payment method within 5-7 business days after approval",
+        "bank": "Bank processing: Depending on your bank or payment provider, it may take an additional 3-5 business days for the refund to appear in your account"
+      },
+      "free": {
+        "title": "Free Plan — No Payment Required",
+        "desc": "If you're unsure whether Complyance is right for you, start with our Free plan. You can classify 1 AI system, explore compliance gaps, and earn an 'AI Act Aware' badge without entering payment information. No refund needed — just cancel anytime."
+      },
+      "cancellation": {
+        "title": "Cancelling Your Subscription",
+        "p1": "If you cancel your subscription after the 14-day refund window, your access to paid features will continue until the end of your current billing period. No refund will be issued, but your subscription will not renew.",
+        "p2": "You can cancel at any time through your account settings or the Paddle billing portal. Cancellations take effect at the end of the current billing cycle."
+      },
+      "eu": {
+        "title": "EU Consumer Rights (Right of Withdrawal)",
+        "p1": "Under EU Directive 2011/83/EU, EU consumers have a 14-day right of withdrawal for online purchases of digital services. This aligns with our 14-day refund policy.",
+        "p2": "By starting your subscription and using Complyance services, you acknowledge that digital content delivery begins immediately and you waive your right of withdrawal after service usage. However, if you cancel before actively using the service, you're entitled to a full refund under EU consumer protection law."
+      },
+      "exceptions": {
+        "title": "Exceptions and Special Cases",
+        "p1": "The following are considered 'service usage' and may affect refund eligibility:",
+        "generated": "Generated compliance documents (Classification Reports, Roadmaps, Annex IV documentation)",
+        "consumed": "Consumed credits or AI-powered features (vendor assessments, risk classifications)",
+        "downloaded": "Downloaded evidence or exported data from the Evidence Vault",
+        "p2": "In cases of technical issues, service downtime, or billing errors, refunds may be granted at our discretion beyond the 14-day window. Contact support@complyance.io to discuss special circumstances."
+      },
+      "contact": {
+        "title": "Contact for Refund Requests",
+        "email": "Email",
+        "paddle": "Paddle Billing Portal"
       }
     }
   },
@@ -960,9 +1184,50 @@
     "upgrade": "Upgrade Plan",
     "cancel": "Cancel Subscription",
     "manageBilling": "Manage Billing",
-    "portalLink": "View invoices and update payment methods in the billing portal"
+    "portalLink": "View invoices and update payment methods in the billing portal",
+    "subscribe": "Subscribe"
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found",
+    "unauthorized": "You must be logged in to access this page",
+    "forbidden": "You don't have permission to access this resource",
+    "validation": "Please check your input and try again"
   },
   "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account and organization preferences",
+    "profile": "Profile",
+    "profileDescription": "Update your personal information",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "organization": "Organization",
+    "organizationDescription": "Manage your organization settings",
+    "organizationName": "Organization Name",
+    "organizationNamePlaceholder": "Enter organization name",
+    "language": "Language",
+    "languageDescription": "Change language from the top menu",
+    "subscription": "Subscription",
+    "subscriptionDescription": "Manage your billing and plan",
+    "currentPlan": "Current Plan",
+    "freePlanDescription": "1 AI system, basic features",
+    "upgradePlan": "Upgrade Plan",
+    "notifications": "Notifications",
+    "notificationsDescription": "Configure your notification preferences",
+    "emailNotifications": "Email Notifications",
+    "emailNotificationsDescription": "Receive updates about your compliance status",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "security": "Security",
+    "securityDescription": "Manage your account security",
+    "changePassword": "Change Password",
+    "dangerZone": "Danger Zone",
+    "dangerZoneDescription": "Irreversible actions",
+    "deleteAccount": "Delete Account",
+    "deleteAccountDescription": "Permanently delete your account and all data",
+    "deleteAccountButton": "Delete Account",
     "billing": {
       "title": "Billing & Subscription",
       "description": "Manage your subscription and billing information",
@@ -1411,6 +1676,71 @@
         "validation": "Please check your input and try again.",
         "server": "Server error. Please try again later."
       }
+    }
+  },
+  "referrals": {
+    "title": "Referral Program",
+    "subtitle": "Invite your network and earn extra AI systems",
+    "yourLink": "Your Referral Link",
+    "yourCode": "Your Referral Code",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "copyLink": "Copy Link",
+    "copyCode": "Copy Code",
+    "shareTitle": "Share your referral link",
+    "shareDescription": "Invite other SaaS founders to Complyance",
+    "stats": {
+      "title": "Your Referral Stats",
+      "totalInvited": "Total Invited",
+      "totalConverted": "Converted to Paid",
+      "totalPending": "Pending Conversions",
+      "totalBonusSystems": "Total Bonus Systems Earned"
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "step1Title": "Share your link",
+      "step1Description": "Send your unique referral link to other SaaS founders",
+      "step2Title": "They sign up",
+      "step2Description": "New users get +1 bonus AI system on Free plan or 14-day Starter trial",
+      "step3Title": "You earn rewards",
+      "step3Description": "When they upgrade to any paid plan, you get +2 extra AI systems permanently"
+    },
+    "recent": {
+      "title": "Recent Referrals",
+      "empty": "No referrals yet. Start sharing your link!",
+      "name": "Name",
+      "email": "Email",
+      "plan": "Plan",
+      "status": "Status",
+      "reward": "Reward",
+      "date": "Date"
+    },
+    "status": {
+      "PENDING": "Pending",
+      "GRANTED": "Granted",
+      "REVOKED": "Revoked"
+    },
+    "reward": {
+      "systems": "{count} systems"
+    },
+    "benefits": {
+      "title": "Referral Benefits",
+      "forReferrer": "For You (Referrer)",
+      "forReferrerReward": "+2 extra AI systems when they upgrade to any paid plan",
+      "forReferred": "For Your Friend (New User)",
+      "forReferredReward": "+1 bonus AI system on Free plan OR 14-day Starter trial"
+    },
+    "terms": {
+      "title": "Terms",
+      "item1": "Rewards are granted when referred user starts a paid subscription",
+      "item2": "Bonus systems are permanent and don't expire",
+      "item3": "Cannot refer yourself or same email twice",
+      "item4": "Rewards may be revoked if subscription is canceled within 7 days",
+      "item5": "Maximum 50 referral applications per day per code"
+    },
+    "cta": {
+      "startSharing": "Start Sharing",
+      "inviteFriends": "Invite Friends"
     }
   }
 }

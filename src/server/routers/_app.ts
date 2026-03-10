@@ -6,6 +6,7 @@ import { vendorRouter } from './vendor';
 import { badgeRouter } from './badge';
 import { evidenceRouter } from './evidence';
 import { intelligenceRouter } from './intelligence';
+import { referralRouter } from './referral';
 
 /**
  * This is the primary router for your server.
@@ -20,11 +21,11 @@ export const appRouter = router({
   badge: badgeRouter,
   evidence: evidenceRouter,
   intelligence: intelligenceRouter,
+  referral: referralRouter,
   // TODO: Add other routers as they are created:
   // incident: incidentRouter,
   // team: teamRouter,
   // billing: billingRouter,
-  // referral: referralRouter,
 });
 
 // Export type definition of API

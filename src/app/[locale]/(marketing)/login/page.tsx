@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LoginForm } from './login-form';
+import { LocaleSwitcher } from '@/components/shared/locale-switcher';
 
 interface LoginPageProps {
   params: Promise<{ locale: string }>;
@@ -26,7 +27,12 @@ export default async function LoginPage({ params }: LoginPageProps) {
   setRequestLocale(locale);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
+    <div className="relative flex min-h-screen items-center justify-center bg-slate-50 px-4">
+      {/* Language switcher in top right corner */}
+      <div className="absolute top-4 end-4">
+        <LocaleSwitcher />
+      </div>
+
       <LoginForm locale={locale} />
     </div>
   );

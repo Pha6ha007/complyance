@@ -387,6 +387,20 @@ export const documentRouter = router({
     }),
 
   /**
+   * List all generated PDF documents for the organization
+   */
+  listAll: protectedProcedure.query(async ({ ctx }) => {
+    const documents = await ctx.prisma.document.findMany({
+      where: {
+        organizationId: ctx.organization.id,
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    return documents;
+  }),
+
+  /**
    * Get download URL for generated PDF
    */
   getGeneratedDownloadUrl: protectedProcedure

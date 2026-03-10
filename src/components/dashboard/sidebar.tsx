@@ -12,7 +12,6 @@ import {
   FileText,
   Bell,
   Settings,
-  Users,
   Gift,
   X,
 } from 'lucide-react';
@@ -63,11 +62,6 @@ const navigationItems = [
     dividerBefore: true,
   },
   {
-    name: 'team',
-    href: '/team',
-    icon: Users,
-  },
-  {
     name: 'referrals',
     href: '/referrals',
     icon: Gift,
@@ -84,6 +78,13 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
     { refetchInterval: 60000 } // Refetch every minute
   );
   const unreadCount = unreadData?.unread ?? 0;
+
+  // Fetch pending referrals count for badge
+  const { data: pendingData } = trpc.referral.getPendingCount.useQuery(
+    undefined,
+    { refetchInterval: 60000 } // Refetch every minute
+  );
+  const pendingCount = pendingData?.count ?? 0;
 
   // Remove locale prefix from pathname for comparison
   const currentPath = pathname.replace(`/${locale}`, '');
@@ -134,7 +135,8 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
           {navigationItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentPath === item.href || currentPath.startsWith(`${item.href}/`);
-            const showBadge = item.name === 'intelligence' && unreadCount > 0;
+            const showIntelligenceBadge = item.name === 'intelligence' && unreadCount > 0;
+            const showReferralsBadge = item.name === 'referrals' && pendingCount > 0;
 
             return (
               <div key={item.name}>
@@ -152,9 +154,14 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
                 >
                   <Icon className="h-5 w-5 shrink-0" />
                   <span className="flex-1">{t(item.name)}</span>
-                  {showBadge && (
+                  {showIntelligenceBadge && (
                     <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-primary px-1.5 text-xs font-medium text-primary-foreground">
                       {unreadCount > 99 ? '99+' : unreadCount}
+                    </span>
+                  )}
+                  {showReferralsBadge && (
+                    <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-amber-500 px-1.5 text-xs font-medium text-white">
+                      {pendingCount > 99 ? '99+' : pendingCount}
                     </span>
                   )}
                 </Link>
