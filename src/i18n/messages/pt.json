@@ -2556,6 +2556,14 @@
       "title": "Internal Server Error",
       "description": "Something went wrong. Please try again later.",
       "retry": "Try Again"
+    },
+    "global": {
+      "title": "Something went wrong",
+      "description": "An unexpected error occurred. Please try again.",
+      "tryAgain": "Try Again",
+      "goToDashboard": "Go to Dashboard",
+      "helpText": "If the problem persists, please contact support.",
+      "contactSupport": "Contact Support"
     }
   }
 }
