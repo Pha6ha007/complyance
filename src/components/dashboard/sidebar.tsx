@@ -13,6 +13,7 @@ import {
   Bell,
   Settings,
   Gift,
+  BookOpen,
   X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -54,6 +55,12 @@ const navigationItems = [
     name: 'intelligence',
     href: '/intelligence',
     icon: Bell,
+  },
+  {
+    name: 'blog',
+    href: '/blog',
+    icon: BookOpen,
+    external: true,
   },
   {
     name: 'settings',
@@ -150,6 +157,8 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
                       ? 'bg-accent text-accent-foreground'
                       : 'text-muted-foreground'
                   )}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
                   onClick={onClose}
                 >
                   <Icon className="h-5 w-5 shrink-0" />
