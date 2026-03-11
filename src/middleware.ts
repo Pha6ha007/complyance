@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from '@/i18n/config';
+import { routing } from '@/i18n/routing';
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '../auth';
 
@@ -24,12 +24,7 @@ function rateLimit(ip: string): boolean {
   return true;
 }
 
-const intlMiddleware = createMiddleware({
-  locales,
-  defaultLocale,
-  localeDetection: false,
-  localePrefix: 'always',
-});
+const intlMiddleware = createMiddleware(routing);
 
 const protectedSegments = [
   '/dashboard',
@@ -46,14 +41,15 @@ const protectedSegments = [
 ];
 
 function extractLocale(pathname: string): string {
-  const match = pathname.match(/^\/(en|fr|de|pt|ar|pl|it)(\/|$)/);
-  return match ? match[1] : defaultLocale;
+  const localePattern = routing.locales.join('|');
+  const match = pathname.match(new RegExp(`^\\/(${localePattern})(\\/|$)`));
+  return match ? match[1] : routing.defaultLocale;
 }
 
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Rate limiting for public API (before the matcher excludes /api/*)
+  // Rate limiting for public API
   if (pathname.startsWith('/api/public/')) {
     const ip = request.headers.get('x-forwarded-for') || 'unknown';
     if (!rateLimit(ip)) {
@@ -67,7 +63,7 @@ export default async function middleware(request: NextRequest) {
   const isProtectedRoute = protectedSegments.some((seg) => pathname.includes(seg));
 
   if (isProtectedRoute) {
-    // Run NextAuth ONLY for protected routes — avoids refreshing JWT cookie on every public page
+    // Run NextAuth ONLY for protected routes
     const session = await auth();
 
     if (!session) {
@@ -76,15 +72,18 @@ export default async function middleware(request: NextRequest) {
       loginUrl.searchParams.set('callbackUrl', pathname);
       return NextResponse.redirect(loginUrl);
     }
-
-    // Protected route is authed — skip intlMiddleware (locale already in URL)
-    const response = NextResponse.next();
-    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
-    return response;
   }
 
-  // Public routes: only next-intl handles locale redirect, no NextAuth overhead
-  return intlMiddleware(request);
+  // Run intlMiddleware for ALL routes (public AND protected)
+  // This ensures next-intl properly resolves locale via headers/cookies
+  const response = intlMiddleware(request);
+
+  // Add noindex for protected routes
+  if (isProtectedRoute) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+
+  return response;
 }
 
 export const config = {
