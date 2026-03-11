@@ -47,3 +47,5 @@ next-env.d.ts
 # Sentry
 .sentryclirc
 sentry.properties
+playwright-report/
+test-results/
