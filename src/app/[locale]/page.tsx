@@ -28,9 +28,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* HERO SECTION */}
       <section className="relative bg-[#0F172A] text-white py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A]" />
+        {/* Floating orbs */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-glow-pulse" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-teal-500/8 rounded-full blur-3xl animate-glow-pulse animation-delay-700" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-glow-pulse animation-delay-400" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2 mb-8 animate-fade-in">
-            <Clock className="h-4 w-4 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-2 mb-8 animate-fade-in shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+            <Clock className="h-4 w-4 text-emerald-400 animate-float" />
             <span className="text-sm text-emerald-300">{daysLeft} {t('hero.deadlineBadge')}</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up">
@@ -40,10 +44,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
-            <Link href={`/${locale}/register`} className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
-              {t('hero.ctaPrimary')} <ArrowRight className="h-5 w-5" />
+            <Link href={`/${locale}/register`} className="relative inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl text-lg font-semibold btn-primary-glow overflow-hidden group">
+              <span className="relative z-10 flex items-center gap-2">{t('hero.ctaPrimary')} <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" /></span>
+              <span className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100" />
             </Link>
-            <Link href={`/${locale}/pricing`} className="inline-flex items-center justify-center gap-2 border border-white/20 hover:bg-white/10 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+            <Link href={`/${locale}/pricing`} className="glass-btn inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-xl text-lg font-semibold">
               {t('hero.ctaSecondary')}
             </Link>
           </div>
@@ -51,12 +56,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* TRUST BAR */}
-      <section className="py-12 bg-gray-50 border-b">
+      <section className="py-10 bg-gray-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm text-gray-500 mb-6">{t('trust.label')}</p>
-          <div className="flex justify-center items-center gap-8 flex-wrap">
-            {[1,2,3,4,5].map(i => (
-              <div key={i} className="h-8 w-24 bg-gray-200 rounded animate-pulse" />
+          <div className="flex justify-center items-center gap-4 flex-wrap">
+            {[
+              { label: 'EU AI Act', sub: 'Annex III Ready' },
+              { label: 'ISO 42001', sub: 'AI Management' },
+              { label: 'GDPR', sub: 'Compliant' },
+              { label: 'SOC 2', sub: 'Aligned' },
+              { label: 'NIST AI RMF', sub: 'Framework' },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-gray-200 shadow-sm">
+                <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span className="text-sm font-semibold text-gray-800">{item.label}</span>
+                <span className="text-xs text-gray-400">{item.sub}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -71,11 +86,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { value: t('problem.stat1Value'), label: t('problem.stat1Label'), sub: t('problem.stat1Sub'), icon: AlertTriangle, color: 'text-red-500 bg-red-50' },
-              { value: t('problem.stat2Value'), label: t('problem.stat2Label'), sub: t('problem.stat2Sub'), icon: Users, color: 'text-amber-500 bg-amber-50' },
-              { value: t('problem.stat3Value'), label: t('problem.stat3Label'), sub: t('problem.stat3Sub'), icon: Clock, color: 'text-blue-500 bg-blue-50' },
+              { value: t('problem.stat1Value'), label: t('problem.stat1Label'), sub: t('problem.stat1Sub'), icon: AlertTriangle, color: 'text-red-500 bg-red-50', glow: 'hover:shadow-red-100', delay: '' },
+              { value: t('problem.stat2Value'), label: t('problem.stat2Label'), sub: t('problem.stat2Sub'), icon: Users, color: 'text-amber-500 bg-amber-50', glow: 'hover:shadow-amber-100', delay: 'animation-delay-200' },
+              { value: t('problem.stat3Value'), label: t('problem.stat3Label'), sub: t('problem.stat3Sub'), icon: Clock, color: 'text-blue-500 bg-blue-50', glow: 'hover:shadow-blue-100', delay: 'animation-delay-400' },
             ].map((stat, i) => (
-              <div key={i} className="text-center p-8 rounded-2xl bg-white border shadow-sm hover:shadow-lg transition-shadow">
+              <div key={i} className={`text-center p-8 rounded-2xl bg-white border shadow-sm card-lift hover:shadow-xl ${stat.glow} animate-fade-in-up ${stat.delay}`}>
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${stat.color} mb-4`}>
                   <stat.icon className="h-6 w-6" />
                 </div>
@@ -96,13 +111,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t('howItWorks.subtitle')}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connector line */}
+            <div className="hidden md:block absolute top-8 left-1/3 right-1/3 h-px bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-300 opacity-40" />
             {[
-              { num: '1', title: t('howItWorks.step1Title'), desc: t('howItWorks.step1Desc'), icon: Shield },
-              { num: '2', title: t('howItWorks.step2Title'), desc: t('howItWorks.step2Desc'), icon: BarChart3 },
-              { num: '3', title: t('howItWorks.step3Title'), desc: t('howItWorks.step3Desc'), icon: FileCheck },
+              { num: '1', title: t('howItWorks.step1Title'), desc: t('howItWorks.step1Desc'), icon: Shield, delay: '' },
+              { num: '2', title: t('howItWorks.step2Title'), desc: t('howItWorks.step2Desc'), icon: BarChart3, delay: 'animation-delay-300' },
+              { num: '3', title: t('howItWorks.step3Title'), desc: t('howItWorks.step3Desc'), icon: FileCheck, delay: 'animation-delay-600' },
             ].map((step, i) => (
-              <div key={i} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500 text-white text-2xl font-bold mb-6">{step.num}</div>
+              <div key={i} className={`text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm card-lift hover:shadow-xl hover:border-emerald-200 animate-fade-in-up ${step.delay}`}>
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white text-2xl font-bold mb-6 shadow-[0_4px_20px_rgba(16,185,129,0.35)]">{step.num}</div>
                 <step.icon className="h-8 w-8 text-emerald-500 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
                 <p className="text-gray-600">{step.desc}</p>
@@ -119,21 +136,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{t('features.title')}</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t('features.subtitle')}</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: Shield, title: t('features.f1Title'), desc: t('features.f1Desc') },
-              { icon: BarChart3, title: t('features.f2Title'), desc: t('features.f2Desc') },
-              { icon: FileCheck, title: t('features.f3Title'), desc: t('features.f3Desc') },
-              { icon: Users, title: t('features.f4Title'), desc: t('features.f4Desc') },
-              { icon: Bell, title: t('features.f5Title'), desc: t('features.f5Desc') },
-              { icon: Award, title: t('features.f6Title'), desc: t('features.f6Desc') },
+              { icon: Shield, title: t('features.f1Title'), desc: t('features.f1Desc'), delay: '' },
+              { icon: BarChart3, title: t('features.f2Title'), desc: t('features.f2Desc'), delay: 'animation-delay-100' },
+              { icon: FileCheck, title: t('features.f3Title'), desc: t('features.f3Desc'), delay: 'animation-delay-200' },
+              { icon: Users, title: t('features.f4Title'), desc: t('features.f4Desc'), delay: 'animation-delay-300' },
+              { icon: Bell, title: t('features.f5Title'), desc: t('features.f5Desc'), delay: 'animation-delay-400' },
+              { icon: Award, title: t('features.f6Title'), desc: t('features.f6Desc'), delay: 'animation-delay-500' },
             ].map((feat, i) => (
-              <div key={i} className="p-6 rounded-2xl bg-white border hover:border-emerald-300 hover:shadow-lg transition-all group">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 text-emerald-500 mb-4 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                  <feat.icon className="h-6 w-6" />
+              <div key={i} className={`relative p-6 rounded-2xl bg-white border border-gray-100 card-lift hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-50 group animate-fade-in-up ${feat.delay} overflow-hidden`}>
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/50 group-hover:to-transparent transition-all duration-300 rounded-2xl pointer-events-none" />
+                <div className="relative">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 text-emerald-500 mb-4 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 group-hover:shadow-[0_4px_16px_rgba(16,185,129,0.3)]">
+                    <feat.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{feat.title}</h3>
+                  <p className="text-gray-600 text-sm">{feat.desc}</p>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{feat.title}</h3>
-                <p className="text-gray-600 text-sm">{feat.desc}</p>
               </div>
             ))}
           </div>
@@ -149,12 +170,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { level: t('badge.level1'), desc: t('badge.level1Desc'), color: 'border-gray-300 bg-gray-50' },
-              { level: t('badge.level2'), desc: t('badge.level2Desc'), color: 'border-emerald-300 bg-emerald-50' },
-              { level: t('badge.level3'), desc: t('badge.level3Desc'), color: 'border-emerald-500 bg-emerald-100' },
+              { level: t('badge.level1'), desc: t('badge.level1Desc'), color: 'border-gray-300 bg-gray-50', iconColor: 'text-gray-400', delay: '' },
+              { level: t('badge.level2'), desc: t('badge.level2Desc'), color: 'border-emerald-300 bg-emerald-50', iconColor: 'text-emerald-400', delay: 'animation-delay-200' },
+              { level: t('badge.level3'), desc: t('badge.level3Desc'), color: 'border-emerald-500 bg-emerald-100', iconColor: 'text-emerald-600', delay: 'animation-delay-400' },
             ].map((b, i) => (
-              <div key={i} className={`text-center p-8 rounded-2xl border-2 ${b.color}`}>
-                <CheckCircle className="h-12 w-12 text-emerald-500 mx-auto mb-4" />
+              <div key={i} className={`text-center p-8 rounded-2xl border-2 ${b.color} card-lift hover:shadow-xl animate-fade-in-up ${b.delay}`}>
+                <CheckCircle className={`h-12 w-12 ${b.iconColor} mx-auto mb-4`} />
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{b.level}</h3>
                 <p className="text-gray-600 text-sm">{b.desc}</p>
               </div>
@@ -242,13 +263,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-20 lg:py-28 bg-gradient-to-r from-emerald-600 to-teal-500 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">{t('finalCta.title')}</h2>
-          <p className="text-lg text-emerald-100 mb-8">{t('finalCta.subtitle')}</p>
-          <Link href={`/${locale}/register`} className="inline-flex items-center gap-2 bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-bold transition-colors">
-            {t('finalCta.button')} <ArrowRight className="h-5 w-5" />
-          </Link>
+      <section className="relative py-20 lg:py-28 bg-[#0F172A] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/30 via-[#0F172A] to-teal-900/20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 rounded-full blur-3xl animate-glow-pulse" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 animate-fade-in-up">{t('finalCta.title')}</h2>
+          <p className="text-lg text-gray-300 mb-8 animate-fade-in-up animation-delay-200">{t('finalCta.subtitle')}</p>
+          <div className="animate-fade-in-up animation-delay-400">
+            <Link href={`/${locale}/register`} className="relative inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-10 py-4 rounded-xl text-lg font-bold btn-primary-glow overflow-hidden group">
+              <span className="relative z-10 flex items-center gap-2">{t('finalCta.button')} <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" /></span>
+              <span className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100" />
+            </Link>
+          </div>
         </div>
       </section>
 
