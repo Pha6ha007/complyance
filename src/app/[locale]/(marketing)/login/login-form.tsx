@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { trpc } from '@/lib/trpc/client';
 import Link from 'next/link';
 
 interface LoginFormProps {
@@ -29,8 +28,6 @@ export function LoginForm({ locale }: LoginFormProps) {
     name: '',
     referralCode: '',
   });
-
-  const applyReferralMutation = trpc.referral.applyCode.useMutation();
 
   // Check for referral code in URL parameters
   useEffect(() => {
@@ -82,9 +79,10 @@ export function LoginForm({ locale }: LoginFormProps) {
           // Apply referral code if provided
           if (formData.referralCode) {
             try {
-              await applyReferralMutation.mutateAsync({
-                code: formData.referralCode,
-                userId,
+              await fetch('/api/referral/apply', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code: formData.referralCode, userId }),
               });
             } catch (error) {
               // Don't block registration if referral code is invalid
