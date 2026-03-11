@@ -57,11 +57,11 @@ export default function ReportsPage() {
 
   const getDocumentStatusColor = (status: string) => {
     switch (status) {
-      case 'COMPLETED':
+      case 'FINAL':
         return 'bg-green-100 text-green-800';
-      case 'PROCESSING':
+      case 'DRAFT':
         return 'bg-yellow-100 text-yellow-800';
-      case 'FAILED':
+      case 'ARCHIVED':
         return 'bg-red-100 text-red-800';
       default:
         return 'bg-gray-100 text-gray-800';
@@ -131,12 +131,12 @@ export default function ReportsPage() {
                       </a>
                     </Button>
                   )}
-                  {doc.status === 'PROCESSING' && (
+                  {doc.status === 'DRAFT' && (
                     <div className="text-sm text-muted-foreground animate-pulse">
                       {t('processing')}
                     </div>
                   )}
-                  {doc.status === 'FAILED' && (
+                  {doc.status === 'ARCHIVED' && (
                     <div className="flex items-center gap-1 text-sm text-red-600">
                       <AlertCircle className="h-4 w-4" />
                       {t('failed')}
