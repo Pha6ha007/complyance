@@ -414,12 +414,14 @@
       "subtitle": "Classify your AI systems, identify compliance gaps, and generate documentation — all before the EU AI Act deadline.",
       "ctaPrimary": "Start Free",
       "ctaSecondary": "View Pricing",
-      "dashboardLabel": "Live compliance dashboard"
+      "dashboardLabel": "Live compliance dashboard",
+      "socialProof": "{count}+ SaaS founders already compliant"
     },
     "trust": {
       "label": "Trusted by SaaS companies across EU, US, and UAE"
     },
     "problem": {
+      "label": "The Stakes",
       "title": "The EU AI Act Deadline is Coming",
       "subtitle": "Non-compliance isn't just a legal risk — it's an existential one.",
       "stat1Value": "€35M",
@@ -433,6 +435,7 @@
       "stat3Sub": "per AI system without automation"
     },
     "howItWorks": {
+      "label": "The Process",
       "title": "Get Compliant in 3 Steps",
       "subtitle": "From classification to audit-ready documentation in minutes, not months.",
       "step1Number": "01",
@@ -446,6 +449,7 @@
       "step3Desc": "Generate audit-ready compliance reports and technical documentation in 7 languages with one click."
     },
     "features": {
+      "label": "Platform",
       "title": "Everything You Need for AI Compliance",
       "subtitle": "One platform. End-to-end compliance coverage.",
       "f1Title": "Risk Classification",
@@ -462,6 +466,8 @@
       "f6Desc": "Real-time alerts on regulatory changes across EU, US, and UAE markets."
     },
     "badge": {
+      "label": "Trust Signal",
+      "note": "Every badge is dynamically verified — updates automatically when compliance status changes",
       "title": "Show Your Customers You're Compliant",
       "subtitle": "Every badge links to a verified public compliance page your customers and auditors can check.",
       "level1": "AI Act Aware",
@@ -470,9 +476,19 @@
       "level1Desc": "Classification complete",
       "level2Desc": "Gaps identified & addressed",
       "level3Desc": "Full documentation verified",
+      "level1Check1": "Risk classification",
+      "level1Check2": "Basic gap analysis",
+      "level2Check1": "Full gap analysis",
+      "level2Check2": "Document generator",
+      "level2Check3": "2 vendor assessments",
+      "level3Check1": "All obligations covered",
+      "level3Check2": "Evidence vault",
+      "level3Check3": "Real-time alerts",
+      "level3Check4": "Verification page",
       "cta": "Get Your Compliance Badge"
     },
     "pricing": {
+      "label": "Pricing",
       "title": "Simple, Transparent Pricing",
       "subtitle": "Start free. Scale as you grow. No hidden fees.",
       "popular": "Most Popular",
@@ -483,6 +499,7 @@
       "starterPriceMonthly": "$99",
       "proPriceMonthly": "$249",
       "perMonth": "/month",
+      "perForever": "forever",
       "freeDesc": "Explore the platform risk-free",
       "starterDesc": "For growing SaaS teams",
       "proDesc": "Full compliance coverage",
@@ -504,6 +521,7 @@
       "viewAll": "View All Plans"
     },
     "testimonials": {
+      "label": "Social Proof",
       "title": "What Founders Say",
       "subtitle": "Join hundreds of companies getting compliant before the deadline.",
       "t1Quote": "Complyance saved us weeks of manual compliance work. The risk classification is spot-on and the gap analysis gave us a clear roadmap.",
@@ -519,7 +537,9 @@
     "finalCta": {
       "title": "Start Your Compliance Journey Today",
       "subtitle": "Classify your first AI system for free. No credit card required.",
-      "button": "Get Started Free"
+      "button": "Get Started Free",
+      "secondary": "View Pricing",
+      "trust": "No credit card required · Setup in 5 minutes · Cancel anytime"
     }
   },
   "documents": {

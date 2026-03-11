@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, DM_Sans, DM_Mono } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { isRtlLocale } from '@/i18n/config';
@@ -10,6 +10,13 @@ import { TRPCProvider } from '@/lib/trpc/provider';
 import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans', display: 'swap' });
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-dm-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Complyance | AI Compliance Management Platform',
@@ -30,7 +37,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir}>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${dmSans.variable} ${dmMono.variable}`}>
         <TRPCProvider>
           <PaddleProvider>
             <PHProvider>

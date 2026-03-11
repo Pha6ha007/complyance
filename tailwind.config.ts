@@ -6,6 +6,10 @@ const config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'dm-sans': ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
+        'dm-mono': ['var(--font-dm-mono)', 'ui-monospace', 'monospace'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
