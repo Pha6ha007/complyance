@@ -123,7 +123,7 @@ export default function ReportsPage() {
 
                 {/* Actions */}
                 <div className="flex items-center gap-2">
-                  {doc.status === 'COMPLETED' && doc.fileUrl && (
+                  {doc.status === 'FINAL' && doc.fileUrl && (
                     <Button variant="outline" size="sm" asChild>
                       <a href={doc.fileUrl} download target="_blank" rel="noopener noreferrer">
                         <Download className="me-2 h-4 w-4" />
