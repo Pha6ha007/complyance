@@ -111,7 +111,7 @@ export default function ReportsPage() {
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
-                        {new Date(doc.createdAt).toLocaleDateString(locale, {
+                        {new Date(doc.generatedAt).toLocaleDateString(locale, {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric',
