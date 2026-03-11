@@ -194,7 +194,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="p-8 rounded-2xl bg-white border">
               <h3 className="text-xl font-bold mb-2">{t('pricing.free')}</h3>
-              <div className="text-3xl font-bold mb-1">{t('pricing.freePrice')}</div>
+              <div className="text-3xl font-bold mb-1">{t('pricing.freePriceMonthly')}</div>
               <p className="text-gray-500 text-sm mb-6">{t('pricing.freeDesc')}</p>
               <ul className="space-y-2 mb-8 text-sm text-gray-600">
                 <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.freeFeature1')}</li>
@@ -202,6 +202,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.freeFeature3')}</li>
               </ul>
               <Link href={`/${locale}/register`} className="block text-center py-3 rounded-lg border border-gray-300 hover:bg-gray-50 font-semibold transition-colors">{t('pricing.ctaFree')}</Link>
+            </div>
+            <div className="p-8 rounded-2xl bg-white border">
+              <h3 className="text-xl font-bold mb-2">{t('pricing.starter')}</h3>
+              <div className="text-3xl font-bold mb-1">{t('pricing.starterPriceMonthly')}<span className="text-base font-normal text-gray-500">/{t('pricing.perMonth')}</span></div>
+              <p className="text-gray-500 text-sm mb-6">{t('pricing.starterDesc')}</p>
+              <ul className="space-y-2 mb-8 text-sm text-gray-600">
+                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.starterFeature1')}</li>
+                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.starterFeature2')}</li>
+                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.starterFeature3')}</li>
+                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.starterFeature4')}</li>
+              </ul>
+              <Link href={`/${locale}/register`} className="block text-center py-3 rounded-lg border border-gray-300 hover:bg-gray-50 font-semibold transition-colors">{t('pricing.ctaStarter')}</Link>
             </div>
             <div className="p-8 rounded-2xl bg-white border-2 border-emerald-500 relative shadow-lg">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t('pricing.popular')}</div>
@@ -216,18 +228,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.proFeature5')}</li>
               </ul>
               <Link href={`/${locale}/register`} className="block text-center py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold transition-colors">{t('pricing.ctaPro')}</Link>
-            </div>
-            <div className="p-8 rounded-2xl bg-white border">
-              <h3 className="text-xl font-bold mb-2">{t('pricing.starter')}</h3>
-              <div className="text-3xl font-bold mb-1">{t('pricing.starterPriceMonthly')}<span className="text-base font-normal text-gray-500">/{t('pricing.perMonth')}</span></div>
-              <p className="text-gray-500 text-sm mb-6">{t('pricing.starterDesc')}</p>
-              <ul className="space-y-2 mb-8 text-sm text-gray-600">
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.starterFeature1')}</li>
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.starterFeature2')}</li>
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.starterFeature3')}</li>
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" />{t('pricing.starterFeature4')}</li>
-              </ul>
-              <Link href={`/${locale}/register`} className="block text-center py-3 rounded-lg border border-gray-300 hover:bg-gray-50 font-semibold transition-colors">{t('pricing.ctaStarter')}</Link>
             </div>
           </div>
           <div className="text-center mt-8">
