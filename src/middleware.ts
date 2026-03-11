@@ -28,21 +28,12 @@ function rateLimit(ip: string): boolean {
   return true;
 }
 
-// Clean up old entries periodically
-setInterval(() => {
-  const now = Date.now();
-  for (const [ip, record] of rateLimitMap.entries()) {
-    if (now > record.resetTime) {
-      rateLimitMap.delete(ip);
-    }
-  }
-}, RATE_LIMIT_WINDOW);
 
 const intlMiddleware = createMiddleware({
   locales,
   defaultLocale,
-  localeDetection: true,
-  localePrefix: 'as-needed',
+  localeDetection: false,
+  localePrefix: 'always',
 });
 
 export default auth(async function middleware(request: NextRequest) {
@@ -114,5 +105,5 @@ export default auth(async function middleware(request: NextRequest) {
 });
 
 export const config = {
-  matcher: ['/((?!_next|_vercel|.*\\..*).*)'],
+  matcher: ['/((?!api|_next|.*\\..*|monitoring).*)'],
 };
