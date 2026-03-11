@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Shield, BarChart3, FileCheck, Users, Bell, Award } from 'lucide-react';
+import { Shield, BarChart3, FileCheck, Users, Bell, Award, AlertTriangle, Clock, ScanSearch } from 'lucide-react';
 import Link from 'next/link';
 import { ScrollReveal } from '@/components/marketing/scroll-reveal';
 import { AnimatedGrid } from '@/components/marketing/animated-grid';
@@ -202,19 +202,28 @@ function DashboardMockup({ days }: { days: number }) {
 /* ─── TRUST BAR ────────────────────────────────────────── */
 
 function TrustBar() {
+  const companies = [
+    'Acme Corp', 'TechFlow', 'DataSync', 'CloudBase', 'NeuralStack', 'DevPilot',
+  ];
+
   return (
-    <div className="bg-white border-b border-gray-100 py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-10">
-        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap flex-shrink-0">
-          Trusted by teams at
-        </span>
-        <div className="flex items-center gap-8 overflow-hidden">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-6 w-20 bg-gray-200 rounded opacity-40 flex-shrink-0" />
+    <section className="py-12 border-y border-slate-200 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="text-center text-sm text-slate-400 uppercase tracking-widest mb-8 font-medium">
+          Trusted by SaaS teams preparing for EU AI Act compliance
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+          {companies.map((company) => (
+            <span
+              key={company}
+              className="text-slate-300 font-semibold text-lg tracking-tight select-none"
+            >
+              {company}
+            </span>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -222,9 +231,9 @@ function TrustBar() {
 
 function ProblemSection({ t }: { t: any }) {
   const stats = [
-    { value: t('problem.stat1Value'), name: t('problem.stat1Label'), sub: t('problem.stat1Sub'), emoji: '\u26A0\uFE0F', accent: 'before:bg-red-500' },
-    { value: t('problem.stat2Value'), name: t('problem.stat2Label'), sub: t('problem.stat2Sub'), emoji: '\uD83D\uDC65', accent: 'before:bg-amber-500' },
-    { value: t('problem.stat3Value'), name: t('problem.stat3Label'), sub: t('problem.stat3Sub'), emoji: '\uD83D\uDD50', accent: 'before:bg-blue-500' },
+    { value: t('problem.stat1Value'), name: t('problem.stat1Label'), sub: t('problem.stat1Sub'), icon: <AlertTriangle className="w-7 h-7 text-red-500" />, iconBg: 'bg-red-500/10', accent: 'before:bg-red-500' },
+    { value: t('problem.stat2Value'), name: t('problem.stat2Label'), sub: t('problem.stat2Sub'), icon: <Users className="w-7 h-7 text-amber-500" />, iconBg: 'bg-amber-500/10', accent: 'before:bg-amber-500' },
+    { value: t('problem.stat3Value'), name: t('problem.stat3Label'), sub: t('problem.stat3Sub'), icon: <Clock className="w-7 h-7 text-blue-500" />, iconBg: 'bg-blue-500/10', accent: 'before:bg-blue-500' },
   ];
   return (
     <section className="py-24 bg-gray-50">
@@ -240,7 +249,9 @@ function ProblemSection({ t }: { t: any }) {
               key={s.value}
               className={`relative bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300 overflow-hidden before:absolute before:top-0 before:start-0 before:end-0 before:h-1 ${s.accent}`}
             >
-              <div className="text-4xl mb-5">{s.emoji}</div>
+              <div className={`w-14 h-14 rounded-2xl ${s.iconBg} flex items-center justify-center mb-6`}>
+                {s.icon}
+              </div>
               <p className="text-5xl font-black text-gray-900 tracking-tight mb-2">{s.value}</p>
               <p className="font-bold text-gray-800 mb-1">{s.name}</p>
               <p className="text-sm text-gray-400">{s.sub}</p>
@@ -256,9 +267,9 @@ function ProblemSection({ t }: { t: any }) {
 
 function HowItWorksSection({ t }: { t: any }) {
   const steps = [
-    { num: '1', icon: <Shield className="w-6 h-6 text-emerald-600" />, title: t('howItWorks.step1Title'), desc: t('howItWorks.step1Desc') },
-    { num: '2', icon: <BarChart3 className="w-6 h-6 text-emerald-600" />, title: t('howItWorks.step2Title'), desc: t('howItWorks.step2Desc') },
-    { num: '3', icon: <FileCheck className="w-6 h-6 text-emerald-600" />, title: t('howItWorks.step3Title'), desc: t('howItWorks.step3Desc') },
+    { num: '1', icon: <ScanSearch className="w-8 h-8 text-emerald-400" />, title: t('howItWorks.step1Title'), desc: t('howItWorks.step1Desc') },
+    { num: '2', icon: <BarChart3 className="w-8 h-8 text-emerald-400" />, title: t('howItWorks.step2Title'), desc: t('howItWorks.step2Desc') },
+    { num: '3', icon: <FileCheck className="w-8 h-8 text-emerald-400" />, title: t('howItWorks.step3Title'), desc: t('howItWorks.step3Desc') },
   ];
   return (
     <section className="py-24 bg-white">
@@ -276,7 +287,7 @@ function HowItWorksSection({ t }: { t: any }) {
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 text-white text-2xl font-black flex items-center justify-center mb-6 shadow-[0_8px_24px_rgba(16,185,129,0.3)] ring-8 ring-emerald-500/[0.08] relative z-10">
                 {step.num}
               </div>
-              <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-2xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center mx-auto mt-4 mb-4">
                 {step.icon}
               </div>
               <h3 className="text-xl font-extrabold text-gray-900 mb-3">{step.title}</h3>
