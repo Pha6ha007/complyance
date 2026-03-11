@@ -415,7 +415,7 @@
       "ctaPrimary": "Start Free",
       "ctaSecondary": "View Pricing",
       "dashboardLabel": "Live compliance dashboard",
-      "socialProof": "{count}+ SaaS founders already compliant"
+      "socialProof": "SaaS founders already compliant"
     },
     "trust": {
       "label": "Trusted by SaaS companies across EU, US, and UAE"
