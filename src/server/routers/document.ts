@@ -394,7 +394,7 @@ export const documentRouter = router({
       where: {
         organizationId: ctx.organization.id,
       },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { generatedAt: 'desc' },
     });
 
     return documents;
