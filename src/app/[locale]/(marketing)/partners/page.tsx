@@ -13,8 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CheckCircle2, Loader2, HandshakeIcon, TrendingUp, Users, Award } from 'lucide-react';
+import { CheckCircle2, Loader2, Sparkles } from 'lucide-react';
 
 export default function PartnersPage() {
   const t = useTranslations('partners');
@@ -39,221 +38,154 @@ export default function PartnersPage() {
     try {
       const response = await fetch('/api/partners', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
       const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send application');
-      }
-
+      if (!response.ok) throw new Error(data.error || 'Failed to send application');
       setSuccess(true);
-      setFormData({
-        companyName: '',
-        website: '',
-        contactName: '',
-        email: '',
-        type: 'law_firm',
-        message: '',
-      });
-    } catch (err: any) {
-      setError(err.message);
+      setFormData({ companyName: '', website: '', contactName: '', email: '', type: 'law_firm', message: '' });
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero */}
-      <div className="border-b bg-gradient-to-b from-background to-muted/20">
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
-            {t('title')}
+    <div className="min-h-screen bg-[#0F172A]">
+
+      {/* ── Hero ── */}
+      <div className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(16,185,129,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.5) 1px, transparent 1px)`,
+            backgroundSize: '64px 64px',
+          }}
+        />
+        <div className="absolute top-0 start-1/4 w-[600px] h-[600px] bg-emerald-500/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 end-0 w-[400px] h-[400px] bg-teal-500/6 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_700px_350px_at_50%_58%,rgba(16,185,129,0.13),transparent)] pointer-events-none" />
+
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:px-8">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400 font-mono">
+            <Sparkles className="h-4 w-4" />
+            Partner Program
+          </div>
+          <h1 className="text-5xl font-extrabold tracking-tight leading-[1.05] sm:text-6xl lg:text-7xl">
+            <span className="text-white">Partner with </span>
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+              Complyance
+            </span>
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-6 mx-auto max-w-2xl text-lg text-white/60">
             {t('subtitle')}
           </p>
         </div>
       </div>
 
-      {/* Benefits */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          {t('benefits.title')}
-        </h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div className="text-center">
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
-              <TrendingUp className="h-6 w-6 text-primary" />
+      {/* ── Benefits ── */}
+      <section className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <span className="text-xs font-semibold uppercase tracking-widest text-emerald-400 font-mono">Why partner</span>
+          <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">{t('benefits.title')}</h2>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            { emoji: '📈', gradient: 'from-emerald-500/20 to-teal-500/10', border: 'border-emerald-500/20', title: t('benefits.revenue.title'), desc: t('benefits.revenue.desc') },
+            { emoji: '🏷️', gradient: 'from-blue-500/20 to-indigo-500/10',   border: 'border-blue-500/20',   title: t('benefits.whiteLabel.title'), desc: t('benefits.whiteLabel.desc') },
+            { emoji: '🤝', gradient: 'from-violet-500/20 to-purple-500/10', border: 'border-violet-500/20', title: t('benefits.support.title'), desc: t('benefits.support.desc') },
+            { emoji: '🎓', gradient: 'from-amber-500/20 to-orange-500/10',  border: 'border-amber-500/20',  title: t('benefits.training.title'), desc: t('benefits.training.desc') },
+          ].map(({ emoji, gradient, border, title, desc }) => (
+            <div key={title} className={`rounded-2xl border ${border} bg-gradient-to-br ${gradient} p-6 flex flex-col gap-4`}>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl bg-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)]">
+                {emoji}
+              </div>
+              <h3 className="font-bold text-white">{title}</h3>
+              <p className="text-sm text-white/55 leading-relaxed">{desc}</p>
             </div>
-            <h3 className="text-lg font-semibold mb-2">{t('benefits.revenue.title')}</h3>
-            <p className="text-sm text-muted-foreground">
-              {t('benefits.revenue.desc')}
-            </p>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Ideal Partners ── */}
+      <section className="border-t border-white/[0.06]">
+        <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-xs font-semibold uppercase tracking-widest text-emerald-400 font-mono">Who we work with</span>
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">{t('ideal.title')}</h2>
           </div>
 
-          <div className="text-center">
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
-              <Award className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="text-lg font-semibold mb-2">{t('benefits.whiteLabel.title')}</h3>
-            <p className="text-sm text-muted-foreground">
-              {t('benefits.whiteLabel.desc')}
-            </p>
-          </div>
-
-          <div className="text-center">
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
-              <Users className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="text-lg font-semibold mb-2">{t('benefits.support.title')}</h3>
-            <p className="text-sm text-muted-foreground">
-              {t('benefits.support.desc')}
-            </p>
-          </div>
-
-          <div className="text-center">
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
-              <HandshakeIcon className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="text-lg font-semibold mb-2">{t('benefits.training.title')}</h3>
-            <p className="text-sm text-muted-foreground">
-              {t('benefits.training.desc')}
-            </p>
+          <div className="grid gap-5 md:grid-cols-3">
+            {[
+              { emoji: '⚖️', title: t('ideal.lawFirms.title'), desc: t('ideal.lawFirms.desc') },
+              { emoji: '🏢', title: t('ideal.consultancies.title'), desc: t('ideal.consultancies.desc') },
+              { emoji: '🔍', title: t('ideal.auditors.title'), desc: t('ideal.auditors.desc') },
+            ].map(({ emoji, title, desc }) => (
+              <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-7 hover:bg-white/[0.06] hover:border-white/20 transition-colors">
+                <div className="text-3xl mb-4">{emoji}</div>
+                <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{desc}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Ideal Partners */}
-      <div className="border-t bg-muted/30">
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            {t('ideal.title')}
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
-            <div className="rounded-lg border bg-card p-6">
-              <h3 className="text-xl font-semibold mb-3">{t('ideal.lawFirms.title')}</h3>
-              <p className="text-sm text-muted-foreground">
-                {t('ideal.lawFirms.desc')}
-              </p>
-            </div>
-
-            <div className="rounded-lg border bg-card p-6">
-              <h3 className="text-xl font-semibold mb-3">{t('ideal.consultancies.title')}</h3>
-              <p className="text-sm text-muted-foreground">
-                {t('ideal.consultancies.desc')}
-              </p>
-            </div>
-
-            <div className="rounded-lg border bg-card p-6">
-              <h3 className="text-xl font-semibold mb-3">{t('ideal.auditors.title')}</h3>
-              <p className="text-sm text-muted-foreground">
-                {t('ideal.auditors.desc')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Application Form */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">{t('form.title')}</h2>
-            <p className="text-muted-foreground">{t('form.subtitle')}</p>
+      {/* ── Application Form ── */}
+      <section className="border-t border-white/[0.06]">
+        <div className="mx-auto max-w-2xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="text-xs font-semibold uppercase tracking-widest text-emerald-400 font-mono">Apply now</span>
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">{t('form.title')}</h2>
+            <p className="mt-3 text-white/50">{t('form.subtitle')}</p>
           </div>
 
-          <div className="rounded-lg border bg-card p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
             {success && (
-              <Alert className="mb-6 border-green-200 bg-green-50 dark:bg-green-950/20">
-                <CheckCircle2 className="h-4 w-4 text-green-600" />
-                <AlertDescription className="text-green-800 dark:text-green-200">
-                  {t('form.success')}
-                </AlertDescription>
-              </Alert>
+              <div className="mb-6 flex items-start gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3">
+                <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
+                <p className="text-sm text-emerald-300">{t('form.success')}</p>
+              </div>
             )}
 
             {error && (
-              <Alert variant="destructive" className="mb-6">
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
+              <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3">
+                <p className="text-sm text-red-300">{error}</p>
+              </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="companyName">{t('form.companyName')}</Label>
-                <Input
-                  id="companyName"
-                  type="text"
-                  required
-                  value={formData.companyName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, companyName: e.target.value })
-                  }
-                  className="mt-1"
-                />
-              </div>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {[
+                { id: 'companyName', label: t('form.companyName'), type: 'text', value: formData.companyName, onChange: (v: string) => setFormData({ ...formData, companyName: v }) },
+                { id: 'website',     label: t('form.website'),     type: 'url',  value: formData.website,     onChange: (v: string) => setFormData({ ...formData, website: v }),     placeholder: 'https://' },
+                { id: 'contactName', label: t('form.contactName'), type: 'text', value: formData.contactName, onChange: (v: string) => setFormData({ ...formData, contactName: v }) },
+                { id: 'email',       label: t('form.email'),       type: 'email', value: formData.email,      onChange: (v: string) => setFormData({ ...formData, email: v }) },
+              ].map(({ id, label, type, value, onChange, placeholder }) => (
+                <div key={id}>
+                  <Label htmlFor={id} className="text-white/70 text-sm font-medium">{label}</Label>
+                  <Input
+                    id={id}
+                    type={type}
+                    required
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={(e) => onChange(e.target.value)}
+                    className="mt-1.5 bg-white/5 border-white/15 text-white placeholder:text-white/25 focus:border-emerald-500/50 focus:ring-emerald-500/20"
+                    style={{ colorScheme: 'dark' }}
+                  />
+                </div>
+              ))}
 
               <div>
-                <Label htmlFor="website">{t('form.website')}</Label>
-                <Input
-                  id="website"
-                  type="url"
-                  required
-                  placeholder="https://"
-                  value={formData.website}
-                  onChange={(e) =>
-                    setFormData({ ...formData, website: e.target.value })
-                  }
-                  className="mt-1"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="contactName">{t('form.contactName')}</Label>
-                <Input
-                  id="contactName"
-                  type="text"
-                  required
-                  value={formData.contactName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, contactName: e.target.value })
-                  }
-                  className="mt-1"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="email">{t('form.email')}</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="mt-1"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="type">{t('form.type')}</Label>
-                <Select
-                  value={formData.type}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, type: value })
-                  }
-                >
-                  <SelectTrigger id="type" className="mt-1">
+                <Label htmlFor="type" className="text-white/70 text-sm font-medium">{t('form.type')}</Label>
+                <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
+                  <SelectTrigger id="type" className="mt-1.5 bg-white/5 border-white/15 text-white">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-slate-900 border-white/15 text-white">
                     <SelectItem value="law_firm">{t('form.types.lawFirm')}</SelectItem>
                     <SelectItem value="consultancy">{t('form.types.consultancy')}</SelectItem>
                     <SelectItem value="auditor">{t('form.types.auditor')}</SelectItem>
@@ -263,21 +195,24 @@ export default function PartnersPage() {
               </div>
 
               <div>
-                <Label htmlFor="message">{t('form.message')}</Label>
+                <Label htmlFor="message" className="text-white/70 text-sm font-medium">{t('form.message')}</Label>
                 <Textarea
                   id="message"
                   required
-                  rows={6}
+                  rows={5}
                   placeholder={t('form.messagePlaceholder')}
                   value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="mt-1"
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="mt-1.5 bg-white/5 border-white/15 text-white placeholder:text-white/25 focus:border-emerald-500/50 resize-none"
                 />
               </div>
 
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button
+                type="submit"
+                className="w-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-[0_4px_24px_rgba(16,185,129,0.35)] hover:shadow-[0_4px_32px_rgba(16,185,129,0.5)] transition-all"
+                size="lg"
+                disabled={loading}
+              >
                 {loading ? (
                   <>
                     <Loader2 className="me-2 h-4 w-4 animate-spin" />
@@ -290,7 +225,8 @@ export default function PartnersPage() {
             </form>
           </div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }

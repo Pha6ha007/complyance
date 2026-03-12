@@ -23,7 +23,6 @@ import {
 } from '@/components/ui/select';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import {
   ArrowLeft,
@@ -254,7 +253,7 @@ export function FreeClassifierClient() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a3a5c]">
+    <div className="min-h-screen bg-[#0F172A]">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         {/* Grid */}
@@ -266,13 +265,17 @@ export function FreeClassifierClient() {
           }}
         />
         <div className="absolute top-0 start-1/4 w-[500px] h-[500px] bg-emerald-500/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_700px_350px_at_50%_55%,rgba(16,185,129,0.13),transparent)] pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400 font-mono">
             <Sparkles className="h-4 w-4" />
             {t('badge')}
           </div>
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            {t('title')}
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+            Free AI Act<br />
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+              Risk Classifier
+            </span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-white/70">
             {t('subtitle')}
@@ -291,11 +294,16 @@ export function FreeClassifierClient() {
               </span>
               <span>{Math.round((currentStep / 4) * 100)}%</span>
             </div>
-            <Progress value={(currentStep / 4) * 100} />
+            <div className="h-2 w-full overflow-hidden rounded-full bg-white/15">
+              <div
+                className="h-full rounded-full bg-emerald-500 transition-all duration-300"
+                style={{ width: `${(currentStep / 4) * 100}%` }}
+              />
+            </div>
           </div>
         )}
 
-        <Card className="shadow-[0_30px_80px_-10px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.12)] bg-white">
+        <Card className="shadow-[0_30px_80px_-10px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.12)]" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>
           <CardHeader>
             <CardTitle>
               {currentStep === 1 && t('steps.step1.title')}
@@ -650,11 +658,11 @@ export function FreeClassifierClient() {
                 )}
 
                 {/* CTA Section */}
-                <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-6">
-                  <h3 className="mb-2 text-xl font-bold text-gray-900">
+                <div className="rounded-xl bg-[#0F172A] p-8">
+                  <h3 className="mb-2 text-2xl font-extrabold text-white">
                     {t('cta.title')}
                   </h3>
-                  <p className="mb-4 text-sm text-muted-foreground">
+                  <p className="mb-5 text-sm text-white/60">
                     {t('cta.description')}
                   </p>
 
@@ -667,9 +675,9 @@ export function FreeClassifierClient() {
                     ].map(({ icon: Icon, text }, index) => (
                       <li
                         key={index}
-                        className="flex items-center gap-2 text-sm"
+                        className="flex items-center gap-2 text-sm text-white/80"
                       >
-                        <Icon className="h-4 w-4 text-emerald-600" />
+                        <Icon className="h-4 w-4 text-emerald-400" />
                         <span>{text}</span>
                       </li>
                     ))}
@@ -678,7 +686,7 @@ export function FreeClassifierClient() {
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <Link href="/auth/register" className="flex-1">
                       <Button
-                        className="w-full"
+                        className="w-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-[0_4px_16px_rgba(16,185,129,0.4)]"
                         size="lg"
                         data-ph-capture="free-classifier-signup-cta"
                       >
@@ -689,13 +697,13 @@ export function FreeClassifierClient() {
                       variant="outline"
                       size="lg"
                       onClick={startOver}
-                      className="flex-1"
+                      className="flex-1 border-white/20 text-white hover:bg-white/10 hover:text-white"
                     >
                       {t('cta.startOver')}
                     </Button>
                   </div>
 
-                  <p className="mt-4 text-center text-xs text-muted-foreground">
+                  <p className="mt-4 text-center text-xs text-white/40">
                     {t('cta.noCard')}
                   </p>
                 </div>
@@ -756,7 +764,7 @@ export function FreeClassifierClient() {
             <h2 className="mb-4 text-2xl font-bold text-white">
               {t('seo.whatIsTitle')}
             </h2>
-            <p className="mx-auto max-w-2xl text-white/70">
+            <p className="mx-auto max-w-2xl text-white/60">
               {t('seo.whatIsContent')}
             </p>
           </div>
@@ -776,9 +784,9 @@ export function FreeClassifierClient() {
                 description: t('seo.benefits.accurate.description'),
               },
             ].map((benefit, index) => (
-              <div key={index} className="rounded-xl border border-white/25 bg-white/12 p-6 shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)] backdrop-blur-sm">
+              <div key={index} className="rounded-xl border border-white/10 bg-white/5 p-6">
                 <h3 className="mb-2 font-semibold text-white">{benefit.title}</h3>
-                <p className="text-sm text-white/65">
+                <p className="text-sm text-white/55">
                   {benefit.description}
                 </p>
               </div>

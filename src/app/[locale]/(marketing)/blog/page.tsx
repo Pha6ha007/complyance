@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { getAllPosts, getAllTags } from '@/lib/blog';
-import { Calendar, Clock, Tag, ArrowRight, Sparkles } from 'lucide-react';
+import { getAllPosts } from '@/lib/blog';
+import { TagCloud } from './tag-cloud';
+import { Calendar, Clock, ArrowRight, Sparkles } from 'lucide-react';
 
 const CATEGORY_STYLES: Record<string, { gradient: string; icon: string }> = {
   'EU AI Act':              { gradient: 'from-emerald-900 via-emerald-800 to-teal-700',    icon: '⚖️' },
@@ -71,12 +72,22 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
   const t = await getTranslations('blog');
 
   // Fall back to English posts if no posts exist for the current locale
-  let posts = getAllPosts(locale);
-  if (posts.length === 0) posts = getAllPosts('en');
+  const allPosts = getAllPosts(locale).length > 0 ? getAllPosts(locale) : getAllPosts('en');
+  let posts = allPosts;
   if (selectedTag) {
     posts = posts.filter((post) => post.frontmatter.tags.includes(selectedTag));
   }
-  const allTags = getAllTags(locale).length > 0 ? getAllTags(locale) : getAllTags('en');
+
+  // Build tag counts from all posts
+  const tagCountMap: Record<string, number> = {};
+  allPosts.forEach((post) => {
+    post.frontmatter.tags.forEach((tag) => {
+      tagCountMap[tag] = (tagCountMap[tag] ?? 0) + 1;
+    });
+  });
+  const tagItems = Object.entries(tagCountMap)
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => a.tag.localeCompare(b.tag));
 
   return (
     <div className="relative min-h-screen bg-[#0F172A] overflow-hidden">
@@ -92,6 +103,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
       {/* Orbs */}
       <div className="absolute top-0 start-1/4 w-[600px] h-[600px] bg-emerald-500/8 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 end-0 w-[400px] h-[400px] bg-teal-500/6 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_700px_350px_at_50%_60%,rgba(16,185,129,0.13),transparent)] pointer-events-none" />
 
       {/* Hero */}
       <div className="relative z-10 pt-20 pb-16 text-center px-4">
@@ -99,7 +111,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
           {t('subtitle')}
         </div>
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl font-dm-sans">
+        <h1 className="text-5xl font-extrabold tracking-tight leading-[1.05] sm:text-6xl font-dm-sans bg-gradient-to-r from-white via-white to-emerald-400 bg-clip-text text-transparent">
           {t('title')}
         </h1>
       </div>
@@ -111,35 +123,12 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
           {/* Main */}
           <div className="lg:col-span-3">
             {/* Tag filter */}
-            {allTags.length > 0 && (
-              <div className="mb-8">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Tag className="h-4 w-4 text-white/30 flex-shrink-0" />
-                  <Link
-                    href="/blog"
-                    className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-150 ${
-                      !selectedTag
-                        ? 'bg-emerald-500 text-white shadow-[0_0_12px_rgba(16,185,129,0.4)]'
-                        : 'border border-white/10 bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
-                    }`}
-                  >
-                    {t('allPosts')}
-                  </Link>
-                  {allTags.slice(0, 8).map((tag) => (
-                    <Link
-                      key={tag}
-                      href={`/blog?tag=${tag}`}
-                      className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-150 ${
-                        selectedTag === tag
-                          ? 'bg-emerald-500 text-white shadow-[0_0_12px_rgba(16,185,129,0.4)]'
-                          : 'border border-white/10 bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
-                      }`}
-                    >
-                      {tag}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+            {tagItems.length > 0 && (
+              <TagCloud
+                tags={tagItems}
+                selectedTag={selectedTag}
+                allPostsLabel={t('allPosts')}
+              />
             )}
 
             {/* Posts grid */}
