@@ -1955,7 +1955,7 @@
     "cancel": "Cancella abbonamento",
     "manageBilling": "Gestisci fatturazione",
     "portalLink": "Visualizza fatture e aggiorna metodi di pagamento nel portale di fatturazione",
-    "subscribe": "Subscribe"
+    "subscribe": "Abbonati"
   },
   "footer": {
     "product": {
@@ -2696,30 +2696,30 @@
     }
   },
   "errors": {
-    "generic": "An error occurred. Please try again.",
+    "generic": "Si è verificato un errore. Riprova.",
     "notFound": {
-      "title": "Page Not Found",
-      "description": "The page you are looking for does not exist.",
-      "helpText": "If you believe this is an error, please contact support.",
-      "contactSupport": "Contact Support",
-      "goToDashboard": "Go to Dashboard",
-      "goToHome": "Go to Home"
+      "title": "Pagina non trovata",
+      "description": "La pagina che stai cercando non esiste.",
+      "helpText": "Se ritieni che si tratti di un errore, contatta l'assistenza.",
+      "contactSupport": "Contatta l'assistenza",
+      "goToDashboard": "Vai alla Dashboard",
+      "goToHome": "Vai alla Home"
     },
-    "unauthorized": "You must be logged in to access this page",
-    "forbidden": "You don't have permission to access this resource",
-    "validation": "Please check your input and try again",
+    "unauthorized": "Devi essere connesso per accedere a questa pagina",
+    "forbidden": "Non hai i permessi per accedere a questa risorsa",
+    "validation": "Controlla i tuoi dati e riprova",
     "internalError": {
-      "title": "Internal Server Error",
-      "description": "Something went wrong. Please try again later.",
-      "retry": "Try Again"
+      "title": "Errore interno del server",
+      "description": "Qualcosa è andato storto. Riprova più tardi.",
+      "retry": "Riprova"
     },
     "global": {
-      "title": "Something went wrong",
-      "description": "An unexpected error occurred. Please try again.",
-      "tryAgain": "Try Again",
-      "goToDashboard": "Go to Dashboard",
-      "helpText": "If the problem persists, please contact support.",
-      "contactSupport": "Contact Support"
+      "title": "Qualcosa è andato storto",
+      "description": "Si è verificato un errore imprevisto. Riprova.",
+      "tryAgain": "Riprova",
+      "goToDashboard": "Vai alla Dashboard",
+      "helpText": "Se il problema persiste, contatta l'assistenza.",
+      "contactSupport": "Contatta l'assistenza"
     }
   }
 }
