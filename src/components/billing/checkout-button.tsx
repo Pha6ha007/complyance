@@ -8,6 +8,7 @@ import { Loader2 } from 'lucide-react';
 interface CheckoutButtonProps {
   priceId: string;
   planName: string;
+  label?: string;
   customerId?: string;
   email?: string;
   variant?: 'default' | 'outline' | 'ghost';
@@ -17,6 +18,7 @@ interface CheckoutButtonProps {
 export function CheckoutButton({
   priceId,
   planName,
+  label,
   customerId,
   email,
   variant = 'default',
@@ -80,7 +82,7 @@ export function CheckoutButton({
           {t('processing')}
         </>
       ) : (
-        t('subscribe')
+        label ?? t('subscribe')
       )}
     </Button>
   );

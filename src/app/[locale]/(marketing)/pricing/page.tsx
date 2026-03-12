@@ -290,6 +290,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
                       <CheckoutButton
                         priceId={plan.priceId}
                         planName={plan.name}
+                        label={plan.cta}
                         className={`w-full rounded-xl font-bold py-3 transition-all duration-200 ${
                           plan.popular
                             ? 'bg-emerald-500 hover:bg-emerald-400 text-white shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40'
