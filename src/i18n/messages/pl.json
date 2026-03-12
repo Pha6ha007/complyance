@@ -1915,7 +1915,7 @@
     "cancel": "Anuluj subskrypcję",
     "manageBilling": "Zarządzaj rozliczeniami",
     "portalLink": "Przeglądaj faktury i aktualizuj metody płatności w portalu rozliczeniowym",
-    "subscribe": "Subscribe"
+    "subscribe": "Subskrybuj"
   },
   "footer": {
     "product": {
@@ -2656,30 +2656,30 @@
     }
   },
   "errors": {
-    "generic": "An error occurred. Please try again.",
+    "generic": "Wystąpił błąd. Spróbuj ponownie.",
     "notFound": {
-      "title": "Page Not Found",
-      "description": "The page you are looking for does not exist.",
-      "helpText": "If you believe this is an error, please contact support.",
-      "contactSupport": "Contact Support",
-      "goToDashboard": "Go to Dashboard",
-      "goToHome": "Go to Home"
+      "title": "Strona nie znaleziona",
+      "description": "Strona, której szukasz, nie istnieje.",
+      "helpText": "Jeśli uważasz, że to błąd, skontaktuj się z pomocą techniczną.",
+      "contactSupport": "Skontaktuj się z pomocą",
+      "goToDashboard": "Przejdź do panelu",
+      "goToHome": "Przejdź do strony głównej"
     },
-    "unauthorized": "You must be logged in to access this page",
-    "forbidden": "You don't have permission to access this resource",
-    "validation": "Please check your input and try again",
+    "unauthorized": "Musisz być zalogowany, aby uzyskać dostęp do tej strony",
+    "forbidden": "Nie masz uprawnień do dostępu do tego zasobu",
+    "validation": "Sprawdź wprowadzone dane i spróbuj ponownie",
     "internalError": {
-      "title": "Internal Server Error",
-      "description": "Something went wrong. Please try again later.",
-      "retry": "Try Again"
+      "title": "Wewnętrzny błąd serwera",
+      "description": "Coś poszło nie tak. Spróbuj ponownie później.",
+      "retry": "Spróbuj ponownie"
     },
     "global": {
-      "title": "Something went wrong",
-      "description": "An unexpected error occurred. Please try again.",
-      "tryAgain": "Try Again",
-      "goToDashboard": "Go to Dashboard",
-      "helpText": "If the problem persists, please contact support.",
-      "contactSupport": "Contact Support"
+      "title": "Coś poszło nie tak",
+      "description": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.",
+      "tryAgain": "Spróbuj ponownie",
+      "goToDashboard": "Przejdź do panelu",
+      "helpText": "Jeśli problem będzie się powtarzał, skontaktuj się z pomocą techniczną.",
+      "contactSupport": "Skontaktuj się z pomocą"
     }
   }
 }
