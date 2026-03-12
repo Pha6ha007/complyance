@@ -565,7 +565,7 @@
     },
     "features": {
       "systems": "{count, plural, =1 {نظام ذكاء اصطناعي واحد} other {{count} أنظمة ذكاء اصطناعي}}",
-      "regulations": "{count, plural, =1 {لائحة واحدة (الاتحاد الأوروبي فقط)} other {{count} لوائح}}",
+      "regulations": "{count, plural, =0 {اللوائح} =1 {لائحة واحدة (الاتحاد الأوروبي فقط)} other {{count} لوائح}}",
       "classification": "تصنيف المخاطر",
       "gapAnalysis": "تحليل الثغرات",
       "badge": "شارة الامتثال ({level})",

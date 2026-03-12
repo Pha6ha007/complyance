@@ -715,7 +715,7 @@
     },
     "features": {
       "systems": "{count, plural, =1 {1 AI System} other {{count} AI Systems}}",
-      "regulations": "{count, plural, =1 {1 Regulation (EU only)} other {{count} Regulations}}",
+      "regulations": "{count, plural, =0 {Regulations} =1 {1 Regulation (EU only)} other {{count} Regulations}}",
       "classification": "Risk Classification",
       "gapAnalysis": "Gap Analysis",
       "badge": "Compliance Badge ({level})",

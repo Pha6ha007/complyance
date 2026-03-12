@@ -565,7 +565,7 @@
     },
     "features": {
       "systems": "{count, plural, =1 {1 KI-System} other {{count} KI-Systeme}}",
-      "regulations": "{count, plural, =1 {1 Verordnung (nur EU)} other {{count} Verordnungen}}",
+      "regulations": "{count, plural, =0 {Verordnungen} =1 {1 Verordnung (nur EU)} other {{count} Verordnungen}}",
       "classification": "Risikoklassifizierung",
       "gapAnalysis": "Lückenanalyse",
       "badge": "Compliance-Badge ({level})",

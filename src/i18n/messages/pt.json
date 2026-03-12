@@ -565,7 +565,7 @@
     },
     "features": {
       "systems": "{count, plural, =1 {1 Sistema de IA} other {{count} Sistemas de IA}}",
-      "regulations": "{count, plural, =1 {1 Regulamento (apenas UE)} other {{count} Regulamentos}}",
+      "regulations": "{count, plural, =0 {Regulamentos} =1 {1 Regulamento (apenas UE)} other {{count} Regulamentos}}",
       "classification": "Classificação de Risco",
       "gapAnalysis": "Análise de Lacunas",
       "badge": "Badge de Conformidade ({level})",

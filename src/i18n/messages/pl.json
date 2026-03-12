@@ -565,7 +565,7 @@
     },
     "features": {
       "systems": "{count, plural, =1 {1 system AI} other {{count} systemów AI}}",
-      "regulations": "{count, plural, =1 {1 regulacja (tylko UE)} other {{count} regulacji}}",
+      "regulations": "{count, plural, =0 {Regulacje} =1 {1 regulacja (tylko UE)} other {{count} regulacji}}",
       "classification": "Klasyfikacja ryzyka",
       "gapAnalysis": "Analiza luk",
       "badge": "Odznaka zgodności ({level})",
