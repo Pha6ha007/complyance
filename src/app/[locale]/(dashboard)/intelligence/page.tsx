@@ -4,31 +4,20 @@ import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc/client';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   AlertCircle,
   Bell,
   BookOpen,
+  CheckCircle2,
+  ExternalLink,
   FileText,
   Gavel,
   Lock,
   PenTool,
   RefreshCw,
   Scale,
-  ExternalLink,
-  CheckCircle2,
 } from 'lucide-react';
-import { formatDistance, format } from 'date-fns';
+import { format } from 'date-fns';
 import { ChangeType } from '@prisma/client';
 
 const REGULATION_OPTIONS = [
@@ -50,41 +39,45 @@ const CHANGE_TYPE_OPTIONS = [
   { value: 'NEW_LAW', label: 'New Law' },
 ] as const;
 
-function getRegulationBadgeColor(regulation: string) {
+function getRegulationBadgeClasses(regulation: string) {
   switch (regulation) {
     case 'EU_AI_ACT':
-      return 'bg-blue-100 text-blue-700 border-blue-200';
+      return 'bg-blue-500/10 text-blue-400 border border-blue-500/20';
     case 'COLORADO':
-      return 'bg-purple-100 text-purple-700 border-purple-200';
+      return 'bg-violet-500/10 text-violet-400 border border-violet-500/20';
     case 'NYC_LL144':
-      return 'bg-orange-100 text-orange-700 border-orange-200';
+      return 'bg-orange-500/10 text-orange-400 border border-orange-500/20';
     case 'NIST_RMF':
-      return 'bg-green-100 text-green-700 border-green-200';
+      return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
     case 'ISO_42001':
-      return 'bg-cyan-100 text-cyan-700 border-cyan-200';
+      return 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20';
     case 'UAE_AI':
-      return 'bg-amber-100 text-amber-700 border-amber-200';
+      return 'bg-amber-500/10 text-amber-400 border border-amber-500/20';
     default:
-      return 'bg-gray-100 text-gray-700 border-gray-200';
+      return 'bg-slate-700/50 text-slate-400 border border-slate-600/50';
+  }
+}
+
+function getChangeTypeBadgeClasses(changeType: ChangeType) {
+  switch (changeType) {
+    case 'ENFORCEMENT':
+      return 'bg-red-500/10 text-red-400 border border-red-500/20';
+    case 'NEW_LAW':
+      return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
+    case 'AMENDMENT':
+      return 'bg-violet-500/10 text-violet-400 border border-violet-500/20';
+    case 'GUIDELINE':
+      return 'bg-blue-500/10 text-blue-400 border border-blue-500/20';
+    case 'INTERPRETATION':
+      return 'bg-amber-500/10 text-amber-400 border border-amber-500/20';
+    default:
+      return 'bg-slate-700/50 text-slate-400 border border-slate-600/50';
   }
 }
 
 function getRegulationLabel(regulation: string) {
   const option = REGULATION_OPTIONS.find((r) => r.value === regulation);
   return option?.label || regulation;
-}
-
-function getChangeTypeBadgeVariant(changeType: ChangeType) {
-  switch (changeType) {
-    case 'ENFORCEMENT':
-      return 'destructive';
-    case 'NEW_LAW':
-      return 'default';
-    case 'AMENDMENT':
-      return 'secondary';
-    default:
-      return 'outline';
-  }
 }
 
 function getChangeTypeIcon(changeType: ChangeType) {
@@ -117,7 +110,6 @@ export default function IntelligencePage() {
   const [regulationFilter, setRegulationFilter] = useState<string>('ALL');
   const [changeTypeFilter, setChangeTypeFilter] = useState<string>('ALL');
 
-  // Fetch updates
   const { data, isLoading, error, refetch } = trpc.intelligence.list.useQuery({
     limit: 20,
     personalized: activeTab === 'personalized',
@@ -129,23 +121,16 @@ export default function IntelligencePage() {
     }),
   });
 
-  // Get unread count
   const { data: unreadData } = trpc.intelligence.getUnreadCount.useQuery({
     personalized: activeTab === 'personalized',
   });
 
-  // Mark as read mutation
   const markAsReadMutation = trpc.intelligence.markAsRead.useMutation({
-    onSuccess: () => {
-      refetch();
-    },
+    onSuccess: () => { refetch(); },
   });
 
-  // Mark all as read mutation
   const markAllAsReadMutation = trpc.intelligence.markAllAsRead.useMutation({
-    onSuccess: () => {
-      refetch();
-    },
+    onSuccess: () => { refetch(); },
   });
 
   const utils = trpc.useUtils();
@@ -160,28 +145,24 @@ export default function IntelligencePage() {
     utils.intelligence.getUnreadCount.invalidate();
   };
 
-  // Loading state
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <div className="text-lg font-medium">{tCommon('loading')}</div>
-          <div className="text-sm text-muted-foreground">
-            {t('loadingDescription')}
-          </div>
+          <div className="text-lg font-medium text-slate-300">{tCommon('loading')}</div>
+          <div className="text-sm text-slate-500">{t('loadingDescription')}</div>
         </div>
       </div>
     );
   }
 
-  // Error state
   if (error) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <AlertCircle className="mx-auto h-12 w-12 text-destructive" />
-          <div className="mt-4 text-lg font-medium">{tCommon('error')}</div>
-          <div className="text-sm text-muted-foreground">{error.message}</div>
+          <AlertCircle className="mx-auto h-12 w-12 text-red-400" />
+          <div className="mt-4 text-lg font-medium text-white">{tCommon('error')}</div>
+          <div className="text-sm text-slate-400">{error.message}</div>
         </div>
       </div>
     );
@@ -192,102 +173,103 @@ export default function IntelligencePage() {
   const unreadCount = unreadData?.unread ?? 0;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">{t('title')}</h1>
-          <p className="text-muted-foreground">{t('description')}</p>
+          <h1 className="text-2xl font-bold text-white">{t('title')}</h1>
+          <p className="text-slate-400 mt-1">{t('description')}</p>
         </div>
 
         <div className="flex items-center gap-2">
           {unreadCount > 0 && (
-            <Button
-              variant="outline"
+            <button
               onClick={handleMarkAllAsRead}
               disabled={markAllAsReadMutation.isPending}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-700/50 border border-slate-600/50 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors disabled:opacity-50"
             >
-              <CheckCircle2 className="me-2 h-4 w-4" />
+              <CheckCircle2 className="h-4 w-4" />
               {t('markAllRead')}
-            </Button>
+            </button>
           )}
-          <Button variant="outline" onClick={() => refetch()}>
-            <RefreshCw className="me-2 h-4 w-4" />
+          <button
+            onClick={() => refetch()}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-slate-700/50 border border-slate-600/50 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+          >
+            <RefreshCw className="h-4 w-4" />
             {t('refresh')}
-          </Button>
+          </button>
         </div>
       </div>
 
-      {/* Tabs */}
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'all' | 'personalized')}>
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <TabsList>
-            <TabsTrigger value="personalized">
-              {t('personalizedTab')}
-            </TabsTrigger>
-            <TabsTrigger value="all">
-              {t('allTab')}
-            </TabsTrigger>
-          </TabsList>
-
-          {/* Filters */}
-          <div className="flex flex-wrap items-center gap-4">
-            {/* Regulation filter */}
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">{t('filterByRegulation')}:</span>
-              <Select value={regulationFilter} onValueChange={setRegulationFilter}>
-                <SelectTrigger className="w-[160px]">
-                  <SelectValue placeholder={t('allRegulations')} />
-                </SelectTrigger>
-                <SelectContent>
-                  {REGULATION_OPTIONS.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Change type filter */}
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">{t('filterByType')}:</span>
-              <Select value={changeTypeFilter} onValueChange={setChangeTypeFilter}>
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder={t('allTypes')} />
-                </SelectTrigger>
-                <SelectContent>
-                  {CHANGE_TYPE_OPTIONS.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
+      {/* Tabs + Filters */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        {/* Tab toggle */}
+        <div className="flex rounded-lg border border-slate-700/60 bg-slate-800/60 p-1">
+          <button
+            onClick={() => setActiveTab('personalized')}
+            className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
+              activeTab === 'personalized'
+                ? 'bg-slate-700 text-white shadow-sm'
+                : 'text-slate-400 hover:text-slate-300'
+            }`}
+          >
+            {t('personalizedTab')}
+          </button>
+          <button
+            onClick={() => setActiveTab('all')}
+            className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
+              activeTab === 'all'
+                ? 'bg-slate-700 text-white shadow-sm'
+                : 'text-slate-400 hover:text-slate-300'
+            }`}
+          >
+            {t('allTab')}
+          </button>
         </div>
 
-        <TabsContent value="personalized" className="mt-6">
-          <UpdatesList
-            updates={updates}
-            hasFullAccess={hasFullAccess}
-            t={t}
-            onMarkAsRead={handleMarkAsRead}
-            isMarkingRead={markAsReadMutation.isPending}
-          />
-        </TabsContent>
+        {/* Filters */}
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-slate-500">{t('filterByRegulation')}:</span>
+            <select
+              value={regulationFilter}
+              onChange={(e) => setRegulationFilter(e.target.value)}
+              className="rounded-lg border border-slate-600/60 bg-slate-700/50 px-3 py-1.5 text-sm text-slate-300 focus:outline-none focus:border-emerald-500/50"
+            >
+              {REGULATION_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value} className="bg-slate-800">
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <TabsContent value="all" className="mt-6">
-          <UpdatesList
-            updates={updates}
-            hasFullAccess={hasFullAccess}
-            t={t}
-            onMarkAsRead={handleMarkAsRead}
-            isMarkingRead={markAsReadMutation.isPending}
-          />
-        </TabsContent>
-      </Tabs>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-slate-500">{t('filterByType')}:</span>
+            <select
+              value={changeTypeFilter}
+              onChange={(e) => setChangeTypeFilter(e.target.value)}
+              className="rounded-lg border border-slate-600/60 bg-slate-700/50 px-3 py-1.5 text-sm text-slate-300 focus:outline-none focus:border-emerald-500/50"
+            >
+              {CHANGE_TYPE_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value} className="bg-slate-800">
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* Updates list */}
+      <UpdatesList
+        updates={updates}
+        hasFullAccess={hasFullAccess}
+        t={t}
+        onMarkAsRead={handleMarkAsRead}
+        isMarkingRead={markAsReadMutation.isPending}
+      />
     </div>
   );
 }
@@ -311,90 +293,79 @@ interface UpdatesListProps {
   isMarkingRead: boolean;
 }
 
-function UpdatesList({
-  updates,
-  hasFullAccess,
-  t,
-  onMarkAsRead,
-  isMarkingRead,
-}: UpdatesListProps) {
+function UpdatesList({ updates, hasFullAccess, t, onMarkAsRead, isMarkingRead }: UpdatesListProps) {
   if (updates.length === 0) {
     return (
-      <div className="rounded-lg border p-12 text-center">
-        <Bell className="mx-auto h-12 w-12 text-muted-foreground" />
-        <h3 className="mt-4 text-lg font-semibold">{t('noUpdates')}</h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {t('noUpdatesDescription')}
-        </p>
+      <div className="rounded-xl border border-dashed border-slate-700 p-16 text-center bg-slate-800/20">
+        <div className="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto">
+          <Bell className="h-8 w-8 text-slate-600" />
+        </div>
+        <h3 className="mt-5 text-lg font-semibold text-white">{t('noUpdates')}</h3>
+        <p className="mt-2 text-sm text-slate-400 max-w-sm mx-auto">{t('noUpdatesDescription')}</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {updates.map((update) => (
-        <Card
+        <div
           key={update.id}
-          className={`p-5 transition-colors ${!update.isRead ? 'border-primary/50 bg-primary/5' : ''}`}
+          className={`rounded-xl border p-5 transition-colors ${
+            !update.isRead
+              ? 'border-emerald-500/20 bg-emerald-500/5'
+              : 'border-slate-600/60 bg-slate-800/60'
+          }`}
         >
           <div className="flex items-start gap-4">
-            {/* Unread indicator */}
-            <div className="mt-1.5">
-              {!update.isRead && (
-                <div className="h-2.5 w-2.5 rounded-full bg-primary" title={t('unread')} />
-              )}
-              {update.isRead && (
-                <div className="h-2.5 w-2.5 rounded-full bg-transparent" />
-              )}
+            {/* Unread dot */}
+            <div className="mt-2 flex-shrink-0">
+              <div
+                className={`h-2 w-2 rounded-full ${!update.isRead ? 'bg-emerald-400' : 'bg-transparent'}`}
+              />
             </div>
 
             {/* Content */}
             <div className="flex-1 min-w-0">
-              {/* Header */}
+              {/* Badges */}
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span
-                  className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border ${getRegulationBadgeColor(update.regulation)}`}
-                >
+                <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium ${getRegulationBadgeClasses(update.regulation)}`}>
                   {getRegulationLabel(update.regulation)}
                 </span>
-                <Badge variant={getChangeTypeBadgeVariant(update.changeType)}>
+                <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium ${getChangeTypeBadgeClasses(update.changeType)}`}>
                   {getChangeTypeIcon(update.changeType)}
                   {getChangeTypeLabel(update.changeType)}
-                </Badge>
+                </span>
                 {update.affectedArticles.length > 0 && (
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-xs text-slate-500">
                     {update.affectedArticles.join(', ')}
                   </span>
                 )}
               </div>
 
               {/* Title */}
-              <h3 className="font-semibold text-base">{update.title}</h3>
+              <h3 className="font-semibold text-base text-white">{update.title}</h3>
 
-              {/* Summary - gated for Free plan */}
+              {/* Summary */}
               {hasFullAccess ? (
                 <>
                   {update.summary && (
-                    <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
-                      {update.summary}
-                    </p>
+                    <p className="mt-2 text-sm text-slate-400 line-clamp-3">{update.summary}</p>
                   )}
                   {update.impact && (
-                    <div className="mt-3 p-3 rounded-md bg-muted/50 border-s-4 border-primary">
-                      <p className="text-sm">
-                        <span className="font-medium">{t('impact')}:</span> {update.impact}
+                    <div className="mt-3 p-3 rounded-lg bg-slate-700/40 border-s-2 border-emerald-500/50">
+                      <p className="text-sm text-slate-300">
+                        <span className="font-medium text-white">{t('impact')}:</span>{' '}
+                        {update.impact}
                       </p>
                     </div>
                   )}
                 </>
               ) : (
-                <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="mt-2 flex items-center gap-2 text-sm text-slate-500">
                   <Lock className="h-4 w-4" />
                   <span>{t('upgradeToPlan')}</span>
-                  <Link
-                    href="/pricing"
-                    className="text-primary hover:underline"
-                  >
+                  <Link href="/pricing" className="text-emerald-400 hover:text-emerald-300">
                     {t('upgradeLink')}
                   </Link>
                 </div>
@@ -402,35 +373,37 @@ function UpdatesList({
 
               {/* Footer */}
               <div className="mt-3 flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-slate-500">
                   {format(new Date(update.publishedAt), 'MMM d, yyyy')}
                 </span>
 
                 <div className="flex items-center gap-2">
                   {!update.isRead && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
+                    <button
                       onClick={() => onMarkAsRead(update.id)}
                       disabled={isMarkingRead}
+                      className="inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium text-slate-400 hover:text-slate-300 hover:bg-slate-700/50 transition-colors disabled:opacity-50"
                     >
-                      <CheckCircle2 className="me-1 h-3 w-3" />
+                      <CheckCircle2 className="h-3 w-3" />
                       {t('markRead')}
-                    </Button>
+                    </button>
                   )}
                   {hasFullAccess && update.source && (
-                    <Button variant="ghost" size="sm" asChild>
-                      <a href={update.source} target="_blank" rel="noopener noreferrer">
-                        {t('viewSource')}
-                        <ExternalLink className="ms-1 h-3 w-3" />
-                      </a>
-                    </Button>
+                    <a
+                      href={update.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium text-slate-400 hover:text-slate-300 hover:bg-slate-700/50 transition-colors"
+                    >
+                      {t('viewSource')}
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
                   )}
                 </div>
               </div>
             </div>
           </div>
-        </Card>
+        </div>
       ))}
     </div>
   );
