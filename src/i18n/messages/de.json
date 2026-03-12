@@ -348,7 +348,7 @@
       "title": "Einfache, transparente Preise",
       "subtitle": "Kostenlos starten. Wachsen Sie mit Ihren Anforderungen. Keine versteckten Gebühren.",
       "popular": "Beliebteste",
-      "free": "Free",
+      "free": "Kostenlos",
       "starter": "Starter",
       "professional": "Professional",
       "freePriceMonthly": "$0",
@@ -1912,7 +1912,7 @@
     "cancel": "Abonnement kündigen",
     "manageBilling": "Abrechnung verwalten",
     "portalLink": "Rechnungen einsehen und Zahlungsmethoden im Abrechnungsportal aktualisieren",
-    "subscribe": "Subscribe"
+    "subscribe": "Abonnieren"
   },
   "footer": {
     "product": {
@@ -2653,30 +2653,30 @@
     }
   },
   "errors": {
-    "generic": "An error occurred. Please try again.",
+    "generic": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "notFound": {
-      "title": "Page Not Found",
-      "description": "The page you are looking for does not exist.",
-      "helpText": "If you believe this is an error, please contact support.",
-      "contactSupport": "Contact Support",
-      "goToDashboard": "Go to Dashboard",
-      "goToHome": "Go to Home"
+      "title": "Seite nicht gefunden",
+      "description": "Die Seite, die Sie suchen, existiert nicht.",
+      "helpText": "Falls Sie glauben, dass dies ein Fehler ist, wenden Sie sich bitte an den Support.",
+      "contactSupport": "Support kontaktieren",
+      "goToDashboard": "Zum Dashboard",
+      "goToHome": "Zur Startseite"
     },
-    "unauthorized": "You must be logged in to access this page",
-    "forbidden": "You don't have permission to access this resource",
-    "validation": "Please check your input and try again",
+    "unauthorized": "Sie müssen angemeldet sein, um auf diese Seite zuzugreifen.",
+    "forbidden": "Sie haben keine Berechtigung, auf diese Ressource zuzugreifen.",
+    "validation": "Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut.",
     "internalError": {
-      "title": "Internal Server Error",
-      "description": "Something went wrong. Please try again later.",
-      "retry": "Try Again"
+      "title": "Interner Serverfehler",
+      "description": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.",
+      "retry": "Erneut versuchen"
     },
     "global": {
-      "title": "Something went wrong",
-      "description": "An unexpected error occurred. Please try again.",
-      "tryAgain": "Try Again",
-      "goToDashboard": "Go to Dashboard",
-      "helpText": "If the problem persists, please contact support.",
-      "contactSupport": "Contact Support"
+      "title": "Etwas ist schiefgelaufen",
+      "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "tryAgain": "Erneut versuchen",
+      "goToDashboard": "Zum Dashboard",
+      "helpText": "Falls das Problem weiterhin besteht, wenden Sie sich bitte an den Support.",
+      "contactSupport": "Support kontaktieren"
     }
   }
 }
