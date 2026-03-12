@@ -186,7 +186,7 @@ export default function VendorsPage() {
           </Link>
         </div>
       ) : (
-        <div className="rounded-xl border border-slate-700/50 bg-slate-800/40 overflow-hidden">
+        <div className="rounded-xl border border-slate-600/60 bg-slate-800/60 overflow-hidden">
           {/* Table header */}
           <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_auto] gap-4 px-5 py-3 border-b border-slate-700/50 bg-slate-800/60">
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('table.name')}</div>
