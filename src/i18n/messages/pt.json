@@ -1537,8 +1537,8 @@
       "acceptance": {
         "title": "Aceitação dos Termos",
         "desc": "Ao aceder ou utilizar o Complyance, concorda em ficar vinculado a estes Termos de Serviço. Se não concordar, não pode utilizar a plataforma.",
-        "p1": "By accessing or using Complyance.io ('the Service', 'the Platform'), you agree to be bound by these Terms of Service ('Terms'). These Terms constitute a legally binding agreement between you ('User', 'you', 'your') and Complyance.io ('we', 'us', 'our').",
-        "p2": "If you do not agree to these Terms, you may not access or use the Platform. By creating an account or using any part of the Service, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy."
+        "p1": "Ao aceder ou utilizar o Complyance.io ('o Serviço', 'a Plataforma'), concorda em ficar vinculado a estes Termos de Serviço ('Termos'). Estes Termos constituem um acordo juridicamente vinculativo entre si ('Utilizador', 'você', 'seu') e o Complyance.io ('nós', 'nos', 'nosso').",
+        "p2": "Se não concordar com estes Termos, não pode aceder ou utilizar a Plataforma. Ao criar uma conta ou utilizar qualquer parte do Serviço, reconhece que leu, compreendeu e concorda em ficar vinculado a estes Termos e à nossa Política de Privacidade."
       },
       "serviceDescription": {
         "title": "Descrição do Serviço",
@@ -1550,9 +1550,9 @@
         "informational": "Todas as classificações, relatórios e recomendações são apenas informativos e não constituem aconselhamento jurídico.",
         "professional": "Para registos regulatórios, certificações ou pareceres jurídicos, consulte profissionais jurídicos qualificados.",
         "liability": "Não somos responsáveis por falhas de conformidade, multas regulatórias ou consequências legais resultantes do uso da nossa plataforma.",
-        "p1": "Complyance is a compliance management tool, not a law firm or legal advisor. We do not provide legal advice, legal opinions, or legal services.",
-        "p2": "All risk classifications, compliance reports, gap analyses, and recommendations provided by the Platform are informational only and do not constitute legal advice. Our AI-powered tools are designed to assist with compliance tracking, but they cannot replace professional legal counsel.",
-        "p3": "For regulatory filings, certifications, legal opinions, or final compliance verification, you must consult with qualified legal professionals. We are not liable for compliance failures, regulatory fines, enforcement actions, or any legal consequences resulting from your use of the Platform."
+        "p1": "O Complyance é uma ferramenta de gestão de conformidade, não um escritório de advocacia ou consultor jurídico. Não prestamos aconselhamento jurídico, pareceres jurídicos nem serviços jurídicos.",
+        "p2": "Todas as classificações de risco, relatórios de conformidade, análises de lacunas e recomendações fornecidas pela Plataforma são apenas informativas e não constituem aconselhamento jurídico. As nossas ferramentas baseadas em IA foram concebidas para auxiliar no acompanhamento da conformidade, mas não podem substituir o aconselhamento jurídico profissional.",
+        "p3": "Para registos regulatórios, certificações, pareceres jurídicos ou verificação final de conformidade, deve consultar profissionais jurídicos qualificados. Não somos responsáveis por falhas de conformidade, multas regulatórias, ações de fiscalização ou quaisquer consequências legais resultantes da utilização da Plataforma."
       },
       "accounts": {
         "title": "Contas de Utilizador",
@@ -1560,9 +1560,9 @@
         "accurate": "Deve fornecer informações precisas e completas",
         "notify": "Notifique-nos imediatamente de qualquer acesso não autorizado",
         "prohibited": "Não pode partilhar contas ou transferir acesso sem autorização",
-        "p1": "To use most features of Complyance, you must create an account. When creating and maintaining your account, you agree to:",
-        "confidential": "Maintain the confidentiality of your account credentials and password",
-        "responsible": "Accept responsibility for all activities that occur under your account"
+        "p1": "Para utilizar a maioria das funcionalidades do Complyance, deve criar uma conta. Ao criar e manter a sua conta, concorda em:",
+        "confidential": "Manter a confidencialidade das suas credenciais de conta e palavra-passe",
+        "responsible": "Aceitar a responsabilidade por todas as atividades que ocorram na sua conta"
       },
       "billing": {
         "title": "Faturação e Pagamentos",
@@ -1571,24 +1571,24 @@
         "prices": "Os preços são em USD e sujeitos a alteração com 30 dias de aviso",
         "taxes": "O Paddle trata de todos os cálculos e conformidade fiscal",
         "plans": {
-          "title": "Subscription Plans",
-          "desc": "Complyance offers multiple subscription plans (Free, Starter, Professional, Scale). Plan features, limits, and pricing are described on our Pricing page. By subscribing to a paid plan, you agree to pay the applicable fees."
+          "title": "Planos de Subscrição",
+          "desc": "O Complyance oferece múltiplos planos de subscrição (Free, Starter, Professional, Scale). As funcionalidades, limites e preços dos planos estão descritos na nossa página de Preços. Ao subscrever um plano pago, concorda em pagar as taxas aplicáveis."
         },
         "payment": {
-          "title": "Payment Processing",
-          "desc": "All payments are processed by Paddle.com Market Limited ('Paddle'), our Merchant of Record. Paddle is responsible for billing, payment collection, tax calculations, and invoicing. By subscribing, you agree to Paddle's Terms of Use."
+          "title": "Processamento de Pagamentos",
+          "desc": "Todos os pagamentos são processados pela Paddle.com Market Limited ('Paddle'), o nosso Intermediário de Registo. O Paddle é responsável pela faturação, cobrança de pagamentos, cálculos de impostos e emissão de faturas. Ao subscrever, concorda com os Termos de Utilização do Paddle."
         },
         "renewal": {
-          "title": "Automatic Renewal",
-          "desc": "Paid subscriptions renew automatically at the end of each billing cycle (monthly or annually) unless cancelled before the renewal date. You will be charged the then-current subscription price. Paddle will send renewal reminders prior to charging your payment method."
+          "title": "Renovação Automática",
+          "desc": "As subscrições pagas renovam-se automaticamente no final de cada ciclo de faturação (mensal ou anual), salvo cancelamento antes da data de renovação. Será cobrado o preço de subscrição em vigor. O Paddle enviará lembretes de renovação antes de debitar o seu método de pagamento."
         },
         "changes": {
-          "title": "Price Changes",
-          "desc": "We reserve the right to change subscription prices with at least 30 days' notice. Price changes will not affect your current billing cycle. If you do not agree to a price increase, you may cancel your subscription before the new price takes effect."
+          "title": "Alterações de Preços",
+          "desc": "Reservamo-nos o direito de alterar os preços de subscrição com pelo menos 30 dias de aviso prévio. As alterações de preços não afetarão o seu ciclo de faturação atual. Se não concordar com um aumento de preço, pode cancelar a sua subscrição antes de o novo preço entrar em vigor."
         },
         "cancellation": {
-          "title": "Cancellation and Refunds",
-          "desc": "You may cancel your subscription at any time through your account settings or the Paddle billing portal. Cancellations take effect at the end of the current billing period. See our Refund Policy for information about refunds within the first 14 days."
+          "title": "Cancelamento e Reembolsos",
+          "desc": "Pode cancelar a sua subscrição a qualquer momento através das definições da sua conta ou do portal de faturação do Paddle. Os cancelamentos entram em vigor no final do período de faturação atual. Consulte a nossa Política de Reembolso para informações sobre reembolsos nos primeiros 14 dias."
         }
       },
       "prohibitedUse": {
@@ -1678,8 +1678,8 @@
           "73": "ú",
           "74": "d",
           "75": "o",
-          "title": "Our Ownership",
-          "desc": "Complyance.io and its licensors own all rights, title, and interest in the Platform, including all software, design, content, trademarks, and intellectual property. These Terms do not grant you any ownership rights."
+          "title": "Nossa Propriedade",
+          "desc": "O Complyance.io e os seus licenciantes detêm todos os direitos, títulos e interesses na Plataforma, incluindo todo o software, design, conteúdo, marcas comerciais e propriedade intelectual. Estes Termos não lhe conferem quaisquer direitos de propriedade."
         },
         "yourData": "Mantém a propriedade dos seus dados (sistemas de IA, documentos, evidências)",
         "license": {
@@ -1771,13 +1771,13 @@
           "85": "a",
           "86": "n",
           "87": "o",
-          "title": "License to Use",
-          "desc": "Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Platform according to your subscription plan. This license terminates upon cancellation or termination of your account."
+          "title": "Licença de Utilização",
+          "desc": "Sujeito a estes Termos, concedemos-lhe uma licença limitada, não exclusiva, intransmissível e revogável para aceder e utilizar a Plataforma de acordo com o seu plano de subscrição. Esta licença termina aquando do cancelamento ou rescisão da sua conta."
         },
         "feedback": "O feedback que fornecer pode ser utilizado para melhorar a plataforma",
         "userContent": {
-          "title": "Your Content",
-          "desc": "You retain ownership of all data you submit to the Platform, including AI system descriptions, documents, evidence, and other content ('User Content'). You grant us a limited license to use, store, and process User Content solely to provide the Service."
+          "title": "O Seu Conteúdo",
+          "desc": "Mantém a propriedade de todos os dados que submete à Plataforma, incluindo descrições de sistemas de IA, documentos, evidências e outro conteúdo ('Conteúdo do Utilizador'). Concede-nos uma licença limitada para utilizar, armazenar e processar o Conteúdo do Utilizador exclusivamente para prestar o Serviço."
         }
       },
       "liability": {
@@ -1786,56 +1786,56 @@
         "noLiability": "Não somos responsáveis por danos indiretos, incidentais ou consequenciais",
         "cap": "Responsabilidade total limitada ao montante pago nos últimos 12 meses",
         "force": "Não responsável por eventos fora do nosso controlo razoável",
-        "p1": "THE PLATFORM IS PROVIDED 'AS IS' AND 'AS AVAILABLE' WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE PLATFORM WILL BE UNINTERRUPTED, ERROR-FREE, OR COMPLETELY SECURE.",
-        "p2": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, COMPLYANCE.IO SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR BUSINESS OPPORTUNITIES, ARISING FROM YOUR USE OF THE PLATFORM. OUR TOTAL LIABILITY FOR ANY CLAIMS RELATED TO THE SERVICE SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM."
+        "p1": "A PLATAFORMA É FORNECIDA 'TAL COMO ESTÁ' E 'CONFORME DISPONÍVEL' SEM GARANTIAS DE QUALQUER TIPO, EXPRESSAS OU IMPLÍCITAS, INCLUINDO, MAS NÃO LIMITADO A, GARANTIAS DE COMERCIABILIDADE, ADEQUAÇÃO A UM DETERMINADO FIM OU NÃO VIOLAÇÃO. NÃO GARANTIMOS QUE A PLATAFORMA SERÁ ININTERRUPTA, ISENTA DE ERROS OU COMPLETAMENTE SEGURA.",
+        "p2": "NA MÁXIMA EXTENSÃO PERMITIDA POR LEI, O COMPLYANCE.IO NÃO SERÁ RESPONSÁVEL POR QUAISQUER DANOS INDIRETOS, INCIDENTAIS, CONSEQUENCIAIS, ESPECIAIS OU PUNITIVOS, INCLUINDO, MAS NÃO LIMITADO A, PERDA DE LUCROS, DADOS OU OPORTUNIDADES DE NEGÓCIO, RESULTANTES DA SUA UTILIZAÇÃO DA PLATAFORMA. A NOSSA RESPONSABILIDADE TOTAL POR QUAISQUER RECLAMAÇÕES RELACIONADAS COM O SERVIÇO NÃO EXCEDERÁ O MONTANTE QUE NOS PAGOU NOS 12 MESES ANTERIORES À RECLAMAÇÃO."
       },
-      "lastUpdated": "Last Updated",
+      "lastUpdated": "Última Atualização",
       "service": {
-        "title": "Description of Service",
-        "p1": "Complyance is a self-serve SaaS platform that helps organizations manage AI compliance. Our platform provides the following features:",
-        "classification": "AI risk classification under EU AI Act, Colorado AI Act, and other regulations",
-        "gapAnalysis": "Compliance gap analysis and requirement tracking",
-        "documentGeneration": "Automated generation of compliance reports and technical documentation",
-        "vendorRisk": "AI vendor risk assessments and due diligence",
-        "evidence": "Evidence vault for storing compliance artifacts",
-        "regulatory": "Regulatory intelligence and updates on AI compliance developments"
+        "title": "Descrição do Serviço",
+        "p1": "O Complyance é uma plataforma SaaS em self-service que ajuda organizações a gerir a conformidade de IA. A nossa plataforma oferece as seguintes funcionalidades:",
+        "classification": "Classificação de risco de IA ao abrigo da Lei da IA da UE, Colorado AI Act e outros regulamentos",
+        "gapAnalysis": "Análise de lacunas de conformidade e acompanhamento de requisitos",
+        "documentGeneration": "Geração automatizada de relatórios de conformidade e documentação técnica",
+        "vendorRisk": "Avaliações de risco de fornecedores de IA e due diligence",
+        "evidence": "Cofre de evidências para armazenar artefactos de conformidade",
+        "regulatory": "Inteligência regulatória e atualizações sobre desenvolvimentos em conformidade de IA"
       },
       "use": {
-        "title": "Acceptable Use",
-        "intro": "You agree not to use the Platform for any unlawful purpose or in any way that violates these Terms. Prohibited activities include, but are not limited to:",
-        "violate": "Violating any applicable laws, regulations, or third-party rights",
-        "harmful": "Uploading malicious code, viruses, or harmful content",
-        "infringe": "Infringing on intellectual property rights of Complyance or third parties",
-        "interfere": "Interfering with or disrupting the Platform or servers",
-        "reverse": "Reverse engineering, decompiling, or attempting to extract source code",
-        "scrape": "Scraping, crawling, or using automated tools to extract data without permission",
-        "resell": "Reselling, sublicensing, or redistributing the Service without authorization"
+        "title": "Utilização Aceitável",
+        "intro": "Concorda em não utilizar a Plataforma para qualquer fim ilícito ou de forma que viole estes Termos. As atividades proibidas incluem, mas não se limitam a:",
+        "violate": "Violar quaisquer leis, regulamentos ou direitos de terceiros aplicáveis",
+        "harmful": "Carregar código malicioso, vírus ou conteúdo prejudicial",
+        "infringe": "Infringir direitos de propriedade intelectual do Complyance ou de terceiros",
+        "interfere": "Interferir ou perturbar o funcionamento da Plataforma ou dos servidores",
+        "reverse": "Realizar engenharia reversa, descompilar ou tentar extrair o código-fonte",
+        "scrape": "Fazer scraping, crawling ou utilizar ferramentas automatizadas para extrair dados sem permissão",
+        "resell": "Revender, sublicenciar ou redistribuir o Serviço sem autorização"
       },
       "indemnification": {
-        "title": "Indemnification",
-        "desc": "You agree to indemnify, defend, and hold harmless Complyance.io, its affiliates, officers, directors, employees, and agents from any claims, liabilities, damages, losses, or expenses (including legal fees) arising from your use of the Platform, violation of these Terms, or infringement of any third-party rights."
+        "title": "Indemnização",
+        "desc": "Concorda em indemnizar, defender e isentar de responsabilidade o Complyance.io, as suas afiliadas, dirigentes, administradores, funcionários e agentes de quaisquer reclamações, responsabilidades, danos, perdas ou despesas (incluindo honorários jurídicos) resultantes da sua utilização da Plataforma, violação destes Termos ou infração de quaisquer direitos de terceiros."
       },
       "termination": {
-        "title": "Termination",
-        "p1": "You may terminate your account at any time by cancelling your subscription through your account settings. Upon cancellation, your access to paid features will continue until the end of your billing period.",
-        "p2": "We reserve the right to suspend or terminate your account immediately, without prior notice, if you violate these Terms, engage in fraudulent activity, or use the Platform in a way that harms us or other users.",
-        "p3": "Upon termination, your right to use the Platform will cease immediately. We may retain certain data as required by law or for legitimate business purposes (e.g., backups, legal compliance). See our Privacy Policy for details on data retention."
+        "title": "Rescisão",
+        "p1": "Pode rescindir a sua conta a qualquer momento cancelando a sua subscrição através das definições da sua conta. Após o cancelamento, o acesso às funcionalidades pagas continuará até ao final do seu período de faturação.",
+        "p2": "Reservamo-nos o direito de suspender ou rescindir a sua conta imediatamente, sem aviso prévio, se violar estes Termos, praticar atividades fraudulentas ou utilizar a Plataforma de forma que nos prejudique a nós ou a outros utilizadores.",
+        "p3": "Após a rescisão, o seu direito de utilizar a Plataforma cessará imediatamente. Poderemos reter determinados dados conforme exigido por lei ou para fins comerciais legítimos (ex.: cópias de segurança, conformidade legal). Consulte a nossa Política de Privacidade para detalhes sobre retenção de dados."
       },
       "deletion": {
-        "title": "Data Deletion After Termination",
-        "p1": "If you cancel your subscription, your User Content (AI systems, documents, evidence) will be retained for 30 days to allow for reactivation. After 30 days, all User Content will be permanently deleted from our production systems.",
-        "p2": "Backup copies may persist for up to 90 days for disaster recovery purposes, after which they are also permanently deleted. If you require immediate data deletion, contact us at support@complyance.io to request expedited removal."
+        "title": "Eliminação de Dados Após Rescisão",
+        "p1": "Se cancelar a sua subscrição, o seu Conteúdo do Utilizador (sistemas de IA, documentos, evidências) será retido por 30 dias para permitir a reativação. Após 30 dias, todo o Conteúdo do Utilizador será eliminado permanentemente dos nossos sistemas de produção.",
+        "p2": "As cópias de segurança podem persistir por até 90 dias para fins de recuperação de desastres, após o que são também eliminadas permanentemente. Se necessitar de eliminação imediata de dados, contacte-nos em support@complyance.io para solicitar remoção acelerada."
       },
       "law": {
-        "title": "Governing Law",
-        "desc": "These Terms shall be governed by and construed in accordance with the laws of Portugal, without regard to its conflict of law provisions. Any disputes arising from these Terms or your use of the Platform shall be subject to the exclusive jurisdiction of the courts of Portugal."
+        "title": "Lei Aplicável",
+        "desc": "Estes Termos serão regidos e interpretados de acordo com as leis de Portugal, sem consideração às suas disposições sobre conflito de leis. Quaisquer disputas decorrentes destes Termos ou da sua utilização da Plataforma estarão sujeitas à jurisdição exclusiva dos tribunais de Portugal."
       },
       "changes": {
-        "title": "Changes to Terms",
-        "desc": "We may update these Terms from time to time to reflect changes in our practices, legal requirements, or service features. Material changes will be communicated via email or a notice on the Platform at least 30 days before taking effect. Your continued use of the Platform after changes take effect constitutes acceptance of the updated Terms."
+        "title": "Alterações aos Termos",
+        "desc": "Podemos atualizar estes Termos periodicamente para refletir alterações nas nossas práticas, requisitos legais ou funcionalidades do serviço. As alterações materiais serão comunicadas por e-mail ou através de um aviso na Plataforma com pelo menos 30 dias de antecedência. A continuação da utilização da Plataforma após a entrada em vigor das alterações constitui aceitação dos Termos atualizados."
       },
       "contact": {
-        "title": "Contact Information",
+        "title": "Informações de Contacto",
         "email": "Email",
         "website": "Website"
       }
@@ -1852,14 +1852,14 @@
         "within14": "O pedido deve ser feito dentro de 14 dias do pagamento",
         "notAbused": "Privilégio de reembolso não utilizado anteriormente noutra conta",
         "goodFaith": "Conta utilizada de boa fé (sem abuso ou violações)",
-        "p1": "To be eligible for a refund, you must meet the following criteria:",
-        "firstTime": "This is your first subscription (refunds apply to first payment only, not renewals)",
-        "noViolation": "Account was used in good faith without violations of our Terms of Service",
+        "p1": "Para ser elegível para um reembolso, deve cumprir os seguintes critérios:",
+        "firstTime": "Esta é a sua primeira subscrição (os reembolsos aplicam-se apenas ao primeiro pagamento, não a renovações)",
+        "noViolation": "A conta foi utilizada de boa fé sem violações dos nossos Termos de Serviço",
         "notEligible": {
-          "title": "Refunds are not available if:",
-          "after14": "More than 14 days have passed since your first payment",
-          "abuse": "You've previously requested a refund on another Complyance account",
-          "violation": "Your account was terminated due to Terms of Service violations or abuse"
+          "title": "Os reembolsos não estão disponíveis se:",
+          "after14": "Passaram mais de 14 dias desde o seu primeiro pagamento",
+          "abuse": "Já solicitou anteriormente um reembolso noutra conta Complyance",
+          "violation": "A sua conta foi rescindida devido a violações dos Termos de Serviço ou abuso"
         }
       },
       "process": {
@@ -1868,11 +1868,11 @@
         "include": "Inclua o e-mail da sua conta e o motivo (opcional mas apreciado)",
         "processing": "Reembolsos processados dentro de 5-7 dias úteis",
         "method": "Reembolso emitido para o método de pagamento original via Paddle",
-        "p1": "To request a refund, follow these steps:",
+        "p1": "Para solicitar um reembolso, siga estes passos:",
         "step1": "Email support@complyance.io with the subject line 'Refund Request'",
-        "step2": "Include your account email address and the reason for your refund request (optional but appreciated for feedback)",
-        "step3": "Our team will review and process your refund within 5-7 business days",
-        "alternative": "Alternatively, you can request a refund directly through the Paddle billing portal"
+        "step2": "Inclua o endereço de e-mail da sua conta e o motivo do pedido de reembolso (opcional, mas apreciado como feedback)",
+        "step3": "A nossa equipa irá analisar e processar o seu reembolso num prazo de 5 a 7 dias úteis",
+        "alternative": "Em alternativa, pode solicitar um reembolso diretamente através do portal de faturação do Paddle"
       },
       "proRata": {
         "title": "Reembolsos Pro-Rata (Reduções)",
@@ -1884,56 +1884,56 @@
         "digital": "Ao iniciar a sua subscrição, reconhece que os serviços digitais começam imediatamente e renuncia ao direito de retratação após utilização do serviço",
         "unused": "Se cancelar antes de utilizar o serviço, tem direito a um reembolso total"
       },
-      "lastUpdated": "Last Updated",
+      "lastUpdated": "Última Atualização",
       "introduction": {
-        "title": "Introduction",
-        "p1": "We offer a 14-day money-back guarantee for all paid plans. If you're not satisfied with Complyance, you can request a full refund within 14 days of your first payment. This policy is designed to give you confidence when trying our platform."
+        "title": "Introdução",
+        "p1": "Oferecemos uma garantia de reembolso de 14 dias para todos os planos pagos. Se não estiver satisfeito com o Complyance, pode solicitar um reembolso total dentro de 14 dias do seu primeiro pagamento. Esta política foi concebida para lhe dar confiança ao experimentar a nossa plataforma."
       },
       "period": {
-        "title": "14-Day Refund Window",
-        "p1": "You have 14 calendar days from your first payment to request a full refund. This applies to both monthly and annual subscriptions.",
-        "p2": "The 14-day refund period is calculated as follows:",
-        "monthly": "Monthly subscriptions: 14 days from the date of your first charge",
-        "annual": "Annual subscriptions: 14 days from the date of your first charge (full refund for the entire year)"
+        "title": "Prazo de Reembolso de 14 Dias",
+        "p1": "Tem 14 dias de calendário a partir do seu primeiro pagamento para solicitar um reembolso total. Aplica-se tanto a subscrições mensais como anuais.",
+        "p2": "O prazo de reembolso de 14 dias é calculado da seguinte forma:",
+        "monthly": "Subscrições mensais: 14 dias a partir da data do seu primeiro débito",
+        "annual": "Subscrições anuais: 14 dias a partir da data do seu primeiro débito (reembolso total para o ano completo)"
       },
       "prorata": {
-        "title": "Pro-Rata Refunds for Downgrades",
-        "p1": "If you downgrade your plan mid-billing cycle (e.g., from Professional to Starter), you will not receive a cash refund for the unused portion. Instead, the difference will be credited to your next billing period.",
-        "example": "Example: If you downgrade from Professional ($249/month) to Starter ($99/month) on day 15 of your billing cycle, the $150 difference will be credited toward your next Starter invoice."
+        "title": "Reembolsos Pro-Rata por Reduções",
+        "p1": "Se reduzir o seu plano a meio do ciclo de faturação (ex.: de Professional para Starter), não receberá um reembolso em dinheiro pela parte não utilizada. Em alternativa, a diferença será creditada no seu próximo período de faturação.",
+        "example": "Exemplo: Se reduzir de Professional ($249/mês) para Starter ($99/mês) no dia 15 do seu ciclo de faturação, a diferença de $150 será creditada na sua próxima fatura Starter."
       },
       "processing": {
-        "title": "Refund Processing Time",
-        "p1": "Once approved, refunds are processed as follows:",
-        "review": "Review: We aim to approve refund requests within 1-2 business days",
-        "approval": "Processing: Refunds are issued to your original payment method within 5-7 business days after approval",
-        "bank": "Bank processing: Depending on your bank or payment provider, it may take an additional 3-5 business days for the refund to appear in your account"
+        "title": "Prazo de Processamento de Reembolso",
+        "p1": "Uma vez aprovados, os reembolsos são processados da seguinte forma:",
+        "review": "Análise: O nosso objetivo é aprovar os pedidos de reembolso em 1 a 2 dias úteis",
+        "approval": "Processamento: Os reembolsos são emitidos para o método de pagamento original num prazo de 5 a 7 dias úteis após aprovação",
+        "bank": "Processamento bancário: Dependendo do seu banco ou fornecedor de pagamentos, pode demorar mais 3 a 5 dias úteis para o reembolso aparecer na sua conta"
       },
       "free": {
-        "title": "Free Plan — No Payment Required",
-        "desc": "If you're unsure whether Complyance is right for you, start with our Free plan. You can classify 1 AI system, explore compliance gaps, and earn an 'AI Act Aware' badge without entering payment information. No refund needed — just cancel anytime."
+        "title": "Plano Gratuito — Sem Pagamento Necessário",
+        "desc": "Se não tiver a certeza se o Complyance é a solução certa para si, comece com o nosso plano gratuito. Pode classificar 1 sistema de IA, explorar lacunas de conformidade e obter um distintivo 'AI Act Aware' sem introduzir dados de pagamento. Sem necessidade de reembolso — cancele a qualquer momento."
       },
       "cancellation": {
-        "title": "Cancelling Your Subscription",
-        "p1": "If you cancel your subscription after the 14-day refund window, your access to paid features will continue until the end of your current billing period. No refund will be issued, but your subscription will not renew.",
-        "p2": "You can cancel at any time through your account settings or the Paddle billing portal. Cancellations take effect at the end of the current billing cycle."
+        "title": "Cancelar a Sua Subscrição",
+        "p1": "Se cancelar a sua subscrição após o período de reembolso de 14 dias, o acesso às funcionalidades pagas continuará até ao final do seu período de faturação atual. Não será emitido qualquer reembolso, mas a subscrição não será renovada.",
+        "p2": "Pode cancelar a qualquer momento através das definições da sua conta ou do portal de faturação do Paddle. Os cancelamentos entram em vigor no final do ciclo de faturação atual."
       },
       "eu": {
-        "title": "EU Consumer Rights (Right of Withdrawal)",
-        "p1": "Under EU Directive 2011/83/EU, EU consumers have a 14-day right of withdrawal for online purchases of digital services. This aligns with our 14-day refund policy.",
-        "p2": "By starting your subscription and using Complyance services, you acknowledge that digital content delivery begins immediately and you waive your right of withdrawal after service usage. However, if you cancel before actively using the service, you're entitled to a full refund under EU consumer protection law."
+        "title": "Direitos do Consumidor da UE (Direito de Retratação)",
+        "p1": "Ao abrigo da Diretiva UE 2011/83/UE, os consumidores da UE têm um direito de retratação de 14 dias para compras online de serviços digitais. Isto está alinhado com a nossa política de reembolso de 14 dias.",
+        "p2": "Ao iniciar a sua subscrição e utilizar os serviços Complyance, reconhece que a entrega de conteúdo digital começa imediatamente e renuncia ao seu direito de retratação após a utilização do serviço. No entanto, se cancelar antes de utilizar ativamente o serviço, tem direito a um reembolso total ao abrigo da legislação de proteção do consumidor da UE."
       },
       "exceptions": {
-        "title": "Exceptions and Special Cases",
-        "p1": "The following are considered 'service usage' and may affect refund eligibility:",
-        "generated": "Generated compliance documents (Classification Reports, Roadmaps, Annex IV documentation)",
-        "consumed": "Consumed credits or AI-powered features (vendor assessments, risk classifications)",
-        "downloaded": "Downloaded evidence or exported data from the Evidence Vault",
-        "p2": "In cases of technical issues, service downtime, or billing errors, refunds may be granted at our discretion beyond the 14-day window. Contact support@complyance.io to discuss special circumstances."
+        "title": "Exceções e Casos Especiais",
+        "p1": "Os seguintes são considerados 'utilização do serviço' e podem afetar a elegibilidade para reembolso:",
+        "generated": "Documentos de conformidade gerados (Relatórios de Classificação, Roteiros, documentação do Anexo IV)",
+        "consumed": "Créditos ou funcionalidades baseadas em IA consumidos (avaliações de fornecedores, classificações de risco)",
+        "downloaded": "Evidências descarregadas ou dados exportados do Cofre de Evidências",
+        "p2": "Em casos de problemas técnicos, indisponibilidade do serviço ou erros de faturação, os reembolsos podem ser concedidos ao nosso critério além do período de 14 dias. Contacte support@complyance.io para discutir circunstâncias especiais."
       },
       "contact": {
-        "title": "Contact for Refund Requests",
+        "title": "Contacto para Pedidos de Reembolso",
         "email": "Email",
-        "paddle": "Paddle Billing Portal"
+        "paddle": "Portal de Faturação Paddle"
       }
     }
   },
