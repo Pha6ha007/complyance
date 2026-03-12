@@ -28,7 +28,11 @@
     "badge": "Compliance Badge",
     "team": "Team",
     "referrals": "Referrals",
-    "blog": "Blog"
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "about": "About",
+    "login": "Log in",
+    "getStarted": "Get Started Free"
   },
   "auth": {
     "login": "Log in",
@@ -411,6 +415,8 @@
     "hero": {
       "deadlineBadge": "days until EU AI Act enforcement",
       "title": "AI Compliance Made Simple",
+      "titleLine1": "AI Compliance",
+      "titleLine2": "Made Simple",
       "subtitle": "Classify your AI systems, identify compliance gaps, and generate documentation — all before the EU AI Act deadline.",
       "ctaPrimary": "Start Free",
       "ctaSecondary": "View Pricing",

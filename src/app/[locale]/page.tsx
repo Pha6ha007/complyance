@@ -32,7 +32,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <main>
         <HeroSection t={t} days={days} />
-        <TrustBar />
+        <TrustBar t={t} />
         <ProblemSection t={t} />
         <HowItWorksSection t={t} />
         <FeaturesSection t={t} />
@@ -67,9 +67,9 @@ function HeroSection({ t, days }: { t: any; days: number }) {
           </div>
 
           <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
-            AI Compliance<br />
+            {t('hero.titleLine1')}<br />
             <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-              Made Simple
+              {t('hero.titleLine2')}
             </span>
           </h1>
 
@@ -201,7 +201,7 @@ function DashboardMockup({ days }: { days: number }) {
 
 /* ─── TRUST BAR ────────────────────────────────────────── */
 
-function TrustBar() {
+function TrustBar({ t }: { t: any }) {
   const companies = [
     'Acme Corp', 'TechFlow', 'DataSync', 'CloudBase', 'NeuralStack', 'DevPilot',
   ];
@@ -210,7 +210,7 @@ function TrustBar() {
     <section className="py-12 border-y border-slate-200 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <p className="text-center text-sm text-slate-400 uppercase tracking-widest mb-8 font-medium">
-          Trusted by SaaS teams preparing for EU AI Act compliance
+          {t('trust.label')}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
           {companies.map((company) => (

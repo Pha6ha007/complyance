@@ -43,7 +43,7 @@ export function MarketingHeader({ locale }: MarketingHeaderProps) {
             href="/pricing"
             className="text-sm font-medium text-white/60 transition-colors duration-150 hover:text-white"
           >
-            Pricing
+            {t('pricing')}
           </Link>
           <Link
             href="/blog"
@@ -55,7 +55,7 @@ export function MarketingHeader({ locale }: MarketingHeaderProps) {
             href="/about"
             className="text-sm font-medium text-white/60 transition-colors duration-150 hover:text-white"
           >
-            About
+            {t('about')}
           </Link>
         </nav>
 
@@ -66,13 +66,13 @@ export function MarketingHeader({ locale }: MarketingHeaderProps) {
             href="/login"
             className="hidden text-sm font-medium text-white/60 transition-colors hover:text-white md:block"
           >
-            Log in
+            {t('login')}
           </Link>
           <Link
             href="/register"
             className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.35)] transition-all duration-200 hover:bg-emerald-400 hover:shadow-[0_4px_24px_rgba(16,185,129,0.5)]"
           >
-            Get Started Free
+            {t('getStarted')}
             <span aria-hidden="true">→</span>
           </Link>
         </div>
