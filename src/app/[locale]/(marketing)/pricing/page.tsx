@@ -4,6 +4,8 @@ import { CheckoutButton } from '@/components/billing/checkout-button';
 import { Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { AnimatedGrid } from '@/components/marketing/animated-grid';
+import { PricingFAQ } from '@/components/marketing/pricing-faq';
 
 interface PricingPageProps {
   params: Promise<{ locale: string }>;
@@ -106,6 +108,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
   setRequestLocale(locale);
 
   const t = await getTranslations('pricing');
+  const tNav = await getTranslations('nav');
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
 
   const plans = [
@@ -199,30 +202,12 @@ export default async function PricingPage({ params }: PricingPageProps) {
   ];
 
   const faqs = [
-    {
-      question: t('faq.q1.question'),
-      answer: t('faq.q1.answer'),
-    },
-    {
-      question: t('faq.q2.question'),
-      answer: t('faq.q2.answer'),
-    },
-    {
-      question: t('faq.q3.question'),
-      answer: t('faq.q3.answer'),
-    },
-    {
-      question: t('faq.q4.question'),
-      answer: t('faq.q4.answer'),
-    },
-    {
-      question: t('faq.q5.question'),
-      answer: t('faq.q5.answer'),
-    },
-    {
-      question: t('faq.q6.question'),
-      answer: t('faq.q6.answer'),
-    },
+    { question: t('faq.q1.question'), answer: t('faq.q1.answer') },
+    { question: t('faq.q2.question'), answer: t('faq.q2.answer') },
+    { question: t('faq.q3.question'), answer: t('faq.q3.answer') },
+    { question: t('faq.q4.question'), answer: t('faq.q4.answer') },
+    { question: t('faq.q5.question'), answer: t('faq.q5.answer') },
+    { question: t('faq.q6.question'), answer: t('faq.q6.answer') },
   ];
 
   // Schema.org Offers for pricing
@@ -230,173 +215,160 @@ export default async function PricingPage({ params }: PricingPageProps) {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Complyance AI Compliance Platform',
-    provider: {
-      '@type': 'Organization',
-      name: 'Complyance',
-    },
+    provider: { '@type': 'Organization', name: 'Complyance' },
     offers: [
-      {
-        '@type': 'Offer',
-        name: 'Free Plan',
-        price: '0',
-        priceCurrency: 'USD',
-        description: '1 AI System, EU AI Act only',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Starter Plan',
-        price: '99',
-        priceCurrency: 'USD',
-        billingPeriod: 'Monthly',
-        description: '5 AI Systems, Document Generation, 2 Vendor Assessments',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Professional Plan',
-        price: '249',
-        priceCurrency: 'USD',
-        billingPeriod: 'Monthly',
-        description:
-          '20 AI Systems, All Regulations, 10 Vendor Assessments, Evidence Vault, 3 Bias Tests/month',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Scale Plan',
-        price: '499',
-        priceCurrency: 'USD',
-        billingPeriod: 'Monthly',
-        description:
-          '50 AI Systems, Unlimited Vendors, Unlimited Bias Testing, Incident Register, CI/CD API',
-      },
+      { '@type': 'Offer', name: 'Free Plan', price: '0', priceCurrency: 'USD', description: '1 AI System, EU AI Act only' },
+      { '@type': 'Offer', name: 'Starter Plan', price: '99', priceCurrency: 'USD', billingPeriod: 'Monthly', description: '5 AI Systems, Document Generation, 2 Vendor Assessments' },
+      { '@type': 'Offer', name: 'Professional Plan', price: '249', priceCurrency: 'USD', billingPeriod: 'Monthly', description: '20 AI Systems, All Regulations, 10 Vendor Assessments, Evidence Vault, 3 Bias Tests/month' },
+      { '@type': 'Offer', name: 'Scale Plan', price: '499', priceCurrency: 'USD', billingPeriod: 'Monthly', description: '50 AI Systems, Unlimited Vendors, Unlimited Bias Testing, Incident Register, CI/CD API' },
     ],
   };
 
   return (
     <>
-      {/* Schema.org JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(offersSchema),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(offersSchema) }}
       />
 
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
-      {/* Header */}
-      <div className="border-b">
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            {t('title')}
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('subtitle')}
-          </p>
-        </div>
-      </div>
+      <div className="min-h-screen bg-white">
 
-      {/* Pricing cards */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`rounded-lg border bg-card p-6 shadow-sm transition-all hover:shadow-md ${
-                plan.popular
-                  ? 'border-primary ring-2 ring-primary ring-offset-2'
-                  : ''
-              }`}
-            >
-              {plan.popular && (
-                <div className="mb-4 inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
-                  {t('popular')}
-                </div>
-              )}
+        {/* ── HERO ─────────────────────────────────────────── */}
+        <section className="relative bg-[#0F172A] overflow-hidden pt-16">
+          <AnimatedGrid />
+          <div className="absolute top-0 start-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute bottom-0 end-0 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[80px] pointer-events-none" />
 
-              <h3 className="text-2xl font-bold">{plan.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {plan.description}
-              </p>
-
-              <div className="mt-4">
-                <span className="text-4xl font-bold">${plan.price}</span>
-                {plan.period && (
-                  <span className="text-muted-foreground">/{plan.period}</span>
-                )}
-              </div>
-
-              <div className="mt-6">
-                {plan.priceId ? (
-                  <CheckoutButton
-                    priceId={plan.priceId}
-                    planName={plan.name}
-                    className="w-full"
-                    variant={plan.popular ? 'default' : 'outline'}
-                  />
-                ) : (
-                  <Button asChild className="w-full" variant="outline">
-                    <Link href={plan.ctaLink!}>{plan.cta}</Link>
-                  </Button>
-                )}
-              </div>
-
-              <ul className="mt-6 space-y-3">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm">
-                    {feature.included ? (
-                      <Check className="h-5 w-5 shrink-0 text-primary" />
-                    ) : (
-                      <X className="h-5 w-5 shrink-0 text-muted-foreground/50" />
-                    )}
-                    <span
-                      className={
-                        feature.included
-                          ? 'text-foreground'
-                          : 'text-muted-foreground/50 line-through'
-                      }
-                    >
-                      {feature.name}
-                      {'detail' in feature && feature.detail && (
-                        <span className="block text-xs text-muted-foreground">
-                          {feature.detail}
-                        </span>
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Enterprise CTA */}
-        <div className="mt-16 rounded-lg border bg-card p-8 text-center shadow-sm">
-          <h3 className="text-2xl font-bold">{t('enterprise.title')}</h3>
-          <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
-            {t('enterprise.description')}
-          </p>
-          <Button asChild className="mt-6" size="lg">
-            <Link href="/contact">{t('enterprise.cta')}</Link>
-          </Button>
-        </div>
-      </div>
-
-      {/* FAQ */}
-      <div className="border-t bg-muted/30">
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-center text-3xl font-bold">
-            {t('faq.title')}
-          </h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            {faqs.map((faq, i) => (
-              <div key={i}>
-                <h3 className="text-lg font-semibold">{faq.question}</h3>
-                <p className="mt-2 text-muted-foreground">{faq.answer}</p>
-              </div>
-            ))}
+          <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <p className="text-xs font-bold tracking-widest uppercase text-emerald-400 font-mono mb-6">
+              {tNav('pricing')}
+            </p>
+            <h1 className="text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.05] mb-6">
+              {t('title')}
+            </h1>
+            <p className="text-lg text-white/50 leading-relaxed max-w-xl mx-auto">
+              {t('subtitle')}
+            </p>
           </div>
-        </div>
+        </section>
+
+        {/* ── PRICING CARDS ────────────────────────────────── */}
+        <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {plans.map((plan) => (
+                <div
+                  key={plan.name}
+                  className={`relative rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1 flex flex-col
+                    ${plan.popular
+                      ? 'bg-white border-emerald-400 shadow-xl shadow-emerald-100 ring-1 ring-emerald-400/20 -translate-y-2 scale-[1.02]'
+                      : 'bg-gray-50 border-gray-200 hover:border-emerald-200 hover:shadow-lg'
+                    }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-3.5 start-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[10px] font-bold px-4 py-1 rounded-full font-mono uppercase tracking-wider whitespace-nowrap">
+                      {t('popular')}
+                    </div>
+                  )}
+
+                  <div className="mb-6">
+                    <p className="text-xs font-bold tracking-widest uppercase text-gray-400 font-mono mb-2">
+                      {plan.name}
+                    </p>
+                    <p className="text-sm text-gray-500 min-h-[2.5rem]">{plan.description}</p>
+                  </div>
+
+                  <div className="flex items-baseline gap-1 mb-6">
+                    <span className="text-5xl font-black text-gray-900 tracking-tight">${plan.price}</span>
+                    {plan.period && (
+                      <span className="text-sm text-gray-400">/{plan.period}</span>
+                    )}
+                  </div>
+
+                  <div className="mb-6">
+                    {plan.priceId ? (
+                      <CheckoutButton
+                        priceId={plan.priceId}
+                        planName={plan.name}
+                        className={`w-full rounded-xl font-bold py-3 transition-all duration-200 ${
+                          plan.popular
+                            ? 'bg-emerald-500 hover:bg-emerald-400 text-white shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40'
+                            : ''
+                        }`}
+                        variant={plan.popular ? 'default' : 'outline'}
+                      />
+                    ) : (
+                      <Button
+                        asChild
+                        className="w-full rounded-xl font-bold py-3 border border-gray-300 hover:border-emerald-400 text-gray-700 hover:text-emerald-700 bg-transparent hover:bg-transparent"
+                        variant="outline"
+                      >
+                        <Link href={plan.ctaLink!}>{plan.cta}</Link>
+                      </Button>
+                    )}
+                  </div>
+
+                  <ul className="space-y-3 flex-1">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm">
+                        {feature.included ? (
+                          <Check className="h-4 w-4 shrink-0 text-emerald-500 mt-0.5" />
+                        ) : (
+                          <X className="h-4 w-4 shrink-0 text-gray-300 mt-0.5" />
+                        )}
+                        <span className={feature.included ? 'text-gray-700' : 'text-gray-300 line-through'}>
+                          {feature.name}
+                          {'detail' in feature && feature.detail && (
+                            <span className="block text-xs text-emerald-600 font-medium not-italic">
+                              {feature.detail}
+                            </span>
+                          )}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── ENTERPRISE ───────────────────────────────────── */}
+        <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 border-y border-gray-100">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-xs font-bold tracking-widest uppercase text-emerald-700 font-mono mb-4">
+              Enterprise
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
+              {t('enterprise.title')}
+            </h2>
+            <p className="text-gray-500 mb-8 max-w-xl mx-auto">
+              {t('enterprise.description')}
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-gray-300 hover:border-emerald-400 text-gray-700 hover:text-emerald-700 font-bold rounded-xl transition-all duration-200"
+            >
+              {t('enterprise.cta')} →
+            </Link>
+          </div>
+        </section>
+
+        {/* ── FAQ ──────────────────────────────────────────── */}
+        <section className="bg-[#0F172A] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_800px_400px_at_50%_100%,rgba(16,185,129,0.08),transparent)] pointer-events-none" />
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <div className="text-center mb-4">
+              <p className="text-xs font-bold tracking-widest uppercase text-emerald-400 font-mono mb-4">FAQ</p>
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                {t('faq.title')}
+              </h2>
+            </div>
+            <PricingFAQ faqs={faqs} />
+          </div>
+        </section>
+
       </div>
-    </div>
     </>
   );
 }
