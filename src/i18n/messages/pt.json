@@ -2116,7 +2116,13 @@
     "failed": "Falha na geração",
     "noReports": "Ainda não há relatórios",
     "noReportsDescription": "Gere relatórios a partir dos seus sistemas de IA para os ver aqui",
-    "goToSystems": "Ir para Sistemas de IA"
+    "goToSystems": "Ir para Sistemas de IA",
+    "table": {
+      "document": "Documento",
+      "type": "Tipo",
+      "status": "Status",
+      "generated": "Gerado"
+    }
   },
   "admin": {
     "updates": {

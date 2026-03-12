@@ -407,7 +407,13 @@
     "failed": "Generation failed",
     "noReports": "No Reports Yet",
     "noReportsDescription": "Generate reports from your AI systems to see them here",
-    "goToSystems": "Go to AI Systems"
+    "goToSystems": "Go to AI Systems",
+    "table": {
+      "document": "Document",
+      "type": "Type",
+      "status": "Status",
+      "generated": "Generated"
+    }
   },
   "marketing": {
     "tagline": "AI Compliance Management for SMBs",

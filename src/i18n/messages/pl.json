@@ -2087,7 +2087,13 @@
     "failed": "Generowanie nie powiodło się",
     "noReports": "Jeszcze brak raportów",
     "noReportsDescription": "Generuj raporty ze swoich systemów AI, aby je tutaj zobaczyć",
-    "goToSystems": "Przejdź do systemów AI"
+    "goToSystems": "Przejdź do systemów AI",
+    "table": {
+      "document": "Dokument",
+      "type": "Typ",
+      "status": "Status",
+      "generated": "Wygenerowano"
+    }
   },
   "admin": {
     "updates": {

@@ -2084,7 +2084,13 @@
     "failed": "Generierung fehlgeschlagen",
     "noReports": "Noch keine Berichte",
     "noReportsDescription": "Generieren Sie Berichte aus Ihren KI-Systemen, um sie hier zu sehen",
-    "goToSystems": "Zu KI-Systemen"
+    "goToSystems": "Zu KI-Systemen",
+    "table": {
+      "document": "Dokument",
+      "type": "Typ",
+      "status": "Status",
+      "generated": "Erstellt"
+    }
   },
   "admin": {
     "updates": {

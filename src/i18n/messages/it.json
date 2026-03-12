@@ -2127,7 +2127,13 @@
     "failed": "Generazione fallita",
     "noReports": "Ancora nessun rapporto",
     "noReportsDescription": "Genera rapporti dai tuoi sistemi AI per vederli qui",
-    "goToSystems": "Vai ai sistemi AI"
+    "goToSystems": "Vai ai sistemi AI",
+    "table": {
+      "document": "Documento",
+      "type": "Tipo",
+      "status": "Stato",
+      "generated": "Generato"
+    }
   },
   "admin": {
     "updates": {

@@ -407,7 +407,13 @@
     "failed": "Échec de la génération",
     "noReports": "Aucun rapport pour le moment",
     "noReportsDescription": "Générez des rapports à partir de vos systèmes IA pour les voir ici",
-    "goToSystems": "Aller aux systèmes IA"
+    "goToSystems": "Aller aux systèmes IA",
+    "table": {
+      "document": "Document",
+      "type": "Type",
+      "status": "Statut",
+      "generated": "Généré"
+    }
   },
   "marketing": {
     "tagline": "Gestion de la conformité IA pour les PME",
