@@ -46,11 +46,13 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
   setRequestLocale(locale);
   const t = await getTranslations('blog');
 
+  // Fall back to English posts if no posts exist for the current locale
   let posts = getAllPosts(locale);
+  if (posts.length === 0) posts = getAllPosts('en');
   if (selectedTag) {
     posts = posts.filter((post) => post.frontmatter.tags.includes(selectedTag));
   }
-  const allTags = getAllTags(locale);
+  const allTags = getAllTags(locale).length > 0 ? getAllTags(locale) : getAllTags('en');
 
   return (
     <div className="relative min-h-screen bg-[#0F172A] overflow-hidden">
