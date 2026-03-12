@@ -17,7 +17,7 @@ function getRiskBadgeClasses(riskLevel: RiskLevel | null) {
     case 'LIMITED':
       return 'bg-amber-400/10 text-amber-400 border border-amber-400/20';
     case 'MINIMAL':
-      return 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20';
+      return 'bg-green-400/10 text-green-400 border border-green-400/20';
     default:
       return 'bg-slate-700/50 text-slate-400 border border-slate-600/50';
   }
@@ -94,7 +94,7 @@ export default function SystemsPage() {
           </Link>
         </div>
       ) : (
-        <div className="rounded-xl border border-slate-700/50 bg-slate-800/40 overflow-hidden">
+        <div className="rounded-xl border border-slate-600/60 bg-slate-800/60 overflow-hidden">
           {/* Table header */}
           <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_auto] gap-4 px-5 py-3 border-b border-slate-700/50 bg-slate-800/60">
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('table.name')}</div>
