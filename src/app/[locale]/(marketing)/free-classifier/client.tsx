@@ -254,29 +254,38 @@ export function FreeClassifierClient() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-[#0F172A]">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white">
-        <div className="mx-auto max-w-4xl px-4 py-12 text-center sm:px-6 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-blue-500/30 px-4 py-2 text-sm font-medium">
+      <div className="relative overflow-hidden">
+        {/* Grid */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(16,185,129,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.5) 1px, transparent 1px)`,
+            backgroundSize: '64px 64px',
+          }}
+        />
+        <div className="absolute top-0 start-1/4 w-[500px] h-[500px] bg-emerald-500/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400 font-mono">
             <Sparkles className="h-4 w-4" />
             {t('badge')}
           </div>
-          <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
             {t('title')}
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-blue-100">
+          <p className="mx-auto max-w-2xl text-lg text-white/50">
             {t('subtitle')}
           </p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
         {/* Progress Bar (hidden on results) */}
         {currentStep < 5 && (
           <div className="mb-8 space-y-2">
-            <div className="flex justify-between text-sm text-muted-foreground">
+            <div className="flex justify-between text-sm text-white/40">
               <span>
                 {t('stepIndicator', { current: currentStep, total: 4 })}
               </span>
@@ -632,7 +641,7 @@ export function FreeClassifierClient() {
                           key={index}
                           className="flex items-start gap-2 text-sm"
                         >
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
                           <span>{obligation}</span>
                         </li>
                       ))}
@@ -641,7 +650,7 @@ export function FreeClassifierClient() {
                 )}
 
                 {/* CTA Section */}
-                <div className="rounded-xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white p-6">
+                <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-6">
                   <h3 className="mb-2 text-xl font-bold text-gray-900">
                     {t('cta.title')}
                   </h3>
@@ -660,7 +669,7 @@ export function FreeClassifierClient() {
                         key={index}
                         className="flex items-center gap-2 text-sm"
                       >
-                        <Icon className="h-4 w-4 text-blue-600" />
+                        <Icon className="h-4 w-4 text-emerald-600" />
                         <span>{text}</span>
                       </li>
                     ))}
@@ -744,10 +753,10 @@ export function FreeClassifierClient() {
         {/* SEO Content */}
         <div className="mt-12 space-y-8 text-center">
           <div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900">
+            <h2 className="mb-4 text-2xl font-bold text-white">
               {t('seo.whatIsTitle')}
             </h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-white/50">
               {t('seo.whatIsContent')}
             </p>
           </div>
@@ -767,9 +776,9 @@ export function FreeClassifierClient() {
                 description: t('seo.benefits.accurate.description'),
               },
             ].map((benefit, index) => (
-              <div key={index} className="rounded-lg border bg-white p-6">
-                <h3 className="mb-2 font-semibold">{benefit.title}</h3>
-                <p className="text-sm text-muted-foreground">
+              <div key={index} className="rounded-xl border border-white/10 bg-white/5 p-6">
+                <h3 className="mb-2 font-semibold text-white">{benefit.title}</h3>
+                <p className="text-sm text-white/50">
                   {benefit.description}
                 </p>
               </div>
