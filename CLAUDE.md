@@ -10,6 +10,48 @@ Self-serve SaaS for AI compliance management. Target: SMB/SaaS companies selling
 
 ---
 
+## Working Mode
+
+- **One task at a time** — do NOT refactor unrelated code while working
+- **Ask before touching** — if a change affects >3 files, confirm first
+- **Small steps** — complete one logical change, then stop and report
+- **Never rewrite** — prefer minimal targeted edits over full rewrites
+- **Stop and ask** if task requires reading >10 files
+- **No surprises** — if you see something broken unrelated to the task, mention it but do NOT fix it
+
+---
+
+## Do NOT Touch (unless explicitly asked)
+
+- `src/i18n/messages/` — translation files (only the locale specified in task)
+- `prisma/schema.prisma` — DB schema changes require explicit approval
+- `package.json` — no new dependencies without asking
+- `docs/` — read-only reference, never modify
+- Any file not directly related to the current task
+
+---
+
+## Context Loading Order
+
+When starting any task, read ONLY:
+1. This file (CLAUDE.md)
+2. The specific file(s) mentioned in the task
+3. Related router/service only if directly needed
+
+Do NOT proactively read all docs/ files. Do NOT scan the entire project structure unless asked.
+
+---
+
+## Definition of Done
+
+A task is complete when:
+- TypeScript: 0 errors (`pnpm tsc --noEmit`)
+- All 7 locales updated if any UI strings were added
+- No `console.log` left in code
+- Report exact list of changed files at the end
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
