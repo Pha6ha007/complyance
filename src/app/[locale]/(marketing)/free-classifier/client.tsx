@@ -254,7 +254,7 @@ export function FreeClassifierClient() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a3a5c]">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         {/* Grid */}
@@ -274,7 +274,7 @@ export function FreeClassifierClient() {
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
             {t('title')}
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-white/50">
+          <p className="mx-auto max-w-2xl text-lg text-white/70">
             {t('subtitle')}
           </p>
         </div>
@@ -285,7 +285,7 @@ export function FreeClassifierClient() {
         {/* Progress Bar (hidden on results) */}
         {currentStep < 5 && (
           <div className="mb-8 space-y-2">
-            <div className="flex justify-between text-sm text-white/40">
+            <div className="flex justify-between text-sm font-medium text-white/80">
               <span>
                 {t('stepIndicator', { current: currentStep, total: 4 })}
               </span>
@@ -295,7 +295,7 @@ export function FreeClassifierClient() {
           </div>
         )}
 
-        <Card className="shadow-lg">
+        <Card className="shadow-[0_30px_80px_-10px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.12)] bg-white">
           <CardHeader>
             <CardTitle>
               {currentStep === 1 && t('steps.step1.title')}
@@ -756,7 +756,7 @@ export function FreeClassifierClient() {
             <h2 className="mb-4 text-2xl font-bold text-white">
               {t('seo.whatIsTitle')}
             </h2>
-            <p className="mx-auto max-w-2xl text-white/50">
+            <p className="mx-auto max-w-2xl text-white/70">
               {t('seo.whatIsContent')}
             </p>
           </div>
@@ -776,9 +776,9 @@ export function FreeClassifierClient() {
                 description: t('seo.benefits.accurate.description'),
               },
             ].map((benefit, index) => (
-              <div key={index} className="rounded-xl border border-white/10 bg-white/5 p-6">
+              <div key={index} className="rounded-xl border border-white/25 bg-white/12 p-6 shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)] backdrop-blur-sm">
                 <h3 className="mb-2 font-semibold text-white">{benefit.title}</h3>
-                <p className="text-sm text-white/50">
+                <p className="text-sm text-white/65">
                   {benefit.description}
                 </p>
               </div>
