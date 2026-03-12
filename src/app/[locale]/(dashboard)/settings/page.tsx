@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
-import { trpc } from '@/lib/trpc/client';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -24,7 +23,6 @@ export default function SettingsPage() {
   const tCommon = useTranslations('common');
   const router = useRouter();
 
-  // Placeholder data - in real app this would come from tRPC
   const [name, setName] = useState('Pavel');
   const [email, setEmail] = useState('g.pavel336@gmail.com');
   const [organizationName, setOrganizationName] = useState('My Organization');
@@ -32,215 +30,206 @@ export default function SettingsPage() {
 
   const handleSaveProfile = () => {
     // TODO: Implement with tRPC
-    console.log('Save profile');
   };
 
   const handleSaveOrganization = () => {
     // TODO: Implement with tRPC
-    console.log('Save organization');
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold">{t('title')}</h1>
-        <p className="text-muted-foreground">{t('subtitle')}</p>
+        <h1 className="text-2xl font-bold text-white">{t('title')}</h1>
+        <p className="text-slate-400 mt-1">{t('subtitle')}</p>
       </div>
 
       {/* Profile Settings */}
-      <Card className="p-6">
+      <div className="rounded-xl border border-slate-600/60 bg-slate-800/60 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-            <User className="h-5 w-5 text-primary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-700/60 border border-slate-600/50">
+            <User className="h-5 w-5 text-slate-300" />
           </div>
           <div>
-            <h2 className="text-xl font-semibold">{t('profile')}</h2>
-            <p className="text-sm text-muted-foreground">
-              {t('profileDescription')}
-            </p>
+            <h2 className="text-lg font-semibold text-white">{t('profile')}</h2>
+            <p className="text-sm text-slate-400">{t('profileDescription')}</p>
           </div>
         </div>
 
         <div className="space-y-4">
           <div className="grid gap-2">
-            <Label htmlFor="name">{t('name')}</Label>
+            <Label htmlFor="name" className="text-slate-300">{t('name')}</Label>
             <Input
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder={t('namePlaceholder')}
+              className="bg-slate-700/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500/50"
             />
           </div>
 
           <div className="grid gap-2">
-            <Label htmlFor="email">{t('email')}</Label>
+            <Label htmlFor="email" className="text-slate-300">{t('email')}</Label>
             <Input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t('emailPlaceholder')}
+              className="bg-slate-700/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500/50"
             />
           </div>
 
-          <Button onClick={handleSaveProfile}>{tCommon('save')}</Button>
+          <button
+            onClick={handleSaveProfile}
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.25)] hover:bg-emerald-400 transition-colors"
+          >
+            {tCommon('save')}
+          </button>
         </div>
-      </Card>
+      </div>
 
       {/* Organization Settings */}
-      <Card className="p-6">
+      <div className="rounded-xl border border-slate-600/60 bg-slate-800/60 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-            <Building2 className="h-5 w-5 text-primary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-700/60 border border-slate-600/50">
+            <Building2 className="h-5 w-5 text-slate-300" />
           </div>
           <div>
-            <h2 className="text-xl font-semibold">{t('organization')}</h2>
-            <p className="text-sm text-muted-foreground">
-              {t('organizationDescription')}
-            </p>
+            <h2 className="text-lg font-semibold text-white">{t('organization')}</h2>
+            <p className="text-sm text-slate-400">{t('organizationDescription')}</p>
           </div>
         </div>
 
         <div className="space-y-4">
           <div className="grid gap-2">
-            <Label htmlFor="orgName">{t('organizationName')}</Label>
+            <Label htmlFor="orgName" className="text-slate-300">{t('organizationName')}</Label>
             <Input
               id="orgName"
               value={organizationName}
               onChange={(e) => setOrganizationName(e.target.value)}
               placeholder={t('organizationNamePlaceholder')}
+              className="bg-slate-700/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500/50"
             />
           </div>
 
           <div className="grid gap-2">
-            <Label>{t('language')}</Label>
-            <div className="flex items-center gap-2">
-              <Globe className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm">English</span>
+            <Label className="text-slate-300">{t('language')}</Label>
+            <div className="flex items-center gap-2 rounded-lg border border-slate-600/60 bg-slate-700/30 px-3 py-2">
+              <Globe className="h-4 w-4 text-slate-400" />
+              <span className="text-sm text-slate-300">English</span>
             </div>
-            <p className="text-xs text-muted-foreground">
-              {t('languageDescription')}
-            </p>
+            <p className="text-xs text-slate-500">{t('languageDescription')}</p>
           </div>
 
-          <Button onClick={handleSaveOrganization}>{tCommon('save')}</Button>
+          <button
+            onClick={handleSaveOrganization}
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.25)] hover:bg-emerald-400 transition-colors"
+          >
+            {tCommon('save')}
+          </button>
         </div>
-      </Card>
+      </div>
 
       {/* Subscription */}
-      <Card className="p-6">
+      <div className="rounded-xl border border-slate-600/60 bg-slate-800/60 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-            <CreditCard className="h-5 w-5 text-primary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-700/60 border border-slate-600/50">
+            <CreditCard className="h-5 w-5 text-slate-300" />
           </div>
           <div className="flex-1">
-            <h2 className="text-xl font-semibold">{t('subscription')}</h2>
-            <p className="text-sm text-muted-foreground">
-              {t('subscriptionDescription')}
-            </p>
+            <h2 className="text-lg font-semibold text-white">{t('subscription')}</h2>
+            <p className="text-sm text-slate-400">{t('subscriptionDescription')}</p>
           </div>
-          <Badge>Free Plan</Badge>
+          <span className="inline-flex items-center rounded-md bg-slate-700/50 border border-slate-600/50 px-2.5 py-0.5 text-xs font-medium text-slate-300">
+            Free Plan
+          </span>
         </div>
 
-        <div className="space-y-4">
-          <div className="rounded-lg border p-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-medium">{t('currentPlan')}</span>
-              <Badge variant="outline">Free</Badge>
-            </div>
-            <p className="text-sm text-muted-foreground mb-4">
-              {t('freePlanDescription')}
-            </p>
-            <Button onClick={() => router.push('/pricing')}>
-              {t('upgradePlan')}
-            </Button>
+        <div className="rounded-lg border border-slate-700/60 bg-slate-700/20 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <span className="font-medium text-white">{t('currentPlan')}</span>
+            <span className="inline-flex items-center rounded-md bg-slate-700/50 border border-slate-600/50 px-2 py-0.5 text-xs font-medium text-slate-400">
+              Free
+            </span>
           </div>
+          <p className="text-sm text-slate-400 mb-4">{t('freePlanDescription')}</p>
+          <button
+            onClick={() => router.push('/pricing')}
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.25)] hover:bg-emerald-400 transition-colors"
+          >
+            {t('upgradePlan')}
+          </button>
         </div>
-      </Card>
+      </div>
 
       {/* Notifications */}
-      <Card className="p-6">
+      <div className="rounded-xl border border-slate-600/60 bg-slate-800/60 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-            <Bell className="h-5 w-5 text-primary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-700/60 border border-slate-600/50">
+            <Bell className="h-5 w-5 text-slate-300" />
           </div>
           <div>
-            <h2 className="text-xl font-semibold">{t('notifications')}</h2>
-            <p className="text-sm text-muted-foreground">
-              {t('notificationsDescription')}
-            </p>
+            <h2 className="text-lg font-semibold text-white">{t('notifications')}</h2>
+            <p className="text-sm text-slate-400">{t('notificationsDescription')}</p>
           </div>
         </div>
 
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="font-medium">{t('emailNotifications')}</div>
-              <p className="text-sm text-muted-foreground">
-                {t('emailNotificationsDescription')}
-              </p>
-            </div>
-            <Button
-              variant={notifications ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setNotifications(!notifications)}
-            >
-              {notifications ? t('enabled') : t('disabled')}
-            </Button>
+        <div className="flex items-center justify-between rounded-lg border border-slate-700/60 bg-slate-700/20 p-4">
+          <div>
+            <div className="font-medium text-white">{t('emailNotifications')}</div>
+            <p className="text-sm text-slate-400 mt-0.5">{t('emailNotificationsDescription')}</p>
           </div>
+          <button
+            onClick={() => setNotifications(!notifications)}
+            className={`inline-flex items-center rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
+              notifications
+                ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20'
+                : 'bg-slate-700/50 border border-slate-600/50 text-slate-400 hover:bg-slate-700'
+            }`}
+          >
+            {notifications ? t('enabled') : t('disabled')}
+          </button>
         </div>
-      </Card>
+      </div>
 
       {/* Security */}
-      <Card className="p-6">
+      <div className="rounded-xl border border-slate-600/60 bg-slate-800/60 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-            <Shield className="h-5 w-5 text-primary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-700/60 border border-slate-600/50">
+            <Shield className="h-5 w-5 text-slate-300" />
           </div>
           <div>
-            <h2 className="text-xl font-semibold">{t('security')}</h2>
-            <p className="text-sm text-muted-foreground">
-              {t('securityDescription')}
-            </p>
+            <h2 className="text-lg font-semibold text-white">{t('security')}</h2>
+            <p className="text-sm text-slate-400">{t('securityDescription')}</p>
           </div>
         </div>
 
-        <div className="space-y-4">
-          <Button variant="outline">{t('changePassword')}</Button>
-        </div>
-      </Card>
+        <button className="inline-flex items-center gap-2 rounded-lg bg-slate-700/50 border border-slate-600/50 px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">
+          {t('changePassword')}
+        </button>
+      </div>
 
       {/* Danger Zone */}
-      <Card className="border-red-200 p-6">
+      <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100">
-            <Trash2 className="h-5 w-5 text-red-600" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20">
+            <Trash2 className="h-5 w-5 text-red-400" />
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-red-600">
-              {t('dangerZone')}
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              {t('dangerZoneDescription')}
-            </p>
+            <h2 className="text-lg font-semibold text-red-400">{t('dangerZone')}</h2>
+            <p className="text-sm text-slate-400">{t('dangerZoneDescription')}</p>
           </div>
         </div>
 
-        <div className="space-y-4">
-          <div className="rounded-lg border border-red-200 bg-red-50 p-4">
-            <div className="font-medium text-red-900 mb-2">
-              {t('deleteAccount')}
-            </div>
-            <p className="text-sm text-red-700 mb-4">
-              {t('deleteAccountDescription')}
-            </p>
-            <Button variant="destructive" size="sm">
-              {t('deleteAccountButton')}
-            </Button>
-          </div>
+        <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-4">
+          <div className="font-medium text-red-300 mb-2">{t('deleteAccount')}</div>
+          <p className="text-sm text-slate-400 mb-4">{t('deleteAccountDescription')}</p>
+          <button className="inline-flex items-center gap-2 rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-2 text-sm font-semibold text-red-400 hover:bg-red-500/20 transition-colors">
+            {t('deleteAccountButton')}
+          </button>
         </div>
-      </Card>
+      </div>
     </div>
   );
 }
