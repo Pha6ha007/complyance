@@ -5,10 +5,6 @@ import { useParams } from 'next/navigation';
 import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { trpc } from '@/lib/trpc/client';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Progress } from '@/components/ui/progress';
 import {
   Select,
@@ -20,27 +16,38 @@ import {
 import { ArrowLeft, AlertCircle, CheckCircle2, Clock, Circle } from 'lucide-react';
 import { GapStatus, Priority } from '@prisma/client';
 
-function getPriorityBadgeVariant(priority: Priority) {
+function getPriorityBadgeClasses(priority: Priority): string {
   switch (priority) {
     case 'CRITICAL':
-      return 'destructive';
+      return 'bg-red-500/10 text-red-400 border border-red-500/20';
     case 'HIGH':
-      return 'default';
+      return 'bg-orange-500/10 text-orange-400 border border-orange-500/20';
     case 'MEDIUM':
-      return 'secondary';
+      return 'bg-amber-400/10 text-amber-400 border border-amber-400/20';
     case 'LOW':
-      return 'outline';
+      return 'bg-slate-700/50 text-slate-400 border border-slate-600/50';
+  }
+}
+
+function getStatusBadgeClasses(status: GapStatus): string {
+  switch (status) {
+    case 'COMPLETED':
+      return 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20';
+    case 'IN_PROGRESS':
+      return 'bg-amber-400/10 text-amber-400 border border-amber-400/20';
+    case 'NOT_STARTED':
+      return 'bg-slate-700/50 text-slate-400 border border-slate-600/50';
   }
 }
 
 function getStatusIcon(status: GapStatus) {
   switch (status) {
     case 'COMPLETED':
-      return <CheckCircle2 className="h-5 w-5 text-green-600" />;
+      return <CheckCircle2 className="h-5 w-5 text-emerald-400" />;
     case 'IN_PROGRESS':
-      return <Clock className="h-5 w-5 text-yellow-600" />;
+      return <Clock className="h-5 w-5 text-amber-400" />;
     case 'NOT_STARTED':
-      return <Circle className="h-5 w-5 text-gray-400" />;
+      return <Circle className="h-5 w-5 text-slate-500" />;
   }
 }
 
@@ -93,7 +100,7 @@ export default function GapsPage() {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <div className="text-lg font-medium">{tCommon('loading')}</div>
+          <div className="text-lg font-medium text-slate-300">{tCommon('loading')}</div>
         </div>
       </div>
     );
@@ -103,31 +110,30 @@ export default function GapsPage() {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <AlertCircle className="mx-auto h-12 w-12 text-destructive" />
-          <div className="mt-4 text-lg font-medium">{tCommon('error')}</div>
-          <div className="text-sm text-muted-foreground">{error.message}</div>
+          <AlertCircle className="mx-auto h-12 w-12 text-red-400" />
+          <div className="mt-4 text-lg font-medium text-white">{tCommon('error')}</div>
+          <div className="text-sm text-slate-400">{error.message}</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
       {/* Header */}
       <div>
-        <Button
-          variant="ghost"
-          size="sm"
+        <button
           onClick={() => router.push(`/systems/${systemId}`)}
+          className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
         >
-          <ArrowLeft className="me-2 h-4 w-4" />
+          <ArrowLeft className="h-4 w-4" />
           {t('backToSystem')}
-        </Button>
+        </button>
 
         <div className="mt-4">
-          <h1 className="text-3xl font-bold">{t('title')}</h1>
+          <h1 className="text-2xl font-bold text-white">{t('title')}</h1>
           {system && (
-            <p className="mt-1 text-muted-foreground">
+            <p className="mt-1 text-slate-400">
               {t('subtitle')} {system.name}
             </p>
           )}
@@ -135,25 +141,25 @@ export default function GapsPage() {
       </div>
 
       {/* Progress card */}
-      <Card className="p-6">
+      <div className="rounded-xl bg-slate-800/60 border border-slate-600/60 p-6">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-sm font-medium text-muted-foreground">
+              <div className="text-sm font-medium text-slate-400">
                 {t('overallProgress')}
               </div>
-              <div className="mt-1 text-2xl font-bold">
+              <div className="mt-1 text-2xl font-bold text-white">
                 {completedGaps} {t('of')} {totalGaps} {t('completed')}
               </div>
             </div>
             <div className="text-end">
-              <div className="text-3xl font-bold">{Math.round(progressPercentage)}%</div>
-              <div className="text-sm text-muted-foreground">{t('complete')}</div>
+              <div className="text-3xl font-bold text-emerald-400">{Math.round(progressPercentage)}%</div>
+              <div className="text-sm text-slate-400">{t('complete')}</div>
             </div>
           </div>
           <Progress value={progressPercentage} className="h-3" />
         </div>
-      </Card>
+      </div>
 
       {/* Filters */}
       <div className="flex gap-4">
@@ -162,10 +168,10 @@ export default function GapsPage() {
             value={statusFilter}
             onValueChange={(value) => setStatusFilter(value as GapStatus | 'ALL')}
           >
-            <SelectTrigger>
+            <SelectTrigger className="bg-slate-800/60 border-slate-600/60 text-slate-300">
               <SelectValue placeholder={t('filterByStatus')} />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-slate-800 border-slate-700">
               <SelectItem value="ALL">{t('allStatuses')}</SelectItem>
               <SelectItem value="NOT_STARTED">{t('notStarted')}</SelectItem>
               <SelectItem value="IN_PROGRESS">{t('inProgress')}</SelectItem>
@@ -179,10 +185,10 @@ export default function GapsPage() {
             value={priorityFilter}
             onValueChange={(value) => setPriorityFilter(value as Priority | 'ALL')}
           >
-            <SelectTrigger>
+            <SelectTrigger className="bg-slate-800/60 border-slate-600/60 text-slate-300">
               <SelectValue placeholder={t('filterByPriority')} />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-slate-800 border-slate-700">
               <SelectItem value="ALL">{t('allPriorities')}</SelectItem>
               <SelectItem value="CRITICAL">{t('critical')}</SelectItem>
               <SelectItem value="HIGH">{t('high')}</SelectItem>
@@ -197,14 +203,14 @@ export default function GapsPage() {
       <div className="space-y-3">
         {gaps && gaps.length > 0 ? (
           gaps.map((gap) => (
-            <Card
+            <div
               key={gap.id}
-              className={`p-4 transition-all ${
+              className={`rounded-xl bg-slate-800/50 border border-slate-700/50 p-4 transition-all ${
                 gap.status === 'COMPLETED' ? 'opacity-60' : ''
               }`}
             >
               <div className="flex items-start gap-4">
-                {/* Status checkbox */}
+                {/* Status toggle */}
                 <button
                   onClick={() => handleStatusToggle(gap.id, gap.status)}
                   className="mt-1 flex-shrink-0"
@@ -218,42 +224,34 @@ export default function GapsPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-medium">{gap.article}</span>
-                        <Badge variant={getPriorityBadgeVariant(gap.priority)}>
+                        <span className="font-medium text-white">{gap.article}</span>
+                        <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium ${getPriorityBadgeClasses(gap.priority)}`}>
                           {gap.priority}
-                        </Badge>
+                        </span>
                       </div>
-                      <p className="mt-1 text-sm text-muted-foreground">
+                      <p className="mt-1 text-sm text-slate-400">
                         {gap.requirement}
                       </p>
                     </div>
 
-                    <Badge
-                      variant={
-                        gap.status === 'COMPLETED'
-                          ? 'default'
-                          : gap.status === 'IN_PROGRESS'
-                            ? 'secondary'
-                            : 'outline'
-                      }
-                    >
+                    <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium whitespace-nowrap ${getStatusBadgeClasses(gap.status)}`}>
                       {gap.status === 'COMPLETED'
                         ? t('completed')
                         : gap.status === 'IN_PROGRESS'
                           ? t('inProgress')
                           : t('notStarted')}
-                    </Badge>
+                    </span>
                   </div>
 
                   {gap.notes && (
-                    <div className="rounded-md bg-muted p-2 text-sm">
-                      <span className="font-medium">{t('notes')}: </span>
+                    <div className="rounded-lg bg-slate-700/50 p-2 text-sm text-slate-300">
+                      <span className="font-medium text-slate-200">{t('notes')}: </span>
                       {gap.notes}
                     </div>
                   )}
 
                   {gap.dueDate && (
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-xs text-slate-500">
                       {t('dueDate')}:{' '}
                       {new Date(gap.dueDate).toLocaleDateString(locale, {
                         year: 'numeric',
@@ -264,14 +262,14 @@ export default function GapsPage() {
                   )}
                 </div>
               </div>
-            </Card>
+            </div>
           ))
         ) : (
-          <Card className="p-8 text-center">
-            <CheckCircle2 className="mx-auto h-12 w-12 text-green-600" />
-            <div className="mt-4 text-lg font-medium">{t('noGaps')}</div>
-            <div className="text-sm text-muted-foreground">{t('noGapsDescription')}</div>
-          </Card>
+          <div className="rounded-xl bg-slate-800/50 border border-slate-700/50 p-8 text-center">
+            <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-400" />
+            <div className="mt-4 text-lg font-medium text-white">{t('noGaps')}</div>
+            <div className="text-sm text-slate-400">{t('noGapsDescription')}</div>
+          </div>
         )}
       </div>
     </div>

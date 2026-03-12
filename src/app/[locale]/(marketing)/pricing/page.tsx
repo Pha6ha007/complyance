@@ -238,12 +238,13 @@ export default async function PricingPage({ params }: PricingPageProps) {
           <AnimatedGrid />
           <div className="absolute top-0 start-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none" />
           <div className="absolute bottom-0 end-0 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_700px_350px_at_50%_58%,rgba(16,185,129,0.13),transparent)] pointer-events-none" />
 
           <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
             <p className="text-xs font-bold tracking-widest uppercase text-emerald-400 font-mono mb-6">
               {tNav('pricing')}
             </p>
-            <h1 className="text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.05] mb-6">
+            <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] mb-6 bg-gradient-to-r from-white via-white to-emerald-400 bg-clip-text text-transparent">
               {t('title')}
             </h1>
             <p className="text-lg text-white/50 leading-relaxed max-w-xl mx-auto">

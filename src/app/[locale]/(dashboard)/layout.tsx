@@ -15,7 +15,7 @@ export default function DashboardLayout({ children, params }: DashboardLayoutPro
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen" style={{ zoom: 0.85 }}>
       {/* Sidebar */}
       <Sidebar
         locale={params.locale}
@@ -27,7 +27,7 @@ export default function DashboardLayout({ children, params }: DashboardLayoutPro
       <div className="flex flex-1 flex-col">
         <Header onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 p-6">
+        <main className="flex-1 overflow-y-auto bg-[#0F172A] min-h-screen">
           {children}
         </main>
       </div>

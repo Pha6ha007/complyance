@@ -4,28 +4,24 @@ import { useParams } from 'next/navigation';
 import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { trpc } from '@/lib/trpc/client';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { ArrowLeft, AlertCircle, Edit, Trash2, RefreshCw, ExternalLink } from 'lucide-react';
 import { RiskLevel } from '@prisma/client';
 import { format } from 'date-fns';
 
-function getRiskBadgeVariant(riskLevel: RiskLevel | null) {
-  if (!riskLevel) return 'outline';
-
+function getRiskBadgeClasses(riskLevel: RiskLevel | null) {
+  if (!riskLevel) return 'bg-slate-700/50 text-slate-400 border border-slate-600/50';
   switch (riskLevel) {
     case 'UNACCEPTABLE':
-      return 'destructive';
+      return 'bg-red-500/10 text-red-400 border border-red-500/20';
     case 'HIGH':
-      return 'destructive';
+      return 'bg-red-400/10 text-red-400 border border-red-400/20';
     case 'LIMITED':
-      return 'default';
+      return 'bg-amber-400/10 text-amber-400 border border-amber-400/20';
     case 'MINIMAL':
-      return 'secondary';
+      return 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20';
     default:
-      return 'outline';
+      return 'bg-slate-700/50 text-slate-400 border border-slate-600/50';
   }
 }
 
@@ -38,32 +34,20 @@ export default function SystemDetailPage() {
   const tClass = useTranslations('classification');
   const tCommon = useTranslations('common');
 
-  // Fetch system
-  const { data: system, isLoading, error } = trpc.system.getById.useQuery({
-    id: systemId,
-  });
+  const { data: system, isLoading, error } = trpc.system.getById.useQuery({ id: systemId });
 
-  // Delete mutation
   const deleteMutation = trpc.system.delete.useMutation({
-    onSuccess: () => {
-      router.push('/systems');
-    },
+    onSuccess: () => { router.push('/systems'); },
   });
 
-  // Reclassify mutation
   const reclassifyMutation = trpc.classification.reclassify.useMutation({
-    onSuccess: () => {
-      // Refetch system data
-      window.location.reload();
-    },
+    onSuccess: () => { window.location.reload(); },
   });
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="text-center">
-          <div className="text-lg font-medium">{tCommon('loading')}</div>
-        </div>
+        <div className="text-lg font-medium text-slate-300">{tCommon('loading')}</div>
       </div>
     );
   }
@@ -72,51 +56,46 @@ export default function SystemDetailPage() {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <AlertCircle className="mx-auto h-12 w-12 text-destructive" />
-          <div className="mt-4 text-lg font-medium">{tCommon('error')}</div>
-          <div className="text-sm text-muted-foreground">
-            {error?.message || t('systemNotFound')}
-          </div>
-          <Button
-            variant="outline"
-            className="mt-4"
+          <AlertCircle className="mx-auto h-12 w-12 text-red-400" />
+          <div className="mt-4 text-lg font-medium text-white">{tCommon('error')}</div>
+          <div className="text-sm text-slate-400">{error?.message || t('systemNotFound')}</div>
+          <button
+            className="mt-4 inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 transition-colors"
             onClick={() => router.push('/systems')}
           >
-            <ArrowLeft className="me-2 h-4 w-4" />
+            <ArrowLeft className="h-4 w-4" />
             {t('backToSystems')}
-          </Button>
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
       {/* Header */}
       <div>
-        <Button
-          variant="ghost"
-          size="sm"
+        <button
           onClick={() => router.push('/systems')}
+          className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
         >
-          <ArrowLeft className="me-2 h-4 w-4" />
+          <ArrowLeft className="h-4 w-4" />
           {t('backToSystems')}
-        </Button>
+        </button>
 
         <div className="mt-4 flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-bold">{system.name}</h1>
-            <p className="mt-1 text-muted-foreground">{system.description}</p>
+            <h1 className="text-2xl font-bold text-white">{system.name}</h1>
+            <p className="mt-1 text-slate-400">{system.description}</p>
           </div>
 
           <div className="flex gap-2">
-            <Button variant="outline" size="sm">
-              <Edit className="me-2 h-4 w-4" />
+            <button className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-slate-300 hover:bg-slate-700 transition-colors">
+              <Edit className="h-4 w-4" />
               {tCommon('edit')}
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
+            </button>
+            <button
+              className="inline-flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm text-red-400 hover:bg-red-500/20 transition-colors disabled:opacity-50"
               onClick={() => {
                 if (confirm(t('deleteConfirm'))) {
                   deleteMutation.mutate({ id: systemId });
@@ -124,52 +103,44 @@ export default function SystemDetailPage() {
               }}
               disabled={deleteMutation.isPending}
             >
-              <Trash2 className="me-2 h-4 w-4" />
+              <Trash2 className="h-4 w-4" />
               {tCommon('delete')}
-            </Button>
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Classification Result Section */}
+      {/* Classification Result */}
       {system.riskLevel && (
-        <Card className="p-6">
+        <div className="rounded-xl bg-slate-800/60 border border-slate-600/60 p-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">{t('classificationResult')}</h2>
-            <Button
-              variant="outline"
-              size="sm"
+            <h2 className="text-lg font-semibold text-white">{t('classificationResult')}</h2>
+            <button
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-slate-300 hover:bg-slate-700 transition-colors disabled:opacity-50"
               onClick={() => reclassifyMutation.mutate({ systemId })}
               disabled={reclassifyMutation.isPending}
             >
-              <RefreshCw className={`me-2 h-4 w-4 ${reclassifyMutation.isPending ? 'animate-spin' : ''}`} />
+              <RefreshCw className={`h-4 w-4 ${reclassifyMutation.isPending ? 'animate-spin' : ''}`} />
               {t('reclassify')}
-            </Button>
+            </button>
           </div>
 
           <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {/* Risk Level Card */}
+            {/* Risk Level */}
             <div>
-              <div className="text-sm font-medium text-muted-foreground">
-                {t('riskLevel')}
-              </div>
+              <div className="text-sm text-slate-400">{t('riskLevel')}</div>
               <div className="mt-2">
-                <Badge
-                  variant={getRiskBadgeVariant(system.riskLevel)}
-                  className="text-base px-4 py-2"
-                >
+                <span className={`inline-flex items-center rounded-md px-3 py-1 text-sm font-semibold ${getRiskBadgeClasses(system.riskLevel)}`}>
                   {tClass(system.riskLevel.toLowerCase())}
-                </Badge>
+                </span>
               </div>
             </div>
 
             {/* Confidence Score */}
             {system.confidenceScore !== null && system.confidenceScore !== undefined && (
               <div>
-                <div className="text-sm font-medium text-muted-foreground">
-                  {t('confidenceScore')}
-                </div>
-                <div className="mt-2 text-2xl font-bold">
+                <div className="text-sm text-slate-400">{t('confidenceScore')}</div>
+                <div className="mt-2 text-2xl font-bold text-white">
                   {Math.round(system.confidenceScore * 100)}%
                 </div>
                 <Progress value={system.confidenceScore * 100} className="mt-2 h-2" />
@@ -179,14 +150,10 @@ export default function SystemDetailPage() {
             {/* Annex III Category */}
             {system.annexIIICategory && (
               <div>
-                <div className="text-sm font-medium text-muted-foreground">
-                  {t('annexCategory')}
-                </div>
-                <div className="mt-1 font-medium">{system.annexIIICategory}</div>
+                <div className="text-sm text-slate-400">{t('annexCategory')}</div>
+                <div className="mt-1 font-medium text-white">{system.annexIIICategory}</div>
                 {system.annexIIISubcategory && (
-                  <div className="mt-1 text-sm text-muted-foreground">
-                    {system.annexIIISubcategory}
-                  </div>
+                  <div className="mt-1 text-sm text-slate-400">{system.annexIIISubcategory}</div>
                 )}
               </div>
             )}
@@ -194,11 +161,11 @@ export default function SystemDetailPage() {
             {/* Provider/Deployer */}
             {system.providerOrDeployer && (
               <div>
-                <div className="text-sm font-medium text-muted-foreground">
-                  {t('role')}
-                </div>
+                <div className="text-sm text-slate-400">{t('role')}</div>
                 <div className="mt-1">
-                  <Badge variant="outline">{system.providerOrDeployer}</Badge>
+                  <span className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50">
+                    {system.providerOrDeployer}
+                  </span>
                 </div>
               </div>
             )}
@@ -206,13 +173,9 @@ export default function SystemDetailPage() {
             {/* Compliance Score */}
             {system.complianceScore !== null && (
               <div>
-                <div className="text-sm font-medium text-muted-foreground">
-                  {t('complianceScore')}
-                </div>
+                <div className="text-sm text-slate-400">{t('complianceScore')}</div>
                 <div className="mt-2 flex items-center gap-3">
-                  <div className="text-2xl font-bold">
-                    {system.complianceScore}%
-                  </div>
+                  <div className="text-2xl font-bold text-white">{system.complianceScore}%</div>
                   <Progress value={system.complianceScore} className="h-2 flex-1" />
                 </div>
               </div>
@@ -221,28 +184,20 @@ export default function SystemDetailPage() {
             {/* Classification Date */}
             {system.classifiedAt && (
               <div>
-                <div className="text-sm font-medium text-muted-foreground">
-                  {t('classifiedAt')}
-                </div>
-                <div className="mt-1">
-                  {format(new Date(system.classifiedAt), 'PPp')}
-                </div>
+                <div className="text-sm text-slate-400">{t('classifiedAt')}</div>
+                <div className="mt-1 text-white">{format(new Date(system.classifiedAt), 'PPp')}</div>
               </div>
             )}
           </div>
 
           {/* Exception Applied */}
           {system.exceptionApplies && system.exceptionReason && (
-            <div className="mt-4 rounded-md border border-yellow-200 bg-yellow-50 p-4">
+            <div className="mt-4 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
               <div className="flex items-start gap-2">
-                <AlertCircle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-sm font-medium text-yellow-800">
-                    {t('exceptionApplied')}
-                  </div>
-                  <div className="mt-1 text-sm text-yellow-700">
-                    {system.exceptionReason}
-                  </div>
+                  <div className="text-sm font-medium text-amber-400">{t('exceptionApplied')}</div>
+                  <div className="mt-1 text-sm text-amber-300/70">{system.exceptionReason}</div>
                 </div>
               </div>
             </div>
@@ -251,10 +206,8 @@ export default function SystemDetailPage() {
           {/* Classification Reasoning */}
           {system.classificationReasoning && (
             <div className="mt-4">
-              <div className="text-sm font-medium text-muted-foreground">
-                {t('reasoning')}
-              </div>
-              <div className="mt-2 rounded-md bg-muted p-4 text-sm">
+              <div className="text-sm text-slate-400">{t('reasoning')}</div>
+              <div className="mt-2 rounded-xl bg-slate-900/50 border border-slate-700/50 p-4 text-sm text-slate-300">
                 {system.classificationReasoning}
               </div>
             </div>
@@ -263,122 +216,103 @@ export default function SystemDetailPage() {
           {/* Link to Gaps */}
           {system.gaps.length > 0 && (
             <div className="mt-4">
-              <Button
-                variant="default"
+              <button
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors"
                 onClick={() => router.push(`/systems/${systemId}/gaps`)}
               >
                 {t('viewComplianceGaps')} ({system.gaps.length})
-                <ExternalLink className="ms-2 h-4 w-4" />
-              </Button>
+                <ExternalLink className="h-4 w-4" />
+              </button>
             </div>
           )}
-        </Card>
+        </div>
       )}
 
       {/* Not classified state */}
       {!system.riskLevel && (
-        <Card className="p-8 text-center">
-          <AlertCircle className="mx-auto h-12 w-12 text-muted-foreground" />
-          <div className="mt-4 text-lg font-medium">{t('notClassifiedYet')}</div>
-          <div className="mt-2 text-sm text-muted-foreground">
-            {t('notClassifiedDescription')}
-          </div>
-          <Button
-            className="mt-4"
+        <div className="rounded-xl bg-slate-800/60 border border-slate-600/60 p-8 text-center">
+          <AlertCircle className="mx-auto h-12 w-12 text-slate-500" />
+          <div className="mt-4 text-lg font-medium text-white">{t('notClassifiedYet')}</div>
+          <div className="mt-2 text-sm text-slate-400">{t('notClassifiedDescription')}</div>
+          <button
+            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors disabled:opacity-50"
             onClick={() => reclassifyMutation.mutate({ systemId })}
             disabled={reclassifyMutation.isPending}
           >
-            <RefreshCw className={`me-2 h-4 w-4 ${reclassifyMutation.isPending ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-4 w-4 ${reclassifyMutation.isPending ? 'animate-spin' : ''}`} />
             {t('classifyNow')}
-          </Button>
-        </Card>
+          </button>
+        </div>
       )}
 
       {/* Main info grid */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Basic information */}
-        <Card className="p-6">
-          <h2 className="text-lg font-semibold">{t('basicInformation')}</h2>
+        <div className="rounded-xl bg-slate-800/60 border border-slate-600/60 p-6">
+          <h2 className="text-lg font-semibold text-white">{t('basicInformation')}</h2>
           <dl className="mt-4 space-y-3">
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">
-                {t('aiType')}
-              </dt>
-              <dd className="mt-1">{system.aiType}</dd>
+              <dt className="text-sm text-slate-400">{t('aiType')}</dt>
+              <dd className="mt-1 text-white">{system.aiType}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">
-                {t('domain')}
-              </dt>
-              <dd className="mt-1">{system.domain}</dd>
+              <dt className="text-sm text-slate-400">{t('domain')}</dt>
+              <dd className="mt-1 text-white">{system.domain}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">
-                {t('markets')}
-              </dt>
-              <dd className="mt-1 flex gap-2">
+              <dt className="text-sm text-slate-400">{t('markets')}</dt>
+              <dd className="mt-1 flex flex-wrap gap-2">
                 {system.markets.map((market: string) => (
-                  <Badge key={market} variant="outline">
+                  <span key={market} className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50">
                     {market}
-                  </Badge>
+                  </span>
                 ))}
               </dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">
-                {t('endUsers')}
-              </dt>
-              <dd className="mt-1 flex gap-2">
+              <dt className="text-sm text-slate-400">{t('endUsers')}</dt>
+              <dd className="mt-1 flex flex-wrap gap-2">
                 {system.endUsers.map((user: string) => (
-                  <Badge key={user} variant="outline">
+                  <span key={user} className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50">
                     {user}
-                  </Badge>
+                  </span>
                 ))}
               </dd>
             </div>
           </dl>
-        </Card>
+        </div>
 
         {/* Characteristics */}
-        <Card className="p-6">
-          <h2 className="text-lg font-semibold">{t('characteristics')}</h2>
+        <div className="rounded-xl bg-slate-800/60 border border-slate-600/60 p-6">
+          <h2 className="text-lg font-semibold text-white">{t('characteristics')}</h2>
           <dl className="mt-4 space-y-3">
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">
-                {t('makesDecisions')}
-              </dt>
+              <dt className="text-sm text-slate-400">{t('makesDecisions')}</dt>
               <dd className="mt-1">
-                <Badge variant={system.makesDecisions ? 'default' : 'outline'}>
+                <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium border ${system.makesDecisions ? 'bg-emerald-400/10 text-emerald-400 border-emerald-400/20' : 'bg-slate-700/50 text-slate-400 border-slate-600/50'}`}>
                   {system.makesDecisions ? t('yes') : t('no')}
-                </Badge>
+                </span>
               </dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">
-                {t('processesPersonalData')}
-              </dt>
+              <dt className="text-sm text-slate-400">{t('processesPersonalData')}</dt>
               <dd className="mt-1">
-                <Badge
-                  variant={system.processesPersonalData ? 'default' : 'outline'}
-                >
+                <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium border ${system.processesPersonalData ? 'bg-amber-400/10 text-amber-400 border-amber-400/20' : 'bg-slate-700/50 text-slate-400 border-slate-600/50'}`}>
                   {system.processesPersonalData ? t('yes') : t('no')}
-                </Badge>
+                </span>
               </dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">
-                {t('profilesUsers')}
-              </dt>
+              <dt className="text-sm text-slate-400">{t('profilesUsers')}</dt>
               <dd className="mt-1">
-                <Badge variant={system.profilesUsers ? 'default' : 'outline'}>
+                <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium border ${system.profilesUsers ? 'bg-amber-400/10 text-amber-400 border-amber-400/20' : 'bg-slate-700/50 text-slate-400 border-slate-600/50'}`}>
                   {system.profilesUsers ? t('yes') : t('no')}
-                </Badge>
+                </span>
               </dd>
             </div>
           </dl>
-        </Card>
+        </div>
       </div>
-
     </div>
   );
 }

@@ -90,34 +90,40 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
     .sort((a, b) => a.tag.localeCompare(b.tag));
 
   return (
-    <div className="relative min-h-screen bg-[#0F172A] overflow-hidden">
-      {/* Animated grid */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(16,185,129,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.5) 1px, transparent 1px)`,
-          backgroundSize: '64px 64px',
-          animation: 'gridShift 20s linear infinite',
-        }}
-      />
-      {/* Orbs */}
-      <div className="absolute top-0 start-1/4 w-[600px] h-[600px] bg-emerald-500/8 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/3 end-0 w-[400px] h-[400px] bg-teal-500/6 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_700px_350px_at_50%_60%,rgba(16,185,129,0.13),transparent)] pointer-events-none" />
+    <div className="min-h-screen bg-[#0F172A]">
 
-      {/* Hero */}
-      <div className="relative z-10 pt-20 pb-16 text-center px-4">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-6 font-mono">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-          {t('subtitle')}
+      {/* ── Hero ── */}
+      <div className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(16,185,129,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.5) 1px, transparent 1px)`,
+            backgroundSize: '64px 64px',
+          }}
+        />
+        <div className="absolute top-0 start-1/4 w-[600px] h-[600px] bg-emerald-500/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 end-0 w-[400px] h-[400px] bg-teal-500/6 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_700px_350px_at_50%_58%,rgba(16,185,129,0.13),transparent)] pointer-events-none" />
+
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:px-8">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400 font-mono">
+            <Sparkles className="h-4 w-4" />
+            {t('subtitle')}
+          </div>
+          <h1 className="text-5xl font-extrabold tracking-tight leading-[1.05] sm:text-6xl lg:text-7xl">
+            <span className="text-white">Compliance </span>
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+              Blog
+            </span>
+          </h1>
         </div>
-        <h1 className="text-5xl font-extrabold tracking-tight leading-[1.05] sm:text-6xl font-dm-sans bg-gradient-to-r from-white via-white to-emerald-400 bg-clip-text text-transparent">
-          {t('title')}
-        </h1>
       </div>
 
+      {/* Divider */}
+      <div className="border-t border-white/10" />
+
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-10 pb-20 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
 
           {/* Main */}

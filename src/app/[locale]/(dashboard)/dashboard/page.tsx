@@ -308,20 +308,109 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Empty state */}
+      {/* Empty state — Onboarding */}
       {!hasData && (
-        <div className="rounded-xl border border-dashed border-slate-700 p-16 text-center bg-slate-800/20">
-          <div className="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto">
-            <Shield className="h-8 w-8 text-slate-600" />
+        <div className="space-y-6">
+          {/* Welcome banner */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-500/10 to-teal-500/5 border border-emerald-500/20 p-8">
+            <div className="absolute top-0 end-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-2xl">👋</span>
+                <span className="text-sm font-semibold text-emerald-400 uppercase tracking-wider">Welcome to Complyance</span>
+              </div>
+              <h2 className="text-2xl font-bold text-white mb-2">
+                Get compliant fast.
+              </h2>
+              <p className="text-slate-400 max-w-lg">
+                You&apos;re {daysUntilDeadline} days away from the deadline. Complete these steps to protect your business from fines up to €35M.
+              </p>
+            </div>
           </div>
-          <div className="mt-5 text-lg font-semibold text-white">{t('noSystems')}</div>
-          <div className="mt-2 text-sm text-slate-400 max-w-sm mx-auto">{t('noSystemsDescription')}</div>
-          <button
-            className="mt-6 rounded-lg bg-emerald-500 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.35)] hover:bg-emerald-400 transition-colors"
-            onClick={() => router.push('/systems/new')}
-          >
-            {t('addFirstSystem')}
-          </button>
+
+          {/* Onboarding steps */}
+          <div className="grid gap-4 md:grid-cols-3">
+            {/* Step 1 */}
+            <button
+              onClick={() => router.push('/systems/new')}
+              className="group relative text-start rounded-xl bg-slate-800/60 border border-slate-700/50 p-6 hover:border-emerald-500/40 hover:bg-slate-800/80 transition-all"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-sm group-hover:bg-emerald-500/20 transition-colors">
+                  1
+                </div>
+                <ArrowRight className="h-4 w-4 text-slate-600 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+              </div>
+              <h3 className="font-semibold text-white mb-1">Add your AI system</h3>
+              <p className="text-sm text-slate-400">Describe your AI system and get instant risk classification under EU AI Act Annex III.</p>
+              <div className="mt-4 text-xs font-medium text-emerald-400">
+                Start here →
+              </div>
+            </button>
+
+            {/* Step 2 */}
+            <div className="relative text-start rounded-xl bg-slate-800/40 border border-slate-700/30 p-6 opacity-60">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-xl bg-slate-700/50 border border-slate-700 flex items-center justify-center text-slate-500 font-bold text-sm">
+                  2
+                </div>
+                <div className="w-5 h-5 rounded-full border border-slate-700 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-slate-700" />
+                </div>
+              </div>
+              <h3 className="font-semibold text-slate-300 mb-1">Review compliance gaps</h3>
+              <p className="text-sm text-slate-500">See exactly which Articles 9–15 obligations apply to your system with a prioritized action plan.</p>
+              <div className="mt-4 text-xs font-medium text-slate-600">
+                Unlocks after Step 1
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative text-start rounded-xl bg-slate-800/40 border border-slate-700/30 p-6 opacity-60">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-xl bg-slate-700/50 border border-slate-700 flex items-center justify-center text-slate-500 font-bold text-sm">
+                  3
+                </div>
+                <div className="w-5 h-5 rounded-full border border-slate-700 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-slate-700" />
+                </div>
+              </div>
+              <h3 className="font-semibold text-slate-300 mb-1">Generate documentation</h3>
+              <p className="text-sm text-slate-500">Export audit-ready PDF reports including Technical Documentation (Annex IV) and Compliance Roadmap.</p>
+              <div className="mt-4 text-xs font-medium text-slate-600">
+                Unlocks after Step 2
+              </div>
+            </div>
+          </div>
+
+          {/* Quick resources */}
+          <div className="grid gap-4 md:grid-cols-2">
+            {/* Deadline card */}
+            <div className="rounded-xl bg-slate-800/60 border border-slate-700/50 p-6 flex items-center gap-5">
+              <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex flex-col items-center justify-center flex-shrink-0">
+                <span className="text-2xl font-black text-emerald-400 leading-none">{daysUntilDeadline}</span>
+                <span className="text-[10px] text-emerald-500/70 uppercase tracking-wide mt-0.5">days</span>
+              </div>
+              <div>
+                <div className="font-semibold text-white mb-1">EU AI Act Deadline</div>
+                <div className="text-sm text-slate-400">August 2, 2026 — High-risk AI systems must be fully compliant.</div>
+              </div>
+            </div>
+
+            {/* Free classifier */}
+            <div className="rounded-xl bg-slate-800/60 border border-slate-700/50 p-6 flex items-center gap-5">
+              <div className="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                <Shield className="h-7 w-7 text-blue-400" />
+              </div>
+              <div className="flex-1">
+                <div className="font-semibold text-white mb-1">Not sure about your risk level?</div>
+                <div className="text-sm text-slate-400 mb-3">Try our free classifier — no account needed.</div>
+                <Link href="/free-classifier" className="text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors">
+                  Try Free Classifier →
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
