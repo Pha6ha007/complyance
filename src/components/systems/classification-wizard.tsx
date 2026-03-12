@@ -145,12 +145,12 @@ export function ClassificationWizard() {
         {Array.from({ length: TOTAL_STEPS }, (_, i) => i + 1).map((step) => (
           <div key={step} className="flex items-center gap-2">
             <div
-              className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold transition-all ${
-                step < currentStep
-                  ? 'bg-emerald-500 text-white'
-                  : step === currentStep
-                  ? 'bg-emerald-500/20 border border-emerald-500/50 text-emerald-400'
-                  : 'bg-slate-800 border border-slate-700 text-slate-500'
+              className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold transition-all ${
+                step === currentStep
+                  ? 'bg-emerald-500 text-white shadow-[0_0_12px_rgba(16,185,129,0.4)]'
+                  : step < currentStep
+                  ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400'
+                  : 'bg-slate-700 border border-slate-600 text-slate-500'
               }`}
             >
               {step < currentStep ? <CheckCircle2 className="h-4 w-4" /> : step}
@@ -166,7 +166,7 @@ export function ClassificationWizard() {
       </div>
 
       {/* Progress bar */}
-      <div className="h-1 w-full rounded-full bg-slate-800">
+      <div className="h-1 w-full rounded-full bg-slate-700">
         <div
           className="h-1 rounded-full bg-emerald-500 transition-all duration-300"
           style={{ width: `${progress}%` }}
@@ -174,7 +174,7 @@ export function ClassificationWizard() {
       </div>
 
       {/* Card */}
-      <div className="rounded-xl bg-slate-800/60 border border-slate-600/60">
+      <div className="rounded-2xl bg-slate-800/60 border border-slate-600/60">
         {/* Card header */}
         <div className="px-6 pt-6 pb-4 border-b border-slate-700/50">
           <h2 className="text-lg font-semibold text-white">
@@ -204,7 +204,7 @@ export function ClassificationWizard() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder={t('step1.namePlaceholder')}
-                  className="bg-slate-900/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500/50 focus:ring-emerald-500/20"
+                  className="bg-slate-700/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
                 />
                 {errors.name && <p className="text-sm text-red-400">{errors.name}</p>}
                 <p className="text-xs text-slate-500">{t('step1.nameDescription')}</p>
@@ -218,7 +218,7 @@ export function ClassificationWizard() {
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder={t('step1.descriptionPlaceholder')}
                   rows={4}
-                  className="bg-slate-900/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500/50 focus:ring-emerald-500/20 resize-none"
+                  className="bg-slate-700/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none"
                 />
                 {errors.description && <p className="text-sm text-red-400">{errors.description}</p>}
                 <p className="text-xs text-slate-500">{t('step1.descriptionDescription')}</p>
@@ -232,10 +232,10 @@ export function ClassificationWizard() {
                       key={type}
                       type="button"
                       onClick={() => setFormData({ ...formData, aiType: type })}
-                      className={`flex items-center gap-3 rounded-lg border p-3 text-start transition-all ${
+                      className={`flex items-center gap-3 rounded-xl border p-4 text-start transition-all ${
                         formData.aiType === type
-                          ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-400'
-                          : 'border-slate-700 bg-slate-900/30 text-slate-400 hover:border-slate-600 hover:text-slate-300'
+                          ? 'border-emerald-500/50 bg-emerald-500/10 text-white'
+                          : 'border-slate-700/50 bg-slate-800/40 text-slate-400 hover:border-slate-600 hover:text-slate-300'
                       }`}
                     >
                       <div className={`h-4 w-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
@@ -264,7 +264,7 @@ export function ClassificationWizard() {
               <div className="space-y-2">
                 <Label htmlFor="domain" className="text-slate-300 text-sm font-medium">{t('step2.domainLabel')}</Label>
                 <Select value={formData.domain} onValueChange={(value) => setFormData({ ...formData, domain: value })}>
-                  <SelectTrigger id="domain" className="bg-slate-900/50 border-slate-600/60 text-white focus:border-emerald-500/50 focus:ring-emerald-500/20">
+                  <SelectTrigger id="domain" className="bg-slate-700/50 border-slate-600/60 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
                     <SelectValue placeholder={t('step2.domainPlaceholder')} className="text-slate-500" />
                   </SelectTrigger>
                   <SelectContent className="bg-slate-900 border-slate-700">
@@ -300,10 +300,10 @@ export function ClassificationWizard() {
                       key={key}
                       type="button"
                       onClick={() => setFormData({ ...formData, [key]: !checked })}
-                      className={`flex w-full items-start gap-4 rounded-lg border p-4 text-start transition-all ${
+                      className={`flex w-full items-start gap-4 rounded-xl border p-4 text-start transition-all ${
                         checked
-                          ? 'border-emerald-500/40 bg-emerald-500/5'
-                          : 'border-slate-700 bg-slate-900/20 hover:border-slate-600'
+                          ? 'border-emerald-500/50 bg-emerald-500/10 text-white'
+                          : 'border-slate-700/50 bg-slate-800/40 text-slate-400 hover:border-slate-600 hover:text-slate-300'
                       }`}
                     >
                       <div className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border-2 transition-all ${
@@ -334,10 +334,10 @@ export function ClassificationWizard() {
                         key={type}
                         type="button"
                         onClick={() => setFormData({ ...formData, endUsers: toggleArrayValue(formData.endUsers, type) })}
-                        className={`flex items-center gap-3 rounded-lg border p-3 text-start transition-all ${
+                        className={`flex items-center gap-3 rounded-xl border p-4 text-start transition-all ${
                           checked
-                            ? 'border-emerald-500/40 bg-emerald-500/5 text-emerald-400'
-                            : 'border-slate-700 bg-slate-900/20 text-slate-400 hover:border-slate-600 hover:text-slate-300'
+                            ? 'border-emerald-500/50 bg-emerald-500/10 text-white'
+                            : 'border-slate-700/50 bg-slate-800/40 text-slate-400 hover:border-slate-600 hover:text-slate-300'
                         }`}
                       >
                         <div className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border-2 transition-all ${
@@ -378,10 +378,10 @@ export function ClassificationWizard() {
                         key={market}
                         type="button"
                         onClick={() => setFormData({ ...formData, markets: toggleArrayValue(formData.markets, market) })}
-                        className={`flex items-center gap-3 rounded-lg border p-3 text-start transition-all ${
+                        className={`flex items-center gap-3 rounded-xl border p-4 text-start transition-all ${
                           checked
-                            ? 'border-emerald-500/40 bg-emerald-500/5 text-emerald-400'
-                            : 'border-slate-700 bg-slate-900/20 text-slate-400 hover:border-slate-600 hover:text-slate-300'
+                            ? 'border-emerald-500/50 bg-emerald-500/10 text-white'
+                            : 'border-slate-700/50 bg-slate-800/40 text-slate-400 hover:border-slate-600 hover:text-slate-300'
                         }`}
                       >
                         <div className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border-2 transition-all ${
@@ -464,7 +464,7 @@ export function ClassificationWizard() {
               type="button"
               onClick={handlePrevious}
               disabled={currentStep === 1 || createSystemMutation.isPending}
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-6 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <ArrowLeft className="me-1 h-4 w-4" />
               {tCommon('previous')}
@@ -474,7 +474,7 @@ export function ClassificationWizard() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors"
               >
                 {tCommon('next')}
                 <ArrowRight className="ms-1 h-4 w-4" />
@@ -484,7 +484,7 @@ export function ClassificationWizard() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={createSystemMutation.isPending}
-                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {createSystemMutation.isPending ? t('step5.submitting') : t('step5.submitButton')}
               </button>
