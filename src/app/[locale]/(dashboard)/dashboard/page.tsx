@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, Link } from '@/i18n/navigation';
 import { trpc } from '@/lib/trpc/client';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -61,8 +61,6 @@ export default function DashboardPage() {
   const tClass = useTranslations('classification');
   const tCommon = useTranslations('common');
   const router = useRouter();
-  const params = useParams();
-  const locale = params.locale as string;
 
   // Fetch dashboard stats
   const { data: stats, isLoading } = trpc.system.getStats.useQuery();
@@ -246,7 +244,7 @@ export default function DashboardPage() {
                       variant="outline"
                       size="sm"
                       onClick={() =>
-                        router.push(`/${locale}/systems/${systemId}/gaps`)
+                        router.push(`/systems/${systemId}/gaps`)
                       }
                     >
                       {t('viewGaps')}
@@ -274,10 +272,10 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">{t('latestUpdates')}</h2>
             <Button variant="ghost" size="sm" asChild>
-              <a href={`/${locale}/intelligence`}>
+              <Link href="/intelligence">
                 {t('viewAll')}
                 <ArrowRight className="ms-2 h-4 w-4" />
-              </a>
+              </Link>
             </Button>
           </div>
           <div className="mt-4 space-y-3">
@@ -293,12 +291,12 @@ export default function DashboardPage() {
                         {update.regulation.replace('_', ' ')}
                       </Badge>
                     </div>
-                    <a
-                      href={`/${locale}/intelligence`}
+                    <Link
+                      href="/intelligence"
                       className="font-medium hover:underline line-clamp-1"
                     >
                       {update.title}
-                    </a>
+                    </Link>
                     <div className="mt-1 text-xs text-muted-foreground">
                       {new Date(update.publishedAt).toLocaleDateString()}
                     </div>
@@ -321,7 +319,7 @@ export default function DashboardPage() {
           </div>
           <Button
             className="mt-4"
-            onClick={() => router.push(`/${locale}/systems/new`)}
+            onClick={() => router.push('/systems/new')}
           >
             {t('addFirstSystem')}
           </Button>

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -152,7 +152,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
             {/* Back to Blog */}
             <Link
-              href={`/${locale}/blog`}
+              href="/blog"
               className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-blue-100 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -226,7 +226,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     {relatedPosts.map((relatedPost) => (
                       <Link
                         key={relatedPost.slug}
-                        href={`/${locale}/blog/${relatedPost.slug}`}
+                        href={`/blog/${relatedPost.slug}`}
                         className="group rounded-lg bg-white p-4 shadow-sm transition-shadow hover:shadow-lg"
                       >
                         <h3 className="mb-2 font-semibold text-gray-900 group-hover:text-blue-600">
@@ -258,7 +258,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     {t('sidebar.classifier.description')}
                   </p>
                   <Link
-                    href={`/${locale}/free-classifier`}
+                    href="/free-classifier"
                     className="block w-full rounded-lg bg-white px-4 py-2 text-center font-semibold text-green-700 transition-colors hover:bg-green-50"
                   >
                     {t('sidebar.classifier.cta')}

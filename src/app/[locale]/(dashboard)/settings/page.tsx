@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { trpc } from '@/lib/trpc/client';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -22,9 +22,7 @@ import { useState } from 'react';
 export default function SettingsPage() {
   const t = useTranslations('settings');
   const tCommon = useTranslations('common');
-  const params = useParams();
   const router = useRouter();
-  const locale = params.locale as string;
 
   // Placeholder data - in real app this would come from tRPC
   const [name, setName] = useState('Pavel');
@@ -154,7 +152,7 @@ export default function SettingsPage() {
             <p className="text-sm text-muted-foreground mb-4">
               {t('freePlanDescription')}
             </p>
-            <Button onClick={() => router.push(`/${locale}/pricing`)}>
+            <Button onClick={() => router.push('/pricing')}>
               {t('upgradePlan')}
             </Button>
           </div>

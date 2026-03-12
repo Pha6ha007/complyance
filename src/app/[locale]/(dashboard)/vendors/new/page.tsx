@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc/client';
@@ -168,9 +167,7 @@ const emptyForm: VendorFormData = {
 };
 
 export default function NewVendorPage() {
-  const params = useParams();
   const router = useRouter();
-  const locale = params.locale as string;
 
   const t = useTranslations('vendors');
   const tCommon = useTranslations('common');
@@ -250,7 +247,7 @@ export default function NewVendorPage() {
       utils.vendor.getCount.invalidate();
 
       // Redirect to vendor detail
-      router.push(`/${locale}/vendors/${vendor.id}`);
+      router.push(`/vendors/${vendor.id}`);
     } catch (error) {
       console.error('Failed to create vendor:', error);
     }
@@ -279,7 +276,7 @@ export default function NewVendorPage() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => router.push(`/${locale}/vendors`)}
+            onClick={() => router.push('/vendors')}
           >
             <ArrowLeft className="me-2 h-4 w-4" />
             {t('backToVendors')}
@@ -293,7 +290,7 @@ export default function NewVendorPage() {
             {t('upgradeMessage')}
           </p>
           <Button asChild className="mt-4">
-            <Link href={`/${locale}/pricing`}>{t('upgradeToPlan')}</Link>
+            <Link href="/pricing">{t('upgradeToPlan')}</Link>
           </Button>
         </div>
       </div>
@@ -308,7 +305,7 @@ export default function NewVendorPage() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => router.push(`/${locale}/vendors`)}
+            onClick={() => router.push('/vendors')}
           >
             <ArrowLeft className="me-2 h-4 w-4" />
             {t('backToVendors')}
@@ -324,7 +321,7 @@ export default function NewVendorPage() {
             {t('limitReachedMessage')}
           </p>
           <Button asChild className="mt-4">
-            <Link href={`/${locale}/pricing`}>{t('upgradeToPlan')}</Link>
+            <Link href="/pricing">{t('upgradeToPlan')}</Link>
           </Button>
         </div>
       </div>
@@ -340,7 +337,7 @@ export default function NewVendorPage() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => router.push(`/${locale}/vendors`)}
+            onClick={() => router.push('/vendors')}
           >
             <ArrowLeft className="me-2 h-4 w-4" />
             {t('backToVendors')}
@@ -703,7 +700,7 @@ export default function NewVendorPage() {
         <div className="mt-8 flex justify-end gap-4">
           <Button
             variant="outline"
-            onClick={() => router.push(`/${locale}/vendors`)}
+            onClick={() => router.push('/vendors')}
             disabled={isSubmitting}
           >
             {tCommon('cancel')}

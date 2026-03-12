@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import {
@@ -69,8 +68,6 @@ interface ClassificationResult {
 const TOTAL_STEPS = 5;
 
 export function FreeClassifierClient() {
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations('freeClassifier');
   const tCommon = useTranslations('common');
   const tClassification = useTranslations('classification');
@@ -670,7 +667,7 @@ export function FreeClassifierClient() {
                   </ul>
 
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <Link href={`/${locale}/auth/register`} className="flex-1">
+                    <Link href="/auth/register" className="flex-1">
                       <Button
                         className="w-full"
                         size="lg"

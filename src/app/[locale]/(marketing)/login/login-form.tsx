@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { useRouter, Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import Link from 'next/link';
 
 interface LoginFormProps {
   locale: string;
@@ -54,7 +54,7 @@ export function LoginForm({ locale }: LoginFormProps) {
         if (result?.error) {
           setError('Invalid email or password');
         } else {
-          router.push(`/${locale}/dashboard`);
+          router.push('/dashboard');
           router.refresh();
         }
       } else {
@@ -101,7 +101,7 @@ export function LoginForm({ locale }: LoginFormProps) {
             setError('Registration successful. Please log in.');
             setMode('login');
           } else {
-            router.push(`/${locale}/dashboard`);
+            router.push('/dashboard');
             router.refresh();
           }
         }
@@ -115,7 +115,7 @@ export function LoginForm({ locale }: LoginFormProps) {
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
-    await signIn('google', { callbackUrl: `/${locale}/dashboard` });
+    await signIn('google', { callbackUrl: '/dashboard' });
   };
 
   return (
@@ -239,7 +239,7 @@ export function LoginForm({ locale }: LoginFormProps) {
           {mode === 'login' && (
             <div className="flex items-center justify-between">
               <Link
-                href={`/${locale}/forgot-password`}
+                href="/forgot-password"
                 className="text-sm text-blue-600 hover:underline"
               >
                 {t('forgotPassword')}
@@ -284,11 +284,11 @@ export function LoginForm({ locale }: LoginFormProps) {
 
         <p className="text-center text-xs text-slate-500">
           By continuing, you agree to our{' '}
-          <Link href={`/${locale}/terms`} className="hover:underline">
+          <Link href="/terms" className="hover:underline">
             Terms
           </Link>{' '}
           and{' '}
-          <Link href={`/${locale}/privacy`} className="hover:underline">
+          <Link href="/privacy" className="hover:underline">
             Privacy Policy
           </Link>
         </p>

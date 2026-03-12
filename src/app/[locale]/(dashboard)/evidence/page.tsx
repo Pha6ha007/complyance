@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc/client';
@@ -66,8 +65,6 @@ function getTypeIcon(type: string) {
 }
 
 export default function EvidencePage() {
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations('evidence');
   const tCommon = useTranslations('common');
 
@@ -135,7 +132,7 @@ export default function EvidencePage() {
             {t('upgradeMessage')}
           </p>
           <Button asChild className="mt-4">
-            <Link href={`/${locale}/pricing`}>{t('upgradeToPlan')}</Link>
+            <Link href="/pricing">{t('upgradeToPlan')}</Link>
           </Button>
         </div>
 
@@ -188,7 +185,7 @@ export default function EvidencePage() {
         </div>
 
         <Button asChild>
-          <Link href={`/${locale}/evidence/new`}>
+          <Link href="/evidence/new">
             <Plus className="me-2 h-4 w-4" />
             {t('addEvidence')}
           </Link>
@@ -262,7 +259,7 @@ export default function EvidencePage() {
             {t('noEvidenceDescription')}
           </p>
           <Button asChild className="mt-4">
-            <Link href={`/${locale}/evidence/new`}>
+            <Link href="/evidence/new">
               <Plus className="me-2 h-4 w-4" />
               {t('addFirstEvidence')}
             </Link>
@@ -286,7 +283,7 @@ export default function EvidencePage() {
                 <TableRow key={item.id}>
                   <TableCell>
                     <Link
-                      href={`/${locale}/evidence/${item.id}`}
+                      href={`/evidence/${item.id}`}
                       className="font-medium hover:underline"
                     >
                       {item.title}
@@ -301,7 +298,7 @@ export default function EvidencePage() {
                   <TableCell>
                     {item.system ? (
                       <Link
-                        href={`/${locale}/systems/${item.system.id}`}
+                        href={`/systems/${item.system.id}`}
                         className="text-sm hover:underline"
                       >
                         {item.system.name}

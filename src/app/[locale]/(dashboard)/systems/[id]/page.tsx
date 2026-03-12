@@ -1,6 +1,7 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { trpc } from '@/lib/trpc/client';
 import { Button } from '@/components/ui/button';
@@ -31,7 +32,6 @@ function getRiskBadgeVariant(riskLevel: RiskLevel | null) {
 export default function SystemDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const locale = params.locale as string;
   const systemId = params.id as string;
 
   const t = useTranslations('systems');
@@ -46,7 +46,7 @@ export default function SystemDetailPage() {
   // Delete mutation
   const deleteMutation = trpc.system.delete.useMutation({
     onSuccess: () => {
-      router.push(`/${locale}/systems`);
+      router.push('/systems');
     },
   });
 
@@ -80,7 +80,7 @@ export default function SystemDetailPage() {
           <Button
             variant="outline"
             className="mt-4"
-            onClick={() => router.push(`/${locale}/systems`)}
+            onClick={() => router.push('/systems')}
           >
             <ArrowLeft className="me-2 h-4 w-4" />
             {t('backToSystems')}
@@ -97,7 +97,7 @@ export default function SystemDetailPage() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => router.push(`/${locale}/systems`)}
+          onClick={() => router.push('/systems')}
         >
           <ArrowLeft className="me-2 h-4 w-4" />
           {t('backToSystems')}
@@ -265,7 +265,7 @@ export default function SystemDetailPage() {
             <div className="mt-4">
               <Button
                 variant="default"
-                onClick={() => router.push(`/${locale}/systems/${systemId}/gaps`)}
+                onClick={() => router.push(`/systems/${systemId}/gaps`)}
               >
                 {t('viewComplianceGaps')} ({system.gaps.length})
                 <ExternalLink className="ms-2 h-4 w-4" />

@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import {
@@ -93,8 +92,8 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
   );
   const pendingCount = pendingData?.count ?? 0;
 
-  // Remove locale prefix from pathname for comparison
-  const currentPath = pathname.replace(`/${locale}`, '');
+  // next-intl's usePathname already strips the locale prefix
+  const currentPath = pathname;
 
   return (
     <>
@@ -117,7 +116,7 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
       >
         {/* Logo & close button */}
         <div className="flex h-16 items-center justify-between border-b px-6">
-          <Link href={`/${locale}/dashboard`} className="flex items-center gap-2">
+          <Link href="/dashboard" className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <span className="text-lg font-bold text-primary-foreground">C</span>
             </div>
@@ -149,7 +148,7 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
               <div key={item.name}>
                 {item.dividerBefore && <div className="my-2 border-t" />}
                 <Link
-                  href={`/${locale}${item.href}`}
+                  href={item.href}
                   className={cn(
                     'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
                     'hover:bg-accent hover:text-accent-foreground',
@@ -187,7 +186,7 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
               1 / 1 AI Systems
             </div>
             <Button variant="outline" size="sm" className="mt-2 w-full" asChild>
-              <Link href={`/${locale}/pricing`}>Upgrade</Link>
+              <Link href="/pricing">Upgrade</Link>
             </Button>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
+import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc/client';
@@ -61,7 +61,6 @@ function getRiskScoreColor(score: number | null) {
 export default function VendorDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const locale = params.locale as string;
   const vendorId = params.id as string;
 
   const t = useTranslations('vendors');
@@ -85,7 +84,7 @@ export default function VendorDetailPage() {
   // Mutations
   const deleteMutation = trpc.vendor.delete.useMutation({
     onSuccess: () => {
-      router.push(`/${locale}/vendors`);
+      router.push('/vendors');
     },
   });
 
@@ -130,7 +129,7 @@ export default function VendorDetailPage() {
           <Button
             variant="outline"
             className="mt-4"
-            onClick={() => router.push(`/${locale}/vendors`)}
+            onClick={() => router.push('/vendors')}
           >
             <ArrowLeft className="me-2 h-4 w-4" />
             {t('backToVendors')}
@@ -173,7 +172,7 @@ export default function VendorDetailPage() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => router.push(`/${locale}/vendors`)}
+          onClick={() => router.push('/vendors')}
         >
           <ArrowLeft className="me-2 h-4 w-4" />
           {t('backToVendors')}
@@ -212,7 +211,7 @@ export default function VendorDetailPage() {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => router.push(`/${locale}/vendors/${vendorId}/edit`)}
+              onClick={() => router.push(`/vendors/${vendorId}/edit`)}
             >
               <Edit className="me-2 h-4 w-4" />
               {tCommon('edit')}
@@ -606,7 +605,7 @@ export default function VendorDetailPage() {
                 >
                   <div>
                     <Link
-                      href={`/${locale}/systems/${link.system.id}`}
+                      href={`/systems/${link.system.id}`}
                       className="font-medium hover:underline"
                     >
                       {link.system.name}

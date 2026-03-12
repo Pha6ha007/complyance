@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState, useCallback } from 'react';
 import { trpc } from '@/lib/trpc/client';
@@ -53,9 +52,7 @@ const initialFormData: FormData = {
 };
 
 export default function NewEvidencePage() {
-  const params = useParams();
   const router = useRouter();
-  const locale = params.locale as string;
 
   const t = useTranslations('evidence');
   const tCommon = useTranslations('common');
@@ -87,7 +84,7 @@ export default function NewEvidencePage() {
   const createMutation = trpc.evidence.create.useMutation({
     onSuccess: () => {
       utils.evidence.list.invalidate();
-      router.push(`/${locale}/evidence`);
+      router.push('/evidence');
     },
   });
 
@@ -209,7 +206,7 @@ export default function NewEvidencePage() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => router.push(`/${locale}/evidence`)}
+            onClick={() => router.push('/evidence')}
           >
             <ArrowLeft className="me-2 h-4 w-4" />
             {t('backToEvidence')}
@@ -223,7 +220,7 @@ export default function NewEvidencePage() {
             {t('upgradeMessage')}
           </p>
           <Button asChild className="mt-4">
-            <Link href={`/${locale}/pricing`}>{t('upgradeToPlan')}</Link>
+            <Link href="/pricing">{t('upgradeToPlan')}</Link>
           </Button>
         </div>
       </div>
@@ -240,7 +237,7 @@ export default function NewEvidencePage() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => router.push(`/${locale}/evidence`)}
+          onClick={() => router.push('/evidence')}
         >
           <ArrowLeft className="me-2 h-4 w-4" />
           {t('backToEvidence')}
@@ -474,7 +471,7 @@ export default function NewEvidencePage() {
         <div className="mt-8 flex justify-end gap-4">
           <Button
             variant="outline"
-            onClick={() => router.push(`/${locale}/evidence`)}
+            onClick={() => router.push('/evidence')}
             disabled={createMutation.isPending}
           >
             {tCommon('cancel')}

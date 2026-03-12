@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { getAllPosts, getAllTags } from '@/lib/blog';
 import { Calendar, Clock, Tag, ArrowRight } from 'lucide-react';
 
@@ -88,7 +88,7 @@ export default async function BlogPage({
                 <div className="flex flex-wrap items-center gap-2">
                   <Tag className="h-5 w-5 text-gray-500" />
                   <Link
-                    href={`/${locale}/blog`}
+                    href="/blog"
                     className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                       !selectedTag
                         ? 'bg-blue-600 text-white'
@@ -100,7 +100,7 @@ export default async function BlogPage({
                   {allTags.map((tag) => (
                     <Link
                       key={tag}
-                      href={`/${locale}/blog?tag=${tag}`}
+                      href={`/blog?tag=${tag}`}
                       className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                         selectedTag === tag
                           ? 'bg-blue-600 text-white'
@@ -126,7 +126,7 @@ export default async function BlogPage({
                     key={post.slug}
                     className="group overflow-hidden rounded-lg bg-white shadow-sm transition-shadow hover:shadow-lg"
                   >
-                    <Link href={`/${locale}/blog/${post.slug}`}>
+                    <Link href={`/blog/${post.slug}`}>
                       {/* Image placeholder or actual image */}
                       <div className="aspect-video w-full bg-gradient-to-br from-blue-500 to-blue-700" />
 
@@ -198,7 +198,7 @@ export default async function BlogPage({
                   {t('sidebar.classifier.description')}
                 </p>
                 <Link
-                  href={`/${locale}/free-classifier`}
+                  href="/free-classifier"
                   className="block w-full rounded-lg bg-white px-4 py-2 text-center font-semibold text-green-700 transition-colors hover:bg-green-50"
                 >
                   {t('sidebar.classifier.cta')}

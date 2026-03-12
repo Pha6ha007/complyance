@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
+import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc/client';
@@ -72,7 +72,6 @@ function getTypeBadgeClass(type: string) {
 export default function EvidenceDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const locale = params.locale as string;
   const evidenceId = params.id as string;
 
   const t = useTranslations('evidence');
@@ -104,7 +103,7 @@ export default function EvidenceDetailPage() {
   // Delete mutation
   const deleteMutation = trpc.evidence.delete.useMutation({
     onSuccess: () => {
-      router.push(`/${locale}/evidence`);
+      router.push('/evidence');
     },
   });
 
@@ -168,7 +167,7 @@ export default function EvidenceDetailPage() {
           <Button
             variant="outline"
             className="mt-4"
-            onClick={() => router.push(`/${locale}/evidence`)}
+            onClick={() => router.push('/evidence')}
           >
             <ArrowLeft className="me-2 h-4 w-4" />
             {t('backToEvidence')}
@@ -189,7 +188,7 @@ export default function EvidenceDetailPage() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => router.push(`/${locale}/evidence`)}
+          onClick={() => router.push('/evidence')}
         >
           <ArrowLeft className="me-2 h-4 w-4" />
           {t('backToEvidence')}
@@ -320,7 +319,7 @@ export default function EvidenceDetailPage() {
               <dd className="mt-1">
                 {evidence.system ? (
                   <Link
-                    href={`/${locale}/systems/${evidence.system.id}`}
+                    href={`/systems/${evidence.system.id}`}
                     className="flex items-center gap-1 text-sm hover:underline"
                   >
                     {evidence.system.name}

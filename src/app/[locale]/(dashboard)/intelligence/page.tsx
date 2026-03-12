@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc/client';
@@ -111,8 +110,6 @@ function getChangeTypeLabel(changeType: ChangeType) {
 }
 
 export default function IntelligencePage() {
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations('intelligence');
   const tCommon = useTranslations('common');
 
@@ -275,7 +272,6 @@ export default function IntelligencePage() {
           <UpdatesList
             updates={updates}
             hasFullAccess={hasFullAccess}
-            locale={locale}
             t={t}
             onMarkAsRead={handleMarkAsRead}
             isMarkingRead={markAsReadMutation.isPending}
@@ -286,7 +282,6 @@ export default function IntelligencePage() {
           <UpdatesList
             updates={updates}
             hasFullAccess={hasFullAccess}
-            locale={locale}
             t={t}
             onMarkAsRead={handleMarkAsRead}
             isMarkingRead={markAsReadMutation.isPending}
@@ -311,7 +306,6 @@ interface UpdatesListProps {
     isRead: boolean;
   }>;
   hasFullAccess: boolean;
-  locale: string;
   t: ReturnType<typeof useTranslations<'intelligence'>>;
   onMarkAsRead: (id: string) => void;
   isMarkingRead: boolean;
@@ -320,7 +314,6 @@ interface UpdatesListProps {
 function UpdatesList({
   updates,
   hasFullAccess,
-  locale,
   t,
   onMarkAsRead,
   isMarkingRead,
@@ -399,7 +392,7 @@ function UpdatesList({
                   <Lock className="h-4 w-4" />
                   <span>{t('upgradeToPlan')}</span>
                   <Link
-                    href={`/${locale}/pricing`}
+                    href="/pricing"
                     className="text-primary hover:underline"
                   >
                     {t('upgradeLink')}

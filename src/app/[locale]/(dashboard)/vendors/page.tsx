@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc/client';
@@ -61,8 +60,6 @@ function getRiskBadgeClass(riskLevel: VendorRisk | null) {
 }
 
 export default function VendorsPage() {
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations('vendors');
   const tCommon = useTranslations('common');
 
@@ -124,7 +121,7 @@ export default function VendorsPage() {
             {t('upgradeMessage')}
           </p>
           <Button asChild className="mt-4">
-            <Link href={`/${locale}/pricing`}>{t('upgradeToPlan')}</Link>
+            <Link href="/pricing">{t('upgradeToPlan')}</Link>
           </Button>
         </div>
       </div>
@@ -148,7 +145,7 @@ export default function VendorsPage() {
         <div className="flex items-center gap-2">
           {limitReached && (
             <Link
-              href={`/${locale}/pricing`}
+              href="/pricing"
               className="text-sm text-primary hover:underline"
             >
               {t('upgradeToPlan')}
@@ -156,7 +153,7 @@ export default function VendorsPage() {
           )}
           <Button asChild={canCreate} disabled={!canCreate}>
             {canCreate ? (
-              <Link href={`/${locale}/vendors/new`}>
+              <Link href="/vendors/new">
                 <Plus className="me-2 h-4 w-4" />
                 {t('addVendor')}
               </Link>
@@ -224,7 +221,7 @@ export default function VendorsPage() {
             {t('noVendorsDescription')}
           </p>
           <Button asChild className="mt-4">
-            <Link href={`/${locale}/vendors/new`}>
+            <Link href="/vendors/new">
               <Plus className="me-2 h-4 w-4" />
               {t('addFirstVendor')}
             </Link>
@@ -248,7 +245,7 @@ export default function VendorsPage() {
                 <TableRow key={vendor.id}>
                   <TableCell>
                     <Link
-                      href={`/${locale}/vendors/${vendor.id}`}
+                      href={`/vendors/${vendor.id}`}
                       className="font-medium hover:underline"
                     >
                       {vendor.name}

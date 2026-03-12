@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { ClassificationWizard } from '@/components/systems/classification-wizard';
@@ -8,8 +8,6 @@ import { ArrowLeft } from 'lucide-react';
 
 export default function NewSystemPage() {
   const router = useRouter();
-  const params = useParams();
-  const locale = params.locale as string;
   const tWizard = useTranslations('systems.wizard');
   const tSystems = useTranslations('systems');
 
@@ -20,7 +18,7 @@ export default function NewSystemPage() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => router.push(`/${locale}/systems`)}
+          onClick={() => router.push('/systems')}
         >
           <ArrowLeft className="me-2 h-4 w-4" />
           {tSystems('backToSystems')}

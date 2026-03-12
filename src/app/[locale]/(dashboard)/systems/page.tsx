@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { trpc } from '@/lib/trpc/client';
 import { Button } from '@/components/ui/button';
@@ -36,8 +35,6 @@ function getRiskBadgeVariant(riskLevel: RiskLevel | null) {
 }
 
 export default function SystemsPage() {
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations('systems');
   const tClass = useTranslations('classification');
 
@@ -85,7 +82,7 @@ export default function SystemsPage() {
         </div>
 
         <Button asChild>
-          <Link href={`/${locale}/systems/new`}>
+          <Link href="/systems/new">
             <Plus className="me-2 h-4 w-4" />
             {t('addSystem')}
           </Link>
@@ -101,7 +98,7 @@ export default function SystemsPage() {
             {t('noSystemsDescription')}
           </p>
           <Button asChild className="mt-4">
-            <Link href={`/${locale}/systems/new`}>
+            <Link href="/systems/new">
               <Plus className="me-2 h-4 w-4" />
               {t('addFirstSystem')}
             </Link>
@@ -125,7 +122,7 @@ export default function SystemsPage() {
                 <TableRow key={system.id}>
                   <TableCell>
                     <Link
-                      href={`/${locale}/systems/${system.id}`}
+                      href={`/systems/${system.id}`}
                       className="font-medium hover:underline"
                     >
                       {system.name}

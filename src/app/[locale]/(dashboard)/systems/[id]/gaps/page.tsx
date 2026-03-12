@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { trpc } from '@/lib/trpc/client';
 import { Button } from '@/components/ui/button';
@@ -117,7 +118,7 @@ export default function GapsPage() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => router.push(`/${locale}/systems/${systemId}`)}
+          onClick={() => router.push(`/systems/${systemId}`)}
         >
           <ArrowLeft className="me-2 h-4 w-4" />
           {t('backToSystem')}

@@ -1,31 +1,18 @@
 'use client';
 
-import { locales, localeNames, defaultLocale, type Locale } from '@/i18n/config';
+import { locales, localeNames, type Locale } from '@/i18n/config';
 import { useLocale } from 'next-intl';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const router = useRouter();
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLocale = event.target.value;
-
-    // Strip current locale prefix from pathname if present
-    const segments = pathname.split('/');
-    const isLocaleInPath = locales.includes(segments[1] as Locale);
-    const pathWithoutLocale = isLocaleInPath
-      ? '/' + segments.slice(2).join('/')
-      : pathname;
-
-    // With localePrefix: 'as-needed', default locale has no prefix
-    const newPath =
-      newLocale === defaultLocale
-        ? pathWithoutLocale || '/'
-        : `/${newLocale}${pathWithoutLocale || '/'}`;
-
-    // Full page reload for proper RTL/LTR direction switch and server component refresh
-    window.location.href = newPath;
+    const newLocale = event.target.value as Locale;
+    // next-intl's useRouter handles locale prefix automatically
+    router.replace(pathname, { locale: newLocale });
   };
 
   return (

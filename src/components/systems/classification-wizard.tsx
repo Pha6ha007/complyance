@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { z } from 'zod';
 import { AIType } from '@prisma/client';
@@ -38,8 +38,6 @@ const TOTAL_STEPS = 5;
 
 export function ClassificationWizard() {
   const router = useRouter();
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations('systems.wizard');
   const tCommon = useTranslations('common');
 
@@ -60,7 +58,7 @@ export function ClassificationWizard() {
   const createSystemMutation = trpc.system.create.useMutation({
     onSuccess: (system) => {
       // Redirect to the system detail page
-      router.push(`/${locale}/systems/${system.id}`);
+      router.push(`/systems/${system.id}`);
     },
     onError: (error) => {
       setErrors({ submit: error.message });
