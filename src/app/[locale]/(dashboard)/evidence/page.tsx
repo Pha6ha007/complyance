@@ -4,16 +4,6 @@ import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc/client';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
 import {
   Select,
   SelectContent,
@@ -31,21 +21,22 @@ import {
   Terminal,
   FlaskConical,
   Shield,
+  ArrowRight,
 } from 'lucide-react';
 import { formatDistance } from 'date-fns';
 
-function getTypeBadgeVariant(type: string) {
+function getTypeBadgeClasses(type: string): string {
   switch (type) {
     case 'DOCUMENT':
-      return 'default';
+      return 'bg-blue-500/10 text-blue-400 border border-blue-500/20';
     case 'SCREENSHOT':
-      return 'secondary';
+      return 'bg-violet-500/10 text-violet-400 border border-violet-500/20';
     case 'LOG':
-      return 'outline';
+      return 'bg-amber-400/10 text-amber-400 border border-amber-400/20';
     case 'TEST_RESULT':
-      return 'default';
+      return 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20';
     default:
-      return 'outline';
+      return 'bg-slate-700/50 text-slate-400 border border-slate-600/50';
   }
 }
 
@@ -72,11 +63,9 @@ export default function EvidencePage() {
   const [articleFilter, setArticleFilter] = useState<string>('ALL');
   const [typeFilter, setTypeFilter] = useState<string>('ALL');
 
-  // Check access first
   const { data: accessData, isLoading: isCheckingAccess } =
     trpc.evidence.checkAccess.useQuery();
 
-  // Fetch evidence list
   const { data, isLoading, error } = trpc.evidence.list.useQuery(
     {
       ...(systemFilter !== 'ALL' && { systemId: systemFilter }),
@@ -88,64 +77,56 @@ export default function EvidencePage() {
     { enabled: accessData?.hasAccess === true }
   );
 
-  // Fetch available systems for filter
   const { data: systemsData } = trpc.evidence.getAvailableSystems.useQuery(
     undefined,
     { enabled: accessData?.hasAccess === true }
   );
 
-  // Fetch article options for filter
   const { data: articleOptions } = trpc.evidence.getArticleOptions.useQuery(
     undefined,
     { enabled: accessData?.hasAccess === true }
   );
 
-  // Loading state
   if (isCheckingAccess || isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <div className="text-lg font-medium">{tCommon('loading')}</div>
-          <div className="text-sm text-muted-foreground">
-            {t('loadingDescription')}
-          </div>
+          <div className="text-lg font-medium text-slate-300">{tCommon('loading')}</div>
+          <div className="text-sm text-slate-500">{t('loadingDescription')}</div>
         </div>
       </div>
     );
   }
 
-  // Plan gate: show upgrade message for Free/Starter plans
   if (!accessData?.hasAccess) {
     return (
-      <div className="space-y-6">
-        {/* Header */}
+      <div className="space-y-6 p-6">
         <div>
-          <h1 className="text-3xl font-bold">{t('title')}</h1>
-          <p className="text-muted-foreground">{t('description')}</p>
+          <h1 className="text-2xl font-bold text-white">{t('title')}</h1>
+          <p className="text-slate-400 mt-1">{t('description')}</p>
         </div>
 
-        {/* Upgrade message */}
-        <div className="rounded-lg border p-12 text-center">
-          <Lock className="mx-auto h-12 w-12 text-muted-foreground" />
-          <h3 className="mt-4 text-lg font-semibold">{t('upgradeRequired')}</h3>
-          <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
-            {t('upgradeMessage')}
-          </p>
-          <Button asChild className="mt-4">
-            <Link href="/pricing">{t('upgradeToPlan')}</Link>
-          </Button>
+        <div className="rounded-xl bg-slate-800/60 border border-slate-600/60 p-12 text-center">
+          <div className="w-16 h-16 rounded-2xl bg-slate-700/50 border border-slate-700 flex items-center justify-center mx-auto">
+            <Lock className="h-8 w-8 text-slate-500" />
+          </div>
+          <h3 className="mt-5 text-lg font-semibold text-white">{t('upgradeRequired')}</h3>
+          <p className="mt-2 text-sm text-slate-400 max-w-sm mx-auto">{t('upgradeMessage')}</p>
+          <Link
+            href="/pricing"
+            className="inline-flex items-center gap-2 mt-6 rounded-lg bg-emerald-500 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.35)] hover:bg-emerald-400 transition-colors"
+          >
+            {t('upgradeToPlan')}
+          </Link>
         </div>
 
-        {/* Why Evidence Vault matters */}
-        <div className="rounded-lg border bg-muted/30 p-6">
+        <div className="rounded-xl border border-slate-700/50 bg-slate-800/30 p-6">
           <div className="flex items-start gap-3">
-            <Shield className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+            <Shield className="h-6 w-6 text-emerald-400 flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-semibold">{t('whyEvidenceVault')}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {t('whyEvidenceVaultDescription')}
-              </p>
-              <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
+              <h3 className="font-semibold text-white">{t('whyEvidenceVault')}</h3>
+              <p className="mt-2 text-sm text-slate-400">{t('whyEvidenceVaultDescription')}</p>
+              <ul className="mt-3 space-y-1 text-sm text-slate-500">
                 <li>• {t('benefit1')}</li>
                 <li>• {t('benefit2')}</li>
                 <li>• {t('benefit3')}</li>
@@ -158,14 +139,13 @@ export default function EvidencePage() {
     );
   }
 
-  // Error state
   if (error) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <AlertCircle className="mx-auto h-12 w-12 text-destructive" />
-          <div className="mt-4 text-lg font-medium">{tCommon('error')}</div>
-          <div className="text-sm text-muted-foreground">{error.message}</div>
+          <AlertCircle className="mx-auto h-12 w-12 text-red-400" />
+          <div className="mt-4 text-lg font-medium text-white">{tCommon('error')}</div>
+          <div className="text-sm text-slate-400">{error.message}</div>
         </div>
       </div>
     );
@@ -176,33 +156,33 @@ export default function EvidencePage() {
   const articles = articleOptions || [];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">{t('title')}</h1>
-          <p className="text-muted-foreground">{t('description')}</p>
+          <h1 className="text-2xl font-bold text-white">{t('title')}</h1>
+          <p className="text-slate-400 mt-1">{t('description')}</p>
         </div>
 
-        <Button asChild>
-          <Link href="/evidence/new">
-            <Plus className="me-2 h-4 w-4" />
-            {t('addEvidence')}
-          </Link>
-        </Button>
+        <Link
+          href="/evidence/new"
+          className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors"
+        >
+          <Plus className="h-4 w-4" />
+          {t('addEvidence')}
+        </Link>
       </div>
 
       {/* Filters */}
       {(evidence.length > 0 || systemFilter !== 'ALL' || articleFilter !== 'ALL' || typeFilter !== 'ALL') && (
         <div className="flex flex-wrap items-center gap-4">
-          {/* System filter */}
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">{t('filterBySystem')}:</span>
+            <span className="text-sm text-slate-400">{t('filterBySystem')}:</span>
             <Select value={systemFilter} onValueChange={setSystemFilter}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px] bg-slate-800/60 border-slate-600/60 text-slate-300">
                 <SelectValue placeholder={t('allSystems')} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-slate-800 border-slate-700">
                 <SelectItem value="ALL">{t('allSystems')}</SelectItem>
                 {systems.map((system) => (
                   <SelectItem key={system.id} value={system.id}>
@@ -213,14 +193,13 @@ export default function EvidencePage() {
             </Select>
           </div>
 
-          {/* Article filter */}
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">{t('filterByArticle')}:</span>
+            <span className="text-sm text-slate-400">{t('filterByArticle')}:</span>
             <Select value={articleFilter} onValueChange={setArticleFilter}>
-              <SelectTrigger className="w-[200px]">
+              <SelectTrigger className="w-[200px] bg-slate-800/60 border-slate-600/60 text-slate-300">
                 <SelectValue placeholder={t('allArticles')} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-slate-800 border-slate-700">
                 <SelectItem value="ALL">{t('allArticles')}</SelectItem>
                 {articles.map((article) => (
                   <SelectItem key={article.value} value={article.value}>
@@ -231,14 +210,13 @@ export default function EvidencePage() {
             </Select>
           </div>
 
-          {/* Type filter */}
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">{t('filterByType')}:</span>
+            <span className="text-sm text-slate-400">{t('filterByType')}:</span>
             <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-[160px]">
+              <SelectTrigger className="w-[160px] bg-slate-800/60 border-slate-600/60 text-slate-300">
                 <SelectValue placeholder={t('allTypes')} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-slate-800 border-slate-700">
                 <SelectItem value="ALL">{t('allTypes')}</SelectItem>
                 <SelectItem value="DOCUMENT">{t('types.document')}</SelectItem>
                 <SelectItem value="SCREENSHOT">{t('types.screenshot')}</SelectItem>
@@ -252,86 +230,93 @@ export default function EvidencePage() {
 
       {/* Evidence table */}
       {evidence.length === 0 ? (
-        <div className="rounded-lg border p-12 text-center">
-          <FileBox className="mx-auto h-12 w-12 text-muted-foreground" />
-          <h3 className="mt-4 text-lg font-semibold">{t('noEvidence')}</h3>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {t('noEvidenceDescription')}
-          </p>
-          <Button asChild className="mt-4">
-            <Link href="/evidence/new">
-              <Plus className="me-2 h-4 w-4" />
-              {t('addFirstEvidence')}
-            </Link>
-          </Button>
+        <div className="rounded-xl border border-dashed border-slate-700 p-16 text-center bg-slate-800/20">
+          <div className="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto">
+            <FileBox className="h-8 w-8 text-slate-600" />
+          </div>
+          <h3 className="mt-5 text-lg font-semibold text-white">{t('noEvidence')}</h3>
+          <p className="mt-2 text-sm text-slate-400 max-w-sm mx-auto">{t('noEvidenceDescription')}</p>
+          <Link
+            href="/evidence/new"
+            className="inline-flex items-center gap-2 mt-6 rounded-lg bg-emerald-500 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.35)] hover:bg-emerald-400 transition-colors"
+          >
+            <Plus className="h-4 w-4" />
+            {t('addFirstEvidence')}
+          </Link>
         </div>
       ) : (
-        <div className="rounded-lg border">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>{t('table.title')}</TableHead>
-                <TableHead>{t('table.type')}</TableHead>
-                <TableHead>{t('table.linkedSystem')}</TableHead>
-                <TableHead>{t('table.article')}</TableHead>
-                <TableHead>{t('table.integrityHash')}</TableHead>
-                <TableHead>{t('table.createdAt')}</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {evidence.map((item) => (
-                <TableRow key={item.id}>
-                  <TableCell>
-                    <Link
-                      href={`/evidence/${item.id}`}
-                      className="font-medium hover:underline"
-                    >
-                      {item.title}
-                    </Link>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant={getTypeBadgeVariant(item.evidenceType)}>
-                      {getTypeIcon(item.evidenceType)}
-                      {t(`types.${item.evidenceType.toLowerCase()}`)}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    {item.system ? (
-                      <Link
-                        href={`/systems/${item.system.id}`}
-                        className="text-sm hover:underline"
-                      >
-                        {item.system.name}
-                      </Link>
-                    ) : (
-                      <span className="text-sm text-muted-foreground">-</span>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {item.article ? (
-                      <span className="text-sm">{item.article}</span>
-                    ) : (
-                      <span className="text-sm text-muted-foreground">-</span>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {item.integrityHash ? (
-                      <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
-                        {item.integrityHash.slice(0, 8)}...
-                      </code>
-                    ) : (
-                      <span className="text-sm text-muted-foreground">-</span>
-                    )}
-                  </TableCell>
-                  <TableCell className="text-muted-foreground">
-                    {formatDistance(new Date(item.createdAt), new Date(), {
-                      addSuffix: true,
-                    })}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <div className="rounded-xl border border-slate-600/60 bg-slate-800/60 overflow-hidden">
+          {/* Table header */}
+          <div className="grid grid-cols-[2fr_1fr_1.5fr_1fr_1fr_1fr_auto] gap-4 px-5 py-3 border-b border-slate-700/50 bg-slate-800/60">
+            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('table.title')}</div>
+            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('table.type')}</div>
+            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('table.linkedSystem')}</div>
+            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('table.article')}</div>
+            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('table.integrityHash')}</div>
+            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('table.createdAt')}</div>
+            <div />
+          </div>
+          {/* Rows */}
+          {evidence.map((item, idx) => (
+            <div
+              key={item.id}
+              className={`grid grid-cols-[2fr_1fr_1.5fr_1fr_1fr_1fr_auto] gap-4 px-5 py-4 items-center hover:bg-slate-700/20 transition-colors ${idx !== evidence.length - 1 ? 'border-b border-slate-700/30' : ''}`}
+            >
+              <div>
+                <Link
+                  href={`/evidence/${item.id}`}
+                  className="font-medium text-white hover:text-emerald-400 transition-colors"
+                >
+                  {item.title}
+                </Link>
+              </div>
+              <div>
+                <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium ${getTypeBadgeClasses(item.evidenceType)}`}>
+                  {getTypeIcon(item.evidenceType)}
+                  {t(`types.${item.evidenceType.toLowerCase()}`)}
+                </span>
+              </div>
+              <div>
+                {item.system ? (
+                  <Link
+                    href={`/systems/${item.system.id}`}
+                    className="text-sm text-slate-300 hover:text-emerald-400 transition-colors"
+                  >
+                    {item.system.name}
+                  </Link>
+                ) : (
+                  <span className="text-sm text-slate-500">-</span>
+                )}
+              </div>
+              <div>
+                {item.article ? (
+                  <span className="text-sm text-slate-300">{item.article}</span>
+                ) : (
+                  <span className="text-sm text-slate-500">-</span>
+                )}
+              </div>
+              <div>
+                {item.integrityHash ? (
+                  <code className="text-xs bg-slate-700/60 text-slate-300 border border-slate-600/40 px-1.5 py-0.5 rounded font-mono">
+                    {item.integrityHash.slice(0, 8)}…
+                  </code>
+                ) : (
+                  <span className="text-sm text-slate-500">-</span>
+                )}
+              </div>
+              <div className="text-sm text-slate-500">
+                {formatDistance(new Date(item.createdAt), new Date(), { addSuffix: true })}
+              </div>
+              <div>
+                <Link
+                  href={`/evidence/${item.id}`}
+                  className="flex items-center justify-center w-8 h-8 rounded-lg text-slate-600 hover:text-emerald-400 hover:bg-slate-700/50 transition-all"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
