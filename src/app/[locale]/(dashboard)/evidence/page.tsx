@@ -87,7 +87,7 @@ export default function EvidencePage() {
     { enabled: accessData?.hasAccess === true }
   );
 
-  if (isCheckingAccess || isLoading) {
+  if (isCheckingAccess || (isLoading && accessData?.hasAccess === true)) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
