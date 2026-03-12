@@ -5,12 +5,20 @@ import { getAllPosts, getAllTags } from '@/lib/blog';
 import { Calendar, Clock, Tag, ArrowRight, Sparkles } from 'lucide-react';
 
 const CATEGORY_STYLES: Record<string, { gradient: string; icon: string }> = {
-  'EU AI Act':              { gradient: 'from-emerald-900 to-emerald-700', icon: '⚖️' },
-  'AI classification':      { gradient: 'from-teal-900 to-teal-700',       icon: '🤖' },
-  'AI regulation timeline': { gradient: 'from-slate-800 to-slate-600',     icon: '📅' },
-  'OpenAI':                 { gradient: 'from-gray-900 to-gray-700',       icon: '🧠' },
-  'Anthropic':              { gradient: 'from-amber-900 to-amber-700',     icon: '🧬' },
-  'default':                { gradient: 'from-slate-800 to-emerald-900',   icon: '📋' },
+  'EU AI Act':              { gradient: 'from-emerald-900 via-emerald-800 to-teal-700',    icon: '⚖️' },
+  'Colorado AI Act':        { gradient: 'from-blue-900 via-blue-800 to-indigo-700',        icon: '🏔️' },
+  'NYC Local Law 144':      { gradient: 'from-violet-900 via-purple-800 to-purple-700',    icon: '🗽' },
+  'AI vendor compliance':   { gradient: 'from-orange-900 via-orange-800 to-amber-700',     icon: '🔗' },
+  'AI classification':      { gradient: 'from-teal-900 via-teal-800 to-cyan-700',          icon: '🤖' },
+  'AI regulation timeline': { gradient: 'from-slate-800 via-slate-700 to-zinc-600',        icon: '📅' },
+  'OpenAI':                 { gradient: 'from-gray-900 via-gray-800 to-slate-700',         icon: '🧠' },
+  'Anthropic':              { gradient: 'from-amber-900 via-amber-800 to-yellow-700',      icon: '🧬' },
+  'biometrics':             { gradient: 'from-red-900 via-red-800 to-rose-700',            icon: '👁️' },
+  'employment AI':          { gradient: 'from-indigo-900 via-indigo-800 to-blue-700',      icon: '👔' },
+  'credit scoring AI':      { gradient: 'from-green-900 via-green-800 to-emerald-700',     icon: '💳' },
+  'SaaS compliance':        { gradient: 'from-cyan-900 via-cyan-800 to-teal-700',          icon: '☁️' },
+  'global AI regulation':   { gradient: 'from-rose-900 via-rose-800 to-pink-700',          icon: '🌐' },
+  'default':                { gradient: 'from-slate-800 via-slate-700 to-emerald-900',     icon: '📋' },
 };
 
 function getPostStyle(tags: string[]): { gradient: string; icon: string } {
@@ -117,7 +125,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
                   >
                     {t('allPosts')}
                   </Link>
-                  {allTags.map((tag) => (
+                  {allTags.slice(0, 8).map((tag) => (
                     <Link
                       key={tag}
                       href={`/blog?tag=${tag}`}
@@ -150,15 +158,11 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
                       {/* Image placeholder */}
                       {(() => {
                         const style = getPostStyle(post.frontmatter.tags);
-                        const primaryTag = post.frontmatter.tags[0] ?? 'Compliance';
                         return (
-                          <div className={`relative aspect-video w-full overflow-hidden bg-gradient-to-br ${style.gradient} flex flex-col items-center justify-center gap-3`}>
+                          <div className={`relative aspect-video w-full overflow-hidden bg-gradient-to-br ${style.gradient} flex items-center justify-center`}>
                             <div className="absolute -top-8 -end-8 w-32 h-32 rounded-full bg-white/5" />
                             <div className="absolute -bottom-4 -start-4 w-24 h-24 rounded-full bg-white/5" />
-                            <span className="text-4xl relative z-10">{style.icon}</span>
-                            <span className="text-xs font-medium text-white/60 uppercase tracking-widest relative z-10">
-                              {primaryTag}
-                            </span>
+                            <span className="text-5xl relative z-10">{style.icon}</span>
                           </div>
                         );
                       })()}
