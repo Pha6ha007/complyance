@@ -1202,8 +1202,8 @@
         "226": "A",
         "227": ".",
         "title": "Introduction",
-        "p1": "Complyance.io ('we', 'us', 'our') is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use our AI compliance management platform.",
-        "p2": "By using Complyance, you agree to the collection and use of information in accordance with this policy. If you do not agree, please do not use our services."
+        "p1": "Complyance.io (« nous ») s'engage à protéger votre vie privée. Cette Politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos données personnelles lorsque vous utilisez notre plateforme de gestion de conformité IA.",
+        "p2": "En utilisant Complyance, vous acceptez la collecte et l'utilisation de vos données conformément à cette politique. Si vous n'êtes pas d'accord, veuillez ne pas utiliser nos services."
       },
       "dataCollection": {
         "title": "Données que nous collectons",
@@ -1218,11 +1218,11 @@
         "ai": "Pour classifier les systèmes d'IA et générer des rapports de conformité via l'API Claude",
         "billing": "Pour traiter les paiements via Paddle (notre mandataire de facturation)",
         "communication": "Pour envoyer des mises à jour de service, des alertes réglementaires et des notifications de conformité",
-        "classification": "Perform AI risk classification and gap analysis using Claude API",
-        "documents": "Generate compliance reports and technical documentation",
-        "support": "Respond to support requests and customer inquiries",
-        "improvements": "Improve platform features and user experience via analytics",
-        "legal": "Comply with legal obligations and enforce our Terms of Service"
+        "classification": "Effectuer la classification des risques IA et l'analyse des lacunes via l'API Claude",
+        "documents": "Générer des rapports de conformité et la documentation technique",
+        "support": "Répondre aux demandes d'assistance et aux questions des clients",
+        "improvements": "Améliorer les fonctionnalités de la plateforme et l'expérience utilisateur via les analyses",
+        "legal": "Se conformer aux obligations légales et faire respecter nos Conditions d'utilisation"
       },
       "thirdParties": {
         "title": "Services tiers",
@@ -1293,11 +1293,11 @@
           "63": "n",
           "64": "t",
           "65": "s",
-          "purpose": "AI risk classification and document analysis",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "AI system descriptions and uploaded documents (NOT your account email or personal details)",
-          "training": "Training",
-          "trainingDesc": "Anthropic does NOT use your data for model training (per our Commercial Terms agreement)"
+          "purpose": "Classification des risques IA et analyse de documents",
+          "dataShared": "Données partagées",
+          "dataSharedDesc": "Descriptions des systèmes d'IA et documents téléchargés (PAS votre e-mail de compte ni vos données personnelles)",
+          "training": "Entraînement",
+          "trainingDesc": "Anthropic n'utilise PAS vos données pour l'entraînement des modèles (conformément à notre accord Commercial Terms)"
         },
         "paddle": {
           "0": "P",
@@ -1360,9 +1360,9 @@
           "57": "n",
           "58": "t",
           "59": "s",
-          "purpose": "Payment processing (Merchant of Record)",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Email, billing address, payment method (handled by Paddle, not stored by us)"
+          "purpose": "Traitement des paiements (mandataire de facturation)",
+          "dataShared": "Données partagées",
+          "dataSharedDesc": "E-mail, adresse de facturation, mode de paiement (géré par Paddle, non stocké par nous)"
         },
         "aws": {
           "0": "A",
@@ -1415,11 +1415,11 @@
           "47": "U",
           "48": "E",
           "49": ")",
-          "purpose": "Encrypted file storage",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Uploaded documents (PDFs, evidence files) encrypted with AES-256",
-          "security": "Security",
-          "securityDesc": "All data stored in EU region with server-side encryption and access controls"
+          "purpose": "Stockage chiffré de fichiers",
+          "dataShared": "Données partagées",
+          "dataSharedDesc": "Documents téléchargés (PDF, fichiers de preuves) chiffrés avec AES-256",
+          "security": "Sécurité",
+          "securityDesc": "Toutes les données stockées dans la région UE avec chiffrement côté serveur et contrôles d'accès"
         },
         "resend": {
           "0": "R",
@@ -1462,21 +1462,21 @@
           "37": "e",
           "38": "l",
           "39": "s",
-          "purpose": "Transactional email delivery",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Email address and message content (password resets, compliance alerts, notifications)"
+          "purpose": "Envoi d'e-mails transactionnels",
+          "dataShared": "Données partagées",
+          "dataSharedDesc": "Adresse e-mail et contenu des messages (réinitialisations de mot de passe, alertes de conformité, notifications)"
         },
         "desc": "Nous ne vendons jamais vos données. Les tiers traitent les données uniquement dans la mesure nécessaire à la fourniture des services.",
-        "intro": "We share your data with the following third-party service providers only as necessary to operate the platform:",
+        "intro": "Nous partageons vos données avec les prestataires de services tiers suivants uniquement dans la mesure nécessaire au fonctionnement de la plateforme :",
         "posthog": {
-          "purpose": "Product analytics and feature usage tracking",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Anonymized usage events (features used, clicks, navigation patterns)"
+          "purpose": "Analyses produit et suivi de l'utilisation des fonctionnalités",
+          "dataShared": "Données partagées",
+          "dataSharedDesc": "Événements d'utilisation anonymisés (fonctionnalités utilisées, clics, schémas de navigation)"
         },
         "sentry": {
-          "purpose": "Error monitoring and debugging",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Error logs, stack traces, request metadata (personal data is scrubbed)"
+          "purpose": "Surveillance des erreurs et débogage",
+          "dataShared": "Données partagées",
+          "dataSharedDesc": "Journaux d'erreurs, traces de pile, métadonnées des requêtes (les données personnelles sont supprimées)"
         }
       },
       "cookies": {
@@ -1551,8 +1551,8 @@
           "66": "o",
           "67": "n",
           "68": "s",
-          "title": "Essential Cookies",
-          "desc": "Required for authentication, session management, and security (cannot be disabled)"
+          "title": "Cookies essentiels",
+          "desc": "Nécessaires pour l'authentification, la gestion des sessions et la sécurité (ne peuvent pas être désactivés)"
         },
         "analytics": {
           "0": "C",
@@ -1634,11 +1634,11 @@
           "76": "l",
           "77": "s",
           "78": ")",
-          "title": "Analytics Cookies",
-          "desc": "Optional cookies to track usage patterns and improve user experience (PostHog)"
+          "title": "Cookies analytiques",
+          "desc": "Cookies facultatifs pour suivre les schémas d'utilisation et améliorer l'expérience utilisateur (PostHog)"
         },
         "desc": "Vous pouvez contrôler les préférences de cookies dans les paramètres de votre navigateur.",
-        "intro": "We use cookies and similar technologies to maintain your session and improve the platform. Types of cookies used:"
+        "intro": "Nous utilisons des cookies et des technologies similaires pour maintenir votre session et améliorer la plateforme. Types de cookies utilisés :"
       },
       "retention": {
         "title": "Conservation des données",
@@ -1646,20 +1646,20 @@
         "grace": "Période de grâce de 30 jours après l'annulation avant la suppression",
         "legal": "Certaines données conservées plus longtemps pour la conformité légale (ex. : registres de facturation)",
         "account": {
-          "title": "Account Data",
-          "desc": "Retained as long as your account is active"
+          "title": "Données de compte",
+          "desc": "Conservées tant que votre compte est actif"
         },
         "documents": {
-          "title": "Generated Documents & Evidence",
-          "desc": "Retained for 30 days after subscription cancellation, then permanently deleted"
+          "title": "Documents générés et preuves",
+          "desc": "Conservés 30 jours après l'annulation de l'abonnement, puis définitivement supprimés"
         },
         "analytics": {
-          "title": "Analytics Data",
-          "desc": "Anonymized usage data retained for up to 12 months"
+          "title": "Données analytiques",
+          "desc": "Données d'utilisation anonymisées conservées jusqu'à 12 mois"
         },
         "backups": {
-          "title": "Backups",
-          "desc": "Backup data retained for 90 days for disaster recovery purposes"
+          "title": "Sauvegardes",
+          "desc": "Données de sauvegarde conservées 90 jours à des fins de reprise après sinistre"
         }
       },
       "gdprRights": {
@@ -1677,74 +1677,74 @@
         "infrastructure": "Infrastructure basée dans l'UE pour la conformité RGPD",
         "access": "Contrôles d'accès basés sur les rôles et journaux d'audit",
         "desc": "Nous suivons les meilleures pratiques du secteur pour protéger vos données.",
-        "storage": "EU-based infrastructure (Railway, AWS EU region) for GDPR compliance",
-        "monitoring": "24/7 security monitoring and automated threat detection"
+        "storage": "Infrastructure basée dans l'UE (Railway, région AWS UE) pour la conformité RGPD",
+        "monitoring": "Surveillance de la sécurité 24h/24 et 7j/7 et détection automatisée des menaces"
       },
-      "lastUpdated": "Last Updated",
+      "lastUpdated": "Dernière mise à jour",
       "collection": {
-        "title": "What Data We Collect",
+        "title": "Données que nous collectons",
         "account": {
-          "title": "Account Information",
-          "email": "Email address",
-          "name": "Name (optional)",
-          "company": "Company or organization name",
-          "markets": "Target markets for compliance tracking"
+          "title": "Informations de compte",
+          "email": "Adresse e-mail",
+          "name": "Nom (facultatif)",
+          "company": "Nom de l'entreprise ou de l'organisation",
+          "markets": "Marchés cibles pour le suivi de la conformité"
         },
         "system": {
-          "title": "AI System Data",
-          "descriptions": "AI system descriptions and technical details you provide",
-          "documents": "Documents you upload for classification assistance (PDFs, DOCX, etc.)",
-          "classifications": "Risk classification results and compliance gap analysis"
+          "title": "Données des systèmes d'IA",
+          "descriptions": "Descriptions et détails techniques des systèmes d'IA que vous fournissez",
+          "documents": "Documents que vous téléchargez pour l'assistance à la classification (PDF, DOCX, etc.)",
+          "classifications": "Résultats de classification des risques et analyse des lacunes de conformité"
         },
         "technical": {
-          "title": "Technical Data",
-          "ip": "IP address and geolocation data",
-          "browser": "Browser type, version, and device information",
-          "usage": "Usage analytics (pages visited, features used, session duration)",
-          "errors": "Error logs and diagnostic data (via Sentry)"
+          "title": "Données techniques",
+          "ip": "Adresse IP et données de géolocalisation",
+          "browser": "Type de navigateur, version et informations sur l'appareil",
+          "usage": "Analyses d'utilisation (pages visitées, fonctionnalités utilisées, durée de session)",
+          "errors": "Journaux d'erreurs et données de diagnostic (via Sentry)"
         }
       },
       "gdpr": {
-        "title": "Your GDPR Rights (EU Users)",
-        "intro": "If you are located in the European Union, you have the following data protection rights under GDPR:",
+        "title": "Vos droits RGPD (utilisateurs UE)",
+        "intro": "Si vous êtes situé dans l'Union européenne, vous disposez des droits suivants en matière de protection des données en vertu du RGPD :",
         "access": {
-          "title": "Right to Access",
-          "desc": "Request a copy of all personal data we hold about you"
+          "title": "Droit d'accès",
+          "desc": "Demander une copie de toutes les données personnelles que nous détenons vous concernant"
         },
         "rectification": {
-          "title": "Right to Rectification",
-          "desc": "Request correction of inaccurate or incomplete data"
+          "title": "Droit de rectification",
+          "desc": "Demander la correction des données inexactes ou incomplètes"
         },
         "erasure": {
-          "title": "Right to Erasure",
-          "desc": "Request deletion of your personal data ('right to be forgotten')"
+          "title": "Droit à l'effacement",
+          "desc": "Demander la suppression de vos données personnelles (« droit à l'oubli »)"
         },
         "portability": {
-          "title": "Right to Data Portability",
-          "desc": "Request export of your data in machine-readable format (JSON)"
+          "title": "Droit à la portabilité des données",
+          "desc": "Demander l'exportation de vos données dans un format lisible par machine (JSON)"
         },
         "objection": {
-          "title": "Right to Object",
-          "desc": "Object to processing of your personal data for specific purposes"
+          "title": "Droit d'opposition",
+          "desc": "S'opposer au traitement de vos données personnelles à des fins spécifiques"
         },
-        "exercise": "To exercise any of these rights, contact us at"
+        "exercise": "Pour exercer l'un de ces droits, contactez-nous à"
       },
       "international": {
-        "title": "International Data Transfers",
-        "desc": "Your data is primarily stored in the EU (Railway, AWS EU region). However, some third-party services (Anthropic, Sentry) may process data in the US under Standard Contractual Clauses (SCCs) and GDPR-compliant safeguards."
+        "title": "Transferts internationaux de données",
+        "desc": "Vos données sont principalement stockées dans l'UE (Railway, région AWS UE). Cependant, certains services tiers (Anthropic, Sentry) peuvent traiter des données aux États-Unis dans le cadre des Clauses Contractuelles Types (CCT) et des garanties conformes au RGPD."
       },
       "children": {
-        "title": "Children's Privacy",
-        "desc": "Complyance is not intended for individuals under 18 years of age. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us at privacy@complyance.io and we will delete it."
+        "title": "Vie privée des enfants",
+        "desc": "Complyance n'est pas destiné aux personnes de moins de 18 ans. Nous ne collectons pas sciemment de données personnelles auprès d'enfants. Si vous pensez qu'un enfant nous a fourni des données personnelles, veuillez nous contacter à privacy@complyance.io et nous les supprimerons."
       },
       "changes": {
-        "title": "Changes to This Privacy Policy",
-        "desc": "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated 'Last Updated' date. If changes are material, we will notify you via email. Continued use of the platform after changes constitutes acceptance of the updated policy."
+        "title": "Modifications de cette Politique de confidentialité",
+        "desc": "Nous pouvons mettre à jour cette Politique de confidentialité de temps en temps. Les modifications seront publiées sur cette page avec une date de « Dernière mise à jour » actualisée. Si les modifications sont importantes, nous vous en informerons par e-mail. La poursuite de l'utilisation de la plateforme après les modifications constitue une acceptation de la politique mise à jour."
       },
       "contact": {
-        "title": "Contact Us",
-        "email": "Email",
-        "website": "Website"
+        "title": "Nous contacter",
+        "email": "E-mail",
+        "website": "Site web"
       }
     },
     "terms": {
