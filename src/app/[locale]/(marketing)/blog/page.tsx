@@ -4,6 +4,22 @@ import { Link } from '@/i18n/navigation';
 import { getAllPosts, getAllTags } from '@/lib/blog';
 import { Calendar, Clock, Tag, ArrowRight, Sparkles } from 'lucide-react';
 
+const CATEGORY_STYLES: Record<string, { gradient: string; icon: string }> = {
+  'EU AI Act':              { gradient: 'from-emerald-900 to-emerald-700', icon: '⚖️' },
+  'AI classification':      { gradient: 'from-teal-900 to-teal-700',       icon: '🤖' },
+  'AI regulation timeline': { gradient: 'from-slate-800 to-slate-600',     icon: '📅' },
+  'OpenAI':                 { gradient: 'from-gray-900 to-gray-700',       icon: '🧠' },
+  'Anthropic':              { gradient: 'from-amber-900 to-amber-700',     icon: '🧬' },
+  'default':                { gradient: 'from-slate-800 to-emerald-900',   icon: '📋' },
+};
+
+function getPostStyle(tags: string[]): { gradient: string; icon: string } {
+  for (const tag of tags) {
+    if (CATEGORY_STYLES[tag]) return CATEGORY_STYLES[tag];
+  }
+  return CATEGORY_STYLES['default'];
+}
+
 interface BlogPageProps {
   params: Promise<{ locale: string }>;
   searchParams?: Promise<{ tag?: string }>;
@@ -132,17 +148,20 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
                   >
                     <Link href={`/blog/${post.slug}`}>
                       {/* Image placeholder */}
-                      <div className="relative aspect-video w-full overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-teal-600/20" />
-                        <div className="absolute inset-0 opacity-[0.06]"
-                          style={{
-                            backgroundImage: `linear-gradient(rgba(16,185,129,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.8) 1px, transparent 1px)`,
-                            backgroundSize: '32px 32px',
-                          }}
-                        />
-                        {/* Decorative orb */}
-                        <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-emerald-500/20 rounded-full blur-2xl" />
-                      </div>
+                      {(() => {
+                        const style = getPostStyle(post.frontmatter.tags);
+                        const primaryTag = post.frontmatter.tags[0] ?? 'Compliance';
+                        return (
+                          <div className={`relative aspect-video w-full overflow-hidden bg-gradient-to-br ${style.gradient} flex flex-col items-center justify-center gap-3`}>
+                            <div className="absolute -top-8 -end-8 w-32 h-32 rounded-full bg-white/5" />
+                            <div className="absolute -bottom-4 -start-4 w-24 h-24 rounded-full bg-white/5" />
+                            <span className="text-4xl relative z-10">{style.icon}</span>
+                            <span className="text-xs font-medium text-white/60 uppercase tracking-widest relative z-10">
+                              {primaryTag}
+                            </span>
+                          </div>
+                        );
+                      })()}
 
                       <div className="p-5">
                         {/* Tags */}
