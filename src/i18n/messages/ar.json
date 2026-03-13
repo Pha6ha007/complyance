@@ -934,9 +934,9 @@
         "148": "ن",
         "149": "ا",
         "150": ".",
-        "title": "Introduction",
-        "p1": "Complyance.io ('we', 'us', 'our') is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use our AI compliance management platform.",
-        "p2": "By using Complyance, you agree to the collection and use of information in accordance with this policy. If you do not agree, please do not use our services."
+        "title": "مقدمة",
+        "p1": "تلتزم Complyance.io ('نحن'، 'لنا'، 'خاصتنا') بحماية خصوصيتك. توضح سياسة الخصوصية هذه كيفية جمع معلوماتك الشخصية واستخدامها والإفصاح عنها وحمايتها عند استخدامك لمنصة إدارة امتثال الذكاء الاصطناعي الخاصة بنا.",
+        "p2": "باستخدام Complyance، فإنك توافق على جمع واستخدام المعلومات وفقاً لهذه السياسة. إذا كنت لا توافق، يرجى عدم استخدام خدماتنا."
       },
       "dataCollection": {
         "title": "البيانات التي نجمعها",
@@ -951,11 +951,11 @@
         "ai": "لتصنيف أنظمة الذكاء الاصطناعي وإنشاء تقارير الامتثال عبر واجهة Claude API",
         "billing": "لمعالجة المدفوعات عبر Paddle (وكيل التجارة لدينا)",
         "communication": "لإرسال تحديثات الخدمة والتنبيهات التنظيمية وإشعارات الامتثال",
-        "classification": "Perform AI risk classification and gap analysis using Claude API",
-        "documents": "Generate compliance reports and technical documentation",
-        "support": "Respond to support requests and customer inquiries",
-        "improvements": "Improve platform features and user experience via analytics",
-        "legal": "Comply with legal obligations and enforce our Terms of Service"
+        "classification": "إجراء تصنيف مخاطر الذكاء الاصطناعي وتحليل الثغرات باستخدام Claude API",
+        "documents": "إنشاء تقارير الامتثال والوثائق التقنية",
+        "support": "الرد على طلبات الدعم واستفسارات العملاء",
+        "improvements": "تحسين ميزات المنصة وتجربة المستخدم عبر التحليلات",
+        "legal": "الامتثال للالتزامات القانونية وتطبيق شروط الخدمة"
       },
       "thirdParties": {
         "title": "خدمات الأطراف الثالثة",
@@ -1030,11 +1030,11 @@
           "67": "د",
           "68": "ا",
           "69": "ت",
-          "purpose": "AI risk classification and document analysis",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "AI system descriptions and uploaded documents (NOT your account email or personal details)",
-          "training": "Training",
-          "trainingDesc": "Anthropic does NOT use your data for model training (per our Commercial Terms agreement)"
+          "purpose": "تصنيف مخاطر الذكاء الاصطناعي وتحليل المستندات",
+          "dataShared": "البيانات المشتركة",
+          "dataSharedDesc": "أوصاف أنظمة الذكاء الاصطناعي والمستندات المرفوعة (ليس بريدك الإلكتروني أو بياناتك الشخصية)",
+          "training": "التدريب",
+          "trainingDesc": "لا تستخدم Anthropic بياناتك لتدريب النماذج (وفقاً لاتفاقية الشروط التجارية)"
         },
         "paddle": {
           "0": "P",
@@ -1080,9 +1080,9 @@
           "40": "ك",
           "41": "ا",
           "42": "ت",
-          "purpose": "Payment processing (Merchant of Record)",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Email, billing address, payment method (handled by Paddle, not stored by us)"
+          "purpose": "معالجة المدفوعات (تاجر السجل)",
+          "dataShared": "البيانات المشتركة",
+          "dataSharedDesc": "البريد الإلكتروني، عنوان الفوترة، طريقة الدفع (تتولى Paddle معالجتها، ولا نخزنها نحن)"
         },
         "aws": {
           "0": "A",
@@ -1139,11 +1139,11 @@
           "51": "ب",
           "52": "ي",
           "53": ")",
-          "purpose": "Encrypted file storage",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Uploaded documents (PDFs, evidence files) encrypted with AES-256",
-          "security": "Security",
-          "securityDesc": "All data stored in EU region with server-side encryption and access controls"
+          "purpose": "تخزين الملفات المشفرة",
+          "dataShared": "البيانات المشتركة",
+          "dataSharedDesc": "المستندات المرفوعة (ملفات PDF، ملفات الأدلة) مشفرة بـ AES-256",
+          "security": "الأمان",
+          "securityDesc": "جميع البيانات مخزنة في منطقة الاتحاد الأوروبي مع تشفير من جانب الخادم وضوابط الوصول"
         },
         "resend": {
           "0": "R",
@@ -1178,21 +1178,21 @@
           "29": "و",
           "30": "ن",
           "31": "ي",
-          "purpose": "Transactional email delivery",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Email address and message content (password resets, compliance alerts, notifications)"
+          "purpose": "تسليم البريد الإلكتروني للمعاملات",
+          "dataShared": "البيانات المشتركة",
+          "dataSharedDesc": "عنوان البريد الإلكتروني ومحتوى الرسالة (إعادة تعيين كلمة المرور، تنبيهات الامتثال، الإشعارات)"
         },
         "desc": "لا نبيع بياناتك أبداً. تعالج الأطراف الثالثة البيانات فقط بالقدر الضروري لتقديم الخدمات.",
-        "intro": "We share your data with the following third-party service providers only as necessary to operate the platform:",
+        "intro": "نشارك بياناتك مع مزودي الخدمات الخارجيين التاليين فقط بالقدر اللازم لتشغيل المنصة:",
         "posthog": {
-          "purpose": "Product analytics and feature usage tracking",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Anonymized usage events (features used, clicks, navigation patterns)"
+          "purpose": "تحليلات المنتج وتتبع استخدام الميزات",
+          "dataShared": "البيانات المشتركة",
+          "dataSharedDesc": "أحداث الاستخدام مجهولة الهوية (الميزات المستخدمة، النقرات، أنماط التنقل)"
         },
         "sentry": {
-          "purpose": "Error monitoring and debugging",
-          "dataShared": "Data Shared",
-          "dataSharedDesc": "Error logs, stack traces, request metadata (personal data is scrubbed)"
+          "purpose": "مراقبة الأخطاء وتصحيحها",
+          "dataShared": "البيانات المشتركة",
+          "dataSharedDesc": "سجلات الأخطاء، تتبعات المكدس، بيانات تعريف الطلبات (البيانات الشخصية يتم حذفها)"
         }
       },
       "cookies": {
@@ -1247,8 +1247,8 @@
           "46": "س",
           "47": "ا",
           "48": "ت",
-          "title": "Essential Cookies",
-          "desc": "Required for authentication, session management, and security (cannot be disabled)"
+          "title": "ملفات تعريف الارتباط الأساسية",
+          "desc": "مطلوبة للمصادقة وإدارة الجلسة والأمان (لا يمكن تعطيلها)"
         },
         "analytics": {
           "0": "م",
@@ -1307,11 +1307,11 @@
           "53": "ي",
           "54": "ة",
           "55": ")",
-          "title": "Analytics Cookies",
-          "desc": "Optional cookies to track usage patterns and improve user experience (PostHog)"
+          "title": "ملفات تعريف ارتباط التحليلات",
+          "desc": "ملفات تعريف ارتباط اختيارية لتتبع أنماط الاستخدام وتحسين تجربة المستخدم (PostHog)"
         },
         "desc": "يمكنك التحكم في تفضيلات ملفات تعريف الارتباط في إعدادات المتصفح.",
-        "intro": "We use cookies and similar technologies to maintain your session and improve the platform. Types of cookies used:"
+        "intro": "نستخدم ملفات تعريف الارتباط وتقنيات مماثلة للحفاظ على جلستك وتحسين المنصة. أنواع ملفات تعريف الارتباط المستخدمة:"
       },
       "retention": {
         "title": "الاحتفاظ بالبيانات",
@@ -1319,20 +1319,20 @@
         "grace": "فترة سماح 30 يوماً بعد الإلغاء قبل الحذف",
         "legal": "يتم الاحتفاظ ببعض البيانات لفترة أطول للامتثال القانوني (مثل سجلات الفوترة)",
         "account": {
-          "title": "Account Data",
-          "desc": "Retained as long as your account is active"
+          "title": "بيانات الحساب",
+          "desc": "تُحتفظ بها طوال فترة نشاط حسابك"
         },
         "documents": {
-          "title": "Generated Documents & Evidence",
-          "desc": "Retained for 30 days after subscription cancellation, then permanently deleted"
+          "title": "المستندات والأدلة المُنشأة",
+          "desc": "تُحتفظ بها لمدة 30 يوماً بعد إلغاء الاشتراك، ثم تُحذف نهائياً"
         },
         "analytics": {
-          "title": "Analytics Data",
-          "desc": "Anonymized usage data retained for up to 12 months"
+          "title": "بيانات التحليلات",
+          "desc": "تُحتفظ ببيانات الاستخدام مجهولة الهوية لمدة تصل إلى 12 شهراً"
         },
         "backups": {
-          "title": "Backups",
-          "desc": "Backup data retained for 90 days for disaster recovery purposes"
+          "title": "النسخ الاحتياطية",
+          "desc": "تُحتفظ ببيانات النسخ الاحتياطية لمدة 90 يوماً لأغراض التعافي من الكوارث"
         }
       },
       "gdprRights": {
@@ -1350,74 +1350,74 @@
         "infrastructure": "بنية تحتية مقرها الاتحاد الأوروبي للامتثال لـ GDPR",
         "access": "ضوابط وصول قائمة على الأدوار وسجلات تدقيق",
         "desc": "نتبع أفضل ممارسات الصناعة لحماية بياناتك.",
-        "storage": "EU-based infrastructure (Railway, AWS EU region) for GDPR compliance",
-        "monitoring": "24/7 security monitoring and automated threat detection"
+        "storage": "بنية تحتية في الاتحاد الأوروبي (Railway، منطقة AWS EU) لضمان الامتثال للائحة العامة لحماية البيانات",
+        "monitoring": "مراقبة أمنية على مدار الساعة وكشف تلقائي للتهديدات"
       },
-      "lastUpdated": "Last Updated",
+      "lastUpdated": "آخر تحديث",
       "collection": {
-        "title": "What Data We Collect",
+        "title": "البيانات التي نجمعها",
         "account": {
-          "title": "Account Information",
-          "email": "Email address",
-          "name": "Name (optional)",
-          "company": "Company or organization name",
-          "markets": "Target markets for compliance tracking"
+          "title": "معلومات الحساب",
+          "email": "عنوان البريد الإلكتروني",
+          "name": "الاسم (اختياري)",
+          "company": "اسم الشركة أو المؤسسة",
+          "markets": "الأسواق المستهدفة لتتبع الامتثال"
         },
         "system": {
-          "title": "AI System Data",
-          "descriptions": "AI system descriptions and technical details you provide",
-          "documents": "Documents you upload for classification assistance (PDFs, DOCX, etc.)",
-          "classifications": "Risk classification results and compliance gap analysis"
+          "title": "بيانات نظام الذكاء الاصطناعي",
+          "descriptions": "أوصاف أنظمة الذكاء الاصطناعي والتفاصيل التقنية التي تقدمها",
+          "documents": "المستندات التي ترفعها للمساعدة في التصنيف (PDF، DOCX، إلخ)",
+          "classifications": "نتائج تصنيف المخاطر وتحليل ثغرات الامتثال"
         },
         "technical": {
-          "title": "Technical Data",
-          "ip": "IP address and geolocation data",
-          "browser": "Browser type, version, and device information",
-          "usage": "Usage analytics (pages visited, features used, session duration)",
-          "errors": "Error logs and diagnostic data (via Sentry)"
+          "title": "البيانات التقنية",
+          "ip": "عنوان IP وبيانات الموقع الجغرافي",
+          "browser": "نوع المتصفح والإصدار ومعلومات الجهاز",
+          "usage": "تحليلات الاستخدام (الصفحات المُزارة، الميزات المستخدمة، مدة الجلسة)",
+          "errors": "سجلات الأخطاء والبيانات التشخيصية (عبر Sentry)"
         }
       },
       "gdpr": {
-        "title": "Your GDPR Rights (EU Users)",
-        "intro": "If you are located in the European Union, you have the following data protection rights under GDPR:",
+        "title": "حقوقك بموجب اللائحة العامة لحماية البيانات (مستخدمو الاتحاد الأوروبي)",
+        "intro": "إذا كنت مقيماً في الاتحاد الأوروبي، فلديك حقوق حماية البيانات التالية بموجب اللائحة العامة لحماية البيانات:",
         "access": {
-          "title": "Right to Access",
-          "desc": "Request a copy of all personal data we hold about you"
+          "title": "الحق في الوصول",
+          "desc": "طلب نسخة من جميع البيانات الشخصية التي نحتفظ بها عنك"
         },
         "rectification": {
-          "title": "Right to Rectification",
-          "desc": "Request correction of inaccurate or incomplete data"
+          "title": "الحق في التصحيح",
+          "desc": "طلب تصحيح البيانات غير الدقيقة أو غير المكتملة"
         },
         "erasure": {
-          "title": "Right to Erasure",
-          "desc": "Request deletion of your personal data ('right to be forgotten')"
+          "title": "الحق في المحو",
+          "desc": "طلب حذف بياناتك الشخصية ('الحق في النسيان')"
         },
         "portability": {
-          "title": "Right to Data Portability",
-          "desc": "Request export of your data in machine-readable format (JSON)"
+          "title": "الحق في نقل البيانات",
+          "desc": "طلب تصدير بياناتك بتنسيق قابل للقراءة آلياً (JSON)"
         },
         "objection": {
-          "title": "Right to Object",
-          "desc": "Object to processing of your personal data for specific purposes"
+          "title": "الحق في الاعتراض",
+          "desc": "الاعتراض على معالجة بياناتك الشخصية لأغراض محددة"
         },
-        "exercise": "To exercise any of these rights, contact us at"
+        "exercise": "لممارسة أي من هذه الحقوق، تواصل معنا على"
       },
       "international": {
-        "title": "International Data Transfers",
-        "desc": "Your data is primarily stored in the EU (Railway, AWS EU region). However, some third-party services (Anthropic, Sentry) may process data in the US under Standard Contractual Clauses (SCCs) and GDPR-compliant safeguards."
+        "title": "نقل البيانات الدولي",
+        "desc": "تُخزَّن بياناتك بشكل رئيسي في الاتحاد الأوروبي (Railway، منطقة AWS EU). ومع ذلك، قد تعالج بعض الخدمات الخارجية (Anthropic، Sentry) البيانات في الولايات المتحدة في إطار البنود التعاقدية القياسية (SCCs) والضمانات المتوافقة مع اللائحة العامة لحماية البيانات."
       },
       "children": {
-        "title": "Children's Privacy",
-        "desc": "Complyance is not intended for individuals under 18 years of age. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us at privacy@complyance.io and we will delete it."
+        "title": "خصوصية الأطفال",
+        "desc": "لا تستهدف Complyance الأفراد دون سن 18 عاماً. لا نجمع معلومات شخصية من الأطفال عن قصد. إذا كنت تعتقد أن طفلاً قد زودنا ببيانات شخصية، يرجى التواصل معنا على privacy@complyance.io وسنحذفها."
       },
       "changes": {
-        "title": "Changes to This Privacy Policy",
-        "desc": "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated 'Last Updated' date. If changes are material, we will notify you via email. Continued use of the platform after changes constitutes acceptance of the updated policy."
+        "title": "تغييرات على سياسة الخصوصية",
+        "desc": "قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. ستُنشر التغييرات على هذه الصفحة مع تحديث تاريخ 'آخر تحديث'. في حالة وجود تغييرات جوهرية، سنعلمك عبر البريد الإلكتروني. استمرارك في استخدام المنصة بعد التغييرات يُعدّ قبولاً للسياسة المُحدَّثة."
       },
       "contact": {
-        "title": "Contact Us",
-        "email": "Email",
-        "website": "Website"
+        "title": "تواصل معنا",
+        "email": "البريد الإلكتروني",
+        "website": "الموقع الإلكتروني"
       }
     },
     "terms": {
@@ -1425,8 +1425,8 @@
       "acceptance": {
         "title": "قبول الشروط",
         "desc": "بالوصول إلى Complyance أو استخدامها، فإنك توافق على الالتزام بشروط الخدمة هذه. إذا لم توافق، لا يمكنك استخدام المنصة.",
-        "p1": "By accessing or using Complyance.io ('the Service', 'the Platform'), you agree to be bound by these Terms of Service ('Terms'). These Terms constitute a legally binding agreement between you ('User', 'you', 'your') and Complyance.io ('we', 'us', 'our').",
-        "p2": "If you do not agree to these Terms, you may not access or use the Platform. By creating an account or using any part of the Service, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy."
+        "p1": "بالوصول إلى Complyance.io ('الخدمة'، 'المنصة') أو استخدامها، فإنك توافق على الالتزام بشروط الخدمة هذه ('الشروط'). تُشكّل هذه الشروط اتفاقية ملزمة قانونياً بينك ('المستخدم'، 'أنت') وبين Complyance.io ('نحن'، 'لنا').",
+        "p2": "إذا لم توافق على هذه الشروط، فلا يمكنك الوصول إلى المنصة أو استخدامها. بإنشاء حساب أو استخدام أي جزء من الخدمة، فإنك تُقرّ بأنك قرأت هذه الشروط وسياسة الخصوصية الخاصة بنا وفهمتها وتوافق على الالتزام بها."
       },
       "serviceDescription": {
         "title": "وصف الخدمة",
@@ -1438,9 +1438,9 @@
         "informational": "جميع التصنيفات والتقارير والتوصيات هي لأغراض إعلامية فقط ولا تشكل استشارة قانونية.",
         "professional": "للتسجيلات التنظيمية أو الشهادات أو الآراء القانونية، استشر متخصصين قانونيين مؤهلين.",
         "liability": "لسنا مسؤولين عن فشل الامتثال أو الغرامات التنظيمية أو العواقب القانونية الناتجة عن استخدام منصتنا.",
-        "p1": "Complyance is a compliance management tool, not a law firm or legal advisor. We do not provide legal advice, legal opinions, or legal services.",
-        "p2": "All risk classifications, compliance reports, gap analyses, and recommendations provided by the Platform are informational only and do not constitute legal advice. Our AI-powered tools are designed to assist with compliance tracking, but they cannot replace professional legal counsel.",
-        "p3": "For regulatory filings, certifications, legal opinions, or final compliance verification, you must consult with qualified legal professionals. We are not liable for compliance failures, regulatory fines, enforcement actions, or any legal consequences resulting from your use of the Platform."
+        "p1": "Complyance هي أداة لإدارة الامتثال وليست مكتب محاماة أو مستشاراً قانونياً. نحن لا نقدم مشورة قانونية أو آراء قانونية أو خدمات قانونية.",
+        "p2": "جميع تصنيفات المخاطر والتقارير وتحليلات الثغرات والتوصيات المقدمة من المنصة هي لأغراض إعلامية فحسب ولا تُشكّل مشورة قانونية. أدواتنا المدعومة بالذكاء الاصطناعي مصممة للمساعدة في تتبع الامتثال، لكنها لا تُغني عن المستشار القانوني المتخصص.",
+        "p3": "للتسجيلات التنظيمية أو الشهادات أو الآراء القانونية أو التحقق النهائي من الامتثال، يجب عليك استشارة متخصصين قانونيين مؤهلين. لسنا مسؤولين عن إخفاقات الامتثال أو الغرامات التنظيمية أو الإجراءات التنفيذية أو أي عواقب قانونية ناجمة عن استخدامك للمنصة."
       },
       "accounts": {
         "title": "حسابات المستخدمين",
@@ -1448,9 +1448,9 @@
         "accurate": "يجب عليك تقديم معلومات دقيقة وكاملة",
         "notify": "أبلغنا فوراً عن أي وصول غير مصرح به",
         "prohibited": "لا يجوز لك مشاركة الحسابات أو نقل الوصول بدون إذن",
-        "p1": "To use most features of Complyance, you must create an account. When creating and maintaining your account, you agree to:",
-        "confidential": "Maintain the confidentiality of your account credentials and password",
-        "responsible": "Accept responsibility for all activities that occur under your account"
+        "p1": "لاستخدام معظم ميزات Complyance، يجب عليك إنشاء حساب. عند إنشاء حسابك والحفاظ عليه، توافق على:",
+        "confidential": "الحفاظ على سرية بيانات اعتماد حسابك وكلمة المرور",
+        "responsible": "قبول المسؤولية عن جميع الأنشطة التي تتم من خلال حسابك"
       },
       "billing": {
         "title": "الفوترة والمدفوعات",
@@ -1459,24 +1459,24 @@
         "prices": "الأسعار بالدولار الأمريكي وقابلة للتغيير بإشعار مسبق قدره 30 يوماً",
         "taxes": "يتولى Paddle جميع حسابات الضرائب والامتثال الضريبي",
         "plans": {
-          "title": "Subscription Plans",
-          "desc": "Complyance offers multiple subscription plans (Free, Starter, Professional, Scale). Plan features, limits, and pricing are described on our Pricing page. By subscribing to a paid plan, you agree to pay the applicable fees."
+          "title": "خطط الاشتراك",
+          "desc": "تقدم Complyance خطط اشتراك متعددة (مجاني، مبتدئ، احترافي، مقياس). تُوصف ميزات الخطط وحدودها وأسعارها في صفحة التسعير. بالاشتراك في خطة مدفوعة، توافق على دفع الرسوم المعمول بها."
         },
         "payment": {
-          "title": "Payment Processing",
-          "desc": "All payments are processed by Paddle.com Market Limited ('Paddle'), our Merchant of Record. Paddle is responsible for billing, payment collection, tax calculations, and invoicing. By subscribing, you agree to Paddle's Terms of Use."
+          "title": "معالجة المدفوعات",
+          "desc": "تتم معالجة جميع المدفوعات بواسطة Paddle.com Market Limited ('Paddle')، وكيل التجارة لدينا. يتولى Paddle مسؤولية الفوترة وتحصيل المدفوعات وحسابات الضرائب وإصدار الفواتير. بالاشتراك، توافق على شروط استخدام Paddle."
         },
         "renewal": {
-          "title": "Automatic Renewal",
-          "desc": "Paid subscriptions renew automatically at the end of each billing cycle (monthly or annually) unless cancelled before the renewal date. You will be charged the then-current subscription price. Paddle will send renewal reminders prior to charging your payment method."
+          "title": "التجديد التلقائي",
+          "desc": "تتجدد الاشتراكات المدفوعة تلقائياً في نهاية كل دورة فوترة (شهرية أو سنوية) ما لم يتم إلغاؤها قبل تاريخ التجديد. سيتم تحصيل سعر الاشتراك الحالي منك. سيرسل Paddle تذكيرات التجديد قبل تحصيل رسوم وسيلة الدفع الخاصة بك."
         },
         "changes": {
-          "title": "Price Changes",
-          "desc": "We reserve the right to change subscription prices with at least 30 days' notice. Price changes will not affect your current billing cycle. If you do not agree to a price increase, you may cancel your subscription before the new price takes effect."
+          "title": "تغييرات الأسعار",
+          "desc": "نحتفظ بالحق في تغيير أسعار الاشتراك مع إشعار مسبق لا يقل عن 30 يوماً. لن تؤثر تغييرات الأسعار على دورة الفوترة الحالية. إذا لم توافق على زيادة السعر، يمكنك إلغاء اشتراكك قبل دخول السعر الجديد حيز التنفيذ."
         },
         "cancellation": {
-          "title": "Cancellation and Refunds",
-          "desc": "You may cancel your subscription at any time through your account settings or the Paddle billing portal. Cancellations take effect at the end of the current billing period. See our Refund Policy for information about refunds within the first 14 days."
+          "title": "الإلغاء والمبالغ المستردة",
+          "desc": "يمكنك إلغاء اشتراكك في أي وقت من خلال إعدادات حسابك أو بوابة فوترة Paddle. يسري الإلغاء في نهاية فترة الفوترة الحالية. راجع سياسة الاسترداد للاطلاع على معلومات حول المبالغ المستردة خلال أول 14 يوماً."
         }
       },
       "prohibitedUse": {
@@ -1490,125 +1490,18 @@
       "ip": {
         "title": "الملكية الفكرية",
         "ownership": {
-          "0": "ت",
-          "1": "م",
-          "2": "ت",
-          "3": "ل",
-          "4": "ك",
-          "5": " ",
-          "6": "C",
-          "7": "o",
-          "8": "m",
-          "9": "p",
-          "10": "l",
-          "11": "y",
-          "12": "a",
-          "13": "n",
-          "14": "c",
-          "15": "e",
-          "16": " ",
-          "17": "ج",
-          "18": "م",
-          "19": "ي",
-          "20": "ع",
-          "21": " ",
-          "22": "ا",
-          "23": "ل",
-          "24": "ح",
-          "25": "ق",
-          "26": "و",
-          "27": "ق",
-          "28": " ",
-          "29": "ف",
-          "30": "ي",
-          "31": " ",
-          "32": "ا",
-          "33": "ل",
-          "34": "م",
-          "35": "ن",
-          "36": "ص",
-          "37": "ة",
-          "38": " ",
-          "39": "و",
-          "40": "ا",
-          "41": "ل",
-          "42": "ب",
-          "43": "ر",
-          "44": "م",
-          "45": "ج",
-          "46": "ي",
-          "47": "ا",
-          "48": "ت",
-          "49": " ",
-          "50": "و",
-          "51": "ا",
-          "52": "ل",
-          "53": "م",
-          "54": "ح",
-          "55": "ت",
-          "56": "و",
-          "57": "ى",
-          "title": "Our Ownership",
-          "desc": "Complyance.io and its licensors own all rights, title, and interest in the Platform, including all software, design, content, trademarks, and intellectual property. These Terms do not grant you any ownership rights."
+          "title": "ملكيتنا",
+          "desc": "تمتلك Complyance.io وجهات الترخيص التابعة لها جميع الحقوق والملكية والمصالح في المنصة، بما في ذلك جميع البرامج والتصميم والمحتوى والعلامات التجارية والملكية الفكرية. لا تمنحك هذه الشروط أي حقوق ملكية."
         },
         "yourData": "تحتفظ بملكية بياناتك (أنظمة الذكاء الاصطناعي، المستندات، الأدلة)",
         "license": {
-          "0": "ن",
-          "1": "م",
-          "2": "ن",
-          "3": "ح",
-          "4": "ك",
-          "5": " ",
-          "6": "ت",
-          "7": "ر",
-          "8": "خ",
-          "9": "ي",
-          "10": "ص",
-          "11": "ا",
-          "12": "ً",
-          "13": " ",
-          "14": "م",
-          "15": "ح",
-          "16": "د",
-          "17": "و",
-          "18": "د",
-          "19": "ا",
-          "20": "ً",
-          "21": " ",
-          "22": "ل",
-          "23": "ا",
-          "24": "س",
-          "25": "ت",
-          "26": "خ",
-          "27": "د",
-          "28": "ا",
-          "29": "م",
-          "30": " ",
-          "31": "ا",
-          "32": "ل",
-          "33": "م",
-          "34": "ن",
-          "35": "ص",
-          "36": "ة",
-          "37": " ",
-          "38": "و",
-          "39": "ف",
-          "40": "ق",
-          "41": "ا",
-          "42": "ً",
-          "43": " ",
-          "44": "ل",
-          "45": "خ",
-          "46": "ط",
-          "47": "ت",
-          "48": "ك",
-          "title": "License to Use",
-          "desc": "Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Platform according to your subscription plan. This license terminates upon cancellation or termination of your account."
+          "title": "ترخيص الاستخدام",
+          "desc": "وفقاً لهذه الشروط، نمنحك ترخيصاً محدوداً وغير حصري وغير قابل للنقل وقابل للإلغاء للوصول إلى المنصة واستخدامها وفقاً لخطة اشتراكك. ينتهي هذا الترخيص عند إلغاء حسابك أو إنهاء الخدمة."
         },
         "feedback": "قد تُستخدم الملاحظات التي تقدمها لتحسين المنصة",
         "userContent": {
-          "title": "Your Content",
-          "desc": "You retain ownership of all data you submit to the Platform, including AI system descriptions, documents, evidence, and other content ('User Content'). You grant us a limited license to use, store, and process User Content solely to provide the Service."
+          "title": "محتواك",
+          "desc": "تحتفظ بملكية جميع البيانات التي تُرسلها إلى المنصة، بما في ذلك أوصاف أنظمة الذكاء الاصطناعي والمستندات والأدلة والمحتوى الآخر ('محتوى المستخدم'). تمنحنا ترخيصاً محدوداً لاستخدام محتوى المستخدم وتخزينه ومعالجته فقط لتوفير الخدمة."
         }
       },
       "liability": {
@@ -1617,58 +1510,58 @@
         "noLiability": "لسنا مسؤولين عن الأضرار غير المباشرة أو العرضية أو التبعية",
         "cap": "إجمالي المسؤولية محدد بالمبلغ المدفوع في آخر 12 شهراً",
         "force": "غير مسؤولين عن الأحداث الخارجة عن سيطرتنا المعقولة",
-        "p1": "THE PLATFORM IS PROVIDED 'AS IS' AND 'AS AVAILABLE' WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE PLATFORM WILL BE UNINTERRUPTED, ERROR-FREE, OR COMPLETELY SECURE.",
-        "p2": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, COMPLYANCE.IO SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR BUSINESS OPPORTUNITIES, ARISING FROM YOUR USE OF THE PLATFORM. OUR TOTAL LIABILITY FOR ANY CLAIMS RELATED TO THE SERVICE SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM."
+        "p1": "تُقدَّم المنصة 'كما هي' و'كما هو متاح' دون أي ضمانات من أي نوع، صريحة كانت أم ضمنية، بما في ذلك على سبيل المثال لا الحصر ضمانات القابلية للتسويق أو الملاءمة لغرض معين أو عدم الانتهاك. لا نضمن أن تكون المنصة غير منقطعة أو خالية من الأخطاء أو آمنة تماماً.",
+        "p2": "إلى أقصى حد يسمح به القانون، لن تكون Complyance.io مسؤولة عن أي أضرار غير مباشرة أو عرضية أو تبعية أو خاصة أو عقابية، بما في ذلك على سبيل المثال لا الحصر خسارة الأرباح أو البيانات أو فرص العمل، الناجمة عن استخدامك للمنصة. لن تتجاوز إجمالي المسؤولية عن أي مطالبات تتعلق بالخدمة المبلغَ الذي دفعته لنا في الـ 12 شهراً السابقة للمطالبة."
       },
-      "lastUpdated": "Last Updated",
+      "lastUpdated": "آخر تحديث",
       "service": {
-        "title": "Description of Service",
-        "p1": "Complyance is a self-serve SaaS platform that helps organizations manage AI compliance. Our platform provides the following features:",
-        "classification": "AI risk classification under EU AI Act, Colorado AI Act, and other regulations",
-        "gapAnalysis": "Compliance gap analysis and requirement tracking",
-        "documentGeneration": "Automated generation of compliance reports and technical documentation",
-        "vendorRisk": "AI vendor risk assessments and due diligence",
-        "evidence": "Evidence vault for storing compliance artifacts",
-        "regulatory": "Regulatory intelligence and updates on AI compliance developments"
+        "title": "وصف الخدمة",
+        "p1": "Complyance هي منصة SaaS بالخدمة الذاتية تساعد المؤسسات على إدارة امتثال الذكاء الاصطناعي. توفر منصتنا الميزات التالية:",
+        "classification": "تصنيف مخاطر الذكاء الاصطناعي بموجب قانون الذكاء الاصطناعي الأوروبي وقانون كولورادو للذكاء الاصطناعي وغيرها من اللوائح",
+        "gapAnalysis": "تحليل ثغرات الامتثال وتتبع المتطلبات",
+        "documentGeneration": "إنشاء تلقائي لتقارير الامتثال والوثائق التقنية",
+        "vendorRisk": "تقييمات مخاطر موردي الذكاء الاصطناعي والعناية الواجبة",
+        "evidence": "خزنة الأدلة لتخزين مستلزمات الامتثال",
+        "regulatory": "الاستخبارات التنظيمية والتحديثات المتعلقة بتطورات امتثال الذكاء الاصطناعي"
       },
       "use": {
-        "title": "Acceptable Use",
-        "intro": "You agree not to use the Platform for any unlawful purpose or in any way that violates these Terms. Prohibited activities include, but are not limited to:",
-        "violate": "Violating any applicable laws, regulations, or third-party rights",
-        "harmful": "Uploading malicious code, viruses, or harmful content",
-        "infringe": "Infringing on intellectual property rights of Complyance or third parties",
-        "interfere": "Interfering with or disrupting the Platform or servers",
-        "reverse": "Reverse engineering, decompiling, or attempting to extract source code",
-        "scrape": "Scraping, crawling, or using automated tools to extract data without permission",
-        "resell": "Reselling, sublicensing, or redistributing the Service without authorization"
+        "title": "الاستخدام المقبول",
+        "intro": "توافق على عدم استخدام المنصة لأي غرض غير مشروع أو بأي طريقة تنتهك هذه الشروط. تشمل الأنشطة المحظورة، على سبيل المثال لا الحصر:",
+        "violate": "انتهاك أي قوانين أو لوائح أو حقوق أطراف ثالثة سارية",
+        "harmful": "رفع تعليمات برمجية ضارة أو فيروسات أو محتوى مؤذٍ",
+        "infringe": "التعدي على حقوق الملكية الفكرية لـ Complyance أو أطراف ثالثة",
+        "interfere": "التدخل في المنصة أو الخوادم أو تعطيلها",
+        "reverse": "الهندسة العكسية أو فك التجميع أو محاولة استخراج الكود المصدري",
+        "scrape": "الكشط أو الزحف أو استخدام أدوات آلية لاستخراج البيانات بدون إذن",
+        "resell": "إعادة بيع الخدمة أو منح ترخيص فرعي أو إعادة توزيعها بدون تفويض"
       },
       "indemnification": {
-        "title": "Indemnification",
-        "desc": "You agree to indemnify, defend, and hold harmless Complyance.io, its affiliates, officers, directors, employees, and agents from any claims, liabilities, damages, losses, or expenses (including legal fees) arising from your use of the Platform, violation of these Terms, or infringement of any third-party rights."
+        "title": "التعويض",
+        "desc": "توافق على تعويض Complyance.io وشركاتها التابعة ومسؤوليها ومديريها وموظفيها ووكلائها والدفاع عنهم وإبراء ذمتهم من أي مطالبات أو التزامات أو أضرار أو خسائر أو مصاريف (بما في ذلك أتعاب المحاماة) الناشئة عن استخدامك للمنصة أو انتهاك هذه الشروط أو التعدي على حقوق أي طرف ثالث."
       },
       "termination": {
-        "title": "Termination",
-        "p1": "You may terminate your account at any time by cancelling your subscription through your account settings. Upon cancellation, your access to paid features will continue until the end of your billing period.",
-        "p2": "We reserve the right to suspend or terminate your account immediately, without prior notice, if you violate these Terms, engage in fraudulent activity, or use the Platform in a way that harms us or other users.",
-        "p3": "Upon termination, your right to use the Platform will cease immediately. We may retain certain data as required by law or for legitimate business purposes (e.g., backups, legal compliance). See our Privacy Policy for details on data retention."
+        "title": "إنهاء الخدمة",
+        "p1": "يمكنك إنهاء حسابك في أي وقت بإلغاء اشتراكك من خلال إعدادات حسابك. عند الإلغاء، سيستمر وصولك إلى الميزات المدفوعة حتى نهاية فترة الفوترة الحالية.",
+        "p2": "نحتفظ بالحق في تعليق حسابك أو إنهاء الخدمة فوراً، دون إشعار مسبق، إذا انتهكت هذه الشروط أو مارست نشاطاً احتيالياً أو استخدمت المنصة بطريقة تضر بنا أو بالمستخدمين الآخرين.",
+        "p3": "عند إنهاء الخدمة، يتوقف حقك في استخدام المنصة فوراً. قد نحتفظ ببعض البيانات كما يقتضيه القانون أو لأغراض تجارية مشروعة (مثل النسخ الاحتياطية والامتثال القانوني). راجع سياسة الخصوصية الخاصة بنا للاطلاع على تفاصيل الاحتفاظ بالبيانات."
       },
       "deletion": {
-        "title": "Data Deletion After Termination",
-        "p1": "If you cancel your subscription, your User Content (AI systems, documents, evidence) will be retained for 30 days to allow for reactivation. After 30 days, all User Content will be permanently deleted from our production systems.",
-        "p2": "Backup copies may persist for up to 90 days for disaster recovery purposes, after which they are also permanently deleted. If you require immediate data deletion, contact us at support@complyance.io to request expedited removal."
+        "title": "حذف البيانات بعد إنهاء الخدمة",
+        "p1": "إذا ألغيت اشتراكك، سيتم الاحتفاظ بمحتوى المستخدم (أنظمة الذكاء الاصطناعي والمستندات والأدلة) لمدة 30 يوماً للسماح بإعادة التفعيل. بعد 30 يوماً، سيُحذف جميع محتوى المستخدم نهائياً من أنظمتنا الإنتاجية.",
+        "p2": "قد تستمر النسخ الاحتياطية لمدة تصل إلى 90 يوماً لأغراض التعافي من الكوارث، وبعد ذلك تُحذف أيضاً نهائياً. إذا كنت تحتاج إلى حذف فوري للبيانات، تواصل معنا على support@complyance.io لطلب الإزالة المعجّلة."
       },
       "law": {
-        "title": "Governing Law",
-        "desc": "These Terms shall be governed by and construed in accordance with the laws of Portugal, without regard to its conflict of law provisions. Any disputes arising from these Terms or your use of the Platform shall be subject to the exclusive jurisdiction of the courts of Portugal."
+        "title": "القانون الحاكم",
+        "desc": "تخضع هذه الشروط وتُفسَّر وفقاً لقوانين البرتغال، بصرف النظر عن أحكام تعارض القوانين. تخضع أي نزاعات ناشئة عن هذه الشروط أو استخدامك للمنصة للاختصاص القضائي الحصري لمحاكم البرتغال."
       },
       "changes": {
-        "title": "Changes to Terms",
-        "desc": "We may update these Terms from time to time to reflect changes in our practices, legal requirements, or service features. Material changes will be communicated via email or a notice on the Platform at least 30 days before taking effect. Your continued use of the Platform after changes take effect constitutes acceptance of the updated Terms."
+        "title": "تغييرات على الشروط",
+        "desc": "قد نحدّث هذه الشروط من وقت لآخر لتعكس التغييرات في ممارساتنا أو المتطلبات القانونية أو ميزات الخدمة. سيتم إبلاغك بالتغييرات الجوهرية عبر البريد الإلكتروني أو إشعار على المنصة قبل 30 يوماً على الأقل من دخولها حيز التنفيذ. يُعدّ استمرار استخدامك للمنصة بعد دخول التغييرات حيز التنفيذ قبولاً للشروط المحدّثة."
       },
       "contact": {
-        "title": "Contact Information",
-        "email": "Email",
-        "website": "Website"
+        "title": "معلومات التواصل",
+        "email": "البريد الإلكتروني",
+        "website": "الموقع الإلكتروني"
       }
     },
     "refund": {
@@ -1775,7 +1668,7 @@
     "cancel": "إلغاء الاشتراك",
     "manageBilling": "إدارة الفوترة",
     "portalLink": "عرض الفواتير وتحديث طرق الدفع في بوابة الفوترة",
-    "subscribe": "Subscribe"
+    "subscribe": "اشترك"
   },
   "footer": {
     "product": {
@@ -2516,30 +2409,30 @@
     }
   },
   "errors": {
-    "generic": "An error occurred. Please try again.",
+    "generic": "حدث خطأ. يرجى المحاولة مجدداً.",
     "notFound": {
-      "title": "Page Not Found",
-      "description": "The page you are looking for does not exist.",
-      "helpText": "If you believe this is an error, please contact support.",
-      "contactSupport": "Contact Support",
-      "goToDashboard": "Go to Dashboard",
-      "goToHome": "Go to Home"
+      "title": "الصفحة غير موجودة",
+      "description": "الصفحة التي تبحث عنها غير موجودة.",
+      "helpText": "إذا كنت تعتقد أن هذا خطأ، يرجى التواصل مع الدعم.",
+      "contactSupport": "التواصل مع الدعم",
+      "goToDashboard": "الذهاب إلى لوحة التحكم",
+      "goToHome": "الذهاب إلى الرئيسية"
     },
-    "unauthorized": "You must be logged in to access this page",
-    "forbidden": "You don't have permission to access this resource",
-    "validation": "Please check your input and try again",
+    "unauthorized": "يجب تسجيل الدخول للوصول إلى هذه الصفحة",
+    "forbidden": "ليس لديك صلاحية الوصول إلى هذا المورد",
+    "validation": "يرجى مراجعة المدخلات والمحاولة مجدداً",
     "internalError": {
-      "title": "Internal Server Error",
-      "description": "Something went wrong. Please try again later.",
-      "retry": "Try Again"
+      "title": "خطأ داخلي في الخادم",
+      "description": "حدث خطأ ما. يرجى المحاولة لاحقاً.",
+      "retry": "إعادة المحاولة"
     },
     "global": {
-      "title": "Something went wrong",
-      "description": "An unexpected error occurred. Please try again.",
-      "tryAgain": "Try Again",
-      "goToDashboard": "Go to Dashboard",
-      "helpText": "If the problem persists, please contact support.",
-      "contactSupport": "Contact Support"
+      "title": "حدث خطأ ما",
+      "description": "حدث خطأ غير متوقع. يرجى المحاولة مجدداً.",
+      "tryAgain": "إعادة المحاولة",
+      "goToDashboard": "الذهاب إلى لوحة التحكم",
+      "helpText": "إذا استمرت المشكلة، يرجى التواصل مع الدعم.",
+      "contactSupport": "التواصل مع الدعم"
     }
   }
 }
