@@ -1576,14 +1576,14 @@
         "within14": "يجب تقديم الطلب خلال 14 يوماً من الدفع",
         "notAbused": "لم يتم استخدام حق الاسترداد سابقاً على حساب آخر",
         "goodFaith": "تم استخدام الحساب بحسن نية (بدون إساءة أو انتهاكات)",
-        "p1": "To be eligible for a refund, you must meet the following criteria:",
-        "firstTime": "This is your first subscription (refunds apply to first payment only, not renewals)",
-        "noViolation": "Account was used in good faith without violations of our Terms of Service",
+        "p1": "للتأهل للاسترداد، يجب أن تستوفي المعايير التالية:",
+        "firstTime": "هذا هو اشتراكك الأول (يسري الاسترداد على الدفعة الأولى فقط، وليس على التجديدات)",
+        "noViolation": "تم استخدام الحساب بحسن نية دون انتهاك شروط الخدمة",
         "notEligible": {
-          "title": "Refunds are not available if:",
-          "after14": "More than 14 days have passed since your first payment",
-          "abuse": "You've previously requested a refund on another Complyance account",
-          "violation": "Your account was terminated due to Terms of Service violations or abuse"
+          "title": "الاسترداد غير متاح في الحالات التالية:",
+          "after14": "مرور أكثر من 14 يوماً منذ دفعتك الأولى",
+          "abuse": "سبق أن طلبت استرداداً على حساب Complyance آخر",
+          "violation": "تم إنهاء حسابك بسبب انتهاكات شروط الخدمة أو الإساءة"
         }
       },
       "process": {
@@ -1592,11 +1592,11 @@
         "include": "قم بتضمين بريد حسابك الإلكتروني والسبب (اختياري لكن مقدر)",
         "processing": "تتم معالجة المبالغ المستردة خلال 5-7 أيام عمل",
         "method": "يتم إصدار الاسترداد إلى طريقة الدفع الأصلية عبر Paddle",
-        "p1": "To request a refund, follow these steps:",
-        "step1": "Email support@complyance.io with the subject line 'Refund Request'",
-        "step2": "Include your account email address and the reason for your refund request (optional but appreciated for feedback)",
-        "step3": "Our team will review and process your refund within 5-7 business days",
-        "alternative": "Alternatively, you can request a refund directly through the Paddle billing portal"
+        "p1": "لطلب استرداد، اتبع الخطوات التالية:",
+        "step1": "أرسل بريداً إلكترونياً إلى support@complyance.io مع سطر الموضوع 'طلب استرداد المبلغ'",
+        "step2": "أدرج عنوان بريدك الإلكتروني للحساب وسبب طلب الاسترداد (اختياري ولكن موضع تقدير للحصول على ملاحظاتك)",
+        "step3": "سيراجع فريقنا طلبك ويعالج الاسترداد خلال 5-7 أيام عمل",
+        "alternative": "بدلاً من ذلك، يمكنك طلب الاسترداد مباشرةً من خلال بوابة فوترة Paddle"
       },
       "proRata": {
         "title": "الاستردادات النسبية (التخفيض)",
@@ -1608,56 +1608,56 @@
         "digital": "ببدء اشتراكك، تقر بأن الخدمات الرقمية تبدأ فوراً وتتنازل عن حق الانسحاب بعد استخدام الخدمة",
         "unused": "إذا ألغيت قبل استخدام الخدمة، يحق لك استرداد كامل"
       },
-      "lastUpdated": "Last Updated",
+      "lastUpdated": "آخر تحديث",
       "introduction": {
-        "title": "Introduction",
-        "p1": "We offer a 14-day money-back guarantee for all paid plans. If you're not satisfied with Complyance, you can request a full refund within 14 days of your first payment. This policy is designed to give you confidence when trying our platform."
+        "title": "مقدمة",
+        "p1": "نقدم ضمان استرداد الأموال خلال 14 يوماً لجميع الخطط المدفوعة. إذا لم تكن راضياً عن Complyance، يمكنك طلب استرداد كامل خلال 14 يوماً من دفعتك الأولى. صُممت هذه السياسة لمنحك الثقة عند تجربة منصتنا."
       },
       "period": {
-        "title": "14-Day Refund Window",
-        "p1": "You have 14 calendar days from your first payment to request a full refund. This applies to both monthly and annual subscriptions.",
-        "p2": "The 14-day refund period is calculated as follows:",
-        "monthly": "Monthly subscriptions: 14 days from the date of your first charge",
-        "annual": "Annual subscriptions: 14 days from the date of your first charge (full refund for the entire year)"
+        "title": "نافذة الاسترداد خلال 14 يوماً",
+        "p1": "لديك 14 يوماً تقويمياً من دفعتك الأولى لطلب استرداد كامل. ينطبق ذلك على كلٍّ من الاشتراكات الشهرية والسنوية.",
+        "p2": "تُحسب فترة الاسترداد البالغة 14 يوماً على النحو التالي:",
+        "monthly": "الاشتراكات الشهرية: 14 يوماً من تاريخ أول خصم",
+        "annual": "الاشتراكات السنوية: 14 يوماً من تاريخ أول خصم (استرداد كامل للسنة بأكملها)"
       },
       "prorata": {
-        "title": "Pro-Rata Refunds for Downgrades",
-        "p1": "If you downgrade your plan mid-billing cycle (e.g., from Professional to Starter), you will not receive a cash refund for the unused portion. Instead, the difference will be credited to your next billing period.",
-        "example": "Example: If you downgrade from Professional ($249/month) to Starter ($99/month) on day 15 of your billing cycle, the $150 difference will be credited toward your next Starter invoice."
+        "title": "الاستردادات النسبية عند التخفيض",
+        "p1": "إذا خفضت خطتك في منتصف دورة الفوترة (مثلاً من Professional إلى Starter)، فلن تتلقى استرداداً نقدياً للجزء غير المستخدم. بدلاً من ذلك، سيُضاف الفرق كرصيد في فترة الفوترة التالية.",
+        "example": "مثال: إذا خفضت من Professional (249 دولاراً/شهرياً) إلى Starter (99 دولاراً/شهرياً) في اليوم 15 من دورة الفوترة، سيُضاف فرق 150 دولاراً كرصيد نحو فاتورة Starter التالية."
       },
       "processing": {
-        "title": "Refund Processing Time",
-        "p1": "Once approved, refunds are processed as follows:",
-        "review": "Review: We aim to approve refund requests within 1-2 business days",
-        "approval": "Processing: Refunds are issued to your original payment method within 5-7 business days after approval",
-        "bank": "Bank processing: Depending on your bank or payment provider, it may take an additional 3-5 business days for the refund to appear in your account"
+        "title": "مدة معالجة الاسترداد",
+        "p1": "بعد الموافقة، تُعالج المبالغ المستردة على النحو التالي:",
+        "review": "المراجعة: نهدف إلى الموافقة على طلبات الاسترداد خلال 1-2 يوم عمل",
+        "approval": "المعالجة: تُصدر المبالغ المستردة إلى طريقة الدفع الأصلية خلال 5-7 أيام عمل بعد الموافقة",
+        "bank": "المعالجة البنكية: حسب البنك أو مزود الدفع الخاص بك، قد يستغرق ظهور الاسترداد في حسابك 3-5 أيام عمل إضافية"
       },
       "free": {
-        "title": "Free Plan — No Payment Required",
-        "desc": "If you're unsure whether Complyance is right for you, start with our Free plan. You can classify 1 AI system, explore compliance gaps, and earn an 'AI Act Aware' badge without entering payment information. No refund needed — just cancel anytime."
+        "title": "الخطة المجانية — لا يلزم الدفع",
+        "desc": "إذا لم تكن متأكداً مما إذا كانت Complyance مناسبة لك، ابدأ بخطتنا المجانية. يمكنك تصنيف نظام ذكاء اصطناعي واحد، واستكشاف ثغرات الامتثال، والحصول على شارة 'مدرك لقانون الذكاء الاصطناعي' دون إدخال معلومات الدفع. لا حاجة إلى استرداد — فقط ألغِ في أي وقت."
       },
       "cancellation": {
-        "title": "Cancelling Your Subscription",
-        "p1": "If you cancel your subscription after the 14-day refund window, your access to paid features will continue until the end of your current billing period. No refund will be issued, but your subscription will not renew.",
-        "p2": "You can cancel at any time through your account settings or the Paddle billing portal. Cancellations take effect at the end of the current billing cycle."
+        "title": "إلغاء اشتراكك",
+        "p1": "إذا ألغيت اشتراكك بعد نافذة الاسترداد البالغة 14 يوماً، سيستمر وصولك إلى الميزات المدفوعة حتى نهاية فترة الفوترة الحالية. لن يُصدر أي استرداد، لكن الاشتراك لن يُجدَّد.",
+        "p2": "يمكنك الإلغاء في أي وقت من خلال إعدادات حسابك أو بوابة فوترة Paddle. يسري الإلغاء في نهاية دورة الفوترة الحالية."
       },
       "eu": {
-        "title": "EU Consumer Rights (Right of Withdrawal)",
-        "p1": "Under EU Directive 2011/83/EU, EU consumers have a 14-day right of withdrawal for online purchases of digital services. This aligns with our 14-day refund policy.",
-        "p2": "By starting your subscription and using Complyance services, you acknowledge that digital content delivery begins immediately and you waive your right of withdrawal after service usage. However, if you cancel before actively using the service, you're entitled to a full refund under EU consumer protection law."
+        "title": "حقوق المستهلك في الاتحاد الأوروبي (حق الانسحاب)",
+        "p1": "بموجب توجيه الاتحاد الأوروبي 2011/83/EU، يتمتع مستهلكو الاتحاد الأوروبي بحق الانسحاب خلال 14 يوماً للمشتريات عبر الإنترنت للخدمات الرقمية. يتوافق ذلك مع سياسة الاسترداد البالغة 14 يوماً.",
+        "p2": "بدء اشتراكك واستخدام خدمات Complyance يعني إقرارك بأن تسليم المحتوى الرقمي يبدأ فوراً وتتنازل عن حق الانسحاب بعد استخدام الخدمة. ومع ذلك، إذا ألغيت قبل الاستخدام الفعلي للخدمة، يحق لك استرداد كامل بموجب قانون حماية المستهلك في الاتحاد الأوروبي."
       },
       "exceptions": {
-        "title": "Exceptions and Special Cases",
-        "p1": "The following are considered 'service usage' and may affect refund eligibility:",
-        "generated": "Generated compliance documents (Classification Reports, Roadmaps, Annex IV documentation)",
-        "consumed": "Consumed credits or AI-powered features (vendor assessments, risk classifications)",
-        "downloaded": "Downloaded evidence or exported data from the Evidence Vault",
-        "p2": "In cases of technical issues, service downtime, or billing errors, refunds may be granted at our discretion beyond the 14-day window. Contact support@complyance.io to discuss special circumstances."
+        "title": "الاستثناءات والحالات الخاصة",
+        "p1": "ما يلي يُعدّ 'استخداماً للخدمة' وقد يؤثر على أهلية الاسترداد:",
+        "generated": "وثائق الامتثال المنشأة (تقارير التصنيف، خرائط الطريق، توثيق الملحق IV)",
+        "consumed": "الأرصدة المستهلكة أو الميزات المدعومة بالذكاء الاصطناعي (تقييمات الموردين، تصنيفات المخاطر)",
+        "downloaded": "الأدلة المنزّلة أو البيانات المصدّرة من خزينة الأدلة",
+        "p2": "في حالات المشكلات التقنية أو توقف الخدمة أو أخطاء الفوترة، قد تُمنح استردادات حسب تقديرنا خارج نافذة الـ 14 يوماً. تواصل مع support@complyance.io لمناقشة الظروف الخاصة."
       },
       "contact": {
-        "title": "Contact for Refund Requests",
-        "email": "Email",
-        "paddle": "Paddle Billing Portal"
+        "title": "التواصل لطلبات الاسترداد",
+        "email": "البريد الإلكتروني",
+        "paddle": "بوابة فوترة Paddle"
       }
     }
   },
