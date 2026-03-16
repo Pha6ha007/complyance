@@ -25,6 +25,7 @@
     "reports": "Raporty",
     "intelligence": "Aktualizacje regulacyjne",
     "biasTesting": "Testy stronniczości",
+    "sdk": "Integracja SDK",
     "settings": "Ustawienia",
     "team": "Zespół",
     "referrals": "Polecenia",
@@ -2801,6 +2802,37 @@
       "recommendations": "Zalecenia",
       "pass": "Zaliczony",
       "fail": "Niezaliczony"
+    }
+  },
+  "sdk": {
+    "title": "Integracja SDK",
+    "subtitle": "Połącz swoje systemy AI z Complyance w celu automatycznego rejestrowania zgodności",
+    "planRequired": "Integracja SDK wymaga planu Professional",
+    "planRequiredDescription": "Przejdź na plan Professional lub Scale, aby połączyć systemy AI przez SDK Complyance.",
+    "upgradePlan": "Zobacz plany",
+    "apiKey": {
+      "title": "Klucz API",
+      "description": "Użyj tego klucza do uwierzytelniania zdarzeń SDK z systemów AI",
+      "generate": "Wygeneruj klucz API",
+      "regenerate": "Wygeneruj ponownie",
+      "revoke": "Unieważnij klucz",
+      "saveWarning": "Zapisz ten klucz teraz — nie zostanie ponownie wyświetlony."
+    },
+    "guide": {
+      "title": "Szybki start",
+      "step1": "1. Zainstaluj SDK",
+      "step2": "2. Opakuj wywołania AI",
+      "step3": "3. Co jest rejestrowane",
+      "logged": {
+        "metadata": "Nazwa modelu, dostawca i opóźnienie",
+        "tokens": "Liczba tokenów wejściowych/wyjściowych",
+        "pii": "Wykrywanie wskaźników danych osobowych (treść nigdy nie jest przechowywana)",
+        "errors": "Typy i częstotliwość błędów",
+        "noContent": "Treść promptów/odpowiedzi nigdy nie jest rejestrowana ani przechowywana"
+      }
+    },
+    "providers": {
+      "title": "Obsługiwani dostawcy"
     }
   }
 }

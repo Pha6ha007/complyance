@@ -3,6 +3,7 @@ import { TRPCError } from '@trpc/server';
 import { router, protectedProcedure } from '../trpc';
 import { AIType, RiskLevel } from '@prisma/client';
 import { getEffectiveSystemLimit } from '@/lib/constants';
+import { randomBytes } from 'crypto';
 
 /**
  * AI System input validation schema
@@ -389,4 +390,62 @@ export const systemRouter = router({
 
       return { name: org.name };
     }),
+
+  /**
+   * Get API key status (masked) for the organization.
+   */
+  getApiKey: protectedProcedure.query(async ({ ctx }) => {
+    const org = await ctx.prisma.organization.findUnique({
+      where: { id: ctx.organization.id },
+      select: { apiKey: true, plan: true },
+    });
+
+    if (!org?.apiKey) {
+      return { hasKey: false, maskedKey: null, plan: org?.plan ?? 'FREE' };
+    }
+
+    // Mask: show first 4 and last 4 chars
+    const key = org.apiKey;
+    const masked = key.length > 10
+      ? `${key.slice(0, 7)}${'•'.repeat(key.length - 11)}${key.slice(-4)}`
+      : '•'.repeat(key.length);
+
+    return { hasKey: true, maskedKey: masked, plan: org.plan };
+  }),
+
+  /**
+   * Generate or regenerate API key.
+   * Returns the full key ONCE — subsequent reads only show masked version.
+   */
+  generateApiKey: protectedProcedure.mutation(async ({ ctx }) => {
+    // Plan gate — Professional+ can use SDK
+    const sdkPlans = ['PROFESSIONAL', 'SCALE', 'ENTERPRISE'];
+    if (!sdkPlans.includes(ctx.organization.plan)) {
+      throw new TRPCError({
+        code: 'FORBIDDEN',
+        message: 'SDK integration requires Professional plan or higher',
+      });
+    }
+
+    const apiKey = `cmp_${randomBytes(24).toString('hex')}`;
+
+    await ctx.prisma.organization.update({
+      where: { id: ctx.organization.id },
+      data: { apiKey },
+    });
+
+    return { apiKey };
+  }),
+
+  /**
+   * Revoke API key.
+   */
+  revokeApiKey: protectedProcedure.mutation(async ({ ctx }) => {
+    await ctx.prisma.organization.update({
+      where: { id: ctx.organization.id },
+      data: { apiKey: null },
+    });
+
+    return { revoked: true };
+  }),
 });

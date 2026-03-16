@@ -24,6 +24,7 @@ model Organization {
   locale               String   @default("en")
   markets              String[] // ["EU", "US", "UAE"]
   bonusSystems         Int      @default(0) // Extra systems from referrals
+  apiKey               String?  @unique     // For SDK authentication
 
   // Compliance Badge
   badgeLevel           BadgeLevel @default(NONE)

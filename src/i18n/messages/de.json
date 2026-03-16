@@ -25,6 +25,7 @@
     "reports": "Berichte",
     "intelligence": "Regulatorische Updates",
     "biasTesting": "Bias-Tests",
+    "sdk": "SDK-Integration",
     "settings": "Einstellungen",
     "team": "Team",
     "referrals": "Empfehlungen",
@@ -2798,6 +2799,37 @@
       "recommendations": "Empfehlungen",
       "pass": "Bestanden",
       "fail": "Nicht bestanden"
+    }
+  },
+  "sdk": {
+    "title": "SDK-Integration",
+    "subtitle": "Verbinden Sie Ihre KI-Systeme mit Complyance für automatische Compliance-Protokollierung",
+    "planRequired": "SDK-Integration erfordert den Professional-Plan",
+    "planRequiredDescription": "Upgraden Sie auf Professional oder Scale, um Ihre KI-Systeme über das Complyance SDK zu verbinden.",
+    "upgradePlan": "Pläne anzeigen",
+    "apiKey": {
+      "title": "API-Schlüssel",
+      "description": "Verwenden Sie diesen Schlüssel zur Authentifizierung von SDK-Ereignissen",
+      "generate": "API-Schlüssel generieren",
+      "regenerate": "Schlüssel neu generieren",
+      "revoke": "Schlüssel widerrufen",
+      "saveWarning": "Speichern Sie diesen Schlüssel jetzt — er wird nicht erneut angezeigt."
+    },
+    "guide": {
+      "title": "Schnellstartanleitung",
+      "step1": "1. SDK installieren",
+      "step2": "2. KI-Aufrufe umschließen",
+      "step3": "3. Was protokolliert wird",
+      "logged": {
+        "metadata": "Modellname, Anbieter und Latenz",
+        "tokens": "Eingabe-/Ausgabe-Tokenanzahl",
+        "pii": "PII-Indikatorerkennung (Inhalte werden nie gespeichert)",
+        "errors": "Fehlertypen und -häufigkeiten",
+        "noContent": "Prompt-/Antwortinhalte werden niemals protokolliert oder gespeichert"
+      }
+    },
+    "providers": {
+      "title": "Unterstützte Anbieter"
     }
   }
 }

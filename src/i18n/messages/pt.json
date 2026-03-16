@@ -25,6 +25,7 @@
     "reports": "Relatórios",
     "intelligence": "Atualizações Regulatórias",
     "biasTesting": "Testes de Viés",
+    "sdk": "Integração SDK",
     "settings": "Configurações",
     "team": "Equipa",
     "referrals": "Indicações",
@@ -2830,6 +2831,37 @@
       "recommendations": "Recomendações",
       "pass": "Aprovado",
       "fail": "Reprovado"
+    }
+  },
+  "sdk": {
+    "title": "Integração SDK",
+    "subtitle": "Conecte os seus sistemas de IA ao Complyance para registo automático de conformidade",
+    "planRequired": "A integração SDK requer o plano Profissional",
+    "planRequiredDescription": "Atualize para Profissional ou Scale para conectar os seus sistemas de IA através do SDK Complyance.",
+    "upgradePlan": "Ver planos",
+    "apiKey": {
+      "title": "Chave API",
+      "description": "Use esta chave para autenticar eventos SDK dos seus sistemas de IA",
+      "generate": "Gerar chave API",
+      "regenerate": "Regenerar chave",
+      "revoke": "Revogar chave",
+      "saveWarning": "Guarde esta chave agora — não será mostrada novamente."
+    },
+    "guide": {
+      "title": "Guia de início rápido",
+      "step1": "1. Instalar o SDK",
+      "step2": "2. Encapsular chamadas de IA",
+      "step3": "3. O que é registado",
+      "logged": {
+        "metadata": "Nome do modelo, fornecedor e latência",
+        "tokens": "Contagem de tokens de entrada/saída",
+        "pii": "Deteção de indicadores de dados pessoais (conteúdo nunca armazenado)",
+        "errors": "Tipos e frequências de erros",
+        "noContent": "O conteúdo de prompts/respostas nunca é registado ou armazenado"
+      }
+    },
+    "providers": {
+      "title": "Fornecedores suportados"
     }
   }
 }

@@ -25,6 +25,7 @@
     "reports": "Rapports",
     "intelligence": "Veille réglementaire",
     "biasTesting": "Tests de biais",
+    "sdk": "Intégration SDK",
     "settings": "Paramètres",
     "badge": "Badge de conformité",
     "team": "Équipe",
@@ -2857,6 +2858,37 @@
       "recommendations": "Recommandations",
       "pass": "Conforme",
       "fail": "Non conforme"
+    }
+  },
+  "sdk": {
+    "title": "Intégration SDK",
+    "subtitle": "Connectez vos systèmes IA à Complyance pour un enregistrement automatique de la conformité",
+    "planRequired": "L'intégration SDK nécessite le plan Professionnel",
+    "planRequiredDescription": "Passez au plan Professionnel ou Scale pour connecter vos systèmes IA via le SDK Complyance.",
+    "upgradePlan": "Voir les plans",
+    "apiKey": {
+      "title": "Clé API",
+      "description": "Utilisez cette clé pour authentifier les événements SDK de vos systèmes IA",
+      "generate": "Générer une clé API",
+      "regenerate": "Régénérer la clé",
+      "revoke": "Révoquer la clé",
+      "saveWarning": "Enregistrez cette clé maintenant — elle ne sera plus affichée."
+    },
+    "guide": {
+      "title": "Guide de démarrage rapide",
+      "step1": "1. Installer le SDK",
+      "step2": "2. Encapsuler vos appels IA",
+      "step3": "3. Ce qui est enregistré",
+      "logged": {
+        "metadata": "Nom du modèle, fournisseur et latence",
+        "tokens": "Nombre de tokens en entrée/sortie",
+        "pii": "Détection d'indicateurs de données personnelles (contenu jamais stocké)",
+        "errors": "Types et fréquences des erreurs",
+        "noContent": "Le contenu des prompts/réponses n'est jamais enregistré ni stocké"
+      }
+    },
+    "providers": {
+      "title": "Fournisseurs supportés"
     }
   }
 }

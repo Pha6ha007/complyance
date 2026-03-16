@@ -25,6 +25,7 @@
     "reports": "Report",
     "intelligence": "Aggiornamenti normativi",
     "biasTesting": "Test di bias",
+    "sdk": "Integrazione SDK",
     "settings": "Impostazioni",
     "team": "Team",
     "referrals": "Referral",
@@ -2099,6 +2100,37 @@
       "recommendations": "Raccomandazioni",
       "pass": "Superato",
       "fail": "Non superato"
+    }
+  },
+  "sdk": {
+    "title": "Integrazione SDK",
+    "subtitle": "Collega i tuoi sistemi IA a Complyance per la registrazione automatica della conformità",
+    "planRequired": "L'integrazione SDK richiede il piano Professional",
+    "planRequiredDescription": "Passa al piano Professional o Scale per collegare i tuoi sistemi IA tramite l'SDK Complyance.",
+    "upgradePlan": "Visualizza piani",
+    "apiKey": {
+      "title": "Chiave API",
+      "description": "Usa questa chiave per autenticare gli eventi SDK dai tuoi sistemi IA",
+      "generate": "Genera chiave API",
+      "regenerate": "Rigenera chiave",
+      "revoke": "Revoca chiave",
+      "saveWarning": "Salva questa chiave ora — non verrà mostrata di nuovo."
+    },
+    "guide": {
+      "title": "Guida rapida",
+      "step1": "1. Installa l'SDK",
+      "step2": "2. Avvolgi le chiamate IA",
+      "step3": "3. Cosa viene registrato",
+      "logged": {
+        "metadata": "Nome del modello, provider e latenza",
+        "tokens": "Conteggio token input/output",
+        "pii": "Rilevamento indicatori dati personali (contenuto mai memorizzato)",
+        "errors": "Tipi e frequenze degli errori",
+        "noContent": "Il contenuto di prompt/risposte non viene mai registrato o memorizzato"
+      }
+    },
+    "providers": {
+      "title": "Provider supportati"
     }
   }
 }
