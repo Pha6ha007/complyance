@@ -657,6 +657,13 @@ export function FreeClassifierClient() {
                   </div>
                 )}
 
+                {/* Deep Compliance Scan */}
+                <DeepScanSection
+                  description={formData.description}
+                  domain={formData.domain}
+                  riskLevel={result.riskLevel}
+                />
+
                 {/* CTA Section */}
                 <div className="rounded-xl bg-[#0F172A] p-8">
                   <h3 className="mb-2 text-2xl font-extrabold text-white">
@@ -794,6 +801,160 @@ export function FreeClassifierClient() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+// ---------- Deep Scan Section ----------
+
+interface DeepScanResult {
+  riskLevel: string;
+  detectedRisks: Array<{
+    category: string;
+    severity: 'HIGH' | 'MEDIUM' | 'LOW';
+    description: string;
+    article: string;
+  }>;
+  complianceGaps: Array<{
+    article: string;
+    requirement: string;
+    status: string;
+    priority: 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW';
+  }>;
+  complianceScore: number;
+  confidence: number;
+  disclaimer: string;
+}
+
+const SEVERITY_COLORS: Record<string, string> = {
+  CRITICAL: 'text-red-500',
+  HIGH: 'text-red-400',
+  MEDIUM: 'text-yellow-400',
+  LOW: 'text-emerald-400',
+};
+
+function DeepScanSection({
+  description,
+  domain,
+  riskLevel,
+}: {
+  description: string;
+  domain: string;
+  riskLevel: RiskLevel;
+}) {
+  const t = useTranslations('freeClassifier.deepScan');
+  const [loading, setLoading] = useState(false);
+  const [scanResult, setScanResult] = useState<DeepScanResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const runScan = async () => {
+    if (!description || description.length < 10) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/public/v1/deep-scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ description, domain, riskLevel }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setScanResult(data.result);
+      } else {
+        setError(t('error'));
+      }
+    } catch {
+      setError(t('error'));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="font-semibold text-base">{t('title')}</h3>
+          <p className="text-sm text-muted-foreground mt-0.5">{t('subtitle')}</p>
+        </div>
+        {!scanResult && (
+          <Button
+            onClick={runScan}
+            disabled={loading || description.length < 10}
+            size="sm"
+            className="bg-emerald-600 hover:bg-emerald-500 text-white"
+          >
+            {loading ? t('scanning') : t('runScan')}
+          </Button>
+        )}
+      </div>
+
+      {error && <p className="text-sm text-destructive">{error}</p>}
+
+      {scanResult && (
+        <div className="space-y-5">
+          {/* Detected Risks */}
+          {scanResult.detectedRisks.length > 0 && (
+            <div>
+              <p className="text-sm font-medium mb-2">{t('detectedIssues')}</p>
+              <div className="space-y-2">
+                {scanResult.detectedRisks.map((risk, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-2 text-sm rounded-lg border border-slate-200 bg-white p-3"
+                  >
+                    <AlertTriangle className={`h-4 w-4 mt-0.5 flex-shrink-0 ${SEVERITY_COLORS[risk.severity]}`} />
+                    <div className="flex-1">
+                      <span className="text-slate-700">{risk.description}</span>
+                      <span className="text-slate-400 ms-2 text-xs">({risk.article})</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Compliance Gaps */}
+          {scanResult.complianceGaps.length > 0 && (
+            <div>
+              <p className="text-sm font-medium mb-2">
+                {t('requiredActions')} ({t('gaps', { count: scanResult.complianceGaps.length })})
+              </p>
+              <div className="space-y-1.5">
+                {scanResult.complianceGaps.map((gap, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm">
+                    <span className={`font-mono text-xs ${SEVERITY_COLORS[gap.priority]}`}>✗</span>
+                    <span className="text-slate-500 font-mono text-xs min-w-[5rem]">{gap.article}</span>
+                    <span className="text-slate-700">{gap.requirement}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {scanResult.complianceGaps.length === 0 && (
+            <p className="text-sm text-emerald-600">{t('noGaps')}</p>
+          )}
+
+          {/* CTA */}
+          {scanResult.complianceGaps.length > 0 && (
+            <div className="pt-3 border-t border-slate-200">
+              <Link href="/auth/register">
+                <Button
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white"
+                  size="sm"
+                  data-ph-capture="deep-scan-signup-cta"
+                >
+                  {t('fixAllGaps')} →
+                </Button>
+              </Link>
+            </div>
+          )}
+
+          {/* Disclaimer */}
+          <p className="text-xs text-muted-foreground">{scanResult.disclaimer}</p>
+        </div>
+      )}
     </div>
   );
 }
