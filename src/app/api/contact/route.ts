@@ -31,10 +31,10 @@ export async function POST(req: NextRequest) {
 
     const data = contactSchema.parse(body);
 
-    // Send internal notification
+    // Send internal notification to your personal email
     await sendEmail({
-      from: 'Contact Form <noreply@complyance.io>',
-      to: 'support@complyance.io',
+      from: 'Contact Form <onboarding@resend.dev>',
+      to: process.env.ADMIN_EMAIL ?? 'your@gmail.com', // ← добавь ADMIN_EMAIL в Railway Variables
       subject: `[${subjectMap[data.subject]}] ${data.name}`,
       html: `
         <h2>New contact form submission</h2>
@@ -45,21 +45,16 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    // Send confirmation to submitter
-    await sendEmail({
-      from: 'Complyance <noreply@complyance.io>',
-      to: data.email,
-      subject: 'We received your message',
-      html: `
-        <h2>Thank you for contacting Complyance</h2>
-        <p>Hi ${data.name},</p>
-        <p>We've received your message and will get back to you within 24-48 hours.</p>
-        <p><strong>Your message:</strong></p>
-        <p>${data.message.replace(/\n/g, '<br>')}</p>
-        <br>
-        <p>Best regards,<br>Complyance Team</p>
-      `,
-    });
+    // NOTE: confirmation to submitter is disabled until complyance.io domain is verified in Resend
+    // Resend free tier only allows sending to the account's own email without a verified domain
+    // Uncomment this block after domain verification:
+    //
+    // await sendEmail({
+    //   from: 'Complyance <noreply@complyance.io>',
+    //   to: data.email,
+    //   subject: 'We received your message',
+    //   html: `...`,
+    // });
 
     return NextResponse.json({ success: true });
   } catch (error) {
