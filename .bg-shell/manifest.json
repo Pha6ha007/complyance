@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "1e0992a5",
+    "label": "next-dev",
+    "command": "cd /Users/pavelgayvoronskiy/Documents/complyance && npx next dev --port 3000 2>&1",
+    "cwd": "/Users/pavelgayvoronskiy/Documents/complyance",
+    "startedAt": 1773663637438,
+    "processType": "server",
+    "group": null,
+    "readyPattern": null,
+    "readyPort": 3000,
+    "pid": 30549
+  }
+]

@@ -71,7 +71,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    console.error('Contact form error:', error);
     return NextResponse.json(
       { error: 'Failed to send message' },
       { status: 500 }

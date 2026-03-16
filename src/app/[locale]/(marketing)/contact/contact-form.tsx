@@ -58,6 +58,18 @@ export function ContactForm() {
     setError('');
     setSuccess(false);
 
+    // Client-side validation matching server schema
+    if (formData.name.trim().length < 1) {
+      setError('Name is required');
+      setLoading(false);
+      return;
+    }
+    if (formData.message.trim().length < 10) {
+      setError('Message must be at least 10 characters');
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -68,7 +80,11 @@ export function ContactForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
+        // Show specific field errors from server if available
+        const detail = data.details
+          ? Array.isArray(data.details) ? data.details.join(', ') : String(data.details)
+          : data.error || 'Failed to send message';
+        throw new Error(detail);
       }
 
       setSuccess(true);
@@ -245,6 +261,7 @@ export function ContactForm() {
                   <textarea
                     id="message"
                     required
+                    minLength={10}
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
