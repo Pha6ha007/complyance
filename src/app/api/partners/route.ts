@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { sendEmail } from '@/server/services/email';
 
 const partnerSchema = z.object({
   companyName: z.string().min(1).max(200),
@@ -10,32 +11,23 @@ const partnerSchema = z.object({
   message: z.string().min(10).max(5000),
 });
 
+const typeMap: Record<string, string> = {
+  law_firm: 'Law Firm',
+  consultancy: 'Consultancy',
+  auditor: 'Auditor/Certification Body',
+  other: 'Other',
+};
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const data = partnerSchema.parse(body);
 
-    // TODO: Send email via Resend to partnerships@complyance.io
-    // For now, just log it
-    console.log('Partnership application:', data);
-
-    // Example Resend integration (uncomment when Resend is configured):
-    /*
-    const { Resend } = require('resend');
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    const typeMap = {
-      law_firm: 'Law Firm',
-      consultancy: 'Consultancy',
-      auditor: 'Auditor/Certification Body',
-      other: 'Other',
-    };
-
-    await resend.emails.send({
+    // Send internal notification
+    await sendEmail({
       from: 'Partnership Applications <noreply@complyance.io>',
       to: 'partnerships@complyance.io',
       subject: `New Partnership Application: ${data.companyName}`,
-      replyTo: data.email,
       html: `
         <h2>New Partnership Application</h2>
         <p><strong>Company:</strong> ${data.companyName}</p>
@@ -47,8 +39,8 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    // Send confirmation email to applicant
-    await resend.emails.send({
+    // Send confirmation to applicant
+    await sendEmail({
       from: 'Complyance Partnerships <noreply@complyance.io>',
       to: data.email,
       subject: 'Thank you for your partnership application',
@@ -61,12 +53,9 @@ export async function POST(req: NextRequest) {
         <p>Best regards,<br>Complyance Partnerships Team</p>
       `,
     });
-    */
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Partnership application error:', error);
-
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: 'Invalid form data', details: error.errors },
@@ -74,6 +63,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    console.error('Partnership application error:', error);
     return NextResponse.json(
       { error: 'Failed to submit application' },
       { status: 500 }

@@ -22,11 +22,6 @@ export function track(eventName: string, properties?: Record<string, any>) {
   if (posthog) {
     posthog.capture(eventName, properties);
   }
-
-  // Also log to console in development
-  if (process.env.NODE_ENV === 'development') {
-    console.log('📊 Analytics Event:', eventName, properties);
-  }
 }
 
 /**
@@ -37,10 +32,6 @@ export function identify(userId: string, traits?: Record<string, any>) {
 
   if (posthog) {
     posthog.identify(userId, traits);
-  }
-
-  if (process.env.NODE_ENV === 'development') {
-    console.log('👤 Identify User:', userId, traits);
   }
 }
 

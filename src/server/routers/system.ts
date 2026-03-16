@@ -166,16 +166,6 @@ export const systemRouter = router({
         },
       });
 
-      // Track system creation
-      console.log('📊 Analytics: system_created', {
-        system_id: system.id,
-        system_name: system.name,
-        ai_type: system.aiType,
-        domain: system.domain,
-        user_id: ctx.user.id,
-        organization_id: ctx.organization.id,
-      });
-
       // TODO: Queue classification job here
       // await queueClassificationJob(system.id);
 
@@ -329,4 +319,74 @@ export const systemRouter = router({
       criticalGaps,
     };
   }),
+
+  /**
+   * Get current user and organization settings
+   */
+  getSettings: protectedProcedure.query(async ({ ctx }) => {
+    return {
+      user: {
+        name: ctx.user.name ?? '',
+        email: ctx.user.email,
+      },
+      organization: {
+        name: ctx.organization.name,
+        plan: ctx.organization.plan,
+        locale: ctx.organization.locale,
+      },
+    };
+  }),
+
+  /**
+   * Update user profile (name, email)
+   */
+  updateProfile: protectedProcedure
+    .input(
+      z.object({
+        name: z.string().min(1, 'Name is required').max(200),
+        email: z.string().email('Invalid email address'),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      // Check email uniqueness if changed
+      if (input.email !== ctx.user.email) {
+        const existing = await ctx.prisma.user.findUnique({
+          where: { email: input.email },
+        });
+        if (existing) {
+          throw new TRPCError({
+            code: 'CONFLICT',
+            message: 'Email is already in use',
+          });
+        }
+      }
+
+      const user = await ctx.prisma.user.update({
+        where: { id: ctx.user.id },
+        data: {
+          name: input.name,
+          email: input.email,
+        },
+      });
+
+      return { name: user.name, email: user.email };
+    }),
+
+  /**
+   * Update organization name
+   */
+  updateOrganization: protectedProcedure
+    .input(
+      z.object({
+        name: z.string().min(1, 'Organization name is required').max(200),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const org = await ctx.prisma.organization.update({
+        where: { id: ctx.organization.id },
+        data: { name: input.name },
+      });
+
+      return { name: org.name };
+    }),
 });

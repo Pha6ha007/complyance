@@ -33,18 +33,12 @@ export async function classifyAISystem(
   systemId: string,
   input: ClassificationInput
 ): Promise<ClassificationEngineResult> {
-  console.log(`[Classification Engine] Starting classification for: ${input.name}`);
-
   try {
     // STEP 1: Rule-based pre-filter
-    console.log('[Classification Engine] Running pre-filter rules...');
     const preFilterResult = preFilterClassification(input);
 
     // If pre-filter gives definitive result, skip LLM
     if (preFilterResult.isDefinitive && preFilterResult.riskLevel) {
-      console.log(
-        `[Classification Engine] Pre-filter definitive: ${preFilterResult.riskLevel}`
-      );
 
       // Save result to database
       await saveClassificationResult(systemId, {
@@ -104,11 +98,9 @@ export async function classifyAISystem(
     }
 
     // STEP 2: LLM Classification
-    console.log('[Classification Engine] Calling LLM for classification...');
     const llmResult = await classifyWithLLM(input);
 
     // STEP 3: Validation
-    console.log('[Classification Engine] Validating LLM result...');
     const validationResult = validateClassification(input, llmResult);
 
     // STEP 4: Cross-checks
@@ -125,7 +117,6 @@ export async function classifyAISystem(
     }
 
     // STEP 5: Generate compliance gaps
-    console.log('[Classification Engine] Generating compliance gaps...');
     const gaps = generateComplianceGaps(validationResult.result);
 
     // STEP 6: Calculate compliance score
@@ -134,7 +125,6 @@ export async function classifyAISystem(
     );
 
     // STEP 7: Save to database
-    console.log('[Classification Engine] Saving results to database...');
     await saveClassificationResult(systemId, {
       riskLevel: validationResult.result.riskLevel as RiskLevel,
       annexIIICategory: validationResult.result.annexIIICategory,
@@ -152,21 +142,6 @@ export async function classifyAISystem(
 
     await saveComplianceGaps(systemId, gaps);
     await updateComplianceScore(systemId, complianceScore);
-
-    console.log(
-      `[Classification Engine] Classification complete: ${validationResult.result.riskLevel} (${gaps.length} gaps, score: ${complianceScore}%)`
-    );
-
-    // Track classification completion
-    console.log('📊 Analytics: system_classified', {
-      system_id: systemId,
-      risk_level: validationResult.result.riskLevel,
-      confidence_score: validationResult.result.confidenceScore,
-      annex_iii_category: validationResult.result.annexIIICategory,
-      compliance_score: complianceScore,
-      gap_count: gaps.length,
-      flagged_for_review: validationResult.flaggedForReview,
-    });
 
     return {
       riskLevel: validationResult.result.riskLevel as RiskLevel,

@@ -33,7 +33,6 @@ export function CheckoutButton({
     try {
       // Initialize Paddle
       if (typeof window === 'undefined' || !window.Paddle) {
-        console.error('Paddle.js not loaded');
         setLoading(false);
         return;
       }
@@ -54,17 +53,14 @@ export function CheckoutButton({
         customData: {
           plan: planName,
         },
-        successCallback: (data: any) => {
-          console.log('Checkout success:', data);
-          // Redirect to dashboard or success page
+        successCallback: () => {
           window.location.href = '/dashboard?checkout=success';
         },
         closeCallback: () => {
           setLoading(false);
         },
       });
-    } catch (error) {
-      console.error('Checkout error:', error);
+    } catch {
       setLoading(false);
     }
   };

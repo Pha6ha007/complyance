@@ -64,13 +64,8 @@ export async function classifyWithLLM(
       // If this is a retry, wait with exponential backoff
       if (attempt > 0) {
         const delay = getRetryDelay(attempt - 1);
-        console.log(
-          `[Classification] Retry attempt ${attempt}/${RETRY_CONFIG.maxRetries} after ${delay}ms delay`
-        );
         await sleep(delay);
       }
-
-      console.log(`[Classification] Calling Claude API for: ${input.name}`);
 
       const response = await anthropic.messages.create({
         model: 'claude-sonnet-4-20250514',
@@ -96,7 +91,6 @@ export async function classifyWithLLM(
       }
 
       const rawText = textContent.text;
-      console.log('[Classification] Raw LLM response:', rawText);
 
       // Parse JSON from response
       let parsed: unknown;
@@ -124,10 +118,6 @@ export async function classifyWithLLM(
 
       // Validate against schema
       const result = classificationResultSchema.parse(parsed);
-
-      console.log(
-        `[Classification] Successfully classified as ${result.riskLevel} (confidence: ${result.confidenceScore})`
-      );
 
       return result;
     } catch (error) {

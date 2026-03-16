@@ -1,5 +1,7 @@
+import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/server/db/client';
+import { getPlanFromPaddlePrice } from '@/server/services/billing/paddle';
 import { grantReferrerReward, revokeReferrerReward } from '@/server/services/referrals/rewards';
 
 // Paddle webhook signature verification
@@ -29,7 +31,6 @@ async function verifyPaddleSignature(
     }
 
     // Verify signature
-    const crypto = require('crypto');
     const signedPayload = `${timestamp}:${body}`;
     const expectedHash = crypto
       .createHmac('sha256', webhookSecret)
@@ -62,12 +63,9 @@ export async function POST(request: NextRequest) {
     const event = JSON.parse(body);
     const eventType = event.event_type;
 
-    console.log('Paddle webhook received:', eventType);
-
     switch (eventType) {
       case 'subscription.created':
       case 'subscription.updated': {
-        // Handle subscription creation/update
         const subscription = event.data;
         const customerId = subscription.customer_id;
         const subscriptionId = subscription.id;
@@ -83,20 +81,15 @@ export async function POST(request: NextRequest) {
         });
 
         if (!user) {
-          console.warn('User not found for Paddle customer:', customerId);
+          console.error('Paddle webhook: user not found for customer', customerId);
           return NextResponse.json({ received: true });
         }
 
-        // Update organization plan based on subscription
-        const planMap: Record<string, 'STARTER' | 'PROFESSIONAL' | 'SCALE'> = {
-          'pri_starter': 'STARTER',
-          'pri_professional': 'PROFESSIONAL',
-          'pri_scale': 'SCALE',
-        };
+        // Resolve plan from Paddle price ID via unified mapping
+        const priceId = subscription.items?.[0]?.price?.id ?? subscription.price_id;
+        const plan = priceId ? getPlanFromPaddlePrice(priceId) : null;
 
-        const plan = planMap[subscription.price_id] || 'FREE';
-
-        if (status === 'active') {
+        if (status === 'active' && plan) {
           await prisma.organization.update({
             where: { id: user.organizationId },
             data: {
@@ -116,7 +109,6 @@ export async function POST(request: NextRequest) {
       }
 
       case 'subscription.canceled': {
-        // Handle subscription cancellation
         const subscription = event.data;
         const subscriptionId = subscription.id;
 
@@ -127,7 +119,7 @@ export async function POST(request: NextRequest) {
         });
 
         if (!organization) {
-          console.warn('Organization not found for subscription:', subscriptionId);
+          console.error('Paddle webhook: org not found for subscription', subscriptionId);
           return NextResponse.json({ received: true });
         }
 
@@ -148,20 +140,15 @@ export async function POST(request: NextRequest) {
         break;
       }
 
-      case 'subscription.payment_succeeded': {
-        // Payment succeeded - could send notification
-        console.log('Payment succeeded for subscription:', event.data.id);
+      case 'subscription.payment_succeeded':
+      case 'subscription.payment_failed':
+        // Payment events — no action needed, Paddle handles retries.
+        // Could add Resend notification here in the future.
         break;
-      }
-
-      case 'subscription.payment_failed': {
-        // Payment failed - could send notification
-        console.log('Payment failed for subscription:', event.data.id);
-        break;
-      }
 
       default:
-        console.log('Unhandled Paddle event type:', eventType);
+        // Unknown event type — ignore gracefully
+        break;
     }
 
     return NextResponse.json({ received: true });

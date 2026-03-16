@@ -54,8 +54,6 @@ export function PHProvider({ children }: { children: React.ReactNode }) {
           respect_dnt: true,
           opt_out_capturing_by_default: false,
         });
-
-        console.log('✓ PostHog initialized');
       }
     }
   }, [POSTHOG_KEY, POSTHOG_HOST]);

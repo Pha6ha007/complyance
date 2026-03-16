@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { auth } from '@/../auth';
 import { prisma } from '@/server/db/client';
-import { PLAN_LIMITS, getEffectiveSystemLimit } from '@/server/services/billing/paddle';
+import { PLAN_LIMITS, getEffectiveSystemLimit } from '@/lib/constants';
 import { AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -142,10 +142,10 @@ export default async function BillingPage() {
                 <span className="text-sm font-medium">{t('usage.vendors')}</span>
                 <span className="text-sm text-muted-foreground">
                   {vendorCount} /{' '}
-                  {limits.vendors === 999999 ? t('usage.unlimited') : limits.vendors}
+                  {limits.vendors === 999 ? t('usage.unlimited') : limits.vendors}
                 </span>
               </div>
-              {limits.vendors !== 999999 && (
+              {limits.vendors !== 999 && (
                 <>
                   <Progress
                     value={(vendorCount / limits.vendors) * 100}
@@ -168,7 +168,7 @@ export default async function BillingPage() {
               <span className="text-sm font-medium">{t('usage.teamMembers')}</span>
               <span className="text-sm text-muted-foreground">
                 1 /{' '}
-                {limits.teamMembers === 999999 ? t('usage.unlimited') : limits.teamMembers}
+                {limits.teamMembers === 999 ? t('usage.unlimited') : limits.teamMembers}
               </span>
             </div>
           </div>
@@ -186,15 +186,15 @@ export default async function BillingPage() {
             <div>
               <dt className="text-sm font-medium">{t('features.regulations')}</dt>
               <dd className="text-sm text-muted-foreground">
-                {typeof limits.regulations === 'string'
+                {limits.regulations >= 999
                   ? t('features.allRegulations')
-                  : limits.regulations.length + ' ' + t('features.regulationCount')}
+                  : limits.regulations + ' ' + t('features.regulationCount')}
               </dd>
             </div>
             <div>
               <dt className="text-sm font-medium">{t('features.documents')}</dt>
               <dd className="text-sm text-muted-foreground">
-                {limits.documents ? t('features.enabled') : t('features.disabled')}
+                {limits.docGeneration ? t('features.enabled') : t('features.disabled')}
               </dd>
             </div>
             <div>
@@ -206,7 +206,7 @@ export default async function BillingPage() {
             <div>
               <dt className="text-sm font-medium">{t('features.biasTesting')}</dt>
               <dd className="text-sm text-muted-foreground">
-                {limits.biasTesting === 999999
+                {limits.biasTesting === 999
                   ? t('features.unlimited')
                   : limits.biasTesting === 0
                   ? t('features.disabled')
@@ -216,13 +216,13 @@ export default async function BillingPage() {
             <div>
               <dt className="text-sm font-medium">{t('features.cicdAPI')}</dt>
               <dd className="text-sm text-muted-foreground">
-                {limits.cicdAPI ? t('features.enabled') : t('features.disabled')}
+                {limits.cicdApi ? t('features.enabled') : t('features.disabled')}
               </dd>
             </div>
             <div>
               <dt className="text-sm font-medium">{t('features.alerts')}</dt>
               <dd className="text-sm text-muted-foreground">
-                {limits.regulatoryAlerts === 'REALTIME'
+                {limits.regulatoryAlerts === 'REAL_TIME'
                   ? t('features.realtime')
                   : limits.regulatoryAlerts === 'EMAIL_WEEKLY'
                   ? t('features.weekly')

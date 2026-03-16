@@ -111,6 +111,11 @@ export default async function PricingPage({ params }: PricingPageProps) {
   const tNav = await getTranslations('nav');
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
 
+  // Paddle price IDs from env vars — null means no checkout button (renders link instead)
+  const priceStarter = process.env.PADDLE_PRICE_STARTER ?? null;
+  const priceProfessional = process.env.PADDLE_PRICE_PROFESSIONAL ?? null;
+  const priceScale = process.env.PADDLE_PRICE_SCALE ?? null;
+
   const plans = [
     {
       name: 'Free',
@@ -124,7 +129,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
         { name: t('features.classification'), included: true },
         { name: t('features.gapAnalysis'), included: true },
         { name: t('features.badge', { level: 'Aware' }), included: true },
-        { name: t('features.vendors'), included: false },
+        { name: t('features.vendors', { count: 0 }), included: false },
         { name: t('features.documents'), included: false },
         { name: t('features.evidence'), included: false },
         { name: t('features.alerts'), included: false },
@@ -136,7 +141,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
       name: 'Starter',
       price: '99',
       period: t('perMonth'),
-      priceId: 'pri_01j...starter', // TODO: Replace with actual Paddle price ID
+      priceId: priceStarter,
       description: t('plans.starter.description'),
       popular: true,
       features: [
@@ -149,7 +154,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
         { name: t('features.badge', { level: 'Ready' }), included: true },
         { name: t('features.alerts'), included: true, detail: t('features.alertsWeekly') },
         { name: t('features.evidence'), included: false },
-        { name: t('features.biasTesting'), included: false },
+        { name: t('features.biasTesting', { count: 0 }), included: false },
       ],
       cta: t('plans.starter.cta'),
     },
@@ -157,7 +162,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
       name: 'Professional',
       price: '249',
       period: t('perMonth'),
-      priceId: 'pri_01j...professional', // TODO: Replace with actual Paddle price ID
+      priceId: priceProfessional,
       description: t('plans.professional.description'),
       features: [
         { name: t('features.systems', { count: 20 }), included: true },
@@ -179,7 +184,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
       name: 'Scale',
       price: '499',
       period: t('perMonth'),
-      priceId: 'pri_01j...scale', // TODO: Replace with actual Paddle price ID
+      priceId: priceScale,
       description: t('plans.scale.description'),
       features: [
         { name: t('features.systems', { count: 50 }), included: true },

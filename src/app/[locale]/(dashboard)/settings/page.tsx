@@ -2,11 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
 import {
   User,
   Building2,
@@ -15,26 +13,60 @@ import {
   Globe,
   Shield,
   Trash2,
+  Loader2,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { trpc } from '@/lib/trpc/client';
+import { toast } from '@/lib/toast';
 
 export default function SettingsPage() {
   const t = useTranslations('settings');
   const tCommon = useTranslations('common');
   const router = useRouter();
 
-  const [name, setName] = useState('Pavel');
-  const [email, setEmail] = useState('g.pavel336@gmail.com');
-  const [organizationName, setOrganizationName] = useState('My Organization');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [organizationName, setOrganizationName] = useState('');
   const [notifications, setNotifications] = useState(true);
 
+  // Load real data from DB
+  const { data: settings, isLoading } = trpc.system.getSettings.useQuery();
+
+  useEffect(() => {
+    if (settings) {
+      setName(settings.user.name);
+      setEmail(settings.user.email);
+      setOrganizationName(settings.organization.name);
+    }
+  }, [settings]);
+
+  const updateProfile = trpc.system.updateProfile.useMutation({
+    onSuccess: () => {
+      toast.success(tCommon('success'));
+    },
+    onError: (error) => {
+      toast.error(error.message || tCommon('error'));
+    },
+  });
+
+  const updateOrganization = trpc.system.updateOrganization.useMutation({
+    onSuccess: () => {
+      toast.success(tCommon('success'));
+    },
+    onError: (error) => {
+      toast.error(error.message || tCommon('error'));
+    },
+  });
+
   const handleSaveProfile = () => {
-    // TODO: Implement with tRPC
+    updateProfile.mutate({ name, email });
   };
 
   const handleSaveOrganization = () => {
-    // TODO: Implement with tRPC
+    updateOrganization.mutate({ name: organizationName });
   };
+
+  const planLabel = settings?.organization.plan ?? 'FREE';
 
   return (
     <div className="space-y-6 p-6">
@@ -64,6 +96,7 @@ export default function SettingsPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder={t('namePlaceholder')}
+              disabled={isLoading}
               className="bg-slate-700/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500/50"
             />
           </div>
@@ -76,14 +109,17 @@ export default function SettingsPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t('emailPlaceholder')}
+              disabled={isLoading}
               className="bg-slate-700/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500/50"
             />
           </div>
 
           <button
             onClick={handleSaveProfile}
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.25)] hover:bg-emerald-400 transition-colors"
+            disabled={updateProfile.isPending || isLoading}
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.25)] hover:bg-emerald-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
+            {updateProfile.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
             {tCommon('save')}
           </button>
         </div>
@@ -109,6 +145,7 @@ export default function SettingsPage() {
               value={organizationName}
               onChange={(e) => setOrganizationName(e.target.value)}
               placeholder={t('organizationNamePlaceholder')}
+              disabled={isLoading}
               className="bg-slate-700/50 border-slate-600/60 text-white placeholder:text-slate-500 focus:border-emerald-500/50"
             />
           </div>
@@ -124,8 +161,10 @@ export default function SettingsPage() {
 
           <button
             onClick={handleSaveOrganization}
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.25)] hover:bg-emerald-400 transition-colors"
+            disabled={updateOrganization.isPending || isLoading}
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.25)] hover:bg-emerald-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
+            {updateOrganization.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
             {tCommon('save')}
           </button>
         </div>
@@ -142,7 +181,7 @@ export default function SettingsPage() {
             <p className="text-sm text-slate-400">{t('subscriptionDescription')}</p>
           </div>
           <span className="inline-flex items-center rounded-md bg-slate-700/50 border border-slate-600/50 px-2.5 py-0.5 text-xs font-medium text-slate-300">
-            Free Plan
+            {planLabel}
           </span>
         </div>
 
@@ -150,7 +189,7 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between mb-2">
             <span className="font-medium text-white">{t('currentPlan')}</span>
             <span className="inline-flex items-center rounded-md bg-slate-700/50 border border-slate-600/50 px-2 py-0.5 text-xs font-medium text-slate-400">
-              Free
+              {planLabel}
             </span>
           </div>
           <p className="text-sm text-slate-400 mb-4">{t('freePlanDescription')}</p>

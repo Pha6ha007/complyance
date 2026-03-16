@@ -16,14 +16,9 @@ export function PaddleProvider({ children }: { children: React.ReactNode }) {
       try {
         window.Paddle.Initialize({
           token: paddleToken,
-          eventCallback: (data) => {
-            // Optional: log Paddle events for debugging
-            console.log('[Paddle]', data.name, data);
-          },
         });
-        console.log('[Paddle] Initialized successfully');
-      } catch (error) {
-        console.error('[Paddle] Initialization error:', error);
+      } catch {
+        // Paddle initialization failed — checkout buttons will handle gracefully
       }
     }
   }, [paddleToken]);
@@ -38,12 +33,6 @@ export function PaddleProvider({ children }: { children: React.ReactNode }) {
       <Script
         src="https://cdn.paddle.com/paddle/v2/paddle.js"
         strategy="lazyOnload"
-        onLoad={() => {
-          console.log('[Paddle] Script loaded');
-        }}
-        onError={(error) => {
-          console.error('[Paddle] Script load error:', error);
-        }}
       />
       {children}
     </>

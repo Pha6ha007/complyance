@@ -47,8 +47,6 @@ export async function register() {
             return event;
           },
         });
-
-        console.log('✓ Sentry initialized (server-side)');
       }
     } catch (error) {
       // Sentry package not installed - fail silently
@@ -68,8 +66,6 @@ export async function register() {
           tracesSampleRate: 0.1,
           environment: process.env.NODE_ENV || 'development',
         });
-
-        console.log('✓ Sentry initialized (edge runtime)');
       }
     } catch (error) {
       console.warn('Sentry package not found for edge runtime');
