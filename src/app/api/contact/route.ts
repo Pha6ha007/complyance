@@ -19,7 +19,16 @@ const subjectMap: Record<string, string> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json(
+        { error: 'Invalid request body — expected JSON' },
+        { status: 400 }
+      );
+    }
+
     const data = contactSchema.parse(body);
 
     // Send internal notification
@@ -55,8 +64,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof z.ZodError) {
+      const fieldErrors = error.errors.map(e => `${e.path.join('.')}: ${e.message}`);
       return NextResponse.json(
-        { error: 'Invalid form data', details: error.errors },
+        { error: 'Invalid form data', details: fieldErrors },
         { status: 400 }
       );
     }

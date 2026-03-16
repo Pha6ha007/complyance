@@ -35,35 +35,62 @@ function getStatusBadgeClasses(status: string) {
   }
 }
 
+const JURISDICTION_OPTIONS = [
+  'EU', 'UK', 'US-FED', 'US-CO', 'US-CA', 'US-NY', 'US-IL',
+  'US-TX', 'US-VA', 'US-CT', 'US-MA', 'US-WA', 'US-MD',
+  'CN', 'CA', 'BR', 'SG', 'JP', 'KR', 'AU', 'IN',
+];
+
+const STATUS_OPTIONS = ['enacted', 'proposed', 'in_force', 'rescinded', 'pending'];
+
 export function LegislationBrowser() {
   const t = useTranslations('intelligence.legislation');
 
   const [jurisdictionFilter, setJurisdictionFilter] = useState<string>('ALL');
   const [statusFilter, setStatusFilter] = useState<string>('ALL');
+  const [cursor, setCursor] = useState<string | undefined>(undefined);
+  const [allEntries, setAllEntries] = useState<Array<Record<string, unknown>>>([]);
 
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    trpc.intelligence.getLegislation.useInfiniteQuery(
-      {
-        limit: 10,
-        ...(jurisdictionFilter !== 'ALL' ? { jurisdiction: jurisdictionFilter } : {}),
-        ...(statusFilter !== 'ALL' ? { status: statusFilter } : {}),
+  const { data, isLoading, error } = trpc.intelligence.getLegislation.useQuery(
+    {
+      limit: 10,
+      ...(jurisdictionFilter !== 'ALL' ? { jurisdiction: jurisdictionFilter } : {}),
+      ...(statusFilter !== 'ALL' ? { status: statusFilter } : {}),
+      ...(cursor ? { cursor } : {}),
+    },
+    {
+      onSuccess: (newData) => {
+        if (cursor) {
+          // Appending — merge with existing
+          setAllEntries((prev) => [...prev, ...newData.entries]);
+        } else {
+          // Fresh query (filter changed)
+          setAllEntries(newData.entries);
+        }
       },
-      {
-        getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
-      }
-    );
+    }
+  );
 
-  const entries = data?.pages.flatMap((p) => p.entries) ?? [];
-  const totalEstimate = data?.pages[0]?.totalEstimate ?? 0;
+  // Reset cursor when filters change
+  const handleFilterChange = (setter: (v: string) => void, value: string) => {
+    setter(value);
+    setCursor(undefined);
+    setAllEntries([]);
+  };
 
-  // Get unique jurisdictions from data for filter dropdown
-  const JURISDICTION_OPTIONS = [
-    'EU', 'UK', 'US-FED', 'US-CO', 'US-CA', 'US-NY', 'US-IL',
-    'US-TX', 'US-VA', 'US-CT', 'US-MA', 'US-WA', 'US-MD',
-    'CN', 'CA', 'BR', 'SG', 'JP', 'KR', 'AU', 'IN',
-  ];
+  const entries = cursor ? allEntries : (data?.entries ?? []);
+  const totalEstimate = data?.totalEstimate ?? 0;
+  const hasMore = !!data?.nextCursor;
 
-  const STATUS_OPTIONS = ['enacted', 'proposed', 'in_force', 'rescinded', 'pending'];
+  const handleLoadMore = () => {
+    if (data?.nextCursor) {
+      setCursor(data.nextCursor);
+    }
+  };
+
+  if (error) {
+    return null; // Silently hide if tRPC fails (e.g., no legislation data)
+  }
 
   return (
     <div className="space-y-4">
@@ -86,7 +113,7 @@ export function LegislationBrowser() {
       <div className="flex flex-wrap items-center gap-3">
         <select
           value={jurisdictionFilter}
-          onChange={(e) => setJurisdictionFilter(e.target.value)}
+          onChange={(e) => handleFilterChange(setJurisdictionFilter, e.target.value)}
           className="rounded-lg border border-slate-600/60 bg-slate-700/50 px-3 py-1.5 text-sm text-slate-300 focus:outline-none focus:border-blue-500/50"
         >
           <option value="ALL" className="bg-slate-800">{t('allJurisdictions')}</option>
@@ -99,7 +126,7 @@ export function LegislationBrowser() {
 
         <select
           value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
+          onChange={(e) => handleFilterChange(setStatusFilter, e.target.value)}
           className="rounded-lg border border-slate-600/60 bg-slate-700/50 px-3 py-1.5 text-sm text-slate-300 focus:outline-none focus:border-blue-500/50"
         >
           <option value="ALL" className="bg-slate-800">{t('allStatuses')}</option>
@@ -112,7 +139,7 @@ export function LegislationBrowser() {
       </div>
 
       {/* Loading */}
-      {isLoading && (
+      {isLoading && entries.length === 0 && (
         <div className="py-8 text-center">
           <div className="text-sm text-slate-400">Loading legislation...</div>
         </div>
@@ -126,9 +153,9 @@ export function LegislationBrowser() {
         </div>
       )}
 
-      {!isLoading && entries.length > 0 && (
+      {entries.length > 0 && (
         <div className="space-y-3">
-          {entries.map((entry) => (
+          {entries.map((entry: any) => (
             <div
               key={entry.id}
               className="rounded-xl border border-slate-600/60 bg-slate-800/60 p-5 hover:border-slate-500/60 transition-colors"
@@ -157,7 +184,7 @@ export function LegislationBrowser() {
                     <div className="mt-3">
                       <p className="text-xs font-medium text-slate-500 mb-1.5">{t('keyProvisions')}</p>
                       <ul className="space-y-1">
-                        {(entry.keyProvisions as string[]).slice(0, 3).map((provision, i) => (
+                        {(entry.keyProvisions as string[]).slice(0, 3).map((provision: string, i: number) => (
                           <li key={i} className="text-sm text-slate-400 flex items-start gap-2">
                             <span className="text-emerald-500 mt-1">•</span>
                             {provision}
@@ -206,14 +233,14 @@ export function LegislationBrowser() {
           ))}
 
           {/* Load more */}
-          {hasNextPage && (
+          {hasMore && (
             <button
-              onClick={() => fetchNextPage()}
-              disabled={isFetchingNextPage}
+              onClick={handleLoadMore}
+              disabled={isLoading}
               className="w-full rounded-xl border border-slate-600/60 bg-slate-800/40 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <ChevronDown className="h-4 w-4" />
-              {isFetchingNextPage ? '...' : t('loadMore')}
+              {isLoading ? '...' : t('loadMore')}
             </button>
           )}
         </div>

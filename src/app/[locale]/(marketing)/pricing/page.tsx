@@ -135,7 +135,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
         { name: t('features.alerts'), included: false },
       ],
       cta: t('plans.free.cta'),
-      ctaLink: '/register',
+      ctaLink: '/login',
     },
     {
       name: 'Starter',
@@ -310,7 +310,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
                         className="w-full rounded-xl font-bold py-3 border border-gray-300 hover:border-emerald-400 text-gray-700 hover:text-emerald-700 bg-transparent hover:bg-transparent"
                         variant="outline"
                       >
-                        <Link href={plan.ctaLink!}>{plan.cta}</Link>
+                        <Link href={plan.ctaLink ?? '/login'}>{plan.cta}</Link>
                       </Button>
                     )}
                   </div>
