@@ -24,6 +24,7 @@
     "evidence": "Cofre de Evidências",
     "reports": "Relatórios",
     "intelligence": "Atualizações Regulatórias",
+    "biasTesting": "Testes de Viés",
     "settings": "Configurações",
     "team": "Equipa",
     "referrals": "Indicações",
@@ -2782,6 +2783,53 @@
       "goToDashboard": "Ir para o Painel",
       "helpText": "Se o problema persistir, por favor contacte o suporte.",
       "contactSupport": "Contactar Suporte"
+    }
+  },
+  "bias": {
+    "title": "Testes de Viés e Equidade",
+    "subtitle": "Analise os conjuntos de dados do seu sistema de IA para detectar viés algorítmico segundo o Regulamento Europeu de IA",
+    "selectSystem": "Sistema de IA",
+    "selectSystemPlaceholder": "Selecione um sistema de IA...",
+    "upload": "Carregar conjunto de dados (CSV)",
+    "uploadHint": "Clique para carregar o seu conjunto de dados para análise de viés",
+    "labelColumn": "Coluna de resultado",
+    "labelColumnHint": "Coluna binária: 1 = resultado positivo, 0 = negativo",
+    "protectedAttribute": "Atributo protegido",
+    "protectedAttributeHint": "Coluna contendo o atributo sensível (género, raça, faixa etária)",
+    "privilegedValue": "Valor do grupo privilegiado",
+    "privilegedValueHint": "Valor que representa o grupo privilegiado na coluna de atributo protegido",
+    "privilegedValuePlaceholder": "ex. 1, masculino, branco",
+    "selectColumn": "Selecione uma coluna...",
+    "rows": "linhas",
+    "columns": "colunas",
+    "runAnalysis": "Executar análise de viés",
+    "analyzing": "A analisar...",
+    "runAnother": "Executar outra análise",
+    "planRequired": "Testes de viés requerem o plano Profissional",
+    "planRequiredDescription": "Atualize para Profissional ou Scale para aceder a testes de equidade de IA com verificações de conformidade com o Regulamento Europeu.",
+    "upgradePlan": "Ver planos",
+    "pastResults": "Resultados de análises anteriores",
+    "disclaimer": "Esta análise é fornecida apenas para fins informativos e não constitui aconselhamento jurídico.",
+    "errors": {
+      "emptyCSV": "O ficheiro CSV está vazio ou não pôde ser analisado",
+      "missingFields": "Por favor, preencha todos os campos obrigatórios"
+    },
+    "results": {
+      "title": "Resultados da análise",
+      "disparateImpact": "Rácio de impacto desigual",
+      "statisticalParity": "Diferença de paridade estatística",
+      "compliant": "Cumpre o limiar de equidade do Artigo 10 do Regulamento Europeu de IA",
+      "violation": "Viés potencial detetado — revisão necessária",
+      "threshold": "Limiar",
+      "groupStats": "Estatísticas dos grupos",
+      "privilegedGroup": "Grupo privilegiado",
+      "unprivilegedGroup": "Grupo não privilegiado",
+      "sampleSize": "Tamanho da amostra",
+      "positiveOutcomes": "Resultados positivos",
+      "positiveRate": "Taxa positiva",
+      "recommendations": "Recomendações",
+      "pass": "Aprovado",
+      "fail": "Reprovado"
     }
   }
 }

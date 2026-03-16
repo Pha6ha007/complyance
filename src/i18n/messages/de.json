@@ -24,6 +24,7 @@
     "evidence": "Nachweisspeicher",
     "reports": "Berichte",
     "intelligence": "Regulatorische Updates",
+    "biasTesting": "Bias-Tests",
     "settings": "Einstellungen",
     "team": "Team",
     "referrals": "Empfehlungen",
@@ -2750,6 +2751,53 @@
       "goToDashboard": "Zum Dashboard",
       "helpText": "Falls das Problem weiterhin besteht, wenden Sie sich bitte an den Support.",
       "contactSupport": "Support kontaktieren"
+    }
+  },
+  "bias": {
+    "title": "Bias- & Fairness-Tests",
+    "subtitle": "Analysieren Sie die Datensätze Ihres KI-Systems auf algorithmische Verzerrungen gemäß EU AI Act",
+    "selectSystem": "KI-System",
+    "selectSystemPlaceholder": "KI-System auswählen...",
+    "upload": "Datensatz hochladen (CSV)",
+    "uploadHint": "Klicken Sie, um Ihren Datensatz für die Bias-Analyse hochzuladen",
+    "labelColumn": "Ergebnisspalte",
+    "labelColumnHint": "Binäre Spalte: 1 = positives Ergebnis, 0 = negativ",
+    "protectedAttribute": "Geschütztes Merkmal",
+    "protectedAttributeHint": "Spalte mit dem sensiblen Attribut (Geschlecht, Herkunft, Altersgruppe)",
+    "privilegedValue": "Wert der privilegierten Gruppe",
+    "privilegedValueHint": "Wert, der die privilegierte Gruppe in der Spalte des geschützten Merkmals repräsentiert",
+    "privilegedValuePlaceholder": "z.B. 1, männlich, weiß",
+    "selectColumn": "Spalte auswählen...",
+    "rows": "Zeilen",
+    "columns": "Spalten",
+    "runAnalysis": "Bias-Analyse starten",
+    "analyzing": "Analyse läuft...",
+    "runAnother": "Weitere Analyse durchführen",
+    "planRequired": "Bias-Tests erfordern den Professional-Plan",
+    "planRequiredDescription": "Upgraden Sie auf Professional oder Scale, um KI-Fairness-Tests mit EU AI Act-Konformitätsprüfungen zu nutzen.",
+    "upgradePlan": "Pläne anzeigen",
+    "pastResults": "Frühere Analyseergebnisse",
+    "disclaimer": "Diese Analyse dient ausschließlich Informationszwecken und stellt keine Rechtsberatung dar.",
+    "errors": {
+      "emptyCSV": "Die CSV-Datei ist leer oder konnte nicht analysiert werden",
+      "missingFields": "Bitte füllen Sie alle Pflichtfelder aus"
+    },
+    "results": {
+      "title": "Analyseergebnisse",
+      "disparateImpact": "Disparate-Impact-Verhältnis",
+      "statisticalParity": "Statistische Paritätsdifferenz",
+      "compliant": "Erfüllt den Fairness-Schwellenwert nach Artikel 10 des EU AI Act",
+      "violation": "Mögliche Verzerrung erkannt — Überprüfung erforderlich",
+      "threshold": "Schwellenwert",
+      "groupStats": "Gruppenstatistiken",
+      "privilegedGroup": "Privilegierte Gruppe",
+      "unprivilegedGroup": "Nicht privilegierte Gruppe",
+      "sampleSize": "Stichprobengröße",
+      "positiveOutcomes": "Positive Ergebnisse",
+      "positiveRate": "Positivrate",
+      "recommendations": "Empfehlungen",
+      "pass": "Bestanden",
+      "fail": "Nicht bestanden"
     }
   }
 }

@@ -24,6 +24,7 @@
     "evidence": "Skarbiec dowodów",
     "reports": "Raporty",
     "intelligence": "Aktualizacje regulacyjne",
+    "biasTesting": "Testy stronniczości",
     "settings": "Ustawienia",
     "team": "Zespół",
     "referrals": "Polecenia",
@@ -2753,6 +2754,53 @@
       "goToDashboard": "Przejdź do panelu",
       "helpText": "Jeśli problem będzie się powtarzał, skontaktuj się z pomocą techniczną.",
       "contactSupport": "Skontaktuj się z pomocą"
+    }
+  },
+  "bias": {
+    "title": "Testy stronniczości i sprawiedliwości",
+    "subtitle": "Analizuj zbiory danych systemu AI pod kątem stronniczości algorytmicznej zgodnie z rozporządzeniem UE o AI",
+    "selectSystem": "System AI",
+    "selectSystemPlaceholder": "Wybierz system AI...",
+    "upload": "Prześlij zbiór danych (CSV)",
+    "uploadHint": "Kliknij, aby przesłać zbiór danych do analizy stronniczości",
+    "labelColumn": "Kolumna wyniku",
+    "labelColumnHint": "Kolumna binarna: 1 = wynik pozytywny, 0 = negatywny",
+    "protectedAttribute": "Atrybut chroniony",
+    "protectedAttributeHint": "Kolumna zawierająca atrybut wrażliwy (płeć, rasa, grupa wiekowa)",
+    "privilegedValue": "Wartość grupy uprzywilejowanej",
+    "privilegedValueHint": "Wartość reprezentująca grupę uprzywilejowaną w kolumnie atrybutu chronionego",
+    "privilegedValuePlaceholder": "np. 1, mężczyzna, biały",
+    "selectColumn": "Wybierz kolumnę...",
+    "rows": "wierszy",
+    "columns": "kolumn",
+    "runAnalysis": "Uruchom analizę stronniczości",
+    "analyzing": "Analizowanie...",
+    "runAnother": "Uruchom kolejną analizę",
+    "planRequired": "Testy stronniczości wymagają planu Professional",
+    "planRequiredDescription": "Przejdź na plan Professional lub Scale, aby uzyskać dostęp do testów sprawiedliwości AI z weryfikacją zgodności z rozporządzeniem UE.",
+    "upgradePlan": "Zobacz plany",
+    "pastResults": "Wyniki poprzednich analiz",
+    "disclaimer": "Ta analiza służy wyłącznie celom informacyjnym i nie stanowi porady prawnej.",
+    "errors": {
+      "emptyCSV": "Plik CSV jest pusty lub nie można go przeanalizować",
+      "missingFields": "Proszę wypełnić wszystkie wymagane pola"
+    },
+    "results": {
+      "title": "Wyniki analizy",
+      "disparateImpact": "Wskaźnik nierównego wpływu",
+      "statisticalParity": "Różnica parytetu statystycznego",
+      "compliant": "Spełnia próg sprawiedliwości art. 10 rozporządzenia UE o AI",
+      "violation": "Wykryto potencjalną stronniczość — wymagany przegląd",
+      "threshold": "Próg",
+      "groupStats": "Statystyki grup",
+      "privilegedGroup": "Grupa uprzywilejowana",
+      "unprivilegedGroup": "Grupa nieuprzywilejowana",
+      "sampleSize": "Wielkość próby",
+      "positiveOutcomes": "Wyniki pozytywne",
+      "positiveRate": "Wskaźnik pozytywny",
+      "recommendations": "Zalecenia",
+      "pass": "Zaliczony",
+      "fail": "Niezaliczony"
     }
   }
 }

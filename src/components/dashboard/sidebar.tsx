@@ -15,6 +15,7 @@ import {
   BookOpen,
   X,
   Zap,
+  BarChart3,
 } from 'lucide-react';
 import { trpc } from '@/lib/trpc/client';
 
@@ -31,6 +32,7 @@ const navigationItems = [
   { name: 'evidence',     href: '/evidence',     icon: FileBox },
   { name: 'reports',      href: '/reports',      icon: FileText },
   { name: 'intelligence', href: '/intelligence', icon: Bell },
+  { name: 'biasTesting',  href: '/bias-testing',  icon: BarChart3 },
   { name: 'blog',         href: '/blog',         icon: BookOpen, external: true },
   { name: 'settings',     href: '/settings',     icon: Settings, dividerBefore: true },
   { name: 'referrals',    href: '/referrals',    icon: Gift },

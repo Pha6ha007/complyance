@@ -24,6 +24,7 @@
     "evidence": "Evidence Vault",
     "reports": "Reports",
     "intelligence": "Regulatory Updates",
+    "biasTesting": "Bias Testing",
     "settings": "Settings",
     "badge": "Compliance Badge",
     "team": "Team",
@@ -1976,6 +1977,53 @@
     "cta": {
       "startSharing": "Start Sharing",
       "inviteFriends": "Invite Friends"
+    },
+    "bias": {
+      "title": "Bias & Fairness Testing",
+      "subtitle": "Analyze your AI system datasets for algorithmic bias under EU AI Act",
+      "selectSystem": "AI System",
+      "selectSystemPlaceholder": "Select an AI system...",
+      "upload": "Upload Dataset (CSV)",
+      "uploadHint": "Click to upload your dataset for bias analysis",
+      "labelColumn": "Outcome Column",
+      "labelColumnHint": "Binary column: 1 = positive outcome, 0 = negative",
+      "protectedAttribute": "Protected Attribute",
+      "protectedAttributeHint": "Column containing sensitive attribute (gender, race, age_group)",
+      "privilegedValue": "Privileged Group Value",
+      "privilegedValueHint": "Value that represents the privileged group in the protected attribute column",
+      "privilegedValuePlaceholder": "e.g. 1, male, white",
+      "selectColumn": "Select column...",
+      "rows": "rows",
+      "columns": "columns",
+      "runAnalysis": "Run Bias Analysis",
+      "analyzing": "Analyzing...",
+      "runAnother": "Run Another Analysis",
+      "planRequired": "Bias Testing requires Professional plan",
+      "planRequiredDescription": "Upgrade to Professional or Scale to access AI fairness testing with EU AI Act compliance checks.",
+      "upgradePlan": "View Plans",
+      "pastResults": "Past Analysis Results",
+      "disclaimer": "This analysis is for informational purposes only and does not constitute legal advice.",
+      "errors": {
+        "emptyCSV": "CSV file is empty or could not be parsed",
+        "missingFields": "Please fill in all required fields"
+      },
+      "results": {
+        "title": "Analysis Results",
+        "disparateImpact": "Disparate Impact Ratio",
+        "statisticalParity": "Statistical Parity Difference",
+        "compliant": "Meets EU AI Act Article 10 fairness threshold",
+        "violation": "Potential bias detected — review required",
+        "threshold": "Threshold",
+        "groupStats": "Group Statistics",
+        "privilegedGroup": "Privileged Group",
+        "unprivilegedGroup": "Unprivileged Group",
+        "sampleSize": "Sample Size",
+        "positiveOutcomes": "Positive Outcomes",
+        "positiveRate": "Positive Rate",
+        "recommendations": "Recommendations",
+        "pass": "Pass",
+        "fail": "Fail"
+      }
     }
   }
 }

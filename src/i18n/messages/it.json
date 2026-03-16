@@ -24,6 +24,7 @@
     "evidence": "Archivio prove",
     "reports": "Report",
     "intelligence": "Aggiornamenti normativi",
+    "biasTesting": "Test di bias",
     "settings": "Impostazioni",
     "team": "Team",
     "referrals": "Referral",
@@ -2051,6 +2052,53 @@
       "goToDashboard": "Vai alla Dashboard",
       "helpText": "Se il problema persiste, contatta l'assistenza.",
       "contactSupport": "Contatta l'assistenza"
+    }
+  },
+  "bias": {
+    "title": "Test di bias e equità",
+    "subtitle": "Analizza i dataset del tuo sistema IA per rilevare bias algoritmici secondo il Regolamento UE sull'IA",
+    "selectSystem": "Sistema IA",
+    "selectSystemPlaceholder": "Seleziona un sistema IA...",
+    "upload": "Carica dataset (CSV)",
+    "uploadHint": "Clicca per caricare il tuo dataset per l'analisi del bias",
+    "labelColumn": "Colonna risultato",
+    "labelColumnHint": "Colonna binaria: 1 = esito positivo, 0 = negativo",
+    "protectedAttribute": "Attributo protetto",
+    "protectedAttributeHint": "Colonna contenente l'attributo sensibile (genere, razza, fascia d'età)",
+    "privilegedValue": "Valore del gruppo privilegiato",
+    "privilegedValueHint": "Valore che rappresenta il gruppo privilegiato nella colonna dell'attributo protetto",
+    "privilegedValuePlaceholder": "es. 1, maschio, bianco",
+    "selectColumn": "Seleziona colonna...",
+    "rows": "righe",
+    "columns": "colonne",
+    "runAnalysis": "Esegui analisi del bias",
+    "analyzing": "Analisi in corso...",
+    "runAnother": "Esegui un'altra analisi",
+    "planRequired": "I test di bias richiedono il piano Professional",
+    "planRequiredDescription": "Passa al piano Professional o Scale per accedere ai test di equità IA con verifiche di conformità al Regolamento UE.",
+    "upgradePlan": "Visualizza piani",
+    "pastResults": "Risultati delle analisi precedenti",
+    "disclaimer": "Questa analisi è fornita solo a scopo informativo e non costituisce consulenza legale.",
+    "errors": {
+      "emptyCSV": "Il file CSV è vuoto o non può essere analizzato",
+      "missingFields": "Compilare tutti i campi obbligatori"
+    },
+    "results": {
+      "title": "Risultati dell'analisi",
+      "disparateImpact": "Rapporto di impatto disparato",
+      "statisticalParity": "Differenza di parità statistica",
+      "compliant": "Soddisfa la soglia di equità dell'Articolo 10 del Regolamento UE sull'IA",
+      "violation": "Bias potenziale rilevato — revisione necessaria",
+      "threshold": "Soglia",
+      "groupStats": "Statistiche dei gruppi",
+      "privilegedGroup": "Gruppo privilegiato",
+      "unprivilegedGroup": "Gruppo non privilegiato",
+      "sampleSize": "Dimensione del campione",
+      "positiveOutcomes": "Esiti positivi",
+      "positiveRate": "Tasso positivo",
+      "recommendations": "Raccomandazioni",
+      "pass": "Superato",
+      "fail": "Non superato"
     }
   }
 }

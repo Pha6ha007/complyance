@@ -24,6 +24,7 @@
     "evidence": "Coffre de preuves",
     "reports": "Rapports",
     "intelligence": "Veille réglementaire",
+    "biasTesting": "Tests de biais",
     "settings": "Paramètres",
     "badge": "Badge de conformité",
     "team": "Équipe",
@@ -2809,6 +2810,53 @@
       "goToDashboard": "Aller au tableau de bord",
       "helpText": "Si le problème persiste, veuillez contacter le support.",
       "contactSupport": "Contacter le support"
+    }
+  },
+  "bias": {
+    "title": "Tests de biais et d'équité",
+    "subtitle": "Analysez les jeux de données de votre système IA pour détecter les biais algorithmiques selon le règlement européen sur l'IA",
+    "selectSystem": "Système IA",
+    "selectSystemPlaceholder": "Sélectionnez un système IA...",
+    "upload": "Télécharger le jeu de données (CSV)",
+    "uploadHint": "Cliquez pour télécharger votre jeu de données pour l'analyse de biais",
+    "labelColumn": "Colonne de résultat",
+    "labelColumnHint": "Colonne binaire : 1 = résultat positif, 0 = négatif",
+    "protectedAttribute": "Attribut protégé",
+    "protectedAttributeHint": "Colonne contenant l'attribut sensible (genre, race, tranche d'âge)",
+    "privilegedValue": "Valeur du groupe privilégié",
+    "privilegedValueHint": "Valeur représentant le groupe privilégié dans la colonne d'attribut protégé",
+    "privilegedValuePlaceholder": "ex. 1, homme, blanc",
+    "selectColumn": "Sélectionnez une colonne...",
+    "rows": "lignes",
+    "columns": "colonnes",
+    "runAnalysis": "Lancer l'analyse de biais",
+    "analyzing": "Analyse en cours...",
+    "runAnother": "Lancer une autre analyse",
+    "planRequired": "Les tests de biais nécessitent le plan Professionnel",
+    "planRequiredDescription": "Passez au plan Professionnel ou Scale pour accéder aux tests d'équité IA avec vérification de conformité au règlement européen.",
+    "upgradePlan": "Voir les plans",
+    "pastResults": "Résultats d'analyses précédentes",
+    "disclaimer": "Cette analyse est fournie à titre informatif uniquement et ne constitue pas un avis juridique.",
+    "errors": {
+      "emptyCSV": "Le fichier CSV est vide ou n'a pas pu être analysé",
+      "missingFields": "Veuillez remplir tous les champs obligatoires"
+    },
+    "results": {
+      "title": "Résultats de l'analyse",
+      "disparateImpact": "Ratio d'impact disparate",
+      "statisticalParity": "Différence de parité statistique",
+      "compliant": "Conforme au seuil d'équité de l'article 10 du règlement européen sur l'IA",
+      "violation": "Biais potentiel détecté — vérification requise",
+      "threshold": "Seuil",
+      "groupStats": "Statistiques des groupes",
+      "privilegedGroup": "Groupe privilégié",
+      "unprivilegedGroup": "Groupe non privilégié",
+      "sampleSize": "Taille de l'échantillon",
+      "positiveOutcomes": "Résultats positifs",
+      "positiveRate": "Taux positif",
+      "recommendations": "Recommandations",
+      "pass": "Conforme",
+      "fail": "Non conforme"
     }
   }
 }

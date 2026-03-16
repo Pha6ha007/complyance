@@ -7,6 +7,7 @@ import { badgeRouter } from './badge';
 import { evidenceRouter } from './evidence';
 import { intelligenceRouter } from './intelligence';
 import { referralRouter } from './referral';
+import { biasRouter } from './bias';
 
 /**
  * This is the primary router for your server.
@@ -22,6 +23,7 @@ export const appRouter = router({
   evidence: evidenceRouter,
   intelligence: intelligenceRouter,
   referral: referralRouter,
+  bias: biasRouter,
   // TODO: Add other routers as they are created:
   // incident: incidentRouter,
   // team: teamRouter,
