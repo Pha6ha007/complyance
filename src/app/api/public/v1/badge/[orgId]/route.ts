@@ -40,8 +40,7 @@ export async function GET(
         },
       }
     );
-  } catch (error) {
-    console.error('Badge API error:', error);
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
