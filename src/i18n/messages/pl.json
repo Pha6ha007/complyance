@@ -2075,7 +2075,56 @@
     "upgradeToPlan": "Ulepsz plan, aby zobaczyć pełną treść",
     "upgradeLink": "Zobacz Plany",
     "noUpdates": "Brak Dostępnych Aktualizacji",
-    "noUpdatesDescription": "Wróć później po nowe aktualizacje regulacyjne"
+    "noUpdatesDescription": "Wróć później po nowe aktualizacje regulacyjne",
+    "legislation": {
+      "title": "Globalne prawodawstwo dotyczące AI",
+      "subtitle": "Śledź przepisy i regulacje dotyczące AI na całym świecie",
+      "allJurisdictions": "Wszystkie jurysdykcje",
+      "allStatuses": "Wszystkie statusy",
+      "jurisdictions": {
+        "EU": "Unia Europejska",
+        "UK": "Wielka Brytania",
+        "CN": "Chiny",
+        "CA": "Kanada",
+        "BR": "Brazylia",
+        "SG": "Singapur",
+        "JP": "Japonia",
+        "KR": "Korea Południowa",
+        "AU": "Australia",
+        "IN": "Indie",
+        "US-CO": "Kolorado, USA",
+        "US-IL": "Illinois, USA",
+        "US-CA": "Kalifornia, USA",
+        "US-TX": "Teksas, USA",
+        "US-NY": "Nowy Jork, USA",
+        "US-VA": "Wirginia, USA",
+        "US-CT": "Connecticut, USA",
+        "US-MA": "Massachusetts, USA",
+        "US-WA": "Waszyngton, USA",
+        "US-MD": "Maryland, USA",
+        "US-FED": "Federalny US"
+      },
+      "status": {
+        "enacted": "Uchwalony",
+        "proposed": "Proponowany",
+        "in_force": "Obowiązujący",
+        "rescinded": "Uchylony",
+        "pending": "Oczekujący"
+      },
+      "impact": {
+        "HIGH": "Wysoki wpływ",
+        "MEDIUM": "Średni wpływ",
+        "LOW": "Niski wpływ"
+      },
+      "lastVerified": "Ostatnio zweryfikowano",
+      "effectiveDate": "Data wejścia w życie",
+      "viewSource": "Zobacz źródło oficjalne",
+      "keyProvisions": "Kluczowe przepisy",
+      "loadMore": "Załaduj więcej",
+      "noResults": "Nie znaleziono przepisów pasujących do filtrów",
+      "upgradeForDetails": "Przejdź na plan Starter, aby zobaczyć pełne szczegóły",
+      "entries": "{count, plural, one {# wpis} few {# wpisy} many {# wpisów} other {# wpisów}}"
+    }
   },
   "reports": {
     "title": "Raporty",
@@ -2587,6 +2636,30 @@
         "notFound": "Żądany zasób nie został znaleziony.",
         "validation": "Sprawdź wprowadzone dane i spróbuj ponownie.",
         "server": "Błąd serwera. Spróbuj ponownie później."
+      }
+    },
+    "deepScan": {
+      "title": "Pogłębiona analiza zgodności",
+      "subtitle": "Szczegółowa analiza zgodnie z artykułami 5-50 unijnego aktu o AI",
+      "runScan": "Uruchom analizę",
+      "scanning": "Analizowanie...",
+      "detectedIssues": "Wykryte problemy",
+      "requiredActions": "Wymagane działania",
+      "gaps": "{count, plural, one {# luka} few {# luki} many {# luk} other {# luk}}",
+      "fixAllGaps": "Napraw wszystkie luki z Complyance",
+      "noGaps": "Nie wykryto luk w zgodności",
+      "error": "Analiza nie powiodła się. Spróbuj ponownie.",
+      "disclaimer": "Niniejsza analiza ma charakter wyłącznie informacyjny i nie stanowi porady prawnej.",
+      "severity": {
+        "HIGH": "Wysoki",
+        "MEDIUM": "Średni",
+        "LOW": "Niski"
+      },
+      "priority": {
+        "CRITICAL": "Krytyczny",
+        "HIGH": "Wysoki",
+        "MEDIUM": "Średni",
+        "LOW": "Niski"
       }
     }
   },

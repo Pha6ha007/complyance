@@ -395,7 +395,56 @@
     "upgradeToPlan": "Upgrade to view full content",
     "upgradeLink": "View Plans",
     "noUpdates": "No Updates Available",
-    "noUpdatesDescription": "Check back later for new regulatory updates"
+    "noUpdatesDescription": "Check back later for new regulatory updates",
+    "legislation": {
+      "title": "Global AI Legislation",
+      "subtitle": "Track AI laws and regulations worldwide",
+      "allJurisdictions": "All Jurisdictions",
+      "allStatuses": "All Statuses",
+      "jurisdictions": {
+        "EU": "European Union",
+        "UK": "United Kingdom",
+        "CN": "China",
+        "CA": "Canada",
+        "BR": "Brazil",
+        "SG": "Singapore",
+        "JP": "Japan",
+        "KR": "South Korea",
+        "AU": "Australia",
+        "IN": "India",
+        "US-CO": "Colorado, USA",
+        "US-IL": "Illinois, USA",
+        "US-CA": "California, USA",
+        "US-TX": "Texas, USA",
+        "US-NY": "New York, USA",
+        "US-VA": "Virginia, USA",
+        "US-CT": "Connecticut, USA",
+        "US-MA": "Massachusetts, USA",
+        "US-WA": "Washington, USA",
+        "US-MD": "Maryland, USA",
+        "US-FED": "US Federal"
+      },
+      "status": {
+        "enacted": "Enacted",
+        "proposed": "Proposed",
+        "in_force": "In Force",
+        "rescinded": "Rescinded",
+        "pending": "Pending"
+      },
+      "impact": {
+        "HIGH": "High Impact",
+        "MEDIUM": "Medium Impact",
+        "LOW": "Low Impact"
+      },
+      "lastVerified": "Last verified",
+      "effectiveDate": "Effective date",
+      "viewSource": "View official source",
+      "keyProvisions": "Key provisions",
+      "loadMore": "Load more",
+      "noResults": "No legislation found matching your filters",
+      "upgradeForDetails": "Upgrade to Starter to view full details",
+      "entries": "{count, plural, one {# entry} other {# entries}}"
+    }
   },
   "reports": {
     "title": "Reports",
@@ -1837,6 +1886,30 @@
         "notFound": "The requested resource was not found.",
         "validation": "Please check your input and try again.",
         "server": "Server error. Please try again later."
+      }
+    },
+    "deepScan": {
+      "title": "Deep Compliance Scan",
+      "subtitle": "Detailed analysis against EU AI Act Articles 5-50",
+      "runScan": "Run Deep Scan",
+      "scanning": "Scanning...",
+      "detectedIssues": "Detected Issues",
+      "requiredActions": "Required Actions",
+      "gaps": "{count, plural, one {# gap} other {# gaps}}",
+      "fixAllGaps": "Fix All Gaps with Complyance",
+      "noGaps": "No compliance gaps detected",
+      "error": "Scan failed. Please try again.",
+      "disclaimer": "This analysis is for informational purposes only and does not constitute legal advice.",
+      "severity": {
+        "HIGH": "High",
+        "MEDIUM": "Medium",
+        "LOW": "Low"
+      },
+      "priority": {
+        "CRITICAL": "Critical",
+        "HIGH": "High",
+        "MEDIUM": "Medium",
+        "LOW": "Low"
       }
     }
   },

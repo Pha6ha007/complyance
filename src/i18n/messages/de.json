@@ -2072,7 +2072,56 @@
     "upgradeToPlan": "Upgrade für vollständigen Inhalt",
     "upgradeLink": "Pläne ansehen",
     "noUpdates": "Keine Updates verfügbar",
-    "noUpdatesDescription": "Schauen Sie später für neue regulatorische Updates vorbei"
+    "noUpdatesDescription": "Schauen Sie später für neue regulatorische Updates vorbei",
+    "legislation": {
+      "title": "Globale KI-Gesetzgebung",
+      "subtitle": "Verfolgen Sie KI-Gesetze und -Vorschriften weltweit",
+      "allJurisdictions": "Alle Jurisdiktionen",
+      "allStatuses": "Alle Status",
+      "jurisdictions": {
+        "EU": "Europäische Union",
+        "UK": "Vereinigtes Königreich",
+        "CN": "China",
+        "CA": "Kanada",
+        "BR": "Brasilien",
+        "SG": "Singapur",
+        "JP": "Japan",
+        "KR": "Südkorea",
+        "AU": "Australien",
+        "IN": "Indien",
+        "US-CO": "Colorado, USA",
+        "US-IL": "Illinois, USA",
+        "US-CA": "Kalifornien, USA",
+        "US-TX": "Texas, USA",
+        "US-NY": "New York, USA",
+        "US-VA": "Virginia, USA",
+        "US-CT": "Connecticut, USA",
+        "US-MA": "Massachusetts, USA",
+        "US-WA": "Washington, USA",
+        "US-MD": "Maryland, USA",
+        "US-FED": "US-Bundesebene"
+      },
+      "status": {
+        "enacted": "Verabschiedet",
+        "proposed": "Vorgeschlagen",
+        "in_force": "In Kraft",
+        "rescinded": "Aufgehoben",
+        "pending": "Ausstehend"
+      },
+      "impact": {
+        "HIGH": "Hohe Auswirkung",
+        "MEDIUM": "Mittlere Auswirkung",
+        "LOW": "Geringe Auswirkung"
+      },
+      "lastVerified": "Zuletzt überprüft",
+      "effectiveDate": "Inkrafttreten",
+      "viewSource": "Offizielle Quelle ansehen",
+      "keyProvisions": "Wichtigste Bestimmungen",
+      "loadMore": "Mehr laden",
+      "noResults": "Keine Gesetzgebung gefunden, die Ihren Filtern entspricht",
+      "upgradeForDetails": "Auf Starter upgraden für vollständige Details",
+      "entries": "{count, plural, one {# Eintrag} other {# Einträge}}"
+    }
   },
   "reports": {
     "title": "Berichte",
@@ -2584,6 +2633,30 @@
         "notFound": "Die angeforderte Ressource wurde nicht gefunden.",
         "validation": "Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut.",
         "server": "Serverfehler. Bitte versuchen Sie es später erneut."
+      }
+    },
+    "deepScan": {
+      "title": "Tiefgehende Compliance-Analyse",
+      "subtitle": "Detaillierte Analyse gemäß EU AI Act Artikel 5-50",
+      "runScan": "Analyse starten",
+      "scanning": "Analyse läuft...",
+      "detectedIssues": "Erkannte Probleme",
+      "requiredActions": "Erforderliche Maßnahmen",
+      "gaps": "{count, plural, one {# Lücke} other {# Lücken}}",
+      "fixAllGaps": "Alle Lücken mit Complyance beheben",
+      "noGaps": "Keine Compliance-Lücken erkannt",
+      "error": "Analyse fehlgeschlagen. Bitte erneut versuchen.",
+      "disclaimer": "Diese Analyse dient nur zu Informationszwecken und stellt keine Rechtsberatung dar.",
+      "severity": {
+        "HIGH": "Hoch",
+        "MEDIUM": "Mittel",
+        "LOW": "Niedrig"
+      },
+      "priority": {
+        "CRITICAL": "Kritisch",
+        "HIGH": "Hoch",
+        "MEDIUM": "Mittel",
+        "LOW": "Niedrig"
       }
     }
   },

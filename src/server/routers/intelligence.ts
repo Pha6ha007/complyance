@@ -469,4 +469,66 @@ export const intelligenceRouter = router({
         nextCursor,
       };
     }),
+
+  /**
+   * List legislation entries with filters and pagination
+   * Titles visible to all plans; full content (summary, keyProvisions) requires Starter+
+   */
+  getLegislation: protectedProcedure
+    .input(
+      z
+        .object({
+          jurisdiction: z.string().optional(),
+          status: z.string().optional(),
+          region: z.string().optional(),
+          limit: z.number().min(1).max(50).default(20),
+          cursor: z.string().optional(),
+        })
+        .optional()
+    )
+    .query(async ({ input, ctx }) => {
+      const { jurisdiction, status, region, limit = 20, cursor } = input ?? {};
+      const plan = ctx.organization.plan;
+
+      const where: Record<string, unknown> = {};
+      if (jurisdiction) where.jurisdiction = jurisdiction;
+      if (status) where.status = status;
+      if (region) where.region = region;
+
+      const entries = await ctx.prisma.legislationEntry.findMany({
+        where,
+        take: limit + 1,
+        ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
+        orderBy: [{ impactLevel: 'asc' }, { updatedAt: 'desc' }],
+      });
+
+      let nextCursor: string | undefined = undefined;
+      if (entries.length > limit) {
+        const nextItem = entries.pop();
+        nextCursor = nextItem?.id;
+      }
+
+      // Free plan: titles and metadata only, no summary/keyProvisions
+      const hasFullAccess = plan !== Plan.FREE;
+
+      return {
+        entries: entries.map((entry) => ({
+          id: entry.id,
+          externalId: entry.externalId,
+          jurisdiction: entry.jurisdiction,
+          region: entry.region,
+          title: entry.title,
+          status: entry.status,
+          effectiveDate: entry.effectiveDate,
+          impactLevel: entry.impactLevel,
+          sourceUrl: entry.sourceUrl,
+          tags: entry.tags,
+          lastVerified: entry.lastVerified,
+          summary: hasFullAccess ? entry.summary : null,
+          keyProvisions: hasFullAccess ? entry.keyProvisions : null,
+        })),
+        nextCursor,
+        totalEstimate: await ctx.prisma.legislationEntry.count({ where }),
+      };
+    }),
 });

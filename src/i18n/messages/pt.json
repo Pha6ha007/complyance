@@ -2104,7 +2104,56 @@
     "upgradeToPlan": "Faça upgrade para ver o conteúdo completo",
     "upgradeLink": "Ver Planos",
     "noUpdates": "Nenhuma Atualização Disponível",
-    "noUpdatesDescription": "Volte mais tarde para novas atualizações regulatórias"
+    "noUpdatesDescription": "Volte mais tarde para novas atualizações regulatórias",
+    "legislation": {
+      "title": "Legislação Global sobre IA",
+      "subtitle": "Acompanhe leis e regulamentações de IA em todo o mundo",
+      "allJurisdictions": "Todas as jurisdições",
+      "allStatuses": "Todos os status",
+      "jurisdictions": {
+        "EU": "União Europeia",
+        "UK": "Reino Unido",
+        "CN": "China",
+        "CA": "Canadá",
+        "BR": "Brasil",
+        "SG": "Singapura",
+        "JP": "Japão",
+        "KR": "Coreia do Sul",
+        "AU": "Austrália",
+        "IN": "Índia",
+        "US-CO": "Colorado, EUA",
+        "US-IL": "Illinois, EUA",
+        "US-CA": "Califórnia, EUA",
+        "US-TX": "Texas, EUA",
+        "US-NY": "Nova York, EUA",
+        "US-VA": "Virgínia, EUA",
+        "US-CT": "Connecticut, EUA",
+        "US-MA": "Massachusetts, EUA",
+        "US-WA": "Washington, EUA",
+        "US-MD": "Maryland, EUA",
+        "US-FED": "Federal dos EUA"
+      },
+      "status": {
+        "enacted": "Promulgado",
+        "proposed": "Proposto",
+        "in_force": "Em vigor",
+        "rescinded": "Revogado",
+        "pending": "Pendente"
+      },
+      "impact": {
+        "HIGH": "Alto impacto",
+        "MEDIUM": "Médio impacto",
+        "LOW": "Baixo impacto"
+      },
+      "lastVerified": "Última verificação",
+      "effectiveDate": "Data de vigência",
+      "viewSource": "Ver fonte oficial",
+      "keyProvisions": "Disposições principais",
+      "loadMore": "Carregar mais",
+      "noResults": "Nenhuma legislação encontrada com os filtros selecionados",
+      "upgradeForDetails": "Faça upgrade para Starter para ver detalhes completos",
+      "entries": "{count, plural, one {# entrada} other {# entradas}}"
+    }
   },
   "reports": {
     "title": "Relatórios",
@@ -2616,6 +2665,30 @@
         "notFound": "O recurso solicitado não foi encontrado.",
         "validation": "Por favor, verifique sua entrada e tente novamente.",
         "server": "Erro do servidor. Por favor, tente novamente mais tarde."
+      }
+    },
+    "deepScan": {
+      "title": "Análise de Conformidade Profunda",
+      "subtitle": "Análise detalhada conforme os Artigos 5-50 da Lei de IA da UE",
+      "runScan": "Executar análise",
+      "scanning": "Analisando...",
+      "detectedIssues": "Problemas detectados",
+      "requiredActions": "Ações necessárias",
+      "gaps": "{count, plural, one {# lacuna} other {# lacunas}}",
+      "fixAllGaps": "Corrigir todas as lacunas com Complyance",
+      "noGaps": "Nenhuma lacuna de conformidade detectada",
+      "error": "Análise falhou. Por favor, tente novamente.",
+      "disclaimer": "Esta análise é apenas para fins informativos e não constitui aconselhamento jurídico.",
+      "severity": {
+        "HIGH": "Alto",
+        "MEDIUM": "Médio",
+        "LOW": "Baixo"
+      },
+      "priority": {
+        "CRITICAL": "Crítico",
+        "HIGH": "Alto",
+        "MEDIUM": "Médio",
+        "LOW": "Baixo"
       }
     }
   },

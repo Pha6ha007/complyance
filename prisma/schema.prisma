@@ -361,6 +361,33 @@ model RegulatoryUpdateRead {
 }
 
 // ============================================
+// LEGISLATION TRACKER
+// ============================================
+
+model LegislationEntry {
+  id              String    @id @default(cuid())
+  externalId      String    @unique // from source JSON: "intl-001", "state-001", "fed-001"
+  jurisdiction    String    // "EU", "US-CO", "US-NYC", "UAE", "UK", "China", etc.
+  title           String
+  status          String    // "enacted", "proposed", "in_force", "rescinded"
+  effectiveDate   DateTime?
+  summary         String    @db.Text
+  keyProvisions   Json      // string[]
+  sourceUrl       String
+  tags            Json      // string[]
+  lastVerified    DateTime
+  impactLevel     String    @default("MEDIUM") // HIGH, MEDIUM, LOW
+  region          String    @default("OTHER")  // EU, US, MENA, APAC, OTHER — for market filtering
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([jurisdiction])
+  @@index([status])
+  @@index([region])
+}
+
+// ============================================
 // REFERRAL SYSTEM
 // ============================================
 

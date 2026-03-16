@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { ChangeType } from '@prisma/client';
+import { LegislationBrowser } from '@/components/dashboard/legislation-browser';
 
 const REGULATION_OPTIONS = [
   { value: 'ALL', label: 'All Regulations' },
@@ -270,6 +271,11 @@ export default function IntelligencePage() {
         onMarkAsRead={handleMarkAsRead}
         isMarkingRead={markAsReadMutation.isPending}
       />
+
+      {/* Legislation Browser */}
+      <div className="pt-4 border-t border-slate-700/60">
+        <LegislationBrowser />
+      </div>
     </div>
   );
 }
