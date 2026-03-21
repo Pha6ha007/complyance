@@ -19,10 +19,71 @@ const dmMono = DM_Mono({
   display: 'swap',
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+
 export const metadata: Metadata = {
-  title: 'Complyance | AI Compliance Management Platform',
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: 'Complyance | AI Compliance Management Platform',
+    template: '%s — Complyance',
+  },
   description:
     'Self-serve AI compliance platform for SMBs. Classify AI systems, identify gaps, and achieve EU AI Act compliance.',
+  keywords: [
+    'EU AI Act', 'AI compliance', 'AI risk classification', 'AI regulation',
+    'Annex III', 'high-risk AI', 'compliance platform', 'SaaS compliance',
+  ],
+  authors: [{ name: 'Complyance' }],
+  creator: 'Complyance',
+  openGraph: {
+    type: 'website',
+    siteName: 'Complyance',
+    title: 'Complyance | AI Compliance Management Platform',
+    description:
+      'Self-serve AI compliance platform for SMBs. Classify AI systems, identify gaps, and achieve EU AI Act compliance.',
+    url: baseUrl,
+    images: [
+      {
+        url: `${baseUrl}/api/og`,
+        width: 1200,
+        height: 630,
+        alt: 'Complyance — AI Compliance Platform',
+      },
+    ],
+    locale: 'en',
+    alternateLocale: ['fr', 'de', 'pt', 'ar', 'pl', 'it'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Complyance | AI Compliance Management Platform',
+    description:
+      'Self-serve AI compliance platform for SMBs. Classify AI systems, identify gaps, and achieve EU AI Act compliance.',
+    images: [`${baseUrl}/api/og`],
+    creator: '@complyance_io',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large' as const,
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: baseUrl,
+    languages: {
+      en: `${baseUrl}/en`,
+      fr: `${baseUrl}/fr`,
+      de: `${baseUrl}/de`,
+      pt: `${baseUrl}/pt`,
+      ar: `${baseUrl}/ar`,
+      pl: `${baseUrl}/pl`,
+      it: `${baseUrl}/it`,
+    },
+  },
 };
 
 export default async function RootLayout({

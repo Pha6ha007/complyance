@@ -57,13 +57,13 @@ function getTypeIcon(type: string) {
 function getTypeBadgeClass(type: string) {
   switch (type) {
     case 'DOCUMENT':
-      return 'bg-blue-100 text-blue-800 border-blue-200';
+      return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
     case 'SCREENSHOT':
-      return 'bg-purple-100 text-purple-800 border-purple-200';
+      return 'bg-purple-500/10 text-purple-400 border-purple-500/20';
     case 'LOG':
-      return 'bg-gray-100 text-gray-800 border-gray-200';
+      return 'bg-white/10 text-white/70 border-white/20';
     case 'TEST_RESULT':
-      return 'bg-green-100 text-green-800 border-green-200';
+      return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
     default:
       return '';
   }

@@ -108,6 +108,7 @@ export default function SystemDetailPage() {
   const tClass = useTranslations('classification');
   const tCommon = useTranslations('common');
 
+  const utils = trpc.useUtils();
   const { data: system, isLoading, error } = trpc.system.getById.useQuery({ id: systemId });
 
   const deleteMutation = trpc.system.delete.useMutation({
@@ -115,7 +116,7 @@ export default function SystemDetailPage() {
   });
 
   const reclassifyMutation = trpc.classification.reclassify.useMutation({
-    onSuccess: () => { window.location.reload(); },
+    onSuccess: () => { utils.system.getById.invalidate({ id: systemId }); utils.system.list.invalidate(); utils.system.getStats.invalidate(); },
   });
 
   if (isLoading) {

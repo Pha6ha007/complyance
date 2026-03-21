@@ -182,7 +182,7 @@ export default function NewEvidencePage() {
         fileSize: droppedFile?.size,
       });
     } catch (error) {
-      console.error('Failed to create evidence:', error);
+      // Error is shown via createMutation.error in the UI
     }
   };
 
@@ -249,14 +249,14 @@ export default function NewEvidencePage() {
 
       {/* Error message */}
       {createMutation.error && (
-        <div className="rounded-md border border-red-200 bg-red-50 p-4">
+        <div className="rounded-md border border-red-500/20 bg-red-500/10 p-4">
           <div className="flex items-start gap-2">
-            <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
             <div>
-              <div className="text-sm font-medium text-red-800">
+              <div className="text-sm font-medium text-red-300">
                 {tCommon('error')}
               </div>
-              <div className="mt-1 text-sm text-red-700">
+              <div className="mt-1 text-sm text-red-400/80">
                 {createMutation.error.message}
               </div>
             </div>

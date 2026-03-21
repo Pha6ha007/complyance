@@ -47,7 +47,37 @@
     "signInWithGoogle": "Sign in with Google",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
-    "referralCode": "Referral code (optional)"
+    "referralCode": "Referral code (optional)",
+    "loginSubtitle": "Sign in to your Complyance account",
+    "registerSubtitle": "Create a new Complyance account",
+    "invalidCredentials": "Invalid email or password",
+    "registrationFailed": "Registration failed",
+    "registrationSuccessLogin": "Registration successful. Please log in.",
+    "genericError": "An error occurred. Please try again.",
+    "or": "or",
+    "name": "Name",
+    "legalConsent": "By continuing, you agree to our",
+    "terms": "Terms",
+    "privacy": "Privacy Policy",
+    "forgotPasswordTitle": "Forgot password?",
+    "forgotPasswordDescription": "Enter your email and we'll send you a link to reset your password.",
+    "sendResetLink": "Send reset link",
+    "resetEmailSent": "Check your email",
+    "resetEmailSentDescription": "If an account exists with that email, we've sent a password reset link. Check your inbox and spam folder.",
+    "backToLogin": "Back to login",
+    "resetPasswordTitle": "Set new password",
+    "resetPasswordDescription": "Enter your new password below.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "resetPassword": "Reset password",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordResetSuccess": "Password reset!",
+    "passwordResetSuccessDescription": "Your password has been updated. You can now log in with your new password.",
+    "invalidResetLink": "Invalid reset link",
+    "invalidResetLinkDescription": "This password reset link is invalid or has expired.",
+    "requestNewLink": "Request a new link",
+    "invalidOrExpiredResetLink": "Invalid or expired reset link. Please request a new one."
   },
   "dashboard": {
     "title": "Compliance Dashboard",
@@ -794,7 +824,8 @@
     "enterprise": {
       "title": "Enterprise",
       "description": "Custom solutions for large organizations with dedicated support, white-label options, and tailored compliance workflows.",
-      "cta": "Contact Sales"
+      "cta": "Contact Sales",
+      "badge": "Enterprise"
     },
     "faq": {
       "title": "Frequently Asked Questions",
@@ -870,13 +901,23 @@
     "mission": {
       "title": "Our Mission",
       "p1": "The EU AI Act is the world's first comprehensive AI regulation, and it affects thousands of SaaS companies selling into Europe. But compliance tools built for Fortune 500 companies are out of reach for most SMBs.",
-      "p2": "We built Complyance to democratize AI compliance. No legal team required. No enterprise budget needed. Just clear guidance and practical tools to help you ship compliant AI products."
+      "p2": "We built Complyance to democratize AI compliance. No legal team required. No enterprise budget needed. Just clear guidance and practical tools to help you ship compliant AI products.",
+      "badge": "Why we exist",
+      "quote": "Democratize AI compliance — no legal team required, no enterprise budget needed.",
+      "quoteSubtext": "Just clear guidance and practical tools to help you ship compliant AI products."
     },
     "problem": {
       "title": "The Problem We're Solving",
       "p1": "Most AI compliance platforms are designed for large enterprises with dedicated legal teams and budgets starting at $50,000/year. They require consultants to implement, months to onboard, and constant legal support to maintain.",
       "p2": "Meanwhile, thousands of SaaS founders are building with AI — chatbots, recommendation engines, CV screening tools, fraud detection systems — without realizing they're subject to high-risk AI regulations.",
-      "p3": "The EU AI Act deadline is August 2, 2026. Missing it means fines up to €35M or 7% of global revenue. But hiring a compliance consultant costs $15,000+ per system. For most SMBs, that's not an option."
+      "p3": "The EU AI Act deadline is August 2, 2026. Missing it means fines up to €35M or 7% of global revenue. But hiring a compliance consultant costs $15,000+ per system. For most SMBs, that's not an option.",
+      "badge": "The challenge",
+      "stat1Label": "Enterprise platform cost",
+      "stat1Value": "$50k+",
+      "stat2Label": "SMBs unknowingly at risk",
+      "stat2Value": "1000s",
+      "stat3Label": "EU AI Act deadline",
+      "stat3Value": "Aug 2026"
     },
     "solution": {
       "title": "Our Solution",
@@ -892,7 +933,8 @@
       "affordable": {
         "title": "Affordable for SMBs",
         "desc": "Starting at $99/month. No consultants required. No hidden fees. Cancel anytime."
-      }
+      },
+      "badge": "How we solve it"
     },
     "what": {
       "title": "What We Do",
@@ -915,7 +957,8 @@
       "updates": {
         "title": "Regulatory Intelligence",
         "desc": "Stay up to date with new guidelines, enforcement actions, and regulatory changes that affect your AI systems."
-      }
+      },
+      "badge": "Features"
     },
     "disclaimer": {
       "title": "Important Disclaimer",
@@ -926,6 +969,10 @@
       "subtitle": "Start with our free plan and classify your first AI system in 5 minutes. No credit card required.",
       "start": "Get Started Free",
       "pricing": "View Pricing"
+    },
+    "hero": {
+      "badge": "Our Story",
+      "titlePrefix": "About"
     }
   },
   "admin": {
@@ -1509,7 +1556,10 @@
       "refund": "Refund Policy"
     },
     "copyright": "© 2026 Complyance. All rights reserved.",
-    "disclaimer": "Not legal advice. Classifications are informational only."
+    "disclaimer": "Not legal advice. Classifications are informational only.",
+    "description": "AI compliance management for SaaS companies. Self-serve, affordable, built for the EU AI Act era.",
+    "allRightsReserved": "All rights reserved.",
+    "builtFor": "Built for the EU AI Act (Regulation 2024/1689)"
   },
   "badge": {
     "title": "Compliance Badge",

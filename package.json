@@ -15,7 +15,9 @@
     "translate": "tsx scripts/generate-translations.ts",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:report": "playwright show-report"
+    "test:e2e:report": "playwright show-report",
+    "i18n:sync": "node scripts/sync-locale-keys.mjs",
+    "i18n:sync:fix": "node scripts/sync-locale-keys.mjs --fix"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.27.0",

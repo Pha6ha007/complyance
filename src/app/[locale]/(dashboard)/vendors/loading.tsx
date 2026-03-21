@@ -14,7 +14,7 @@ export default function VendorsLoading() {
       </div>
 
       {/* Plan Limit Warning (if applicable) */}
-      <Card className="border-blue-200 bg-blue-50 dark:bg-blue-900/10 dark:border-blue-800">
+      <Card className="border-blue-500/20 bg-blue-500/10">
         <CardContent className="pt-6">
           <div className="flex items-start gap-3">
             <Skeleton className="h-5 w-5 rounded flex-shrink-0" />

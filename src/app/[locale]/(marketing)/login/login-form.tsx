@@ -12,6 +12,7 @@ interface LoginFormProps {
 
 export function LoginForm({ locale }: LoginFormProps) {
   const t = useTranslations('auth');
+  const tCommon = useTranslations('common');
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -25,12 +26,15 @@ export function LoginForm({ locale }: LoginFormProps) {
     referralCode: '',
   });
 
-  // Check for referral code in URL parameters
+  // Check for referral code or register mode in URL parameters
   useEffect(() => {
     const refCode = searchParams?.get('ref');
+    const urlMode = searchParams?.get('mode');
     if (refCode) {
       setFormData((prev) => ({ ...prev, referralCode: refCode }));
-      setMode('register'); // Auto-switch to register mode if referral code present
+      setMode('register');
+    } else if (urlMode === 'register') {
+      setMode('register');
     }
   }, [searchParams]);
 
@@ -48,7 +52,7 @@ export function LoginForm({ locale }: LoginFormProps) {
         });
 
         if (result?.error) {
-          setError('Invalid email or password');
+          setError(t('invalidCredentials'));
         } else {
           router.push('/dashboard');
           router.refresh();
@@ -67,7 +71,7 @@ export function LoginForm({ locale }: LoginFormProps) {
 
         if (!response.ok) {
           const data = await response.json();
-          setError(data.error || 'Registration failed');
+          setError(data.error || t('registrationFailed'));
         } else {
           const data = await response.json();
           const userId = data.user.id;
@@ -80,7 +84,7 @@ export function LoginForm({ locale }: LoginFormProps) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code: formData.referralCode, userId }),
               });
-            } catch (referralError) {
+            } catch {
               // Don't block registration if referral code is invalid
             }
           }
@@ -93,7 +97,7 @@ export function LoginForm({ locale }: LoginFormProps) {
           });
 
           if (result?.error) {
-            setError('Registration successful. Please log in.');
+            setError(t('registrationSuccessLogin'));
             setMode('login');
           } else {
             router.push('/dashboard');
@@ -102,7 +106,7 @@ export function LoginForm({ locale }: LoginFormProps) {
         }
       }
     } catch {
-      setError('An error occurred. Please try again.');
+      setError(t('genericError'));
     } finally {
       setIsLoading(false);
     }
@@ -124,8 +128,8 @@ export function LoginForm({ locale }: LoginFormProps) {
           </h1>
           <p className="mt-1.5 text-sm text-white/40">
             {mode === 'login'
-              ? 'Sign in to your Complyance account'
-              : 'Create a new Complyance account'}
+              ? t('loginSubtitle')
+              : t('registerSubtitle')}
           </p>
         </div>
 
@@ -155,7 +159,7 @@ export function LoginForm({ locale }: LoginFormProps) {
         {/* Divider */}
         <div className="relative mb-5 flex items-center gap-3">
           <div className="h-px flex-1 bg-white/10" />
-          <span className="text-xs font-medium tracking-widest text-white/25 uppercase">or</span>
+          <span className="text-xs font-medium tracking-widest text-white/25 uppercase">{t('or')}</span>
           <div className="h-px flex-1 bg-white/10" />
         </div>
 
@@ -164,7 +168,7 @@ export function LoginForm({ locale }: LoginFormProps) {
           {mode === 'register' && (
             <div>
               <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-white/50 uppercase tracking-wider">
-                Name
+                {t('name')}
               </label>
               <input
                 id="name"
@@ -243,7 +247,7 @@ export function LoginForm({ locale }: LoginFormProps) {
             className="mt-1 w-full rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.35)] transition-all duration-200 hover:bg-emerald-400 hover:shadow-[0_4px_24px_rgba(16,185,129,0.5)] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading
-              ? 'Loading...'
+              ? tCommon('loading')
               : mode === 'login'
                 ? t('login')
                 : t('register')}
@@ -279,13 +283,13 @@ export function LoginForm({ locale }: LoginFormProps) {
 
         {/* Legal */}
         <p className="mt-4 text-center text-xs text-white/20">
-          By continuing, you agree to our{' '}
+          {t('legalConsent')}{' '}
           <Link href="/terms" className="text-white/35 transition-colors hover:text-white/60">
-            Terms
+            {t('terms')}
           </Link>{' '}
-          and{' '}
+          &amp;{' '}
           <Link href="/privacy" className="text-white/35 transition-colors hover:text-white/60">
-            Privacy Policy
+            {t('privacy')}
           </Link>
         </p>
       </div>

@@ -17,7 +17,7 @@ export default function IntelligenceLoading() {
       </div>
 
       {/* Alert Banner (if applicable) */}
-      <Card className="border-yellow-200 bg-yellow-50 dark:bg-yellow-900/10 dark:border-yellow-800">
+      <Card className="border-amber-500/20 bg-amber-500/10">
         <CardContent className="pt-6">
           <div className="flex items-start gap-3">
             <Skeleton className="h-5 w-5 rounded flex-shrink-0" />

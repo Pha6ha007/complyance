@@ -195,20 +195,32 @@ Full details: `docs/DEPLOYMENT.md`
 
 ## Development Status
 
+**Stage:** Pre-launch (closed beta ready) | **Full status:** `docs/PRODUCT_STATUS.md`
+
 ### ✅ Completed
 - Phase 1: Foundation (Next.js, Prisma, auth, i18n, marketing pages)
 - Phase 2: Core (dashboard, systems CRUD, classification engine, gap analysis, doc upload)
 - Phase 3: Documents & Payments (3 PDF templates, blog, Paddle, legal pages)
 - Phase 4: Competitive features (vendors, evidence vault, intelligence, badge, free classifier)
 - Phase 5: Launch prep (SEO, error handling, monitoring, security headers, Dockerfile)
-- Full audit: TypeScript 0 errors, build passing, all routers connected
+- Phase 6: Pre-launch audit (March 2026) — see `docs/PRE_LAUNCH_IMPROVEMENTS.md`
+  - 10 bugs fixed (SPA navigation, dark-mode, auth flow, i18n)
+  - Full i18n audit: 7 locales × 1,583 keys, 3,711 stale keys removed
+  - OG/Twitter meta + dynamic OG image + per-page SEO metadata
+  - Forgot/reset password flow (token-based, branded email, email enumeration protection)
+  - 40 E2E smoke tests (Playwright)
+  - Locale sync tool (`pnpm i18n:sync`)
+
+### 🔴 Blocked on External
+- Paddle verification (paid plan checkout)
 
 ### ❌ Not Yet Implemented (post-launch)
-- Referral system (spec in `docs/REFERRAL_SYSTEM.md`)
-- Incident register, team management, CI/CD API
+- Team management (invite, roles) — Professional/Scale plans
+- Incident register — EU AI Act requirement for high-risk
+- BullMQ classification queue — currently runs inline
 - Regulation DB models (Regulation, RiskCategory, RiskException, Obligation)
 - Vendor Assessment / Model Card / Bias Report PDF templates
-- DATABASE.md documentation
+- CI/CD API, DATABASE.md documentation
 
 ---
 

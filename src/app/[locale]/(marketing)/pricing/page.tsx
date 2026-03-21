@@ -341,20 +341,20 @@ export default async function PricingPage({ params }: PricingPageProps) {
         </section>
 
         {/* ── ENTERPRISE ───────────────────────────────────── */}
-        <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 border-y border-gray-100">
+        <section className="bg-white/[0.03] py-16 px-4 sm:px-6 lg:px-8 border-y border-white/10">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-bold tracking-widest uppercase text-emerald-700 font-mono mb-4">
-              Enterprise
+            <p className="text-xs font-bold tracking-widest uppercase text-emerald-400 font-mono mb-4">
+              {t('enterprise.badge')}
             </p>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-4">
               {t('enterprise.title')}
             </h2>
-            <p className="text-gray-500 mb-8 max-w-xl mx-auto">
+            <p className="text-white/50 mb-8 max-w-xl mx-auto">
               {t('enterprise.description')}
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-gray-300 hover:border-emerald-400 text-gray-700 hover:text-emerald-700 font-bold rounded-xl transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 hover:border-emerald-400 text-white/70 hover:text-emerald-400 font-bold rounded-xl transition-all duration-200"
             >
               {t('enterprise.cta')} →
             </Link>

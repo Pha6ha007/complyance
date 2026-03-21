@@ -21,7 +21,7 @@ export default async function Footer() {
               <span className="text-base font-bold tracking-tight">Complyance</span>
             </div>
             <p className="text-sm leading-relaxed text-white/40">
-              AI compliance management for SaaS companies. Self-serve, affordable, built for the EU AI Act era.
+              {t('description')}
             </p>
           </div>
 
@@ -103,10 +103,10 @@ export default async function Footer() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex flex-col gap-1 text-center md:text-start">
               <p className="text-xs text-white/30">
-                © {year} Complyance. All rights reserved.
+                © {year} Complyance. {t('allRightsReserved')}
               </p>
               <p className="text-xs text-white/20">
-                Built for the EU AI Act (Regulation 2024/1689)
+                {t('builtFor')}
               </p>
             </div>
             <p className="text-center text-xs text-white/25 md:text-end">

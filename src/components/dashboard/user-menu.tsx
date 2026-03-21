@@ -2,11 +2,14 @@
 
 import { useSession, signOut } from 'next-auth/react';
 import { useState, useRef, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { LogOut, Settings, User } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
 export function UserMenu() {
   const { data: session } = useSession();
+  const t = useTranslations('nav');
+  const tAuth = useTranslations('auth');
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -52,15 +55,7 @@ export function UserMenu() {
               className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-slate-800/60 hover:text-white transition-colors"
             >
               <Settings className="h-4 w-4 text-slate-500" />
-              Settings
-            </Link>
-            <Link
-              href="/settings/profile"
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-slate-800/60 hover:text-white transition-colors"
-            >
-              <User className="h-4 w-4 text-slate-500" />
-              Profile
+              {t('settings')}
             </Link>
           </div>
 
@@ -70,7 +65,7 @@ export function UserMenu() {
               className="flex w-full items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-slate-800/60 hover:text-red-400 transition-colors"
             >
               <LogOut className="h-4 w-4 text-slate-500" />
-              Sign out
+              {tAuth('logout')}
             </button>
           </div>
         </div>

@@ -49,3 +49,4 @@ next-env.d.ts
 sentry.properties
 playwright-report/
 test-results/
+.gsd/

@@ -56,6 +56,14 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
   );
   const pendingCount = pendingData?.count ?? 0;
 
+  const { data: systemCount } = trpc.system.getCount.useQuery();
+  const { data: settings } = trpc.system.getSettings.useQuery();
+
+  const planLabel = settings?.organization.plan ?? 'FREE';
+  const systemsUsed = systemCount?.count ?? 0;
+  const systemsLimit = systemCount?.limit ?? 1;
+  const systemsPercent = systemsLimit > 0 ? Math.min(100, Math.round((systemsUsed / systemsLimit) * 100)) : 100;
+
   return (
     <>
       {/* Mobile overlay */}
@@ -135,20 +143,22 @@ export function Sidebar({ locale, isOpen = true, onClose }: SidebarProps) {
           <div className="rounded-xl bg-slate-800/60 border border-slate-700/50 p-3">
             <div className="flex items-center gap-2 mb-1">
               <Zap className="h-3.5 w-3.5 text-amber-400" />
-              <span className="text-xs font-semibold text-white">Free Plan</span>
+              <span className="text-xs font-semibold text-white">{planLabel} Plan</span>
             </div>
-            <div className="text-xs text-slate-400 mb-3">1 / 1 AI Systems</div>
+            <div className="text-xs text-slate-400 mb-3">{systemsUsed} / {systemsLimit} AI Systems</div>
             <div className="w-full bg-slate-700 rounded-full h-1 mb-3">
-              <div className="bg-emerald-500 h-1 rounded-full w-full" />
+              <div className="bg-emerald-500 h-1 rounded-full" style={{ width: `${systemsPercent}%` }} />
             </div>
-            <Link
-              href="/pricing"
-              className="block w-full rounded-lg bg-emerald-500/10 border border-emerald-500/30
-                px-3 py-1.5 text-center text-xs font-semibold text-emerald-400
-                hover:bg-emerald-500/20 transition-colors"
-            >
-              Upgrade Plan
-            </Link>
+            {planLabel === 'FREE' && (
+              <Link
+                href="/pricing"
+                className="block w-full rounded-lg bg-emerald-500/10 border border-emerald-500/30
+                  px-3 py-1.5 text-center text-xs font-semibold text-emerald-400
+                  hover:bg-emerald-500/20 transition-colors"
+              >
+                Upgrade Plan
+              </Link>
+            )}
           </div>
         </div>
       </aside>

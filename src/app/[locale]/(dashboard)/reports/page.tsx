@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 import { useParams } from 'next/navigation';
 import { trpc } from '@/lib/trpc/client';
 import { FileText, Download, Calendar, AlertCircle, FileCheck2, Clock, Archive } from 'lucide-react';
@@ -47,6 +48,7 @@ function getStatusIcon(status: string) {
 export default function ReportsPage() {
   const t = useTranslations('reports');
   const tCommon = useTranslations('common');
+  const router = useRouter();
   const params = useParams();
   const locale = params.locale as string;
 
@@ -174,7 +176,7 @@ export default function ReportsPage() {
           <h3 className="mt-5 text-lg font-semibold text-white">{t('noReports')}</h3>
           <p className="mt-2 text-sm text-slate-400 max-w-sm mx-auto">{t('noReportsDescription')}</p>
           <button
-            onClick={() => window.location.href = `/${locale}/systems`}
+            onClick={() => router.push('/systems')}
             className="inline-flex items-center gap-2 mt-6 rounded-lg bg-emerald-500 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.35)] hover:bg-emerald-400 transition-colors"
           >
             {t('goToSystems')}

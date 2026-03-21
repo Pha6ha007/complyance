@@ -42,7 +42,7 @@ function getRiskBadgeClass(riskLevel: VendorRisk | null) {
     case 'HIGH':
       return 'bg-orange-500 hover:bg-orange-600';
     case 'MEDIUM':
-      return 'bg-yellow-500 hover:bg-yellow-600 text-black';
+      return 'bg-amber-500/20 hover:bg-amber-500/30 text-amber-300';
     case 'LOW':
       return 'bg-green-500 hover:bg-green-600';
     default:
@@ -51,11 +51,11 @@ function getRiskBadgeClass(riskLevel: VendorRisk | null) {
 }
 
 function getRiskScoreColor(score: number | null) {
-  if (score === null) return 'text-muted-foreground';
-  if (score >= 80) return 'text-green-600';
-  if (score >= 60) return 'text-yellow-600';
-  if (score >= 40) return 'text-orange-600';
-  return 'text-red-600';
+  if (score === null) return 'text-slate-500';
+  if (score >= 80) return 'text-emerald-400';
+  if (score >= 60) return 'text-amber-400';
+  if (score >= 40) return 'text-orange-400';
+  return 'text-red-400';
 }
 
 export default function VendorDetailPage() {
@@ -302,7 +302,7 @@ export default function VendorDetailPage() {
                           <ShieldAlert
                             className={`h-5 w-5 flex-shrink-0 mt-0.5 ${
                               factor.severity === 'CRITICAL'
-                                ? 'text-red-600'
+                                ? 'text-red-400'
                                 : factor.severity === 'HIGH'
                                   ? 'text-orange-500'
                                   : factor.severity === 'MEDIUM'
@@ -319,7 +319,7 @@ export default function VendorDetailPage() {
                               </span>
                               <Badge
                                 variant="outline"
-                                className="text-xs text-red-600"
+                                className="text-xs text-red-400"
                               >
                                 -{factor.deduction}
                               </Badge>
