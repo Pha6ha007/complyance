@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Sidebar } from '@/components/dashboard/sidebar';
 import { Header } from '@/components/dashboard/header';
+import { OnboardingChecklist } from '@/components/dashboard/onboarding-checklist';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -31,6 +32,9 @@ export default function DashboardLayout({ children, params }: DashboardLayoutPro
           {children}
         </main>
       </div>
+
+      {/* Onboarding tour */}
+      <OnboardingChecklist />
     </div>
   );
 }

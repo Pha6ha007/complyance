@@ -2107,5 +2107,35 @@
       "saas_with_ai": "SaaS z AI"
     },
     "vendorsUsed": "dostawców wykorzystanych"
+  },
+  "onboarding": {
+    "title": "Pierwsze kroki",
+    "subtitle": "Wykonaj te kroki, aby uzyskać pierwszy wynik zgodności",
+    "progress": "{completed} z {total} kroków",
+    "dismiss": "Zamknij",
+    "minimize": "Minimalizuj",
+    "complete": "Gotowe!",
+    "completeDescription": "Ukończyłeś wdrożenie. Twój system AI jest teraz monitorowany pod kątem zgodności.",
+    "gotIt": "Rozumiem!",
+    "step1Title": "Dodaj swój system AI",
+    "step1Description": "Opisz swój system AI — nazwa, cel i kluczowe cechy.",
+    "step1Action": "Dodaj system",
+    "step1Hint": "To zajmie około 2 minut. Automatycznie sklasyfikujemy poziom ryzyka.",
+    "step2Title": "Sprawdź wyniki klasyfikacji",
+    "step2Description": "Zobacz poziom ryzyka Twojego systemu AI zgodnie z EU AI Act.",
+    "step2Action": "Zobacz wyniki",
+    "step2Hint": "Twój system został sklasyfikowany. Sprawdź, do jakiej kategorii ryzyka należy.",
+    "step3Title": "Sprawdź luki w zgodności",
+    "step3Description": "Zobacz, które artykuły i obowiązki dotyczą Twojego systemu.",
+    "step3Action": "Zobacz luki",
+    "step3Hint": "Luki są uporządkowane według priorytetu — zacznij od Krytycznych i Wysokich.",
+    "step4Title": "Wygeneruj raport zgodności",
+    "step4Description": "Eksportuj gotowy do audytu PDF z klasyfikacją i analizą luk.",
+    "step4Action": "Generuj raport",
+    "step4Hint": "Dostępny we wszystkich 7 językach. Zawiera zastrzeżenia prawne.",
+    "stepComplete": "Ukończono",
+    "stepCurrent": "Bieżący krok",
+    "stepLocked": "Najpierw wykonaj poprzednie kroki",
+    "showOnboarding": "Pokaż przewodnik"
   }
 }

@@ -26,6 +26,9 @@ model Organization {
   bonusSystems         Int      @default(0) // Extra systems from referrals
   apiKey               String?  @unique     // For SDK authentication
 
+  // Onboarding
+  onboardingCompletedAt DateTime?
+
   // Compliance Badge
   badgeLevel           BadgeLevel @default(NONE)
   badgeEnabled         Boolean    @default(true)

@@ -2107,5 +2107,35 @@
     "providers": {
       "title": "Supported Providers"
     }
+  },
+  "onboarding": {
+    "title": "Getting Started",
+    "subtitle": "Complete these steps to get your first compliance result",
+    "progress": "{completed} of {total} steps",
+    "dismiss": "Dismiss",
+    "minimize": "Minimize",
+    "complete": "All done!",
+    "completeDescription": "You've completed the onboarding. Your AI system is now being tracked for compliance.",
+    "gotIt": "Got it!",
+    "step1Title": "Add your AI system",
+    "step1Description": "Describe your AI system — name, purpose, and key characteristics.",
+    "step1Action": "Add System",
+    "step1Hint": "This takes about 2 minutes. We'll classify the risk level automatically.",
+    "step2Title": "Review classification results",
+    "step2Description": "See your AI system's risk level under the EU AI Act.",
+    "step2Action": "View Results",
+    "step2Hint": "Your system has been classified. Check which risk category it falls into.",
+    "step3Title": "Review compliance gaps",
+    "step3Description": "See which articles and obligations apply to your system.",
+    "step3Action": "View Gaps",
+    "step3Hint": "Gaps are prioritized by severity — start with Critical and High.",
+    "step4Title": "Generate compliance report",
+    "step4Description": "Export an audit-ready PDF with classification and gap analysis.",
+    "step4Action": "Generate Report",
+    "step4Hint": "Available in all 7 languages. Includes legal disclaimers.",
+    "stepComplete": "Completed",
+    "stepCurrent": "Current step",
+    "stepLocked": "Complete previous steps first",
+    "showOnboarding": "Show guide"
   }
 }

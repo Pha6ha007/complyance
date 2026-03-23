@@ -2107,5 +2107,35 @@
       "saas_with_ai": "SaaS avec IA"
     },
     "vendorsUsed": "fournisseurs utilisés"
+  },
+  "onboarding": {
+    "title": "Premiers pas",
+    "subtitle": "Complétez ces étapes pour obtenir votre premier résultat de conformité",
+    "progress": "{completed} sur {total} étapes",
+    "dismiss": "Fermer",
+    "minimize": "Réduire",
+    "complete": "Terminé !",
+    "completeDescription": "Vous avez terminé l'intégration. Votre système IA est maintenant suivi pour la conformité.",
+    "gotIt": "Compris !",
+    "step1Title": "Ajouter votre système IA",
+    "step1Description": "Décrivez votre système IA — nom, objectif et caractéristiques clés.",
+    "step1Action": "Ajouter un système",
+    "step1Hint": "Cela prend environ 2 minutes. Nous classerons le niveau de risque automatiquement.",
+    "step2Title": "Consulter les résultats de classification",
+    "step2Description": "Voir le niveau de risque de votre système IA selon le Règlement européen sur l'IA.",
+    "step2Action": "Voir les résultats",
+    "step2Hint": "Votre système a été classé. Vérifiez dans quelle catégorie de risque il se trouve.",
+    "step3Title": "Examiner les lacunes de conformité",
+    "step3Description": "Voyez quels articles et obligations s'appliquent à votre système.",
+    "step3Action": "Voir les lacunes",
+    "step3Hint": "Les lacunes sont priorisées par gravité — commencez par Critique et Élevé.",
+    "step4Title": "Générer un rapport de conformité",
+    "step4Description": "Exportez un PDF prêt pour l'audit avec la classification et l'analyse des lacunes.",
+    "step4Action": "Générer le rapport",
+    "step4Hint": "Disponible dans les 7 langues. Inclut les avertissements juridiques.",
+    "stepComplete": "Terminé",
+    "stepCurrent": "Étape en cours",
+    "stepLocked": "Complétez d'abord les étapes précédentes",
+    "showOnboarding": "Afficher le guide"
   }
 }

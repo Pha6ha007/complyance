@@ -2107,5 +2107,35 @@
       "saas_with_ai": "SaaS mit KI"
     },
     "vendorsUsed": "Anbieter verwendet"
+  },
+  "onboarding": {
+    "title": "Erste Schritte",
+    "subtitle": "Schließen Sie diese Schritte ab, um Ihr erstes Compliance-Ergebnis zu erhalten",
+    "progress": "{completed} von {total} Schritten",
+    "dismiss": "Schließen",
+    "minimize": "Minimieren",
+    "complete": "Fertig!",
+    "completeDescription": "Sie haben das Onboarding abgeschlossen. Ihr KI-System wird jetzt auf Compliance überwacht.",
+    "gotIt": "Verstanden!",
+    "step1Title": "KI-System hinzufügen",
+    "step1Description": "Beschreiben Sie Ihr KI-System — Name, Zweck und Hauptmerkmale.",
+    "step1Action": "System hinzufügen",
+    "step1Hint": "Dies dauert etwa 2 Minuten. Wir klassifizieren die Risikostufe automatisch.",
+    "step2Title": "Klassifizierungsergebnisse prüfen",
+    "step2Description": "Sehen Sie die Risikostufe Ihres KI-Systems unter dem EU AI Act.",
+    "step2Action": "Ergebnisse ansehen",
+    "step2Hint": "Ihr System wurde klassifiziert. Prüfen Sie, in welche Risikokategorie es fällt.",
+    "step3Title": "Compliance-Lücken prüfen",
+    "step3Description": "Sehen Sie, welche Artikel und Pflichten für Ihr System gelten.",
+    "step3Action": "Lücken ansehen",
+    "step3Hint": "Lücken sind nach Schweregrad priorisiert — beginnen Sie mit Kritisch und Hoch.",
+    "step4Title": "Compliance-Bericht erstellen",
+    "step4Description": "Exportieren Sie ein audit-fähiges PDF mit Klassifizierung und Lückenanalyse.",
+    "step4Action": "Bericht erstellen",
+    "step4Hint": "Verfügbar in allen 7 Sprachen. Enthält rechtliche Hinweise.",
+    "stepComplete": "Abgeschlossen",
+    "stepCurrent": "Aktueller Schritt",
+    "stepLocked": "Schließen Sie zuerst die vorherigen Schritte ab",
+    "showOnboarding": "Anleitung anzeigen"
   }
 }

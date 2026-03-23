@@ -448,4 +448,67 @@ export const systemRouter = router({
 
     return { revoked: true };
   }),
+
+  /**
+   * Get onboarding status for the current organization
+   */
+  getOnboardingStatus: protectedProcedure.query(async ({ ctx }) => {
+    const org = await ctx.prisma.organization.findUniqueOrThrow({
+      where: { id: ctx.organization.id },
+      select: {
+        onboardingCompletedAt: true,
+        plan: true,
+      },
+    });
+
+    // Check real progress
+    const systemCount = await ctx.prisma.aISystem.count({
+      where: { organizationId: ctx.organization.id },
+    });
+
+    const classifiedSystem = await ctx.prisma.aISystem.findFirst({
+      where: {
+        organizationId: ctx.organization.id,
+        riskLevel: { not: null },
+      },
+      select: { id: true },
+    });
+
+    const systemWithGaps = await ctx.prisma.aISystem.findFirst({
+      where: {
+        organizationId: ctx.organization.id,
+        riskLevel: { not: null },
+        gaps: { some: {} },
+      },
+      select: { id: true },
+    });
+
+    const hasDocument = await ctx.prisma.document.count({
+      where: {
+        organizationId: ctx.organization.id,
+      },
+    });
+
+    return {
+      completed: org.onboardingCompletedAt !== null,
+      steps: {
+        systemAdded: systemCount > 0,
+        classificationDone: classifiedSystem !== null,
+        gapsReviewed: systemWithGaps !== null,
+        reportGenerated: hasDocument > 0,
+      },
+      firstSystemId: classifiedSystem?.id ?? systemWithGaps?.id ?? null,
+    };
+  }),
+
+  /**
+   * Mark onboarding as completed
+   */
+  completeOnboarding: protectedProcedure.mutation(async ({ ctx }) => {
+    await ctx.prisma.organization.update({
+      where: { id: ctx.organization.id },
+      data: { onboardingCompletedAt: new Date() },
+    });
+    return { success: true };
+  }),
 });
