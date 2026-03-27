@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { hash } from 'bcryptjs';
 import { prisma } from '@/server/db/client';
+import { passwordResetLimiter, getClientIp } from '@/lib/rate-limit';
 
 const schema = z.object({
   email: z.string().email(),
@@ -11,6 +12,16 @@ const schema = z.object({
 
 export async function POST(request: Request) {
   try {
+    // Rate limit: 3 attempts per 15 minutes per IP
+    const ip = getClientIp(request);
+    const rl = passwordResetLimiter.check(ip);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: 'Too many attempts. Please try again later.' },
+        { status: 429, headers: passwordResetLimiter.headers(rl) }
+      );
+    }
+
     const body = await request.json();
     const parsed = schema.safeParse(body);
 

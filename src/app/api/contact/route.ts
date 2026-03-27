@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { sendEmail } from '@/server/services/email';
+import { formLimiter, getClientIp } from '@/lib/rate-limit';
+import { escapeHtml, escapeHtmlWithBreaks } from '@/lib/sanitize';
 
 const contactSchema = z.object({
   name: z.string().min(1).max(200),
@@ -19,6 +21,16 @@ const subjectMap: Record<string, string> = {
 
 export async function POST(req: NextRequest) {
   try {
+    // Rate limit: 5 submissions per hour per IP
+    const ip = getClientIp(req);
+    const rl = formLimiter.check(ip);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: 'Too many submissions. Please try again later.' },
+        { status: 429, headers: formLimiter.headers(rl) }
+      );
+    }
+
     let body: unknown;
     try {
       body = await req.json();
@@ -38,10 +50,10 @@ export async function POST(req: NextRequest) {
       subject: `[${subjectMap[data.subject]}] ${data.name}`,
       html: `
         <h2>New contact form submission</h2>
-        <p><strong>From:</strong> ${data.name} (${data.email})</p>
-        <p><strong>Subject:</strong> ${subjectMap[data.subject]}</p>
+        <p><strong>From:</strong> ${escapeHtml(data.name)} (${escapeHtml(data.email)})</p>
+        <p><strong>Subject:</strong> ${escapeHtml(subjectMap[data.subject])}</p>
         <p><strong>Message:</strong></p>
-        <p>${data.message.replace(/\n/g, '<br>')}</p>
+        <p>${escapeHtmlWithBreaks(data.message)}</p>
       `,
     });
 

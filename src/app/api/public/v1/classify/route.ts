@@ -2,43 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { preFilterClassification, matchesAnnexIIICategory } from '@/server/services/classification/rules';
 import type { ClassificationInput } from '@/server/ai/schemas/classification-result';
-
-// In-memory rate limit store (resets on server restart)
-// For production, use Redis or similar
-const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
-
-const RATE_LIMIT_MAX = 10; // Max requests per window
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
-
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetAt: number } {
-  const now = Date.now();
-  const record = rateLimitStore.get(ip);
-
-  // Clean up expired entries periodically
-  if (rateLimitStore.size > 10000) {
-    for (const [key, value] of rateLimitStore.entries()) {
-      if (value.resetAt < now) {
-        rateLimitStore.delete(key);
-      }
-    }
-  }
-
-  if (!record || record.resetAt < now) {
-    // New window
-    const resetAt = now + RATE_LIMIT_WINDOW_MS;
-    rateLimitStore.set(ip, { count: 1, resetAt });
-    return { allowed: true, remaining: RATE_LIMIT_MAX - 1, resetAt };
-  }
-
-  if (record.count >= RATE_LIMIT_MAX) {
-    return { allowed: false, remaining: 0, resetAt: record.resetAt };
-  }
-
-  // Increment count
-  record.count += 1;
-  rateLimitStore.set(ip, record);
-  return { allowed: true, remaining: RATE_LIMIT_MAX - record.count, resetAt: record.resetAt };
-}
+import { classifyLimiter, getClientIp } from '@/lib/rate-limit';
 
 // Input validation schema
 const classifyRequestSchema = z.object({
@@ -77,14 +41,9 @@ const DOMAIN_TO_ANNEX_CATEGORY: Record<string, { category: string; name: string 
 };
 
 export async function POST(request: NextRequest) {
-  // Get client IP for rate limiting
-  const forwarded = request.headers.get('x-forwarded-for');
-  const ip = forwarded?.split(',')[0]?.trim() ||
-    request.headers.get('x-real-ip') ||
-    'unknown';
-
-  // Check rate limit
-  const rateLimit = checkRateLimit(ip);
+  // Rate limit: 10 requests per hour per IP
+  const ip = getClientIp(request);
+  const rateLimit = classifyLimiter.check(ip);
 
   if (!rateLimit.allowed) {
     return NextResponse.json(
@@ -94,12 +53,7 @@ export async function POST(request: NextRequest) {
       },
       {
         status: 429,
-        headers: {
-          'X-RateLimit-Limit': RATE_LIMIT_MAX.toString(),
-          'X-RateLimit-Remaining': '0',
-          'X-RateLimit-Reset': Math.ceil(rateLimit.resetAt / 1000).toString(),
-          'Retry-After': Math.ceil((rateLimit.resetAt - Date.now()) / 1000).toString(),
-        },
+        headers: classifyLimiter.headers(rateLimit),
       }
     );
   }
@@ -185,11 +139,7 @@ export async function POST(request: NextRequest) {
         obligations,
       },
       {
-        headers: {
-          'X-RateLimit-Limit': RATE_LIMIT_MAX.toString(),
-          'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-          'X-RateLimit-Reset': Math.ceil(rateLimit.resetAt / 1000).toString(),
-        },
+        headers: classifyLimiter.headers(rateLimit),
       }
     );
   } catch (error) {

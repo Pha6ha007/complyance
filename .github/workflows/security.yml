@@ -1,0 +1,86 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Weekly scan every Monday at 8:00 UTC
+    - cron: "0 8 * * 1"
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  # ─── Dependency audit ───────────────────────────────────
+  dependency-audit:
+    name: Dependency Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Audit summary
+        if: always()
+        run: |
+          echo "## Dependency Audit Results" >> $GITHUB_STEP_SUMMARY
+          npm audit --json 2>/dev/null | jq -r '
+            "| Severity | Count |",
+            "|----------|-------|",
+            "| Critical | \(.metadata.vulnerabilities.critical) |",
+            "| High     | \(.metadata.vulnerabilities.high) |",
+            "| Moderate | \(.metadata.vulnerabilities.moderate) |",
+            "| Low      | \(.metadata.vulnerabilities.low) |",
+            "| **Total** | **\(.metadata.vulnerabilities.total)** |"
+          ' >> $GITHUB_STEP_SUMMARY 2>/dev/null || echo "Audit parse failed" >> $GITHUB_STEP_SUMMARY
+
+  # ─── CodeQL static analysis ─────────────────────────────
+  codeql:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          # Security-focused queries (not code quality)
+          queries: security-extended
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
+
+  # ─── Dependency review (PRs only) ──────────────────────
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          # Fail on high/critical vulnerabilities in new dependencies
+          fail-on-severity: high
+          # Deny copyleft licenses that would affect a commercial SaaS
+          deny-licenses: GPL-2.0-only, GPL-3.0-only, AGPL-3.0-only

@@ -2,15 +2,26 @@ import { NextRequest, NextResponse } from 'next/server';
 import { hash } from 'bcryptjs';
 import { prisma } from '@/server/db/client';
 import { z } from 'zod';
+import { registerLimiter, getClientIp } from '@/lib/rate-limit';
 
 const registerSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
 });
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit: 3 registrations per hour per IP
+    const ip = getClientIp(request);
+    const rl = registerLimiter.check(ip);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: 'Too many registration attempts. Please try again later.' },
+        { status: 429, headers: registerLimiter.headers(rl) }
+      );
+    }
+
     const body = await request.json();
     const validation = registerSchema.safeParse(body);
 

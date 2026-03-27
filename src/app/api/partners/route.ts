@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { sendEmail } from '@/server/services/email';
+import { formLimiter, getClientIp } from '@/lib/rate-limit';
+import { escapeHtml, escapeHtmlWithBreaks } from '@/lib/sanitize';
 
 const partnerSchema = z.object({
   companyName: z.string().min(1).max(200),
@@ -20,6 +22,16 @@ const typeMap: Record<string, string> = {
 
 export async function POST(req: NextRequest) {
   try {
+    // Rate limit: 5 submissions per hour per IP
+    const ip = getClientIp(req);
+    const rl = formLimiter.check(ip);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: 'Too many submissions. Please try again later.' },
+        { status: 429, headers: formLimiter.headers(rl) }
+      );
+    }
+
     const body = await req.json();
     const data = partnerSchema.parse(body);
 
@@ -30,12 +42,12 @@ export async function POST(req: NextRequest) {
       subject: `New Partnership Application: ${data.companyName}`,
       html: `
         <h2>New Partnership Application</h2>
-        <p><strong>Company:</strong> ${data.companyName}</p>
-        <p><strong>Website:</strong> <a href="${data.website}">${data.website}</a></p>
-        <p><strong>Contact:</strong> ${data.contactName} (${data.email})</p>
-        <p><strong>Type:</strong> ${typeMap[data.type]}</p>
+        <p><strong>Company:</strong> ${escapeHtml(data.companyName)}</p>
+        <p><strong>Website:</strong> <a href="${escapeHtml(data.website)}">${escapeHtml(data.website)}</a></p>
+        <p><strong>Contact:</strong> ${escapeHtml(data.contactName)} (${escapeHtml(data.email)})</p>
+        <p><strong>Type:</strong> ${escapeHtml(typeMap[data.type])}</p>
         <p><strong>Message:</strong></p>
-        <p>${data.message.replace(/\n/g, '<br>')}</p>
+        <p>${escapeHtmlWithBreaks(data.message)}</p>
       `,
     });
 
@@ -46,7 +58,7 @@ export async function POST(req: NextRequest) {
       subject: 'Thank you for your partnership application',
       html: `
         <h2>Thank you for your interest in partnering with Complyance</h2>
-        <p>Hi ${data.contactName},</p>
+        <p>Hi ${escapeHtml(data.contactName)},</p>
         <p>We've received your partnership application and will review it carefully.</p>
         <p>Our team will get back to you within 3-5 business days to discuss next steps.</p>
         <br>

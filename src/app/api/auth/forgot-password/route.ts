@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { prisma } from '@/server/db/client';
 import { sendEmail } from '@/server/services/email';
 import { randomBytes } from 'crypto';
+import { passwordResetLimiter, getClientIp } from '@/lib/rate-limit';
 
 const schema = z.object({
   email: z.string().email(),
@@ -10,6 +11,14 @@ const schema = z.object({
 
 export async function POST(request: Request) {
   try {
+    // Rate limit: 3 requests per 15 minutes per IP
+    const ip = getClientIp(request);
+    const rl = passwordResetLimiter.check(ip);
+    if (!rl.allowed) {
+      // Still return 200 to prevent email enumeration via timing
+      return NextResponse.json({ success: true });
+    }
+
     const body = await request.json();
     const parsed = schema.safeParse(body);
 

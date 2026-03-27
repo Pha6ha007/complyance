@@ -1,36 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-
-// ---------- Rate limiting (same pattern as /classify) ----------
-
-const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT_MAX = 10;
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
-
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetAt: number } {
-  const now = Date.now();
-  const record = rateLimitStore.get(ip);
-
-  if (rateLimitStore.size > 10000) {
-    for (const [key, value] of rateLimitStore.entries()) {
-      if (value.resetAt < now) rateLimitStore.delete(key);
-    }
-  }
-
-  if (!record || record.resetAt < now) {
-    const resetAt = now + RATE_LIMIT_WINDOW_MS;
-    rateLimitStore.set(ip, { count: 1, resetAt });
-    return { allowed: true, remaining: RATE_LIMIT_MAX - 1, resetAt };
-  }
-
-  if (record.count >= RATE_LIMIT_MAX) {
-    return { allowed: false, remaining: 0, resetAt: record.resetAt };
-  }
-
-  record.count += 1;
-  rateLimitStore.set(ip, record);
-  return { allowed: true, remaining: RATE_LIMIT_MAX - record.count, resetAt: record.resetAt };
-}
+import { classifyLimiter, getClientIp } from '@/lib/rate-limit';
 
 // ---------- Input schema ----------
 
@@ -237,21 +207,13 @@ function generateGaps(riskLevel: string, domain: string, detectedRisks: Detected
 // ---------- Handler ----------
 
 export async function POST(request: NextRequest) {
-  const forwarded = request.headers.get('x-forwarded-for');
-  const ip = forwarded?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'unknown';
+  const ip = getClientIp(request);
+  const rateLimit = classifyLimiter.check(ip);
 
-  const rateLimit = checkRateLimit(ip);
   if (!rateLimit.allowed) {
     return NextResponse.json(
       { error: 'Rate limit exceeded. Please try again later.', resetAt: new Date(rateLimit.resetAt).toISOString() },
-      {
-        status: 429,
-        headers: {
-          'X-RateLimit-Limit': RATE_LIMIT_MAX.toString(),
-          'X-RateLimit-Remaining': '0',
-          'X-RateLimit-Reset': Math.ceil(rateLimit.resetAt / 1000).toString(),
-        },
-      }
+      { status: 429, headers: classifyLimiter.headers(rateLimit) }
     );
   }
 
@@ -291,11 +253,7 @@ export async function POST(request: NextRequest) {
         scannedAt: new Date().toISOString(),
       },
       {
-        headers: {
-          'X-RateLimit-Limit': RATE_LIMIT_MAX.toString(),
-          'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-          'X-RateLimit-Reset': Math.ceil(rateLimit.resetAt / 1000).toString(),
-        },
+        headers: classifyLimiter.headers(rateLimit),
       }
     );
   } catch (error) {

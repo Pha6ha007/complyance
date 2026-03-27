@@ -4,6 +4,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { compare } from 'bcryptjs';
 import { prisma } from '@/server/db/client';
 import { z } from 'zod';
+import { authLimiter } from '@/lib/rate-limit';
 
 export default {
   providers: [
@@ -12,7 +13,7 @@ export default {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     Credentials({
-      async authorize(credentials) {
+      async authorize(credentials, request) {
         const parsedCredentials = z
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
@@ -20,6 +21,11 @@ export default {
         if (!parsedCredentials.success) return null;
 
         const { email, password } = parsedCredentials.data;
+
+        // Rate limit by email to prevent brute-force (5 attempts per 15 minutes)
+        const rl = authLimiter.check(email.toLowerCase());
+        if (!rl.allowed) return null;
+
         const user = await prisma.user.findUnique({
           where: { email },
           include: { organization: true },

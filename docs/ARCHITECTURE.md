@@ -126,12 +126,46 @@ Update organization plan in DB
 
 ## Security Architecture
 
-- Auth: NextAuth.js with JWT + httpOnly cookies
-- API: tRPC procedures with auth middleware
-- Public API: API key in header, rate limited per key
-- Webhooks: signature verification (Paddle HMAC)
-- File uploads: presigned S3 URLs, virus scanning
-- Data: encrypted at rest (Railway Postgres), in transit (TLS)
-- Secrets: Railway environment variables (not in code)
-- CORS: restricted to app domain
-- CSP: strict Content Security Policy headers
+> Full audit: [SECURITY_AUDIT.md](./SECURITY_AUDIT.md)
+
+### Authentication & Authorization
+- **NextAuth.js v5** with JWT strategy + httpOnly cookies
+- **bcrypt** password hashing (cost factor 12)
+- **3-tier tRPC procedures:** `publicProcedure` → `protectedProcedure` → `adminProcedure`
+- **Data isolation:** every query scoped by `ctx.organization.id` — no cross-tenant access
+
+### Rate Limiting (`src/lib/rate-limit.ts`)
+- Login: 5 attempts / 15 min per email
+- Registration: 3 / hour per IP
+- Password reset: 3 / 15 min per IP
+- Contact/partner forms: 5 / hour per IP
+- Public API (classify, deep-scan): 10 / hour per IP
+- Public API (middleware): 100 / min per IP
+
+### HTTP Security Headers (via `next.config.mjs`)
+- HSTS with preload, X-Frame-Options: DENY, CSP strict whitelist
+- Permissions-Policy: camera/mic/geolocation disabled
+- `X-Robots-Tag: noindex` on protected routes
+
+### Input Handling
+- **Zod validation** on all API endpoints
+- **HTML escaping** (`src/lib/sanitize.ts`) in email templates — prevents XSS
+- **Prisma ORM only** — no raw SQL, SQL injection not possible
+
+### Webhook & API Security
+- Paddle: HMAC-SHA256 + `crypto.timingSafeEqual`
+- Cron endpoints: `CRON_SECRET` verification
+- SDK events: Bearer API key authentication
+- CORS: restricted to app domain (badge API allows `*` for embeds)
+
+### CI/CD Security (`.github/`)
+- **CodeQL** (SAST) — static analysis on every PR and weekly
+- **npm audit** — dependency CVE scanning on every PR
+- **Dependency review** — blocks new deps with high/critical CVEs or copyleft licenses
+- **Dependabot** — automatic PRs for vulnerable dependency updates
+
+### Infrastructure
+- Data encrypted at rest (Railway Postgres) and in transit (TLS)
+- Secrets in Railway environment variables (not in code)
+- Standalone Docker output with minimal image surface
+
