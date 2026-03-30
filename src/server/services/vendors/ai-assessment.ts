@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { anthropic } from '@/server/ai/client';
+import { callLLM } from '@/server/ai/client';
 import type { Vendor } from '@prisma/client';
 
 /**
@@ -61,30 +61,18 @@ export async function analyzeVendorWithAI(
   // Build vendor context for analysis
   const vendorContext = buildVendorContext(vendor, organizationMarkets);
 
-  // Call Claude API for analysis
-  const response = await anthropic.messages.create({
-    model: 'claude-sonnet-4-20250514',
-    max_tokens: 1024,
-    temperature: 0, // Deterministic for consistency
+  // Call LLM via OpenRouter
+  const response = await callLLM({
     system: VENDOR_ASSESSMENT_SYSTEM_PROMPT,
-    messages: [
-      {
-        role: 'user',
-        content: `Analyze the following AI vendor for compliance risks:\n\n${vendorContext}`,
-      },
-    ],
+    userMessage: `Analyze the following AI vendor for compliance risks:\n\n${vendorContext}`,
+    maxTokens: 1024,
+    temperature: 0, // Deterministic for consistency
   });
 
-  // Extract text content from response
-  const content = response.content[0];
-  if (content.type !== 'text') {
-    throw new Error('Unexpected response type from Claude API');
-  }
-
   // Parse and validate the response
-  const jsonMatch = content.text.match(/\{[\s\S]*\}/);
+  const jsonMatch = response.text.match(/\{[\s\S]*\}/);
   if (!jsonMatch) {
-    throw new Error('No JSON found in Claude API response');
+    throw new Error('No JSON found in LLM response');
   }
 
   try {

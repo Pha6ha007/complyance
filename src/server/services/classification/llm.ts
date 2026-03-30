@@ -1,4 +1,4 @@
-import { anthropic } from '@/server/ai/client';
+import { callLLM } from '@/server/ai/client';
 import {
   CLASSIFICATION_SYSTEM_PROMPT,
   buildClassificationPrompt,
@@ -51,7 +51,7 @@ function getRetryDelay(attempt: number): number {
 }
 
 /**
- * Classify AI system using Claude LLM
+ * Classify AI system using Claude LLM via OpenRouter
  * Includes retry logic with exponential backoff
  */
 export async function classifyWithLLM(
@@ -67,30 +67,14 @@ export async function classifyWithLLM(
         await sleep(delay);
       }
 
-      const response = await anthropic.messages.create({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2000,
-        temperature: 0, // CRITICAL: deterministic output
+      const response = await callLLM({
         system: CLASSIFICATION_SYSTEM_PROMPT,
-        messages: [
-          {
-            role: 'user',
-            content: buildClassificationPrompt(input),
-          },
-        ],
+        userMessage: buildClassificationPrompt(input),
+        maxTokens: 2000,
+        temperature: 0, // CRITICAL: deterministic output
       });
 
-      // Extract text from response
-      const textContent = response.content.find((c) => c.type === 'text');
-      if (!textContent || textContent.type !== 'text') {
-        throw new ClassificationError(
-          'No text content in Claude response',
-          'NO_TEXT_CONTENT',
-          true
-        );
-      }
-
-      const rawText = textContent.text;
+      const rawText = response.text;
 
       // Parse JSON from response
       let parsed: unknown;

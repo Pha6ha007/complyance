@@ -1,4 +1,4 @@
-import { anthropic } from '@/server/ai/client';
+import { callLLM } from '@/server/ai/client';
 import { DOCUMENT_ANALYSIS_PROMPT } from '@/server/ai/prompts/document-analysis';
 import {
   documentAnalysisResultSchema,
@@ -13,7 +13,7 @@ interface AnalyzeDocumentsInput {
 }
 
 /**
- * Analyzes uploaded documents using Claude API to extract AI-relevant information
+ * Analyzes uploaded documents using LLM via OpenRouter to extract AI-relevant information
  */
 export async function analyzeDocuments({
   systemId,
@@ -54,30 +54,18 @@ export async function analyzeDocuments({
       )
       .join('');
 
-    // Call Claude API for analysis
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 4096,
-      temperature: 0, // Deterministic for consistency
+    // Call LLM via OpenRouter
+    const response = await callLLM({
       system: DOCUMENT_ANALYSIS_PROMPT,
-      messages: [
-        {
-          role: 'user',
-          content: `Please analyze the following product documentation and extract AI compliance information:\n\n${combinedText}`,
-        },
-      ],
+      userMessage: `Please analyze the following product documentation and extract AI compliance information:\n\n${combinedText}`,
+      maxTokens: 4096,
+      temperature: 0, // Deterministic for consistency
     });
 
-    // Extract JSON from response
-    const content = response.content[0];
-    if (content.type !== 'text') {
-      throw new Error('Unexpected response type from Claude API');
-    }
-
     // Parse and validate the response
-    const jsonMatch = content.text.match(/\{[\s\S]*\}/);
+    const jsonMatch = response.text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
-      throw new Error('No JSON found in Claude API response');
+      throw new Error('No JSON found in LLM response');
     }
 
     const rawResult = JSON.parse(jsonMatch[0]);
