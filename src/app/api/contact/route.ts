@@ -57,12 +57,12 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    // NOTE: confirmation to submitter is disabled until complyance.io domain is verified in Resend
+    // NOTE: confirmation to submitter is disabled until complyance.app domain is verified in Resend
     // Resend free tier only allows sending to the account's own email without a verified domain
     // Uncomment this block after domain verification:
     //
     // await sendEmail({
-    //   from: 'Complyance <noreply@complyance.io>',
+    //   from: 'Complyance <noreply@complyance.app>',
     //   to: data.email,
     //   subject: 'We received your message',
     //   html: `...`,

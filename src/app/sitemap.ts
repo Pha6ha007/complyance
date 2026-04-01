@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
   const locales = ['en', 'fr', 'de', 'pt', 'ar', 'pl', 'it'];
 
   // Marketing pages that should be indexed

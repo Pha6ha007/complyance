@@ -185,8 +185,8 @@ export default async function PrivacyPage({ params }: Props) {
               </ul>
               <p className="mt-4 text-sm text-white/60">
                 {t('gdpr.exercise')}{' '}
-                <a href="mailto:privacy@complyance.io" className="text-sky-400 hover:text-sky-300 transition-colors">
-                  privacy@complyance.io
+                <a href="mailto:privacy@complyance.app" className="text-sky-400 hover:text-sky-300 transition-colors">
+                  privacy@complyance.app
                 </a>
               </p>
             </div>
@@ -230,14 +230,14 @@ export default async function PrivacyPage({ params }: Props) {
             <h2 className="mb-3 text-xl font-bold text-white">{t('contact.title')}</h2>
             <p className="text-sm text-white/60">
               {t('contact.email')}:{' '}
-              <a href="mailto:privacy@complyance.io" className="text-emerald-400 hover:text-emerald-300 transition-colors">
-                privacy@complyance.io
+              <a href="mailto:privacy@complyance.app" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+                privacy@complyance.app
               </a>
             </p>
             <p className="mt-1.5 text-sm text-white/60">
               {t('contact.website')}:{' '}
               <Link href="/" className="text-emerald-400 hover:text-emerald-300 transition-colors">
-                complyance.io
+                complyance.app
               </Link>
             </p>
           </section>

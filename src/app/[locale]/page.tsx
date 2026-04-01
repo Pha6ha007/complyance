@@ -133,7 +133,7 @@ function DashboardMockup({ days }: { days: number }) {
             <div className="w-3 h-3 rounded-full bg-[#28C840]" />
           </div>
           <div className="flex-1 mx-3 h-6 bg-white/4 rounded-md flex items-center justify-center">
-            <span className="text-[11px] text-white/25 font-mono">app.complyance.io/dashboard</span>
+            <span className="text-[11px] text-white/25 font-mono">app.complyance.app/dashboard</span>
           </div>
         </div>
 

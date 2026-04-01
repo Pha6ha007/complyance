@@ -20,7 +20,7 @@ export async function sendEmail({
   to,
   subject,
   html,
-  from = 'Complyance <notifications@complyance.io>',
+  from = 'Complyance <notifications@complyance.app>',
 }: SendEmailParams) {
   const client = getResendClient();
 

@@ -12,7 +12,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'freeClassifier' });
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
   const canonicalUrl = `${baseUrl}/${locale}/free-classifier`;
 
   return {
@@ -66,7 +66,7 @@ export default async function FreeClassifierPage({
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'freeClassifier' });
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
 
   // Schema.org WebApplication markup
   const webAppSchema = {

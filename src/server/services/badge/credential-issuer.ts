@@ -67,18 +67,18 @@ export function issueComplianceCredential(params: {
   const credential: ComplianceCredential = {
     '@context': [
       'https://www.w3.org/2018/credentials/v1',
-      'https://complyance.io/contexts/v1',
+      'https://complyance.app/contexts/v1',
     ],
-    id: `https://complyance.io/credentials/${params.orgId}/${now.getTime()}`,
+    id: `https://complyance.app/credentials/${params.orgId}/${now.getTime()}`,
     type: ['VerifiableCredential', 'AIComplianceCredential'],
     issuer: {
-      id: 'https://complyance.io',
+      id: 'https://complyance.app',
       name: 'Complyance',
     },
     issuanceDate: now.toISOString(),
     expirationDate: expiry.toISOString(),
     credentialSubject: {
-      id: `https://complyance.io/organizations/${params.orgId}`,
+      id: `https://complyance.app/organizations/${params.orgId}`,
       organizationName: params.orgName,
       complianceLevel: params.complianceLevel,
       euAiActStatus: {
@@ -115,7 +115,7 @@ export function issueComplianceCredential(params: {
       credential.proof = {
         type: 'Ed25519Signature2020',
         created: now.toISOString(),
-        verificationMethod: 'https://complyance.io/.well-known/public-key',
+        verificationMethod: 'https://complyance.app/.well-known/public-key',
         proofPurpose: 'assertionMethod',
         proofValue: signature.toString('base64'),
       };
@@ -148,7 +148,7 @@ export function verifyCredential(credential: ComplianceCredential): {
   }
 
   // Check issuer
-  if (credential.issuer.id !== 'https://complyance.io') {
+  if (credential.issuer.id !== 'https://complyance.app') {
     return { valid: false, expired: false, signed: false, signatureValid: null, reason: 'Unknown issuer' };
   }
 

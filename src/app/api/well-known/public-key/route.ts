@@ -24,9 +24,9 @@ export async function GET() {
   return NextResponse.json(
     {
       '@context': 'https://w3id.org/security/v1',
-      id: 'https://complyance.io/.well-known/public-key',
+      id: 'https://complyance.app/.well-known/public-key',
       type: 'Ed25519VerificationKey2020',
-      controller: 'https://complyance.io',
+      controller: 'https://complyance.app',
       publicKeyBase64,
     },
     {

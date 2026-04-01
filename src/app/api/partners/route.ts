@@ -37,8 +37,8 @@ export async function POST(req: NextRequest) {
 
     // Send internal notification
     await sendEmail({
-      from: 'Partnership Applications <noreply@complyance.io>',
-      to: 'partnerships@complyance.io',
+      from: 'Partnership Applications <noreply@complyance.app>',
+      to: 'partnerships@complyance.app',
       subject: `New Partnership Application: ${data.companyName}`,
       html: `
         <h2>New Partnership Application</h2>
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
 
     // Send confirmation to applicant
     await sendEmail({
-      from: 'Complyance Partnerships <noreply@complyance.io>',
+      from: 'Complyance Partnerships <noreply@complyance.app>',
       to: data.email,
       subject: 'Thank you for your partnership application',
       html: `

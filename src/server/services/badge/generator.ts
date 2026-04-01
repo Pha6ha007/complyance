@@ -181,7 +181,7 @@ export function generateBadgeSVG(
 ): string {
   const colors = BADGE_COLORS[level];
   const label = BADGE_LABELS[level];
-  const verifyUrl = `https://complyance.io/verify/${orgId}`;
+  const verifyUrl = `https://complyance.app/verify/${orgId}`;
   const dateStr = verifiedAt
     ? verifiedAt.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
     : '';
@@ -219,8 +219,8 @@ export function generateBadgeSVG(
  * Generate HTML embed code for the badge
  */
 export function generateBadgeHTML(orgId: string, level: BadgeLevel): string {
-  const verifyUrl = `https://complyance.io/verify/${orgId}`;
-  const badgeUrl = `https://complyance.io/api/public/v1/badge/${orgId}/svg`;
+  const verifyUrl = `https://complyance.app/verify/${orgId}`;
+  const badgeUrl = `https://complyance.app/api/public/v1/badge/${orgId}/svg`;
 
   return `<!-- Complyance Compliance Badge -->
 <a href="${verifyUrl}" target="_blank" rel="noopener noreferrer" title="Verified by Complyance">
@@ -232,8 +232,8 @@ export function generateBadgeHTML(orgId: string, level: BadgeLevel): string {
  * Generate Markdown embed code for the badge
  */
 export function generateBadgeMarkdown(orgId: string, level: BadgeLevel): string {
-  const verifyUrl = `https://complyance.io/verify/${orgId}`;
-  const badgeUrl = `https://complyance.io/api/public/v1/badge/${orgId}/svg`;
+  const verifyUrl = `https://complyance.app/verify/${orgId}`;
+  const badgeUrl = `https://complyance.app/api/public/v1/badge/${orgId}/svg`;
 
   return `[![${BADGE_LABELS[level]}](${badgeUrl})](${verifyUrl})`;
 }

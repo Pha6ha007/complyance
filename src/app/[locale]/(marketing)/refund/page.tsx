@@ -107,8 +107,8 @@ export default async function RefundPage({ params }: Props) {
             </ol>
             <p className="mt-4 text-sm text-white/55">
               {t('process.alternative')}:{' '}
-              <a href="mailto:support@complyance.io" className="text-emerald-400 hover:text-emerald-300 transition-colors">
-                support@complyance.io
+              <a href="mailto:support@complyance.app" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+                support@complyance.app
               </a>
             </p>
           </section>
@@ -178,8 +178,8 @@ export default async function RefundPage({ params }: Props) {
             <h2 className="mb-3 text-xl font-bold text-white">{t('contact.title')}</h2>
             <p className="text-sm text-white/60">
               {t('contact.email')}:{' '}
-              <a href="mailto:support@complyance.io" className="text-emerald-400 hover:text-emerald-300 transition-colors">
-                support@complyance.io
+              <a href="mailto:support@complyance.app" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+                support@complyance.app
               </a>
             </p>
             <p className="mt-1.5 text-sm text-white/60">

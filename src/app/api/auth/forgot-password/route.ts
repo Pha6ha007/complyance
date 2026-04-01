@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       });
 
       // Build reset URL
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXTAUTH_URL || 'https://complyance.io';
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXTAUTH_URL || 'https://complyance.app';
       const resetUrl = `${baseUrl}/reset-password?token=${token}&email=${encodeURIComponent(email)}`;
 
       await sendEmail({

@@ -19,7 +19,7 @@ const dmMono = DM_Mono({
   display: 'swap',
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

@@ -6,7 +6,7 @@ interface PartnersPageProps {
   params: Promise<{ locale: string }>;
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
 
 export async function generateMetadata({ params }: PartnersPageProps): Promise<Metadata> {
   const { locale } = await params;

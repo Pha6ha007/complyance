@@ -104,8 +104,8 @@ export default function BadgeSettingsPage() {
     markdownCode,
   } = badgeData;
 
-  const badgeSvgUrl = `https://complyance.io/api/public/v1/badge/${orgId}/svg`;
-  const verifyUrl = `https://complyance.io/verify/${orgId}`;
+  const badgeSvgUrl = `https://complyance.app/api/public/v1/badge/${orgId}/svg`;
+  const verifyUrl = `https://complyance.app/verify/${orgId}`;
 
   return (
     <div className="space-y-6">

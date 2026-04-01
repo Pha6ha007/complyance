@@ -93,7 +93,7 @@ export async function GET(request: NextRequest) {
               fontWeight: 600,
             }}
           >
-            <span>complyance.io</span>
+            <span>complyance.app</span>
           </div>
           <div
             style={{

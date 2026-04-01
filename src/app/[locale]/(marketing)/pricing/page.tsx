@@ -16,7 +16,7 @@ export async function generateMetadata({
 }: PricingPageProps): Promise<Metadata> {
   const { locale } = await params;
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
   const canonicalUrl = `${baseUrl}/${locale}/pricing`;
 
   const seoContent: Record<string, { title: string; description: string }> = {
@@ -109,7 +109,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
 
   const t = await getTranslations('pricing');
   const tNav = await getTranslations('nav');
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
 
   // Paddle price IDs from env vars — null means no checkout button (renders link instead)
   const priceStarter = process.env.PADDLE_PRICE_STARTER ?? null;

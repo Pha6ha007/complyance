@@ -155,5 +155,5 @@ export function generatePlaceholderFileUrl(
   evidenceId: string,
   fileName: string
 ): string {
-  return `https://storage.complyance.io/evidence/${organizationId}/${evidenceId}/${fileName}`;
+  return `https://storage.complyance.app/evidence/${organizationId}/${evidenceId}/${fileName}`;
 }

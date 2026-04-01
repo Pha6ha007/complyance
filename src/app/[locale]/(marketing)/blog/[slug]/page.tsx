@@ -248,7 +248,7 @@ export async function generateMetadata({
   }
 
   const { frontmatter } = post;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.io';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
   const canonicalUrl = `${baseUrl}/${locale}/blog/${slug}`;
 
   return {
@@ -327,12 +327,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       name: 'Complyance',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://complyance.io/logo.png',
+        url: 'https://complyance.app/logo.png',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://complyance.io/${locale}/blog/${slug}`,
+      '@id': `https://complyance.app/${locale}/blog/${slug}`,
     },
   };
 
