@@ -51,7 +51,7 @@ const nextConfig = {
           },
           {
             key: 'X-Frame-Options',
-            value: 'DENY',
+            value: 'ALLOWALL',
           },
           {
             key: 'X-Content-Type-Options',
@@ -83,7 +83,7 @@ const nextConfig = {
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
-              "frame-ancestors 'self'",
+              "frame-ancestors *",
               "upgrade-insecure-requests",
             ].join('; '),
           },
