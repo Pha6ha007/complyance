@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
   ShieldCheck,
@@ -18,94 +18,11 @@ import {
   Send,
   ExternalLink,
 } from 'lucide-react';
+import { EUAIActCountdown } from '@/components/eu-ai-act-countdown';
 
 const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL ||
   'https://calendly.com/complyance/ai-compliance-assessment';
-
-// EU AI Act high-risk obligations enter into application on 2 August 2026.
-// Reference: Regulation (EU) 2024/1689, Article 113.
-const DEADLINE_ISO = '2026-08-02T00:00:00Z';
-
-// ────────────────────────────────────────────────────────────────────────────
-// Inline countdown — full standalone component for Task 3.3 will be in
-// src/components/eu-ai-act-countdown.tsx. This inline version is intentionally
-// scoped to the managed page so we don't pre-empt that task.
-// ────────────────────────────────────────────────────────────────────────────
-
-type CountdownVariant = 'hero' | 'urgent';
-
-function DeadlineCountdown({ variant }: { variant: CountdownVariant }) {
-  const t = useTranslations('managed.countdown');
-  // Render with `null` first to avoid SSR/CSR hydration mismatch on the
-  // computed days. We update on mount.
-  const [days, setDays] = useState<number | null>(null);
-
-  useEffect(() => {
-    const compute = () => {
-      const ms = new Date(DEADLINE_ISO).getTime() - Date.now();
-      setDays(Math.max(0, Math.ceil(ms / 86_400_000)));
-    };
-    compute();
-    const id = setInterval(compute, 60 * 60 * 1000); // refresh hourly
-    return () => clearInterval(id);
-  }, []);
-
-  const isCritical = days !== null && days < 90;
-  const isUrgent = days !== null && days < 180;
-
-  if (variant === 'hero') {
-    const tone = isCritical
-      ? 'border-red-500/40 bg-red-500/10 text-red-300'
-      : isUrgent
-        ? 'border-amber-500/40 bg-amber-500/10 text-amber-300'
-        : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300';
-
-    return (
-      <div
-        className={`inline-flex items-center gap-2 rounded-full border ${tone} px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider`}
-      >
-        <span
-          className={`h-1.5 w-1.5 rounded-full ${
-            isCritical ? 'bg-red-400' : isUrgent ? 'bg-amber-400' : 'bg-emerald-400'
-          } animate-pulse`}
-        />
-        {days === null
-          ? t('deadlineLabel')
-          : t('deadlineInDays', { days: days.toLocaleString('en-US') })}
-      </div>
-    );
-  }
-
-  // urgent variant — large counter card
-  return (
-    <div
-      className={`rounded-2xl border ${
-        isCritical
-          ? 'border-red-500/40 bg-red-500/5 shadow-[0_0_60px_rgba(239,68,68,0.15)]'
-          : 'border-amber-500/30 bg-amber-500/5'
-      } p-8 text-center`}
-    >
-      <div className="text-xs font-semibold uppercase tracking-widest text-white/40">
-        {t('urgentSectionLabel')}
-      </div>
-      <div
-        className={`mt-3 font-mono text-6xl font-extrabold leading-none ${
-          isCritical ? 'text-red-400' : 'text-amber-400'
-        }`}
-      >
-        {days === null ? '—' : days.toLocaleString('en-US')}
-      </div>
-      <div className="mt-2 text-sm text-white/50">{t('urgentDaysLabel')}</div>
-      {isCritical && days !== null && (
-        <div className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-red-400">
-          <AlertTriangle className="h-4 w-4" />
-          {t('urgentWarning')}
-        </div>
-      )}
-    </div>
-  );
-}
 
 // ────────────────────────────────────────────────────────────────────────────
 // Managed-service lead form — submits to /api/contact with type='managed_service'
@@ -427,7 +344,7 @@ export function ManagedContent() {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative z-10 mx-auto max-w-5xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
         <div className="text-center">
-          <DeadlineCountdown variant="hero" />
+          <EUAIActCountdown variant="pill" />
           <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl font-dm-sans">
             {tHero('titleStart')}{' '}
             <span className="text-emerald-400">{tHero('titleAccent')}</span>
@@ -562,7 +479,7 @@ export function ManagedContent() {
             </ul>
           </div>
 
-          <DeadlineCountdown variant="urgent" />
+          <EUAIActCountdown variant="card" />
         </div>
       </section>
 

@@ -1,6 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { Shield } from 'lucide-react';
+import { Shield, ExternalLink } from 'lucide-react';
+
+const TRACEHAWK_PUBLIC_URL =
+  process.env.NEXT_PUBLIC_TRACEHAWK_URL ?? 'https://tracehawk.dev';
 
 export default async function Footer() {
   const t = await getTranslations('footer');
@@ -37,13 +40,37 @@ export default async function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-sm text-white/50 transition-colors hover:text-white">
-                  {t('product.blog')}
+                <Link href="/free-classifier" className="text-sm text-white/50 transition-colors hover:text-white">
+                  {t('product.freeClassifier')}
                 </Link>
               </li>
               <li>
-                <Link href="/free-classifier" className="text-sm text-white/50 transition-colors hover:text-white">
-                  {t('product.freeClassifier')}
+                <Link href="/managed" className="text-sm text-white/50 transition-colors hover:text-white">
+                  {t('product.managed')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/bundle"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300"
+                >
+                  {t('product.bundle')}
+                </Link>
+              </li>
+              <li>
+                <a
+                  href={TRACEHAWK_PUBLIC_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-white/50 transition-colors hover:text-white"
+                >
+                  {t('product.tracehawk')}
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </li>
+              <li>
+                <Link href="/blog" className="text-sm text-white/50 transition-colors hover:text-white">
+                  {t('product.blog')}
                 </Link>
               </li>
             </ul>

@@ -46,6 +46,15 @@ export function MarketingHeader({ locale }: MarketingHeaderProps) {
             {t('pricing')}
           </Link>
           <Link
+            href="/bundle"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-white/60 transition-colors duration-150 hover:text-white"
+          >
+            {t('bundle')}
+            <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-400">
+              {t('bundleSavings')}
+            </span>
+          </Link>
+          <Link
             href="/blog"
             className="text-sm font-medium text-white/60 transition-colors duration-150 hover:text-white"
           >

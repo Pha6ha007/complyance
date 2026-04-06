@@ -38,6 +38,7 @@ import {
   Share2,
   Check,
 } from 'lucide-react';
+import { EUAIActCountdown } from '@/components/eu-ai-act-countdown';
 
 // Types
 type AIType = 'ML_MODEL' | 'LLM' | 'RULE_BASED' | 'HYBRID';
@@ -316,6 +317,9 @@ export function FreeClassifierClient() {
           <p className="mx-auto max-w-2xl text-lg text-white/70">
             {t('subtitle')}
           </p>
+          <div className="mt-6 flex justify-center">
+            <EUAIActCountdown variant="pill" />
+          </div>
         </div>
       </div>
 

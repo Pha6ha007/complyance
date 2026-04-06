@@ -645,7 +645,10 @@
       "blog": "Blog",
       "freeClassifier": "Classificateur gratuit",
       "pricing": "Tarifs",
-      "title": "Produit"
+      "title": "Produit",
+      "bundle": "Bundle — Save 25%",
+      "tracehawk": "TraceHawk (observability)",
+      "managed": "Managed Service"
     }
   },
   "freeClassifier": {
@@ -1515,7 +1518,9 @@
     "settings": "Paramètres",
     "systems": "Systèmes d'IA",
     "team": "Équipe",
-    "vendors": "Risques fournisseurs"
+    "vendors": "Risques fournisseurs",
+    "bundle": "Bundle",
+    "bundleSavings": "Save 25%"
   },
   "partners": {
     "benefits": {
@@ -2303,5 +2308,81 @@
     "cardSeconds": "Seconds",
     "cardDeadlineLabel": "until 2 August 2026",
     "cardUrgentWarning": "Less than 3 months remaining"
+  },
+  "bundle": {
+    "meta": {
+      "title": "Bundle: Complyance + TraceHawk — Save 25% | AI Lifecycle Platform",
+      "description": "Bundle Complyance and TraceHawk into one AI lifecycle platform. Classify, document, and monitor your AI systems for the EU AI Act. Save 25% on the combined plan."
+    },
+    "hero": {
+      "eyebrow": "Bundle",
+      "title": "Classify → Monitor → Comply",
+      "subtitle": "Two products, one mission. Bundle Complyance and TraceHawk into a single AI lifecycle platform — save 25% compared to buying them separately.",
+      "primaryCta": "Get the bundle",
+      "secondaryCta": "Compare plans"
+    },
+    "lifecycle": {
+      "eyebrow": "The AI lifecycle",
+      "heading": "From the model card to the audit trail.",
+      "subhead": "Complyance handles the regulatory side. TraceHawk handles the runtime side. Together they cover the full lifecycle of every AI system you ship.",
+      "step1Title": "Classify",
+      "step1Desc": "Map every AI system, classify it under the EU AI Act, generate the documentation. Complyance.",
+      "step2Title": "Monitor",
+      "step2Desc": "Trace every call, every cost, every security flag, every anomaly in production. TraceHawk.",
+      "step3Title": "Comply",
+      "step3Desc": "Sync runtime evidence back into your compliance posture. Both products."
+    },
+    "columns": {
+      "complyance": {
+        "name": "Complyance",
+        "tagline": "AI compliance management",
+        "feature1": "EU AI Act classification (Annex III, Article 6)",
+        "feature2": "Gap analysis against Articles 9–15",
+        "feature3": "Generated documentation (Annex IV, DPIA)",
+        "feature4": "Vendor risk assessment",
+        "feature5": "Compliance badge for your website"
+      },
+      "tracehawk": {
+        "name": "TraceHawk",
+        "tagline": "AI agent observability",
+        "feature1": "MCP server tracing & call inspection",
+        "feature2": "Cost tracking & budget guardrails",
+        "feature3": "Security flag detection (PII, prompt injection)",
+        "feature4": "Replay & debug agent runs",
+        "feature5": "Real-time anomaly alerts"
+      },
+      "together": {
+        "name": "Together",
+        "tagline": "The full lifecycle",
+        "feature1": "Compliance status auto-syncs from Complyance into TraceHawk traces",
+        "feature2": "Runtime evidence (Article 12) flows from TraceHawk into Complyance",
+        "feature3": "Drift alerts when a monitored system's risk profile changes",
+        "feature4": "Vendor auto-detection from TraceHawk's model usage",
+        "feature5": "One audit trail across the full AI lifecycle"
+      }
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "heading": "One bundle. One price. 25% off.",
+      "subhead": "Bundle pricing replaces the two individual subscriptions. You can also buy each product separately at full price.",
+      "complyancePrice": "$99",
+      "complyancePeriod": "/month",
+      "complyanceCta": "Start with Complyance",
+      "tracehawkPrice": "$99",
+      "tracehawkPeriod": "/month",
+      "tracehawkCta": "Start with TraceHawk",
+      "bundlePrice": "$149",
+      "bundlePeriod": "/month",
+      "bundleSavings": "Save 25% vs. buying separately",
+      "bundleBadge": "Best value",
+      "bundleCta": "Get the bundle",
+      "bundleNote": "Replaces both individual subscriptions. Cancel anytime."
+    },
+    "cta": {
+      "heading": "Stop managing compliance and monitoring separately.",
+      "subhead": "Your AI systems already live in two worlds — the compliance dashboard and the runtime monitor. The bundle stitches them into one.",
+      "button": "Get the bundle",
+      "secondary": "Talk to us"
+    }
   }
 }
