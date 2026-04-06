@@ -2,6 +2,18 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/server/db/client';
 import { z } from 'zod';
 import { calculateMetadataHash } from '@/server/services/evidence/integrity';
+import { autoDetectVendors } from '@/server/services/vendors/auto-detect';
+
+/**
+ * Type guard: check if a value is an array of non-empty strings.
+ * Used to safely extract `models_used` from the free-form `metadata` blob.
+ */
+function isStringArray(value: unknown): value is string[] {
+  return (
+    Array.isArray(value) &&
+    value.every((item) => typeof item === 'string' && item.length > 0)
+  );
+}
 
 /**
  * SDK Event webhook endpoint.
@@ -159,6 +171,28 @@ export async function POST(req: NextRequest) {
       where: { id: evidence.id },
       data: { integrityHash },
     });
+
+    // Vendor auto-detection: when TraceHawk pushes a monitoring_summary
+    // with `metadata.models_used`, auto-create Vendor rows and link them
+    // to this AI system. Fire-and-forget — never block the SDK response
+    // on this enrichment.
+    if (
+      event.event_type === 'monitoring_summary' &&
+      event.metadata &&
+      typeof event.metadata === 'object' &&
+      'models_used' in event.metadata &&
+      isStringArray(event.metadata.models_used)
+    ) {
+      const modelsUsed = event.metadata.models_used;
+      // Run async without awaiting. Catch errors locally so they never
+      // propagate into the response.
+      autoDetectVendors(prisma, org.id, system.id, modelsUsed).catch((err) => {
+        console.error('[sdk-events] vendor auto-detect failed', {
+          systemId: system.id,
+          error: err instanceof Error ? err.message : String(err),
+        });
+      });
+    }
 
     return NextResponse.json({ received: true, evidence_id: evidence.id });
   } catch {
