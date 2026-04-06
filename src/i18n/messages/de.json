@@ -2137,5 +2137,36 @@
     "stepCurrent": "Aktueller Schritt",
     "stepLocked": "Schließen Sie zuerst die vorherigen Schritte ab",
     "showOnboarding": "Anleitung anzeigen"
+  },
+  "tracehawk": {
+    "sectionTitle": "Laufzeit-Überwachung",
+    "connectedBadge": "Mit TraceHawk verbunden",
+    "unlinkedHeading": "TraceHawk für Laufzeit-Überwachung verbinden",
+    "unlinkedDescription": "Verbinden Sie TraceHawk, um dieses KI-System in der Produktion zu überwachen. Der EU AI Act fordert kontinuierliche Überwachung für Hochrisikosysteme.",
+    "linkedHeading": "Mit TraceHawk verbunden",
+    "agentIdLabel": "TraceHawk Agent-ID",
+    "apiKeyLabel": "TraceHawk API-Schlüssel",
+    "apiKeyHint": "Verschlüsselt auf unseren Servern gespeichert. Wird niemals erneut angezeigt.",
+    "lastSyncLabel": "Zuletzt synchronisiert",
+    "neverSynced": "nie",
+    "connectButton": "TraceHawk verbinden",
+    "syncNowButton": "Jetzt synchronisieren",
+    "unlinkButton": "Trennen",
+    "unlinkConfirm": "Dieses System von TraceHawk trennen? Die Laufzeit-Überwachung wird gestoppt, bis Sie es erneut verbinden.",
+    "noTracehawkAccount": "Noch kein TraceHawk-Konto? Kostenlos starten",
+    "syncSuccess": "Compliance-Status an TraceHawk übermittelt.",
+    "linkSavedSyncFailedTitle": "Verknüpfung gespeichert, aber Übermittlung an TraceHawk fehlgeschlagen",
+    "ctaHeading": "Dieses KI-System in der Produktion überwachen",
+    "ctaDescription": "Verfolgen Sie das Verhalten, die Kosten und die Leistung Ihres KI-Systems in der Produktion mit TraceHawk.",
+    "viewInTracehawkButton": "In TraceHawk ansehen",
+    "whatIsTracehawk": "Was ist TraceHawk?",
+    "syncReason": {
+      "no-link": "System ist nicht mit TraceHawk verknüpft.",
+      "no-classification": "System wurde noch nicht klassifiziert — bitte zuerst klassifizieren.",
+      "no-api-url": "TraceHawk-API-URL ist auf diesem Server nicht konfiguriert.",
+      "http-error": "TraceHawk gab einen HTTP-Fehler zurück. Bitte API-Schlüssel überprüfen.",
+      "network-error": "TraceHawk ist nicht erreichbar. Bitte Netzwerkverbindung prüfen und erneut versuchen.",
+      "unknown": "Synchronisation fehlgeschlagen aus unbekanntem Grund."
+    }
   }
 }

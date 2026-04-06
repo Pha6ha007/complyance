@@ -2137,5 +2137,36 @@
     "stepCurrent": "Etapa atual",
     "stepLocked": "Complete as etapas anteriores primeiro",
     "showOnboarding": "Mostrar guia"
+  },
+  "tracehawk": {
+    "sectionTitle": "Monitorização em tempo de execução",
+    "connectedBadge": "Conectado ao TraceHawk",
+    "unlinkedHeading": "Conectar TraceHawk para monitorização em tempo real",
+    "unlinkedDescription": "Conecte o TraceHawk para monitorizar este sistema de IA em produção. O AI Act da UE exige monitorização contínua para sistemas de alto risco.",
+    "linkedHeading": "Conectado ao TraceHawk",
+    "agentIdLabel": "ID do agente TraceHawk",
+    "apiKeyLabel": "Chave de API TraceHawk",
+    "apiKeyHint": "Armazenada encriptada nos nossos servidores. Nunca é exibida novamente.",
+    "lastSyncLabel": "Última sincronização",
+    "neverSynced": "nunca",
+    "connectButton": "Conectar TraceHawk",
+    "syncNowButton": "Sincronizar agora",
+    "unlinkButton": "Desconectar",
+    "unlinkConfirm": "Desconectar este sistema do TraceHawk? A monitorização em tempo real será interrompida até que reconecte.",
+    "noTracehawkAccount": "Ainda não tem TraceHawk? Comece grátis",
+    "syncSuccess": "Estado de conformidade enviado ao TraceHawk.",
+    "linkSavedSyncFailedTitle": "Ligação guardada, mas o envio ao TraceHawk falhou",
+    "ctaHeading": "Monitorize este sistema de IA em produção",
+    "ctaDescription": "Acompanhe o comportamento, os custos e o desempenho do seu sistema de IA em produção com o TraceHawk.",
+    "viewInTracehawkButton": "Ver no TraceHawk",
+    "whatIsTracehawk": "O que é o TraceHawk?",
+    "syncReason": {
+      "no-link": "O sistema não está ligado ao TraceHawk.",
+      "no-classification": "O sistema ainda não foi classificado — classifique-o primeiro.",
+      "no-api-url": "URL da API do TraceHawk não está configurada neste servidor.",
+      "http-error": "TraceHawk devolveu um erro HTTP. Verifique a sua chave de API.",
+      "network-error": "Não foi possível contactar o TraceHawk. Verifique a sua rede e tente novamente.",
+      "unknown": "A sincronização falhou por motivo desconhecido."
+    }
   }
 }

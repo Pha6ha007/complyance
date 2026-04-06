@@ -2137,5 +2137,36 @@
     "stepCurrent": "Étape en cours",
     "stepLocked": "Complétez d'abord les étapes précédentes",
     "showOnboarding": "Afficher le guide"
+  },
+  "tracehawk": {
+    "sectionTitle": "Surveillance d'exécution",
+    "connectedBadge": "Connecté à TraceHawk",
+    "unlinkedHeading": "Connecter TraceHawk pour la surveillance d'exécution",
+    "unlinkedDescription": "Connectez TraceHawk pour surveiller ce système d'IA en production. L'AI Act de l'UE exige une surveillance continue pour les systèmes à haut risque.",
+    "linkedHeading": "Connecté à TraceHawk",
+    "agentIdLabel": "ID de l'agent TraceHawk",
+    "apiKeyLabel": "Clé API TraceHawk",
+    "apiKeyHint": "Stockée chiffrée sur nos serveurs. Jamais réaffichée à qui que ce soit.",
+    "lastSyncLabel": "Dernière synchronisation",
+    "neverSynced": "jamais",
+    "connectButton": "Connecter TraceHawk",
+    "syncNowButton": "Synchroniser",
+    "unlinkButton": "Déconnecter",
+    "unlinkConfirm": "Déconnecter ce système de TraceHawk ? La surveillance d'exécution s'arrêtera jusqu'à la reconnexion.",
+    "noTracehawkAccount": "Pas encore de compte TraceHawk ? Démarrez gratuitement",
+    "syncSuccess": "Statut de conformité envoyé à TraceHawk.",
+    "linkSavedSyncFailedTitle": "Lien enregistré, mais l'envoi à TraceHawk a échoué",
+    "ctaHeading": "Surveillez ce système d'IA en production",
+    "ctaDescription": "Suivez le comportement, les coûts et les performances de votre système d'IA en production avec TraceHawk.",
+    "viewInTracehawkButton": "Voir dans TraceHawk",
+    "whatIsTracehawk": "Qu'est-ce que TraceHawk ?",
+    "syncReason": {
+      "no-link": "Le système n'est pas connecté à TraceHawk.",
+      "no-classification": "Le système n'a pas encore été classé — classez-le d'abord.",
+      "no-api-url": "L'URL de l'API TraceHawk n'est pas configurée sur ce serveur.",
+      "http-error": "TraceHawk a renvoyé une erreur HTTP. Vérifiez votre clé API.",
+      "network-error": "Impossible de joindre TraceHawk. Vérifiez votre réseau et réessayez.",
+      "unknown": "La synchronisation a échoué pour une raison inconnue."
+    }
   }
 }

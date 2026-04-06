@@ -3,6 +3,7 @@ import { TRPCError } from '@trpc/server';
 import { router, protectedProcedure } from '../trpc';
 import { classificationInputSchema } from '../ai/schemas/classification-result';
 import { classifyAISystem, getClassificationResult } from '../services/classification/engine';
+import { syncSystemToTraceHawkInBackground } from '../services/integrations/tracehawk';
 
 /**
  * Classification tRPC router
@@ -49,6 +50,9 @@ export const classificationRouter = router({
 
       // Run classification
       const result = await classifyAISystem(system.id, classificationInput);
+
+      // Fire-and-forget push to TraceHawk if this system is linked.
+      syncSystemToTraceHawkInBackground(ctx.prisma, system.id);
 
       return result;
     }),
@@ -123,6 +127,9 @@ export const classificationRouter = router({
       // Run classification
       const result = await classifyAISystem(system.id, classificationInput);
 
+      // Fire-and-forget push to TraceHawk if this system is linked.
+      syncSystemToTraceHawkInBackground(ctx.prisma, system.id);
+
       return result;
     }),
 
@@ -194,6 +201,9 @@ export const classificationRouter = router({
         where: { id: gap.systemId },
         data: { complianceScore },
       });
+
+      // Fire-and-forget push to TraceHawk if this system is linked.
+      syncSystemToTraceHawkInBackground(ctx.prisma, gap.systemId);
 
       return {
         gap: updatedGap,

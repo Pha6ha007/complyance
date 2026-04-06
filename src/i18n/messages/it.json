@@ -2137,5 +2137,36 @@
     "stepCurrent": "Passaggio attuale",
     "stepLocked": "Completa prima i passaggi precedenti",
     "showOnboarding": "Mostra guida"
+  },
+  "tracehawk": {
+    "sectionTitle": "Monitoraggio in produzione",
+    "connectedBadge": "Connesso a TraceHawk",
+    "unlinkedHeading": "Collega TraceHawk per il monitoraggio in produzione",
+    "unlinkedDescription": "Collega TraceHawk per monitorare questo sistema di IA in produzione. L'AI Act dell'UE richiede un monitoraggio continuo per i sistemi ad alto rischio.",
+    "linkedHeading": "Connesso a TraceHawk",
+    "agentIdLabel": "ID agente TraceHawk",
+    "apiKeyLabel": "Chiave API TraceHawk",
+    "apiKeyHint": "Archiviata cifrata sui nostri server. Mai mostrata di nuovo a nessuno.",
+    "lastSyncLabel": "Ultima sincronizzazione",
+    "neverSynced": "mai",
+    "connectButton": "Collega TraceHawk",
+    "syncNowButton": "Sincronizza ora",
+    "unlinkButton": "Scollega",
+    "unlinkConfirm": "Scollegare questo sistema da TraceHawk? Il monitoraggio in produzione si interromperà fino al ricollegamento.",
+    "noTracehawkAccount": "Non hai TraceHawk? Inizia gratis",
+    "syncSuccess": "Stato di conformità inviato a TraceHawk.",
+    "linkSavedSyncFailedTitle": "Collegamento salvato, ma l'invio a TraceHawk non è riuscito",
+    "ctaHeading": "Monitora questo sistema di IA in produzione",
+    "ctaDescription": "Traccia il comportamento, i costi e le prestazioni del tuo sistema di IA in produzione con TraceHawk.",
+    "viewInTracehawkButton": "Visualizza in TraceHawk",
+    "whatIsTracehawk": "Cos'è TraceHawk?",
+    "syncReason": {
+      "no-link": "Il sistema non è collegato a TraceHawk.",
+      "no-classification": "Il sistema non è ancora stato classificato — classificalo prima.",
+      "no-api-url": "URL dell'API TraceHawk non configurato su questo server.",
+      "http-error": "TraceHawk ha restituito un errore HTTP. Controlla la tua chiave API.",
+      "network-error": "Impossibile contattare TraceHawk. Controlla la rete e riprova.",
+      "unknown": "Sincronizzazione fallita per motivo sconosciuto."
+    }
   }
 }

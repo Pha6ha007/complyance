@@ -158,11 +158,20 @@ model AISystem {
   vendorLinks             SystemVendorLink[]
   uploadedDocuments       SystemDocument[] // Product documentation for analysis
 
+  // === TraceHawk integration ===
+  // Optional link to a TraceHawk agent for runtime monitoring + compliance push.
+  // Plaintext for now; rotate by re-linking. Encryption is a follow-up task.
+  tracehawkAgentId        String?
+  tracehawkOrgApiKey      String?
+  lastTracehawkSync       DateTime?
+  // === END TraceHawk integration ===
+
   createdAt               DateTime @default(now())
   updatedAt               DateTime @updatedAt
 
   @@index([organizationId])
   @@index([riskLevel])
+  @@index([tracehawkAgentId])
 }
 
 model ComplianceGap {

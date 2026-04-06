@@ -2137,5 +2137,36 @@
     "stepCurrent": "Bieżący krok",
     "stepLocked": "Najpierw wykonaj poprzednie kroki",
     "showOnboarding": "Pokaż przewodnik"
+  },
+  "tracehawk": {
+    "sectionTitle": "Monitorowanie środowiska produkcyjnego",
+    "connectedBadge": "Połączono z TraceHawk",
+    "unlinkedHeading": "Połącz TraceHawk dla monitorowania w środowisku produkcyjnym",
+    "unlinkedDescription": "Połącz TraceHawk, aby monitorować ten system AI w produkcji. AI Act UE wymaga ciągłego monitorowania systemów wysokiego ryzyka.",
+    "linkedHeading": "Połączono z TraceHawk",
+    "agentIdLabel": "ID agenta TraceHawk",
+    "apiKeyLabel": "Klucz API TraceHawk",
+    "apiKeyHint": "Przechowywany zaszyfrowany na naszych serwerach. Nigdy nie jest ponownie wyświetlany.",
+    "lastSyncLabel": "Ostatnia synchronizacja",
+    "neverSynced": "nigdy",
+    "connectButton": "Połącz TraceHawk",
+    "syncNowButton": "Synchronizuj teraz",
+    "unlinkButton": "Rozłącz",
+    "unlinkConfirm": "Odłączyć ten system od TraceHawk? Monitorowanie produkcji zostanie zatrzymane do ponownego połączenia.",
+    "noTracehawkAccount": "Nie masz konta TraceHawk? Zacznij za darmo",
+    "syncSuccess": "Status zgodności wysłany do TraceHawk.",
+    "linkSavedSyncFailedTitle": "Połączenie zapisane, ale wysłanie do TraceHawk nie powiodło się",
+    "ctaHeading": "Monitoruj ten system AI w środowisku produkcyjnym",
+    "ctaDescription": "Śledź zachowanie, koszty i wydajność swojego systemu AI w produkcji za pomocą TraceHawk.",
+    "viewInTracehawkButton": "Zobacz w TraceHawk",
+    "whatIsTracehawk": "Czym jest TraceHawk?",
+    "syncReason": {
+      "no-link": "System nie jest połączony z TraceHawk.",
+      "no-classification": "System nie został jeszcze sklasyfikowany — najpierw go sklasyfikuj.",
+      "no-api-url": "URL API TraceHawk nie jest skonfigurowany na tym serwerze.",
+      "http-error": "TraceHawk zwrócił błąd HTTP. Sprawdź swój klucz API.",
+      "network-error": "Nie można połączyć się z TraceHawk. Sprawdź sieć i spróbuj ponownie.",
+      "unknown": "Synchronizacja nie powiodła się z nieznanego powodu."
+    }
   }
 }

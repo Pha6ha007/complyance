@@ -1,12 +1,16 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useRouter } from '@/i18n/navigation';
+import { useRouter, Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { trpc } from '@/lib/trpc/client';
-import { ArrowLeft, AlertCircle, Edit, Trash2, RefreshCw, ExternalLink, Shield, CheckCircle2, XCircle, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, ArrowDown, AlertCircle, Edit, Trash2, RefreshCw, ExternalLink, Shield, CheckCircle2, XCircle, AlertTriangle, Activity } from 'lucide-react';
 import { RiskLevel } from '@prisma/client';
 import { format } from 'date-fns';
+import { RuntimeMonitoringSection } from '@/components/systems/runtime-monitoring-section';
+
+const TRACEHAWK_PUBLIC_URL =
+  process.env.NEXT_PUBLIC_TRACEHAWK_URL ?? 'https://tracehawk.dev';
 
 function getRiskConfig(riskLevel: RiskLevel | null) {
   if (!riskLevel) {
@@ -107,6 +111,7 @@ export default function SystemDetailPage() {
   const t = useTranslations('systems');
   const tClass = useTranslations('classification');
   const tCommon = useTranslations('common');
+  const tTrack = useTranslations('tracehawk');
 
   const utils = trpc.useUtils();
   const { data: system, isLoading, error } = trpc.system.getById.useQuery({ id: systemId });
@@ -354,6 +359,63 @@ export default function SystemDetailPage() {
           </div>
         </div>
       )}
+
+      {/* ── Post-classification CTA → TraceHawk (Task 1.7) ── */}
+      {system.riskLevel && (
+        <div className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/5 via-slate-800/40 to-slate-800/40 p-5">
+          <div className="flex items-start justify-between gap-4 flex-wrap">
+            <div className="flex items-start gap-3 min-w-0 flex-1">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-400/20">
+                <Activity className="h-5 w-5 text-emerald-400" />
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-base font-semibold text-white">
+                  {tTrack('ctaHeading')}
+                </h3>
+                <p className="mt-1 text-sm text-slate-400 leading-relaxed">
+                  {tTrack('ctaDescription')}
+                </p>
+                <Link
+                  href="/bundle"
+                  className="mt-2 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-emerald-400 transition-colors"
+                >
+                  {tTrack('whatIsTracehawk')}
+                  <ExternalLink className="h-3 w-3" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="flex-shrink-0">
+              {system.tracehawkAgentId ? (
+                <a
+                  href={`${TRACEHAWK_PUBLIC_URL}/agents`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors"
+                >
+                  {tTrack('viewInTracehawkButton')}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              ) : (
+                <a
+                  href="#runtime-monitoring"
+                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors"
+                >
+                  {tTrack('connectButton')}
+                  <ArrowDown className="h-3.5 w-3.5" />
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Runtime Monitoring section (Task 1.6) ── */}
+      <RuntimeMonitoringSection
+        systemId={systemId}
+        tracehawkAgentId={system.tracehawkAgentId ?? null}
+        lastTracehawkSync={system.lastTracehawkSync ?? null}
+      />
 
       {/* ── System info grid ── */}
       <div className="grid gap-4 md:grid-cols-2">

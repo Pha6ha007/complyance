@@ -2137,5 +2137,36 @@
     "stepCurrent": "الخطوة الحالية",
     "stepLocked": "أكمل الخطوات السابقة أولاً",
     "showOnboarding": "عرض الدليل"
+  },
+  "tracehawk": {
+    "sectionTitle": "مراقبة وقت التشغيل",
+    "connectedBadge": "متصل بـ TraceHawk",
+    "unlinkedHeading": "الاتصال بـ TraceHawk لمراقبة وقت التشغيل",
+    "unlinkedDescription": "اربط TraceHawk لمراقبة نظام الذكاء الاصطناعي هذا في الإنتاج. يتطلب قانون الذكاء الاصطناعي للاتحاد الأوروبي مراقبة مستمرة للأنظمة عالية المخاطر.",
+    "linkedHeading": "متصل بـ TraceHawk",
+    "agentIdLabel": "معرّف وكيل TraceHawk",
+    "apiKeyLabel": "مفتاح API الخاص بـ TraceHawk",
+    "apiKeyHint": "يُخزّن مشفرًا على خوادمنا. لا يتم عرضه لأي شخص مرة أخرى.",
+    "lastSyncLabel": "آخر مزامنة",
+    "neverSynced": "أبدًا",
+    "connectButton": "ربط TraceHawk",
+    "syncNowButton": "مزامنة الآن",
+    "unlinkButton": "فصل",
+    "unlinkConfirm": "هل تريد فصل هذا النظام عن TraceHawk؟ ستتوقف مراقبة وقت التشغيل حتى تعيد الربط.",
+    "noTracehawkAccount": "ليس لديك TraceHawk؟ ابدأ مجانًا",
+    "syncSuccess": "تم إرسال حالة الامتثال إلى TraceHawk.",
+    "linkSavedSyncFailedTitle": "تم حفظ الربط، لكن فشل الإرسال إلى TraceHawk",
+    "ctaHeading": "راقب نظام الذكاء الاصطناعي هذا في الإنتاج",
+    "ctaDescription": "تتبّع سلوك نظام الذكاء الاصطناعي الخاص بك وتكاليفه وأداءه في الإنتاج مع TraceHawk.",
+    "viewInTracehawkButton": "عرض في TraceHawk",
+    "whatIsTracehawk": "ما هو TraceHawk؟",
+    "syncReason": {
+      "no-link": "النظام غير مرتبط بـ TraceHawk.",
+      "no-classification": "لم يتم تصنيف النظام بعد — قم بتصنيفه أولًا.",
+      "no-api-url": "عنوان URL لواجهة برمجة تطبيقات TraceHawk غير مُعدّ على هذا الخادم.",
+      "http-error": "أعاد TraceHawk خطأ HTTP. تحقق من مفتاح API الخاص بك.",
+      "network-error": "تعذّر الوصول إلى TraceHawk. تحقق من شبكتك وأعد المحاولة.",
+      "unknown": "فشلت المزامنة لسبب غير معروف."
+    }
   }
 }

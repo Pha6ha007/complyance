@@ -4,6 +4,7 @@ import { router, protectedProcedure } from '../trpc';
 import { AIType, RiskLevel } from '@prisma/client';
 import { getEffectiveSystemLimit } from '@/lib/constants';
 import { randomBytes } from 'crypto';
+import { pushComplianceToTraceHawk } from '../services/integrations/tracehawk';
 
 /**
  * AI System input validation schema
@@ -82,6 +83,15 @@ export const systemRouter = router({
         },
       });
 
+      // Strip the TraceHawk API key — it's a credential for an external
+      // service and must never reach the client. (Prisma 5.18 query-level
+      // `omit` is gated behind the omitApi preview feature; we strip in
+      // memory instead to avoid touching schema preview flags.)
+      for (const s of systems) {
+        // @ts-expect-error — runtime field, type still includes it.
+        delete s.tracehawkOrgApiKey;
+      }
+
       let nextCursor: typeof cursor | undefined = undefined;
       if (systems.length > limit) {
         const nextItem = systems.pop();
@@ -132,6 +142,13 @@ export const systemRouter = router({
           message: 'AI System not found',
         });
       }
+
+      // Strip the TraceHawk API key — it's a credential for an external
+      // service and must never reach the client. (Prisma 5.18 query-level
+      // `omit` is gated behind the omitApi preview feature; we strip in
+      // memory instead to avoid touching schema preview flags.)
+      // @ts-expect-error — runtime field, type still includes it.
+      delete system.tracehawkOrgApiKey;
 
       return system;
     }),
@@ -448,6 +465,175 @@ export const systemRouter = router({
 
     return { revoked: true };
   }),
+
+  /**
+   * Link an AI system to a TraceHawk agent.
+   *
+   * Stores the TraceHawk agent ID + org API key, then synchronously pushes
+   * the current compliance state to TraceHawk so the agent shows up with
+   * compliance context immediately. Push errors are returned in the result
+   * (not thrown) so the link still saves even if TraceHawk is unreachable.
+   */
+  linkTraceHawk: protectedProcedure
+    .input(
+      z.object({
+        systemId: z.string(),
+        tracehawkAgentId: z.string().min(1, 'TraceHawk agent ID is required'),
+        tracehawkOrgApiKey: z
+          .string()
+          .min(1, 'TraceHawk API key is required')
+          .startsWith('th-', 'Expected TraceHawk API key to start with "th-"'),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const existing = await ctx.prisma.aISystem.findFirst({
+        where: { id: input.systemId, organizationId: ctx.organization.id },
+      });
+
+      if (!existing) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'AI System not found',
+        });
+      }
+
+      const updated = await ctx.prisma.aISystem.update({
+        where: { id: input.systemId },
+        data: {
+          tracehawkAgentId: input.tracehawkAgentId,
+          tracehawkOrgApiKey: input.tracehawkOrgApiKey,
+        },
+        select: {
+          id: true,
+          riskLevel: true,
+          complianceScore: true,
+          annexIIICategory: true,
+          processesPersonalData: true,
+          tracehawkAgentId: true,
+          tracehawkOrgApiKey: true,
+        },
+      });
+
+      // Synchronous push with a 5s budget so the UI doesn't hang.
+      const ac = new AbortController();
+      const timer = setTimeout(() => ac.abort(), 5000);
+
+      let pushResult;
+      try {
+        pushResult = await pushComplianceToTraceHawk(updated, { signal: ac.signal });
+      } finally {
+        clearTimeout(timer);
+      }
+
+      if (pushResult.pushed) {
+        await ctx.prisma.aISystem.update({
+          where: { id: input.systemId },
+          data: { lastTracehawkSync: new Date() },
+        });
+      }
+
+      return {
+        linked: true,
+        tracehawkAgentId: input.tracehawkAgentId,
+        synced: pushResult.pushed,
+        syncReason: pushResult.reason ?? null,
+        syncStatus: pushResult.status ?? null,
+        syncError: pushResult.error ?? null,
+      };
+    }),
+
+  /**
+   * Re-push current compliance state to the linked TraceHawk agent.
+   *
+   * Uses the credentials already stored on the system (the API key is
+   * never returned to the client). Returns the same shape as linkTraceHawk
+   * so the UI can show success / failure consistently.
+   */
+  resyncTraceHawk: protectedProcedure
+    .input(z.object({ systemId: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const system = await ctx.prisma.aISystem.findFirst({
+        where: { id: input.systemId, organizationId: ctx.organization.id },
+        select: {
+          id: true,
+          riskLevel: true,
+          complianceScore: true,
+          annexIIICategory: true,
+          processesPersonalData: true,
+          tracehawkAgentId: true,
+          tracehawkOrgApiKey: true,
+        },
+      });
+
+      if (!system) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'AI System not found',
+        });
+      }
+
+      if (!system.tracehawkAgentId || !system.tracehawkOrgApiKey) {
+        throw new TRPCError({
+          code: 'PRECONDITION_FAILED',
+          message: 'System is not linked to TraceHawk',
+        });
+      }
+
+      const ac = new AbortController();
+      const timer = setTimeout(() => ac.abort(), 5000);
+
+      let pushResult;
+      try {
+        pushResult = await pushComplianceToTraceHawk(system, { signal: ac.signal });
+      } finally {
+        clearTimeout(timer);
+      }
+
+      if (pushResult.pushed) {
+        await ctx.prisma.aISystem.update({
+          where: { id: input.systemId },
+          data: { lastTracehawkSync: new Date() },
+        });
+      }
+
+      return {
+        synced: pushResult.pushed,
+        syncReason: pushResult.reason ?? null,
+        syncStatus: pushResult.status ?? null,
+        syncError: pushResult.error ?? null,
+      };
+    }),
+
+  /**
+   * Unlink an AI system from its TraceHawk agent.
+   * Clears the stored credentials and lastTracehawkSync timestamp.
+   */
+  unlinkTraceHawk: protectedProcedure
+    .input(z.object({ systemId: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const existing = await ctx.prisma.aISystem.findFirst({
+        where: { id: input.systemId, organizationId: ctx.organization.id },
+        select: { id: true },
+      });
+
+      if (!existing) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'AI System not found',
+        });
+      }
+
+      await ctx.prisma.aISystem.update({
+        where: { id: input.systemId },
+        data: {
+          tracehawkAgentId: null,
+          tracehawkOrgApiKey: null,
+          lastTracehawkSync: null,
+        },
+      });
+
+      return { unlinked: true };
+    }),
 
   /**
    * Get onboarding status for the current organization

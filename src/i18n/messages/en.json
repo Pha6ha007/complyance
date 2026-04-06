@@ -2137,5 +2137,36 @@
     "stepCurrent": "Current step",
     "stepLocked": "Complete previous steps first",
     "showOnboarding": "Show guide"
+  },
+  "tracehawk": {
+    "sectionTitle": "Runtime Monitoring",
+    "connectedBadge": "Connected to TraceHawk",
+    "unlinkedHeading": "Connect TraceHawk for runtime monitoring",
+    "unlinkedDescription": "Connect TraceHawk to monitor this AI system in production. EU AI Act requires continuous monitoring for high-risk systems.",
+    "linkedHeading": "Connected to TraceHawk",
+    "agentIdLabel": "TraceHawk Agent ID",
+    "apiKeyLabel": "TraceHawk API Key",
+    "apiKeyHint": "Stored encrypted on our servers. Never displayed back to anyone.",
+    "lastSyncLabel": "Last synced",
+    "neverSynced": "never",
+    "connectButton": "Connect TraceHawk",
+    "syncNowButton": "Sync now",
+    "unlinkButton": "Unlink",
+    "unlinkConfirm": "Disconnect this system from TraceHawk? Runtime monitoring will stop until you reconnect.",
+    "noTracehawkAccount": "Don't have TraceHawk? Get started free",
+    "syncSuccess": "Compliance status pushed to TraceHawk.",
+    "linkSavedSyncFailedTitle": "Link saved, but TraceHawk push failed",
+    "ctaHeading": "Monitor this AI system in production",
+    "ctaDescription": "Track your AI system's behavior, costs, and performance in production with TraceHawk.",
+    "viewInTracehawkButton": "View in TraceHawk",
+    "whatIsTracehawk": "What is TraceHawk?",
+    "syncReason": {
+      "no-link": "System is not linked to TraceHawk.",
+      "no-classification": "System has not been classified yet — classify it first.",
+      "no-api-url": "TraceHawk API URL is not configured on this server.",
+      "http-error": "TraceHawk returned an HTTP error. Check your API key.",
+      "network-error": "Could not reach TraceHawk. Check your network and try again.",
+      "unknown": "Sync failed for an unknown reason."
+    }
   }
 }
