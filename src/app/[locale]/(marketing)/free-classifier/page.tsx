@@ -4,21 +4,67 @@ import { FreeClassifierClient } from './client';
 
 interface FreeClassifierPageProps {
   params: Promise<{ locale: string }>;
+  // `?shared=high|unacceptable|limited|minimal` — set when a user shares
+  // their classification result. Used by generateMetadata to render a
+  // result-specific OG card so the link preview is contextual.
+  searchParams?: Promise<{ shared?: string }>;
+}
+
+const SHARED_RISK_LEVELS = ['unacceptable', 'high', 'limited', 'minimal'] as const;
+type SharedRiskLevel = (typeof SHARED_RISK_LEVELS)[number];
+
+function parseSharedRisk(value: string | undefined): SharedRiskLevel | null {
+  if (!value) return null;
+  const lower = value.toLowerCase();
+  return (SHARED_RISK_LEVELS as readonly string[]).includes(lower)
+    ? (lower as SharedRiskLevel)
+    : null;
 }
 
 export async function generateMetadata({
   params,
+  searchParams,
 }: FreeClassifierPageProps): Promise<Metadata> {
   const { locale } = await params;
+  const sp = searchParams ? await searchParams : undefined;
+  const sharedRisk = parseSharedRisk(sp?.shared);
+
   const t = await getTranslations({ locale, namespace: 'freeClassifier' });
+  const tShare = await getTranslations({ locale, namespace: 'freeClassifier.share' });
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://complyance.app';
   const canonicalUrl = `${baseUrl}/${locale}/free-classifier`;
 
+  // When a result is shared, generate a tailored OG card. Otherwise fall
+  // back to the static page-level metadata.
+  let title: string;
+  let description: string;
+  let ogImage: string;
+
+  if (sharedRisk) {
+    const ogTitleKey =
+      sharedRisk === 'high'
+        ? 'ogTitleHigh'
+        : sharedRisk === 'unacceptable'
+          ? 'ogTitleUnacceptable'
+          : sharedRisk === 'limited'
+            ? 'ogTitleLimited'
+            : 'ogTitleMinimal';
+    title = tShare(ogTitleKey);
+    description = tShare('ogDescription');
+    ogImage = `${baseUrl}/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+  } else {
+    title = t('seo.title');
+    description = t('seo.description');
+    ogImage = `${baseUrl}/og-free-classifier.png`;
+  }
+
   return {
-    title: t('seo.title'),
-    description: t('seo.description'),
+    title,
+    description,
     alternates: {
+      // Canonical always points at the bare classifier — share variants
+      // are duplicates of the same page, not separate routes.
       canonical: canonicalUrl,
       languages: {
         en: '/en/free-classifier',
@@ -31,26 +77,26 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: t('seo.title'),
-      description: t('seo.description'),
+      title,
+      description,
       type: 'website',
       locale: locale,
       url: canonicalUrl,
       siteName: 'Complyance',
       images: [
         {
-          url: `${baseUrl}/og-free-classifier.png`,
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: t('seo.title'),
+          alt: title,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('seo.title'),
-      description: t('seo.description'),
-      images: [`${baseUrl}/og-free-classifier.png`],
+      title,
+      description,
+      images: [ogImage],
     },
     robots: {
       index: true,

@@ -35,6 +35,8 @@ import {
   BarChart,
   Users,
   Sparkles,
+  Share2,
+  Check,
 } from 'lucide-react';
 
 // Types
@@ -75,6 +77,40 @@ export function FreeClassifierClient() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<ClassificationResult | null>(null);
+  const [shareState, setShareState] = useState<'idle' | 'copied' | 'error'>('idle');
+
+  /**
+   * Copy a shareable message to clipboard. The shared link includes
+   * `?shared={risk}` so generateMetadata can render a result-specific
+   * OG card when someone clicks it from social media.
+   *
+   * On clipboard failure (insecure origin / locked-down browser) the
+   * button shifts to an error state for 2 seconds, prompting the user
+   * to copy the URL manually from the browser address bar.
+   */
+  const handleShare = async (riskLevel: RiskLevel) => {
+    if (typeof window === 'undefined') return;
+    const sharedKey = riskLevel.toLowerCase();
+    const url = `${window.location.origin}${window.location.pathname}?shared=${sharedKey}`;
+    const messageKey =
+      riskLevel === 'HIGH'
+        ? 'messageHigh'
+        : riskLevel === 'UNACCEPTABLE'
+          ? 'messageUnacceptable'
+          : riskLevel === 'LIMITED'
+            ? 'messageLimited'
+            : 'messageMinimal';
+    const message = t(`share.${messageKey}`, { url });
+
+    try {
+      await navigator.clipboard.writeText(message);
+      setShareState('copied');
+    } catch {
+      setShareState('error');
+    } finally {
+      setTimeout(() => setShareState('idle'), 2000);
+    }
+  };
 
   const [formData, setFormData] = useState<FormData>({
     description: '',
@@ -629,6 +665,42 @@ export function FreeClassifierClient() {
                       })}
                     </p>
                   )}
+
+                  {/* Share button — sits on the white Card surface */}
+                  <div className="mt-5 flex justify-center">
+                    <button
+                      type="button"
+                      onClick={() => handleShare(result.riskLevel)}
+                      aria-live="polite"
+                      data-ph-capture="free-classifier-share"
+                      className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-all ${
+                        shareState === 'copied'
+                          ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-700'
+                          : shareState === 'error'
+                            ? 'border-red-300 bg-red-50 text-red-700'
+                            : 'border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-50'
+                      }`}
+                    >
+                      {shareState === 'copied' && (
+                        <>
+                          <Check className="h-4 w-4" />
+                          {t('share.buttonCopied')}
+                        </>
+                      )}
+                      {shareState === 'error' && (
+                        <>
+                          <AlertCircle className="h-4 w-4" />
+                          {t('share.buttonError')}
+                        </>
+                      )}
+                      {shareState === 'idle' && (
+                        <>
+                          <Share2 className="h-4 w-4" />
+                          {t('share.button')}
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
 
                 {/* Reasoning */}

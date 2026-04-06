@@ -898,6 +898,20 @@
       "domainRequired": "Seleziona un dominio",
       "endUsersRequired": "Seleziona almeno un gruppo interessato",
       "marketsRequired": "Seleziona almeno un mercato"
+    },
+    "share": {
+      "button": "Share my result",
+      "buttonCopied": "Copied to clipboard!",
+      "buttonError": "Couldn't copy — copy URL manually",
+      "messageHigh": "I just classified my AI system under EU AI Act. It's HIGH-RISK. Check yours: {url}",
+      "messageUnacceptable": "I just classified my AI system under EU AI Act. It's UNACCEPTABLE. Check yours: {url}",
+      "messageLimited": "I just classified my AI system under EU AI Act. It's LIMITED RISK. Check yours: {url}",
+      "messageMinimal": "I just classified my AI system under EU AI Act. It's MINIMAL RISK. Check yours: {url}",
+      "ogTitleHigh": "My AI system is HIGH-RISK under EU AI Act",
+      "ogTitleUnacceptable": "My AI system is UNACCEPTABLE under EU AI Act",
+      "ogTitleLimited": "My AI system is LIMITED RISK under EU AI Act",
+      "ogTitleMinimal": "My AI system is MINIMAL RISK under EU AI Act",
+      "ogDescription": "Classified using Complyance Free Classifier. Check your AI system in 5 minutes."
     }
   },
   "gaps": {
@@ -2276,5 +2290,18 @@
       "fallbackBody": "Your network may be blocking third-party iframes. You can book directly on Calendly instead.",
       "fallbackCta": "Book on Calendly"
     }
+  },
+  "countdown": {
+    "pillFallback": "EU AI Act deadline: 2 August 2026",
+    "pillWithDays": "{days} days until EU AI Act",
+    "inlineFallback": "soon",
+    "inlineDays": "{days} days",
+    "cardSectionLabel": "EU AI Act high-risk obligations",
+    "cardDays": "Days",
+    "cardHours": "Hours",
+    "cardMinutes": "Minutes",
+    "cardSeconds": "Seconds",
+    "cardDeadlineLabel": "until 2 August 2026",
+    "cardUrgentWarning": "Less than 3 months remaining"
   }
 }
