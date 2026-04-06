@@ -2168,5 +2168,113 @@
       "network-error": "تعذّر الوصول إلى TraceHawk. تحقق من شبكتك وأعد المحاولة.",
       "unknown": "فشلت المزامنة لسبب غير معروف."
     }
+  },
+  "managed": {
+    "meta": {
+      "title": "AI Compliance — Done For You | Complyance Managed Service",
+      "description": "Premium managed service: We make your company EU AI Act compliant in 2 weeks. Classification, gap analysis, documentation, monitoring — all included. Book a free 30-minute assessment.",
+      "ogTitle": "AI Compliance — Done For You",
+      "ogDescription": "EU AI Act compliance in 2 weeks. Done for you."
+    },
+    "countdown": {
+      "deadlineLabel": "EU AI Act deadline: 2 August 2026",
+      "deadlineInDays": "EU AI Act deadline in {days} days",
+      "urgentSectionLabel": "EU AI Act high-risk obligations",
+      "urgentDaysLabel": "days until 2 August 2026",
+      "urgentWarning": "Less than 3 months remaining"
+    },
+    "hero": {
+      "titleStart": "AI Compliance —",
+      "titleAccent": "Done For You",
+      "subtitle": "We make your company EU AI Act compliant in 2 weeks. Classification, gap analysis, documentation, monitoring — all included.",
+      "bookCta": "Book free assessment",
+      "howCta": "How it works",
+      "tagline": "From $2,000/month · Fixed scope · Cancel anytime"
+    },
+    "included": {
+      "eyebrow": "What's included",
+      "heading": "Everything you need to be compliant.",
+      "subhead": "Six deliverables. One fixed monthly fee. No add-ons, no hourly billing, no scope creep.",
+      "item1Title": "Full AI inventory & EU AI Act classification",
+      "item1Desc": "We audit every AI system in your stack — including ones your team forgot about — and classify each one against Annex III, Article 6, and the prohibited-practice list.",
+      "item2Title": "Gap analysis with prioritized roadmap",
+      "item2Desc": "For every high-risk system, you get a Critical/High/Medium/Low gap list against Articles 9–15, with realistic remediation order and effort estimates.",
+      "item3Title": "Compliance documentation generated for you",
+      "item3Desc": "Annex IV technical documentation, DPIAs, risk assessments, transparency notices, and Article 50 disclosures — drafted, reviewed, and ready to ship.",
+      "item4Title": "TraceHawk monitoring setup & configuration",
+      "item4Desc": "We connect your AI systems to TraceHawk for runtime monitoring (Article 12 record-keeping, anomaly detection, cost guardrails) and tune the alerts.",
+      "item5Title": "Monthly compliance status reports",
+      "item5Desc": "Per-system risk posture, gap trend, evidence inventory, and a one-page exec summary you can hand to your board or your customers.",
+      "item6Title": "Regulatory update monitoring & alerts",
+      "item6Desc": "When the European Commission publishes new guidance, harmonized standards land, or your jurisdiction adds local rules — we tell you and tell you what to do."
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "heading": "Compliant in two weeks. Maintained forever.",
+      "step1Label": "Week 1",
+      "step1Title": "Audit and classify",
+      "step1Desc": "We map every AI system in your organization and classify each one under the EU AI Act. You get a single dashboard with risk levels and obligations.",
+      "step2Label": "Week 2",
+      "step2Title": "Document and instrument",
+      "step2Desc": "We generate the technical documentation, DPIAs, and disclosures required for your high-risk systems, then wire up TraceHawk for runtime monitoring.",
+      "step3Label": "Ongoing",
+      "step3Title": "Reports and support",
+      "step3Desc": "Monthly compliance reports, alerts on regulatory changes, quarterly reviews, and a direct line for questions when audits or customers come knocking."
+    },
+    "whyNow": {
+      "eyebrow": "Why now",
+      "heading": "The deadline is real. The fines are real.",
+      "point1Title": "Fines up to €35M or 7% of global turnover",
+      "point1Desc": "Whichever is higher. Article 99 of the AI Act sets the maximum penalty for prohibited-practice violations.",
+      "point2Title": "High-risk obligations apply from 2 August 2026",
+      "point2Desc": "That's the date Articles 6–27 enter into application for high-risk systems. Documentation has to exist on day one.",
+      "point3Title": "~90% of SMBs have done nothing to prepare",
+      "point3Desc": "Industry surveys show the long tail of small B2B SaaS companies is wildly under-prepared. The fix isn't expensive — but the clock is short."
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "heading": "Common questions.",
+      "q1": "What if I have 1 AI system vs 20?",
+      "a1": "Pricing scales with the number of distinct AI systems we have to classify and document. A single LLM-powered chatbot is one engagement; a 20-system AI platform is another. Book a 30-minute assessment and we will give you a fixed quote up front — no hourly billing, no surprises.",
+      "q2": "Do I need technical knowledge?",
+      "a2": "No. You give us read-only access to your codebase and a 60-minute walkthrough call, and we take it from there. The deliverables are written for compliance, legal, and exec audiences — not for engineers.",
+      "q3": "What happens after the August 2 deadline?",
+      "a3": "High-risk systems put on the EU market on or after 2 August 2026 must be compliant from day one. Existing systems already in production get a transition window in some cases, but documentation, post-market monitoring, and incident reporting obligations apply immediately. We will tell you exactly which clock applies to which system.",
+      "q4": "Can I switch to self-serve later?",
+      "a4": "Yes. Everything we deliver lives in your Complyance workspace — the systems, the gaps, the documents, the evidence. When you are ready to take it in-house, you cancel the managed retainer and keep using the platform on the Starter, Professional, or Scale plan."
+    },
+    "cta": {
+      "eyebrow": "Book a free assessment",
+      "heading": "30 minutes. No commitment.",
+      "subhead": "Pick a slot below, or send us a quick note and we'll come back to you with a fixed quote within one business day.",
+      "formLabel": "Not ready for a call?",
+      "calendarLabel": "Pick a time"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "systemsLabel": "How many AI systems?",
+      "systemsPlaceholder": "Select…",
+      "systemsOption1to5": "1–5 systems",
+      "systemsOption5to20": "5–20 systems",
+      "systemsOption20plus": "20+ systems",
+      "message": "Tell us about your needs",
+      "messagePlaceholder": "What AI systems do you have? What's your timeline? Any specific obligations you're worried about?",
+      "errorMinLength": "Please tell us a little more — at least 10 characters.",
+      "errorGeneric": "Failed to send. Please try again.",
+      "submit": "Send and book a follow-up",
+      "submitting": "Sending…",
+      "successHeading": "Thanks — we'll be in touch.",
+      "successBody": "We typically respond within one business day. In the meantime, feel free to book a slot directly using the calendar below.",
+      "privacyNote": "We'll reply within one business day. No sales spam."
+    },
+    "calendar": {
+      "iframeTitle": "Book a free AI compliance assessment",
+      "fallbackInline": "Calendar not loading? Open in a new tab",
+      "fallbackHeading": "Couldn't load the calendar",
+      "fallbackBody": "Your network may be blocking third-party iframes. You can book directly on Calendly instead.",
+      "fallbackCta": "Book on Calendly"
+    }
   }
 }
