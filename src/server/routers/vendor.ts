@@ -6,8 +6,10 @@ import { PLAN_LIMITS } from '@/lib/constants';
 import {
   calculateVendorRiskScore,
   type VendorAssessmentInput,
+  type MCPRiskInput,
 } from '@/server/services/vendors/assessment';
 import { analyzeVendorWithAI } from '@/server/services/vendors/ai-assessment';
+import { enrichVendorWithMCPTrust } from '@/server/services/integrations/tracehawk-mcp';
 
 /**
  * Get effective vendor limit for a plan
@@ -231,13 +233,23 @@ export const vendorRouter = router({
 
   /**
    * Assess a vendor's risk score
-   * Calculates rule-based score and optionally runs AI analysis
+   * Calculates rule-based score and optionally runs AI analysis.
+   *
+   * If `mcpServerNames` is provided, enriches the assessment with MCP
+   * trust scores from TraceHawk's public API. A low average trust score
+   * (< 50) becomes an additional risk factor. Enrichment is graceful:
+   * if TraceHawk is unreachable or unset, the assessment falls back to
+   * the pure rule-based score.
    */
   assess: protectedProcedure
     .input(
       z.object({
         id: z.string(),
         runAIAnalysis: z.boolean().default(true),
+        // Optional MCP server names this vendor depends on. When present,
+        // TraceHawk is queried for trust scores and the result feeds into
+        // the rule-based risk calculation.
+        mcpServerNames: z.array(z.string().min(1)).max(50).optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -267,10 +279,24 @@ export const vendorRouter = router({
         subprocessorsDocumented: vendor.subprocessorsDocumented,
       };
 
-      // Calculate rule-based risk score
-      const riskScoreResult = calculateVendorRiskScore(assessmentInput, {
-        markets: ctx.organization.markets,
-      });
+      // Optional MCP enrichment from TraceHawk public API.
+      // Graceful: never throws, returns zero scores on any failure.
+      let mcpInput: MCPRiskInput | null = null;
+      let mcpEnrichment: Awaited<ReturnType<typeof enrichVendorWithMCPTrust>> | null = null;
+      if (input.mcpServerNames && input.mcpServerNames.length > 0) {
+        mcpEnrichment = await enrichVendorWithMCPTrust(input.mcpServerNames);
+        mcpInput = {
+          avgTrustScore: mcpEnrichment.avgTrustScore,
+          serverCount: mcpEnrichment.servers.length,
+        };
+      }
+
+      // Calculate rule-based risk score (with optional MCP enrichment)
+      const riskScoreResult = calculateVendorRiskScore(
+        assessmentInput,
+        { markets: ctx.organization.markets },
+        mcpInput
+      );
 
       // Run AI analysis if requested
       let aiAssessment = null;
@@ -300,6 +326,14 @@ export const vendorRouter = router({
             assessedAt: new Date().toISOString(),
           },
         }),
+        ...(mcpEnrichment && {
+          mcpEnrichment: {
+            avgTrustScore: mcpEnrichment.avgTrustScore,
+            servers: mcpEnrichment.servers,
+            skipped: mcpEnrichment.skipped,
+            assessedAt: new Date().toISOString(),
+          },
+        }),
       };
 
       // Update vendor with assessment results
@@ -317,6 +351,7 @@ export const vendorRouter = router({
         vendor: updatedVendor,
         ruleBasedAssessment: riskScoreResult,
         aiAssessment,
+        mcpEnrichment,
       };
     }),
 

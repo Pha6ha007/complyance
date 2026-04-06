@@ -40,6 +40,20 @@ export interface RiskFactor {
 }
 
 /**
+ * Optional MCP trust score input. When the vendor relies on MCP servers
+ * (e.g. an Anthropic-based agent that uses filesystem/github/slack tools),
+ * the caller may pass an enrichment result from `enrichVendorWithMCPTrust`
+ * here. A low average MCP trust score (< 50) becomes an additional
+ * supply-chain risk factor.
+ */
+export interface MCPRiskInput {
+  /** Average trust score 0-100 across the vendor's MCP servers. */
+  avgTrustScore: number;
+  /** Number of MCP servers contributing to the average. */
+  serverCount: number;
+}
+
+/**
  * Calculate vendor risk score based on vendor attributes and target markets
  *
  * Score starts at 100 and deductions are applied based on risk factors.
@@ -50,10 +64,15 @@ export interface RiskFactor {
  * - 60-79: MEDIUM
  * - 40-59: HIGH
  * - 0-39: CRITICAL
+ *
+ * @param vendor   Vendor attributes (DPA, training data, etc.)
+ * @param context  Markets context (where the org sells)
+ * @param mcp      Optional MCP trust score enrichment from TraceHawk
  */
 export function calculateVendorRiskScore(
   vendor: VendorAssessmentInput,
-  context: MarketsContext
+  context: MarketsContext,
+  mcp?: MCPRiskInput | null
 ): VendorRiskScoreResult {
   let score = 100;
   const riskFactors: RiskFactor[] = [];
@@ -152,6 +171,31 @@ export function calculateVendorRiskScore(
         'Vendor uses subprocessors but they are not documented - supply chain risk',
       severity: 'HIGH',
     });
+  }
+
+  // MCP trust score (optional, from TraceHawk public API).
+  // Only apply if at least one MCP server was successfully scored — a
+  // skipped/failed enrichment must not penalize the vendor.
+  if (mcp && mcp.serverCount > 0 && mcp.avgTrustScore > 0) {
+    if (mcp.avgTrustScore < 50) {
+      // Severe: < 50 means majority of MCP servers are untrusted.
+      score -= 15;
+      riskFactors.push({
+        factor: 'LOW_MCP_TRUST_SCORE',
+        deduction: 15,
+        description: `MCP servers used by this vendor average a trust score of ${mcp.avgTrustScore}/100 (below 50). Investigate before deploying in high-risk systems.`,
+        severity: 'HIGH',
+      });
+    } else if (mcp.avgTrustScore < 70) {
+      // Moderate: 50-69 is "watch this".
+      score -= 5;
+      riskFactors.push({
+        factor: 'MODERATE_MCP_TRUST_SCORE',
+        deduction: 5,
+        description: `MCP servers used by this vendor average a trust score of ${mcp.avgTrustScore}/100. Monitor for changes.`,
+        severity: 'MEDIUM',
+      });
+    }
   }
 
   // Ensure score is within bounds
